@@ -5,8 +5,11 @@
   <title>目錄</title>
   <style>
     body {
-      font-family: "微軟正黑體", sans-serif;
+      font-family: "Microsoft JhengHei", "Times New Roman", sans-serif;
       line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #e6f2ff, #ffe6f2); /* 左藍右粉漸層 */
     }
 
     body {
@@ -14,6 +17,15 @@
       line-height: 1.6;
     }
 	
+    .content {
+      max-width: 960px;
+      background: #fff;
+      padding: 40px;
+      margin: 30px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+		
     /* 頁面主標題：置中 */
     h1.title {
       font-size: 40px;
@@ -83,6 +95,36 @@
       text-decoration: underline;
     }
     
+    /* 卡片樣式 */
+    a {
+      color: #0077cc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .blog-item {
+      background-color: #fafafa;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .blog-item a {
+      font-size: 18px;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    .blog-subitem a {
+      font-size: 16px;
+      display: inline-block;
+      margin-top: 4px;
+    }
+	
   </style>
 </head>
 <body>
@@ -106,9 +148,9 @@
       <ol class="decimal-list">
         <li>韓國
           <ol class="paren-decimal">
-            <li><a href="https://www.dcard.tw/f/entertainer/p/254830204" target="_blank">韓團下海求生記(上)</a>
+            <li><a href="https://www.dcard.tw/f/entertainer/p/254830204" target="_blank">韓團下海求生記(上)</a> &emsp;
 			    <a href="https://ba29bin06h.github.io/BL_Drama/KRBL_GP1.html" target="_blank">    韓團資料表(2005~2014出道)</a></li>
-            <li><a href="https://www.dcard.tw/f/entertainer/p/255051301" target="_blank">韓團下海求生記(下)</a>
+            <li><a href="https://www.dcard.tw/f/entertainer/p/255051301" target="_blank">韓團下海求生記(下)</a> &emsp;
 			    <a href="https://ba29bin06h.github.io/BL_Drama/KRBL_GP2.html" target="_blank">    韓團資料表(2015~2024出道)</a></li>
           </ol>
         </li>
