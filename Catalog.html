@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>巴比恩的BL南瓜燈｜目錄與數據總覽</title>
+
+<style>
+:root{
+  --main:#2563eb;
+  --main-dark:#1e40af;
+  --bg:linear-gradient(to right,#e6f2ff,#e6fce6);
+  --card:#ffffff;
+  --text:#111827;
+  --border:#e5e7eb;
+  --table-head:#f1f5f9;
+  --table-hover:#eef2ff;
+  --highlight:#dbeafe;
+}
+
+body{
+  margin:0;
+  font-family:"Segoe UI","Noto Sans TC",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:0.3s;
+}
+
+body.dark{
+  --bg: linear-gradient(to right,#0f172a,#111827);
+  --card: #1f2937;
+  --text: #e0e7ff;
+  --border: #374151;
+  --table-head: #334155;
+  --table-hover: #1e293b;
+  --highlight: #1e3a8a;
+}
+
+.navbar{
+  position:sticky;
+  top:0;
+  background:rgba(255,255,255,0.9);
+  backdrop-filter:blur(6px);
+  padding:10px 20px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+  z-index:10;
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:15px;
+}
+
+#darkBtn{
+  padding:6px 12px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  cursor:pointer;
+}
+
+#darkBtn:hover{
+  background:var(--main);
+  color:white;
+}
+
+.layout{
+  max-width:1600px;
+  margin:40px auto;
+  display:grid;
+  grid-template-columns:220px 1fr 220px;
+  gap:30px;
+  align-items:start;
+}
+
+.side{
+  background:var(--card);
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+  height:fit-content;
+}
+
+.side h3{
+  margin-top:0;
+  font-size:16px;
+}
+
+.side a{
+  display:block;
+  text-decoration:none;
+  color:var(--main);
+  margin:8px 0;
+  font-size:14px;
+}
+
+.side a:hover{
+  text-decoration:underline;
+  color:var(--main-dark);
+}
+
+.content{
+  background:var(--card);
+  padding:20px 30px;
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+h1{
+  text-align:center;
+  margin-bottom:10px;
+}
+
+h2{
+  margin-top:30px;
+}
+
+/* 卡片 Grid */
+.grid-top{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+  margin-bottom:40px;
+}
+
+.card{
+  display:block;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:18px;
+  background:var(--card);
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  transition:0.25s;
+  cursor:pointer;
+  text-decoration:none;
+  color:inherit;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card h3{
+  border-bottom:2px solid var(--main);
+  padding-bottom:6px;
+  margin-bottom:12px;
+  text-align:center;
+}
+
+.card-link{
+  display:block;
+  padding:4px 0 4px 16px;
+  color:var(--main);
+  position:relative;
+  text-decoration:none;
+}
+
+.card-link::before{
+  content:"•";
+  position:absolute;
+  left:0;
+  color:var(--main);
+}
+
+.card-link:hover{
+  color:var(--main-dark);
+  text-decoration:underline;
+}
+
+.symbol.no-dot::before {
+  content: "";
+}
+
+.card span{
+  display:block;
+  padding:4px 0 4px 16px;
+  color:var(--main);
+  position:relative;
+}
+
+.card span::before{
+  content:"•";
+  position:absolute;
+  left:0;
+  color:var(--main);
+}
+
+hr.divider {
+  border: none;
+  border-top:1px solid var(--border);
+  margin:12px 0;
+}
+
+body.dark .card,
+body.dark .card h3,
+body.dark .card h3 a,
+body.dark .card span,
+body.dark .card .card-link {
+  color: #cbd5e1;
+}
+
+body.dark .card .card-link:hover {
+  color: #93c5fd;
+}
+
+body.dark .side {
+  background: var(--card);
+  color: #cbd5e1; /* 深夜模式文字顏色 */
+}
+
+body.dark .side a {
+  color: #93c5fd; /* 深夜模式連結顏色 */
+}
+
+body.dark .side a:hover {
+  color: #ffffff; /* 滑鼠移上去的顏色 */
+}
+
+
+/* 表格 */
+.table-wrapper{
+  overflow-x:auto;
+  margin-top:20px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:900px;
+}
+
+th,td{
+  padding:8px;
+  text-align:center;
+  border-bottom:1px solid var(--border);
+}
+
+th{
+  background:var(--table-head);
+}
+
+tr:hover{
+  background:var(--table-hover);
+}
+
+.highlight{
+  font-weight:700;
+  background:var(--highlight);
+}
+
+/* 工具列 */
+.tools{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+button,input{
+  padding:6px 12px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  cursor:pointer;
+}
+
+button:hover{
+  background:var(--main);
+  color:white;
+}
+
+/* 回頂部 */
+#topBtn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:var(--main);
+  color:white;
+  border:none;
+  padding:10px 14px;
+  border-radius:50%;
+  cursor:pointer;
+  display:none;
+}
+
+@media(max-width:1200px){
+  .layout{
+    grid-template-columns:1fr;
+  }
+  .side{ order:2; }
+  .content{ order:1; }
+  .grid-top{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+.card-spacer {
+  display: block;
+  height: 2em;       
+  line-height: 1em;  
+  content: "";       
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <a href="https://www.dcard.tw/@ba06bin29h" target="_blank">💬Dcard個人牆</a>
+  <button id="darkBtn" onclick="toggleDark()">🌙 夜間模式</button>
+</header>
+
+<div class="layout">
+
+  <!-- 左側欄 -->
+  <!-- 左側欄 -->
+  <aside class="side left">
+    <h3 style="text-align:center;"><strong>📂 四腐全書</strong></h3>
+	<hr>
+	    <a class="symbol no-dot" href="https://www.dcard.tw/f/tvepisode/p/260161966" style="font-size: 16px"; target="_blank" >概論</a>
+		<a class="card-link" href="https://www.dcard.tw/f/boyslovedrama/p/259908931" target="_blank">大和文章</a>
+		<a class="card-link" href="https://www.dcard.tw/f/boyslovedrama/p/259959033" target="_blank">大員文章</a>
+		<a class="card-link" href="https://www.dcard.tw/f/boyslovedrama/p/260003653" target="_blank">大越文章</a>
+		<a class="card-link" href="https://www.dcard.tw/f/boyslovedrama/p/260108050" target="_blank">大韓文章</a>
+		<div class="card-spacer"></div>
+		<div class="card-spacer"></div>
+	 <hr>
+    <p>待續...</p>
+    <a></a>
+  </aside>
+
+
+
+  <!-- 中間內容 -->
+  <div class="content">
+    <h1>🎃 巴比恩的BL南瓜燈</h1>
+    <h2>📌 各國BL資訊</h2>
+
+    <div class="grid-top">
+      <!-- 日本 -->
+      <div class="card">
+        <h3><a href="https://ba29bin06h.github.io/BL_Drama/JPBL.html">🇯🇵 日本</a></h3>
+        <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL1_Company.html">電視台</a>
+        <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL2_Others1.html">其他分類I(日)</a>
+        <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL2_Others2.html">其他分類II(日)</a>
+        <span class="symbol no-dot">跨國整理</span>
+        <hr class="divider"> 
+        <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL4_Actors.html">演員</a>
+        <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL5_Group.html">日本男團</a>
+		<div class="card-spacer"></div>
+        <hr class="divider"> 
+        <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL6_Tokusatsu.html">特攝</a>
+      </div>
+
+      <!-- 台灣 -->
+      <div class="card">
+        <h3><a href="https://ba29bin06h.github.io/BL_Drama/TWBL.html">🇹🇼 台灣</a></h3>
+        <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/TWBL1_Company.html">系列</a>
+        <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/TWBL2_IOT.html">IOT模擬</a>
+		<div class="card-spacer"></div>
+        <span class="symbol no-dot">跨國整理</span>
+        <hr class="divider">
+        <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/TWBL4_Actors.html">演員</a>
+        <a class="card-link" href="https://www.dcard.tw/f/tvepisode/p/259107016" target="_blank">台灣男團</a>
+      </div>
+
+      <!-- 越南 -->
+      <div class="card">
+        <h3><a href="https://ba29bin06h.github.io/BL_Drama/VNBL.html">🇻🇳 越南</a></h3>
+        <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/VNBL1_Company.html">YouTube頻道</a>
+        <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/VNBL2_AccentABO.html">口音ABO</a>
+		<div class="card-spacer"></div>
+        <span class="symbol no-dot">跨國整理</span>
+        <hr class="divider"> 
+        <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/VNBL4_Actors.html">演員(北越SNS)</a>
+		<div class="card-spacer"></div>
+		<div class="card-spacer"></div>
+        <hr class="divider"> 
+        <a class="card-link" href="https://www.dcard.tw/f/boyslovedrama/p/260003653/b/2" target="_blank">越腐小短片+心得</a>
+        <a class="card-link" href="https://www.dcard.tw/f/tvepisode/p/257989661" target="_blank">柬埔寨BL劇</a>
+        <a class="card-link" href="https://www.dcard.tw/f/boyslovedrama/p/257894089/b/2" target="_blank">寮國BL劇</a>
+      </div>
+
+      <!-- 韓國 -->
+      <div class="card">
+        <h3><a href="https://ba29bin06h.github.io/BL_Drama/KRBL.html">🇰🇷 韓國</a></h3>
+        <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBL1_Company.html">工作室</a>
+        <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBL2_Others.html">其他分類(韓)</a>
+		<div class="card-spacer"></div>
+        <span class="symbol no-dot">跨國整理</span>
+        <hr class="divider"> 
+        <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBL4_Actors.html">演員</a>
+        <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBL5_Group1.html">韓國男團(05~14出道)</a>
+        <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBL5_Group2.html">韓國男團(15~24出道)</a>
+        <hr class="divider"> 
+        <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBL6_CityboyLog.html">CityboyLog</a>
+        <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBLX_Shortfilm.html">韓腐小短劇</a>
+      </div>
+    </div>
+
+    <!-- 數據總覽 -->
+    <h2>📊 各國BL數據總覽</h2>
+	<div class="tools">
+		<label><input type="radio" name="mode" value="drama" checked onchange="renderTable()"> 戲劇數</label>
+		<label><input type="radio" name="mode" value="episodes" onchange="renderTable()"> 集數</label>
+		<label><input type="radio" name="mode" value="duration" onchange="renderTable()"> 時長(單位：hr)</label>
+		<label><input type="radio" name="mode" value="intimacy" onchange="renderTable()"> 親密戲比例</label>
+	</div>
+
+    <div class="table-wrapper">
+      <table id="dataTable">
+        <thead>
+          <tr>
+            <th>年份</th>
+            <th>日本</th>
+            <th>台灣</th>
+            <th>越南</th>
+            <th>韓國</th>
+            <th>總計</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+  </div> <!-- content 結束 -->
+
+  <!-- 右側欄 -->
+  <aside class="side right">
+    <h3 style="text-align:center;"><strong>巴比恩其他文章</strong></h3>
+	<hr>
+    <p>Google糊團</p>
+       <a class="card-link" href="https://www.dcard.tw/f/entertainer/p/241821833" target="_blank">AlphaBAT</a>
+       <a class="card-link" href="https://www.dcard.tw/f/entertainer/p/242622207" target="_blank">MR.MR</a>
+       <a class="card-link" href="https://www.dcard.tw/f/entertainer/p/253563695" target="_blank">LU4US</a>
+       <a class="card-link" href="https://www.dcard.tw/f/entertainer/p/254628955" target="_blank">TOUCH</a>
+       <a class="card-link" href="https://www.dcard.tw/f/entertainer/p/254652585" target="_blank">EXCITE</a>
+	   <a class="card-link" href="https://www.dcard.tw/f/entertainer/p/254674532" target="_blank">其他</a>
+	 <hr>
+    <p href="https://ba29bin06h.github.io/Travel/Catalog_Travel.html" target="_blank">✈️ 國外遊記</p>
+    <a></a>
+  </aside>
+
+</div> <!-- layout 結束 -->
+
+<button id="topBtn">↑</button>
+
+<script>
+// 夜間模式
+function toggleDark(){
+  document.body.classList.toggle("dark");
+}
+
+// 數據表格
+const data = {
+  drama:{
+    2017:[0,4,3,0],
+    2018:[2,2,2,0],
+    2019:[3,2,0,0],
+    2020:[2,2,5,4],
+    2021:[4,5,6,8],
+    2022:[9,5,5,19],
+    2023:[14,4,4,17],
+    2024:[13,6,4,10],
+    2025:[14,5,6,22]
+  },
+  episodes:{
+    2017:[0,20,23,0],
+    2018:[13,16,41,0],
+    2019:[26,40,0,0],
+    2020:[18,20,35,32],
+    2021:[26,55,38,73],
+    2022:[68,65,43,162],
+    2023:[111,47,31,141],
+    2024:[121,72,70,74],
+    2025:[120,55,49,175]
+  },
+  duration:{
+    2017:[0,6,6,0],
+    2018:[7,6,12,0],
+    2019:[14,17,0,0],
+    2020:[7,4,14,7],
+    2021:[10,23,15,19],
+    2022:[28,31,19,56],
+    2023:[46,19,14,57],
+    2024:[52,39,43,27],
+    2025:[49,25,22,62]
+  }
+};
+
+// 親密戲資料，只有總計一列
+const intimacyData = [46.72, 58.57, 54.28, 17.50];
+
+function renderTable(){
+  const mode = document.querySelector("input[name='mode']:checked").value;
+  const tbody = document.querySelector("#dataTable tbody");
+  tbody.innerHTML = "";
+
+  if(mode === "intimacy"){
+    // 計算總和
+    
+    tbody.innerHTML = `
+      <tr class="highlight">
+        <td>親密戲比例</td>
+		<td>${intimacyData[0].toFixed(2)}%</td>
+		<td>${intimacyData[1].toFixed(2)}%</td>
+		<td>${intimacyData[2].toFixed(2)}%</td>
+		<td>${intimacyData[3].toFixed(2)}%</td>
+        <td> - </td>
+      </tr>
+    `;
+    return;
+  }
+
+  let countryTotal = [0,0,0,0];
+  for(let year in data[mode]){
+    let row = data[mode][year];
+    let yearlyTotal = row.reduce((a,b)=>a+b,0);
+    countryTotal = countryTotal.map((v,i)=>v+row[i]);
+    tbody.innerHTML += `
+      <tr>
+        <td>${year}</td>
+        <td>${row[0]}</td>
+        <td>${row[1]}</td>
+        <td>${row[2]}</td>
+        <td>${row[3]}</td>
+        <td>${yearlyTotal}</td>
+      </tr>
+    `;
+  }
+
+  let grandTotal = countryTotal.reduce((a,b)=>a+b,0);
+  tbody.innerHTML = `<tr class="highlight">
+      <td>總計</td>
+      <td>${countryTotal[0]}</td>
+      <td>${countryTotal[1]}</td>
+      <td>${countryTotal[2]}</td>
+      <td>${countryTotal[3]}</td>
+      <td>${grandTotal}</td>
+    </tr>` + tbody.innerHTML;
+}
+
+// 回頂部按鈕
+const btn = document.getElementById("topBtn");
+window.onscroll = ()=> btn.style.display = window.scrollY > 300 ? "block" : "none";
+btn.onclick = ()=> window.scrollTo({top:0, behavior:"smooth"});
+
+// 初始化表格
+renderTable();
+</script>
+
+</body>
+</html>
