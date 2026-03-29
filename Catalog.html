@@ -50,6 +50,24 @@ body.dark{
   gap:15px;
 }
 
+.navbar a.dcard-btn {
+  padding: 6px 14px;              /* 內邊距 */
+  border-radius: 8px;             /* 圓角 */
+  border: 1px solid var(--border);/* 邊框 */
+  background: var(--card);        /* 背景色 */
+  color: var(--text);             /* 文字顏色 */
+  text-decoration: none;          /* 去掉底線 */
+  cursor: pointer;                /* 手型 */
+  transition: 0.2s;               /* 平滑動畫 */
+}
+
+.navbar a.dcard-btn:hover {
+  background: var(--main);        /* 滑鼠經過變色 */
+  color: white;
+  transform: translateY(-2px);    /* 小浮動效果 */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
 #darkBtn{
   padding:6px 12px;
   border-radius:8px;
@@ -309,7 +327,7 @@ button:hover{
 <body>
 
 <header class="navbar">
-  <a href="https://www.dcard.tw/@ba06bin29h" target="_blank">💬Dcard個人牆</a>
+  <a class="dcard-btn" href="https://www.dcard.tw/@ba06bin29h" target="_blank">💬Dcard個人牆</a>
   <button id="darkBtn" onclick="toggleDark()">🌙 夜間模式</button>
 </header>
 
@@ -452,9 +470,18 @@ button:hover{
 
 <script>
 // 夜間模式
-function toggleDark(){
+function toggleDark() {
   document.body.classList.toggle("dark");
+  
+  const darkBtn = document.getElementById("darkBtn");
+  if(document.body.classList.contains("dark")) {
+    darkBtn.textContent = "☀️ 日間模式"; 
+  } else {
+    darkBtn.textContent = "🌙 夜間模式"; 
+  }
 }
+
+
 
 // 數據表格
 const data = {
