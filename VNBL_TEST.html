@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>越南BL劇_新版測試</title>
+
+<style>
+:root{
+  --main:#2563eb;
+  --main-dark:#1e40af;
+  --bg:linear-gradient(to right,#e6f2ff,#e6fce6);
+  --card:#ffffff;
+  --text:#111827;
+  --border:#e5e7eb;
+  --table-head:#f8fafc;
+  --even-year:#eef6ff;  
+  --odd-year:#f6f0ff;   
+  --link-main-dark:#93c5fd; /* 夜間模式連結顏色 */
+}
+
+body{
+  margin:0;
+  font-family:"Segoe UI","Noto Sans TC","Noto Sans JP",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:0.3s;
+}
+
+body.dark{
+  --bg: linear-gradient(to right,#0f172a,#111827);
+  --card: #1f2937;
+  --text: #e0e7ff;
+  --border: #374151;
+  --table-head: #334155;
+  --ost-color:#ff6b92;
+  --even-year:#1e2c44; /* 深色模式偶數行：柔和藍灰 */
+  --odd-year:#2a223b;  /* 深色模式奇數行：柔和紫灰 */
+  --link-main-dark:#80b3ff;
+}
+
+/* Navbar 容器 */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(6px);
+  padding: 10px 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 回目錄按鈕 (靠左) */
+.navbar .home-link {
+  text-decoration: none;
+  color: #2563eb !important;             /* 藍色文字固定 */
+  background-color: #ffffff !important;  /* 白底 */
+  border: 1px solid #2563eb !important;
+  padding: 4px 8px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* 右側按鈕群 (Dcard + 夜間模式) */
+.navbar .right-buttons {
+  margin-left: auto;  /* 推到最右 */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Dcard 按鈕 (樣式同回目錄) */
+.navbar .right-buttons a {
+  text-decoration: none;
+  color: #2563eb !important;
+  background-color: #ffffff !important;
+  border: 1px solid #2563eb !important;
+  padding: 4px 12px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* 夜間模式按鈕 */
+.navbar .right-buttons button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #2563eb;
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+/* hover 效果 (回目錄 + Dcard) */
+.navbar .home-link:hover,
+.navbar .right-buttons a:hover {
+  background-color: #1e40af !important; /* 深藍底 */
+  color: white !important;               /* 白字 */
+  border-color: #1e40af !important;
+}
+
+/* 夜間模式按鈕 hover */
+.navbar .right-buttons button:hover {
+  background-color: var(--main-dark);
+  color: white;
+  border-color: var(--main-dark);
+}
+
+
+/* Layout */
+.layout{
+  max-width:1600px;
+  margin:40px auto;
+  display:grid;
+  grid-template-columns:220px 1fr 220px;
+  gap:30px;
+  align-items:start;
+}
+
+.side{
+  background:var(--card);
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+  height:fit-content;
+  color: var(--text);
+}
+
+.side h3{
+  margin-top:0;
+  font-size:16px;
+  text-align:center;
+}
+
+.side a{
+  display:block;
+  text-decoration:none;
+  color:var(--main);
+  margin:8px 0;
+  font-size:14px;
+}
+
+.side a:hover{
+  text-decoration:underline;
+  color:var(--main-dark);
+}
+
+/* 左側欄深色模式 */
+body.dark .side.left {
+  color: #cbd5e1;
+}
+
+body.dark .side.left a {
+  color: #80b3ff;  /* 柔和藍 */
+}
+
+body.dark .side.left a:hover {
+  color: #ffffff;
+}
+
+/* 右側欄深色模式 */
+body.dark .side.right {
+  color: #cbd5e1;
+}
+
+body.dark .side.right a {
+  color: #80b3ff;
+}
+
+body.dark .side.right a:hover {
+  color: #ffffff;
+}
+
+.content{
+  background:var(--card);
+  padding:20px 30px;
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+h1{
+  text-align:center;
+  margin-bottom:10px;
+}
+
+h2{
+  margin-top:30px;
+}
+
+/* 表格 */
+.table-wrapper{
+  overflow-x:auto;
+  margin-top:20px;
+  max-height:600px;
+  overflow-y:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:900px;
+}
+
+/* 表格文字與邊線 */
+th, td{
+  padding:8px;
+  text-align:left;
+  border-bottom:1px solid #000;
+}
+
+thead tr th {
+  background:var(--table-head);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-bottom: 2px solid #000;
+}
+
+/* 偶數、奇數列 */
+.even-year { background-color: var(--even-year); }
+.odd-year { background-color: var(--odd-year); }
+
+thead th{
+  text-align: center;
+}
+
+/* 指定列寬 */
+th:nth-child(1), td:nth-child(1) {
+  min-width:90px;
+  width:90px;
+  text-align:left;
+}
+
+thead tr th:nth-child(1) {
+  text-align: center;
+}
+
+th:nth-child(5), td:nth-child(5),
+th:nth-child(6), td:nth-child(6),
+th:nth-child(7), td:nth-child(7){
+  min-width:60px;
+  width:60px;
+  text-align:center;
+}
+
+/*右邊對齊*/
+.card-link {
+  display: block;
+}
+
+.card-link .num {
+  display: inline-block;
+  
+  text-align: right;  /* 讓括號靠右更整齊 */
+  margin-right: 6px;
+}
+
+
+/* 連結盒子 */
+.link-boxes{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.link-boxes a{
+  display:inline-block;   /* 讓 width 生效 */
+  width:15px;             /* 所有按鈕固定寬度 */
+  padding:4px 6px;
+  font-size:0.75rem;
+  border:1px solid var(--main);
+  border-radius:4px;
+  text-align:center;
+  white-space:nowrap;
+  transition:0.2s;
+  color: var(--main);
+}
+
+.link-boxes a.ost{
+  border-color:var(--ost-color);
+  color:var(--ost-color);
+}
+
+.link-boxes a:hover{
+  color:white;
+  background-color:var(--main-dark);
+  border-color:var(--main-dark);
+}
+
+
+/* 移除 hover 變色 */
+tbody tr:hover td {
+  background-color: inherit;
+}
+
+/* 深色模式表格優化 */
+body.dark table, body.dark th, body.dark td {
+  color: #dfe2f0;  /* 柔和文字 */
+  border-bottom: 1px solid #3a3f52; /* 柔和邊線 */
+}
+
+body.dark thead tr th {
+  background-color: #2c3340; /* 表頭柔和深色 */
+  color: #e0e7ff;
+  border-bottom: 2px solid #475569;
+}
+
+body.dark .even-year {
+  background-color: #1e2a3b; /* 深藍灰 */
+}
+
+body.dark .odd-year {
+  background-color: #2a223b; /* 深紫灰 */
+}
+
+body.dark .link-boxes a {
+  color: #80b3ff;  /* 柔和藍 */
+  border-color: #80b3ff;
+}
+
+body.dark .link-boxes a.ost {
+  color: #d291ff;  /* 柔和紫粉 */
+  border-color: #d291ff;
+}
+
+body.dark .link-boxes a:hover {
+  background-color: #4b6cb7; /* 深藍 hover */
+  color: #ffffff;
+}
+
+body.dark .link-boxes a.ost:hover {
+  background-color: #a564d1; /* 紫色 hover */
+  color: #ffffff;
+}
+
+/* Media Query */
+@media(max-width:1200px){
+  .layout{
+    grid-template-columns:1fr;
+  }
+  .side{ order:2; }
+  .content{ order:1; }
+  .navbar a:first-child{
+    margin-bottom:5px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <!-- 左側回目錄 -->
+  <a href="https://ba29bin06h.github.io/BL_Drama/Catalog.html" class="home-link">
+    🏠 回目錄 (Back To Catalog)
+  </a>
+
+  <!-- 右側按鈕群 -->
+  <div class="right-buttons">
+    <a href="https://www.dcard.tw/@ba06bin29h" target="_blank">
+      💬 Dcard 個人牆
+    </a>
+    <button id="darkBtn" onclick="toggleDark()">🌙 夜間模式</button>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- 左側欄 -->
+  <aside class="side left">
+    <h3>📂巴比恩整理區</h3>
+    <hr />
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/VNBL1_Company.html">1. 依工作室分類</a>
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/VNBL2_AccentABO.html" >2. 口音ABO</a>
+    <br><br>
+	<hr class="divider"> 
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/VNBL4_Actors.html" >4. 北越演員SNS</a>
+	<br><br>
+	<hr class="divider"> 
+    <a class="card-link" href="https://www.dcard.tw/f/boyslovedrama/p/260003653/b/2" target="_blank">5_1. 聯邦東洋腐之美(越)</a>
+    <a class="card-link" href="https://www.dcard.tw/f/tvepisode/p/257989661" target="_blank">5_2. 聯邦東洋腐之美(柬)</a>
+	<a class="card-link" href="https://www.dcard.tw/f/boyslovedrama/p/257894089/b/2" target="_blank">5_3. 聯邦東洋腐之美(寮)</a>
+  </aside>
+
+  <!-- 中間內容 -->
+  <div class="content">
+    <h1>Phim BL Việt Nam</h1>
+
+    <div class="table-wrapper">
+      <table id="blTable">
+        <thead>
+          <tr>
+            <th>上映日期<br>Start Date</th>
+            <th>劇名</th>
+            <th>Drama Title</th>
+            <th>Tên Phim</th>
+            <th>親密戲</th>
+            <th>平均時長<br>Duration</th>
+            <th>集數<br>Episodes</th>
+            <th>連結<br>Links</th>
+          </tr>
+        </thead>
+<tbody>
+<tr>
+  <td>31-08-2017</td>
+  <td>我的天空</td>
+  <td>My Sky</td>
+  <td>Bầu Trời Của Khánh</td>
+  <td>0.5</td>
+  <td>15</td>
+  <td>5</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=N2wfvXeGJfQ&list=PLkco0yWZez0xWKPCySv5UM9unx5LIiGPf&index=3" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/DuyKhanhOfficial/?pnref=lhc" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/257834930" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>17-11-2017</td>
+  <td>亞當的秘密-兄弟</td>
+  <td>My Brother</td>
+  <td>Bí Mật Của Adam 2</td>
+  <td>1</td>
+  <td>16</td>
+  <td>14</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=jda6p2tqpek&list=PLlrhqfpbPZwIuxDVvmSBXgYw8f2XJ260y&index=2" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/fb.CiFtv/" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/257583880" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>04-12-2017</td>
+  <td>情牽一生</td>
+  <td>Forever Love</td>
+  <td>Tình Khiên Nhất Sinh</td>
+  <td>1</td>
+  <td>19</td>
+  <td>4</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=RXtO0zU_Ah8&list=PLQgOD8IVIWIND8hvkbNAwYcxFf3OHEpl4" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/257834930" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>05-05-2018</td>
+  <td>只為遇見所以相逢</td>
+  <td>Because of Meeting, We Meet Each Other</td>
+  <td>Vì Gặp Nên Mới Tương Phùng</td>
+  <td>1</td>
+  <td>18</td>
+  <td>29</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=Td9DLyimgCw&list=PLQgOD8IVIWINnCcx8Nv25qH6TcPRix94R&index=1" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/260003653/b/2-1" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>20-07-2018</td>
+  <td>熱血少年團</td>
+  <td>Active Boys</td>
+  <td>Những Chàng Trai Năng Động</td>
+  <td>0</td>
+  <td>15</td>
+  <td>12</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=YC2GmPksQFQ&list=PLf_mCRbXsMcDAps5Bg4MT78oGQVW23JVj" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/O2prtion/" target="_blank" rel="noopener noreferrer">f</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>09-01-2020</td>
+  <td>蘇安記</td>
+  <td>The Time Adventure of To An</td>
+  <td>Tô An Ký</td>
+  <td>0</td>
+  <td>27</td>
+  <td>6</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=lFALizo8TR0&list=PLvUgUCAJsX3y2joJRiU8Y8uDDM_aLb42k" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/256914289" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>12-06-2020</td>
+  <td>戀愛舞曲</td>
+  <td>Stage of Love</td>
+  <td>Stage of Love</td>
+  <td>0</td>
+  <td>22</td>
+  <td>10</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=1HomzoHynVc&list=PLYYyUhZKiEj7uVlIjt7j_OpJQq6tZwb8l" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/abstudiovn/" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/256663429" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>29-10-2020</td>
+  <td>飛行的快樂</td>
+  <td>Happiness Flies Far Away</td>
+  <td>Hạnh Phúc Xa Bay</td>
+  <td>1</td>
+  <td>26</td>
+  <td>8</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=eVvcriCCK_U&list=PLfnQxeTD8yucdxgmcH6W8XIG4mPhAhPw2" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/NSUT.VULUAN" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/257834930" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>23-12-2020</td>
+  <td>做我的陽光寶貝</td>
+  <td>Follow my Sunshine</td>
+  <td>Sau Vạt Nắng </td>
+  <td>0</td>
+  <td>19</td>
+  <td>5</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=tS9iUWjKwHA&list=PLQgOD8IVIWIOoWOySobfU1XvHU47drqGg" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/2BEntertainment2021" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/256663429" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>30-12-2020</td>
+  <td>國民歐巴</td>
+  <td>Nation Brother</td>
+  <td>Anh Trai Quốc Dân</td>
+  <td>1</td>
+  <td>25</td>
+  <td>6</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=bM3vowhu8H8&list=PLf_mCRbXsMcBCa28ydxkhPDS_6ELePQ3u" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/O2prtion/" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/255315146" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>05-01-2021</td>
+  <td>你是我的男孩</td>
+  <td>You Are my Boy</td>
+  <td>Em Là Chàng Trai Của Anh</td>
+  <td>0</td>
+  <td>26</td>
+  <td>6</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=Bfu-RGjqP_s&list=PLy5w5Zsc63sIp5s0rL_rYoS5sgfsdq459" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/people/D-GROUP-Media/100063789600637/" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/255315146" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>16-01-2021</td>
+  <td>傻瓜-我和我們</td>
+  <td>FOOLs</td>
+  <td>Những Kẻ Khờ</td>
+  <td>0</td>
+  <td>19</td>
+  <td>4</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=-milLi3aJmQ&list=PLiCzYlH2jABXrGp6zsJHOS6E_N92FkdDX" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/abstudiovn/" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/260003653/b/2-2" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>23-03-2021</td>
+  <td>我心安在</td>
+  <td>The Most Peaceful Place Is My Place</td>
+  <td>Nơi Bình Yên Nhất Là Về Bên Em</td>
+  <td>1</td>
+  <td>28</td>
+  <td>6</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=R-fMW-Xl5kw&list=PLf_mCRbXsMcCDq3BKEDrXJXw6H5MEJ_lY" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/O2prtion/" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/255315146" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>02-05-2021</td>
+  <td>老闆別過來</td>
+  <td>My Lascivious Boss</td>
+  <td>Ông Chủ, Đừng Đến Đây</td>
+  <td>1</td>
+  <td>16</td>
+  <td>10</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=8AJKd9R1Mjo&list=PLQgOD8IVIWIPoG2stfMnUfm_gFngUP_fe" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/PaPChannels" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/257583880" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>20-05-2021</td>
+  <td>傻男有傻愛</td>
+  <td>Stupid Boys Stupid Love</td>
+  <td>Yêu Đi Sợ Gì</td>
+  <td>0</td>
+  <td>18</td>
+  <td>4</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=ItsH_0ZojY0&list=PL8vHP9TU8ecVk0I4KTWuV1PF73uYTWlC1&index=2" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/RLStudioVN" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/255785719" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>28-11-2021</td>
+  <td>愛上灰姑男</td>
+  <td>Mr.Cinderella</td>
+  <td>Chàng Lọ Lem </td>
+  <td>1</td>
+  <td>37</td>
+  <td>8</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.gagaoolala.com/tc/videos/4362/mr-cinderella-2021" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/O2prtion/" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/255315146" target="_blank" rel="noopener noreferrer">文</a>
+      <a href="https://www.youtube.com/watch?v=0L4sJa3_GUQ" target="_blank" rel="noopener noreferrer">🎵</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>15-01-2022</td>
+  <td>假裝相愛</td>
+  <td>You Are My Stupid Boy</td>
+  <td>Tựa Ánh Dương Ngời</td>
+  <td>0</td>
+  <td>13</td>
+  <td>3</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=DpEHTPqxYZ4&list=PL8vHP9TU8ecW3moanTYUNws0BfiEr1-EZ" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/RLStudioVN" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/255785719" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>22-04-2022</td>
+  <td>風平浪靜</td>
+  <td>The Promise</td>
+  <td>Biển Lặng</td>
+  <td>0.5</td>
+  <td>26</td>
+  <td>6</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=VbAzCeDPLpA&list=PLvmOez9PGqhnB82ZnpsITGlB23ZSetQyr&index=2" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/2BEntertainment2021" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/257643634" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>05-06-2022</td>
+  <td>我想見到你</td>
+  <td>Want to See You</td>
+  <td>Muốn Nhìn Thấy Em</td>
+  <td>1</td>
+  <td>22</td>
+  <td>14</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=hgDKbLp60jw&list=PLf_mCRbXsMcDAFz6NWSPdtUKfRkAsrUmV" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/O2prtion/" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/255315146" target="_blank" rel="noopener noreferrer">文</a>
+      <a href="https://www.youtube.com/watch?v=9veVDnUE3RM" target="_blank" rel="noopener noreferrer">🎵</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>29-10-2022</td>
+  <td>愛情帳單</td>
+  <td>Love Bill</td>
+  <td>Lời Hứa Mùa Hạ </td>
+  <td>1</td>
+  <td>40</td>
+  <td>10</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=DaXjgkvzSM0&list=PLf_mCRbXsMcC7jQEdA8AMdcTDgE3Qy3Y4&index=2" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/O2prtion/" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/255315146" target="_blank" rel="noopener noreferrer">文</a>
+      <a href="https://www.youtube.com/watch?v=11eUSlS9KQ4" target="_blank" rel="noopener noreferrer">🎵</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>26-11-2022</td>
+  <td>閃閃發光的星星</td>
+  <td>The Star Always Follow You</td>
+  <td>Lấp Lánh Tựa Ánh Sao Trời</td>
+  <td>0</td>
+  <td>21</td>
+  <td>10</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=Ps4hMMlsVzI&list=PL8vHP9TU8ecWyXFwmdtMDA8Cet3fnWLsv&index=4&ab_channel=RLStudio" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/RLStudioVN" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/255785719" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>10-02-2023</td>
+  <td>祈願</td>
+  <td>Oh My God</td>
+  <td>Tổ Độ</td>
+  <td>1</td>
+  <td>28</td>
+  <td>5</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=7o1MC_aANXs&list=PLlFBAZXJjUph1oHYjl1nRhDtZfj51Tykn&index=4" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/sgsproduction" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/257643634" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>06-05-2023</td>
+  <td>喵不可言</td>
+  <td>ViAn the Series</td>
+  <td>ViAn the Series</td>
+  <td>1</td>
+  <td>24</td>
+  <td>12</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=BLfrrMUW328&list=PLf_mCRbXsMcDHxWRsYBlB63R9gyHjlLOg" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/O2prtion/" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/255315146" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>09-06-2023</td>
+  <td>墊底天才</td>
+  <td>Stupid Genius</td>
+  <td>Thiên Tài Hạng Bét</td>
+  <td>0</td>
+  <td>18</td>
+  <td>6</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=-FX1Xmsy1iI&list=PL8vHP9TU8ecVHf2FYUCyJfTzZYZLyGxMN&index=2&ab_channel=RLStudio" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/RLStudioVN" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/256914289" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>23-09-2023</td>
+  <td>愛上灰姑男 II</td>
+  <td>Mr.Cinderella II</td>
+  <td>Chàng Lọ Lem II</td>
+  <td>0</td>
+  <td>35</td>
+  <td>8</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=3FADaJIg7mQ&list=PLf_mCRbXsMcARjHGfL3C-VpVA6LLMy8GJ&index=13" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/O2prtion/" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/255315146" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>23-03-2024</td>
+  <td>灑滿星光的季節</td>
+  <td>Be Your Star</td>
+  <td>Mùa Sao Đầu Tiên</td>
+  <td>1</td>
+  <td>39</td>
+  <td>20</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=MgJ92Y5I90M&list=PLf_mCRbXsMcD7ZiXyP-p32dloep4Y--jW&index=2" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/O2prtion/" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/255315146" target="_blank" rel="noopener noreferrer">文</a>
+      <a href="https://www.youtube.com/watch?v=OJxz2YXr2WM" target="_blank" rel="noopener noreferrer">🎵</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>17-05-2024</td>
+  <td>夏日樹下</td>
+  <td>Under the Oak Tree</td>
+  <td>Dưới Tán Cây Mùa Hè</td>
+  <td>0</td>
+  <td>34</td>
+  <td>10</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=KKstUComxP4&list=PLJYL9Pf2vjwV9xl3WzowE1VTLJe8m_LQN" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/2BEntertainment2021" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/256663429" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>28-09-2024</td>
+  <td>少年法官</td>
+  <td>Teenager Judge</td>
+  <td>Thẩm Phán Học Đường</td>
+  <td>0</td>
+  <td>50</td>
+  <td>20</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=j2IqVaNEugk&list=PLf_mCRbXsMcAaN0swx4uCpjf1bri-nG9R" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/O2prtion/" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/255315146" target="_blank" rel="noopener noreferrer">文</a>
+      <a href="https://www.youtube.com/watch?v=ScRq8FQIX3g" target="_blank" rel="noopener noreferrer">🎵</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>12-11-2024</td>
+  <td>依偎著你</td>
+  <td>Stand by Me</td>
+  <td>Đảo Nhỏ Nuôi Mèo</td>
+  <td>0</td>
+  <td>23</td>
+  <td>20</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=fpwWLFjpItA&list=PL5oTRicpmwbzeN0ys6EgWhOHLsWx3Naxm&index=2" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/qplustv.official" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/260003653/b/2-3" target="_blank" rel="noopener noreferrer">文</a>
+      <a href="https://www.youtube.com/watch?v=tfJ_Kcatg_A" target="_blank" rel="noopener noreferrer">🎵</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>09-01-2025</td>
+  <td>渴望</td>
+  <td>The Lust</td>
+  <td>Khát</td>
+  <td>1</td>
+  <td>14</td>
+  <td>3</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=0dH_utl_dDk&list=PLMWGE80SH0EsaZ7m0D0lwvzYwjkzk9M2j&index=1" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/2BEntertainment2021" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/257894089" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>07-02-2025</td>
+  <td>為愛而戰</td>
+  <td>Fight for Love</td>
+  <td>Vì Yêu Mà Chiến</td>
+  <td>0.5</td>
+  <td>25</td>
+  <td>7</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=9SqdvCLGP0c&list=PL8vHP9TU8ecUXxx_O2-YW-_7kvJjtr4bx&index=7" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/RLStudioVN" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/260003653/b/2-4" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>27-05-2025</td>
+  <td>我親愛的姊夫</td>
+  <td>My Sweet Brother in Law</td>
+  <td>Vụng Trộm Với Anh Rể</td>
+  <td>1</td>
+  <td>15</td>
+  <td>5</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=gUj4aBYE3-0&list=PLW77Fj3pF6azYFNYpQv8Q-L2m5yOjWW0l&index=3&ab_channel=MOIStudio" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/people/MOI-Studio/61575823327551/" target="_blank" rel="noopener noreferrer">f</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>06-09-2025</td>
+  <td>等待陽光升起</td>
+  <td>Awaiting Dawn</td>
+  <td>Chờ Ngày Nắng Lên</td>
+  <td>1</td>
+  <td>38</td>
+  <td>14</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=3Wh9CEvom2Y&list=PLf_mCRbXsMcBHlFC4O0tM0wSXvBb250HO&index=2" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/O2prtion/" target="_blank" rel="noopener noreferrer">f</a>
+      <a href="https://www.dcard.tw/f/boyslovedrama/p/260003653/b/2-5" target="_blank" rel="noopener noreferrer">文</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>16-09-2025</td>
+  <td>河內我愛你</td>
+  <td>Hot Brother Next Door</td>
+  <td>Hà Nội, Anh yêu "Anh"</td>
+  <td>1</td>
+  <td>19</td>
+  <td>10</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=YZgIYpt4At8&list=PLW77Fj3pF6axAbuORoLZSEPE0ljnT0BrN&index=11" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/people/MOI-Studio/61575823327551/" target="_blank" rel="noopener noreferrer">f</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>03-10-2025</td>
+  <td>我的小鬼男友</td>
+  <td>My Little Ghost</td>
+  <td>Chàng Kẹ</td>
+  <td>0.5</td>
+  <td>28</td>
+  <td>10</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=ih4BrvL0eaI&list=PL5oTRicpmwbyB-xtqv5dg4jXa7E2EKC1b&index=10" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.facebook.com/qplustv.official" target="_blank" rel="noopener noreferrer">f</a>
+    </div>
+  </td>
+</tr>
+  <!-- 後續其他條目以同樣方式加入 -->
+</tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 右側欄 -->
+  <aside class="side right">
+	<h3>📂越腐協奏曲</h3>
+    <hr />
+    <a class="card-link" href="https://www.dcard.tw/f/boyslovedrama/p/255315146" target="_blank"><span class="num">(1) </span>伯榮</a>
+    <a class="card-link" href="https://www.dcard.tw/f/boyslovedrama/p/255785719" target="_blank"><span class="num">(2) </span>BACA cp	</a>
+    <a class="card-link" href="https://www.dcard.tw/f/boyslovedrama/p/256663429" target="_blank"><span class="num">(3) </span>Gia Huy</a>
+    <a class="card-link" href="https://www.dcard.tw/f/boyslovedrama/p/256914289" target="_blank"><span class="num">(4) </span>張明草</a>
+	<a class="card-link" href="https://www.dcard.tw/f/boyslovedrama/p/257583880" target="_blank"><span class="num">(5) </span>Nam Mario</a>
+	<br>
+	<br>
+	<hr class="divider"> 
+	<a class="card-link" href="https://www.dcard.tw/f/boyslovedrama/p/257643634" target="_blank"><span class="num">(6) </span>偽骨科</a>
+	<a class="card-link" href="https://www.dcard.tw/f/boyslovedrama/p/257834930" target="_blank"><span class="num">(7) </span>BE</a>
+	<a class="card-link" href="https://www.dcard.tw/f/boyslovedrama/p/257894089" target="_blank"><span class="num">(完) </span>直拍</a>
+  </aside>
+
+</div>
+
+<script>
+function toggleDark() {
+  document.body.classList.toggle("dark");
+  
+  const darkBtn = document.getElementById("darkBtn");
+  if(document.body.classList.contains("dark")) {
+    darkBtn.textContent = "☀️ 日間模式"; 
+  } else {
+    darkBtn.textContent = "🌙 夜間模式"; 
+  }
+}
+
+// 偶數/奇數列
+window.addEventListener("DOMContentLoaded", () => {
+  const rows = document.querySelectorAll("#blTable tbody tr");
+
+  rows.forEach(row => {
+    const text = row.cells[0].textContent.trim();
+    const parts = text.split("-");
+    const year = parseInt(parts[2], 10);
+
+    if (isNaN(year)) return;
+
+    if (year === 2017) {
+      row.classList.add("even-year");
+    } else if (year === 2018) {
+      row.classList.add("odd-year");
+    } else {
+      row.classList.add(year % 2 === 0 ? "even-year" : "odd-year");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
