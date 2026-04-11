@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>韓國BL劇5_依男團分類</title>
+
+<style>
+:root {
+  --main:#2563eb;
+  --main-dark:#1e40af;
+  --bg:linear-gradient(to right,#e6f2ff,#e6fce6);
+  --card:#ffffff;
+  --text:#111827;
+  --border:#e5e7eb;
+  --table-head:#f8fafc;
+  --even-year:#eef6ff;  
+  --odd-year:#f6f0ff;   
+  --link-main-dark:#93c5fd;
+}
+
+body {
+  margin:0;
+  font-family:"Segoe UI","Noto Sans TC","Noto Sans JP",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:0.3s;
+}
+
+body.dark {
+  --bg: linear-gradient(to right,#0f172a,#111827);
+  --card: #1f2937;
+  --text: #e0e7ff;
+  --border: #374151;
+  --table-head: #334155;
+  --even-year:#1e2c44;
+  --odd-year:#2a223b;
+  --link-main-dark:#80b3ff;
+}
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(6px);
+  padding: 10px 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar .home-link,
+.navbar .right-buttons a {
+  text-decoration: none;
+  color: #2563eb !important;
+  background-color: #ffffff !important;
+  border: 1px solid #2563eb !important;
+  padding: 4px 8px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navbar .right-buttons {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar .right-buttons button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #2563eb;
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.navbar .home-link:hover,
+.navbar .right-buttons a:hover {
+  background-color: #1e40af !important;
+  color: white !important;
+  border-color: #1e40af !important;
+}
+
+.navbar .right-buttons button:hover {
+  background-color: var(--main-dark);
+  color: white;
+  border-color: var(--main-dark);
+}
+
+/* Layout */
+.layout {
+  max-width:1600px;
+  margin:40px auto;
+  display:grid;
+  grid-template-columns:220px 1fr 220px;
+  gap:30px;
+  align-items:start;
+}
+
+.side {
+  background:var(--card);
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+  height:fit-content;
+  color: var(--text);
+}
+
+.side h3 { margin-top:0; font-size:16px; text-align:center; }
+
+.side a {
+  display:block;
+  text-decoration:none;
+  color:var(--main);
+  margin:8px 0;
+  font-size:14px;
+}
+
+.side a:hover { text-decoration:underline; color:var(--main-dark); }
+
+/* 左右側深色模式 */
+body.dark .side.left,
+body.dark .side.right {
+  color: #cbd5e1;
+}
+body.dark .side.left a,
+body.dark .side.right a {
+  color: #80b3ff;
+}
+body.dark .side.left a:hover,
+body.dark .side.right a:hover {
+  color: #ffffff;
+}
+
+/* Content 區塊 */
+.content {
+  background: var(--card);
+  padding: 20px 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  min-width: 900px;
+}
+
+.content h1,
+.content h3 {
+  text-align: center;
+  color: var(--text);
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* h2 標題（新增） */
+.content h2 {
+  text-align: center;
+  color: var(--text);
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+.content h2 a { color: var(--main); text-decoration: underline; }
+body.dark .content h2 { color: #e0e7ff; }
+body.dark .content h2 a { color: #93c5fd; }
+
+/* 表格 */
+.table-wrapper { overflow-x:auto; margin-top:20px; max-height:600px; overflow-y:auto; }
+table { width:100%; border-collapse:collapse; min-width:900px; }
+th, td { padding:8px; text-align:left; border-bottom:1px solid #000; }
+thead tr th {
+  background:var(--table-head);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-bottom: 2px solid #000;
+  text-align:center;
+}
+
+.blue-row {
+  background-color: var(--even-year);
+}
+
+.purple-row {
+  background-color: var(--odd-year);
+}
+
+
+td.center { text-align: center; }
+td:not(.center) { text-align: left; }
+table a { color: var(--main); text-decoration: underline; transition: 0.2s; }
+body.dark table a { color: #93c5fd; }
+.content table tbody tr:hover td,
+.content table tbody tr:hover td a { color: inherit !important; text-decoration: none !important; }
+body.dark table, body.dark th, body.dark td { color: #dfe2f0; border-bottom: 1px solid #3a3f52; }
+body.dark thead tr th { background-color: #2c3340; color: #e0e7ff; border-bottom: 2px solid #475569; }
+body.dark .even-year { background-color: #1e2a3b; }
+body.dark .odd-year { background-color: #2a223b; }
+
+/* Card Link 黑體加粗 */
+.card-link.bold-black {
+  font-family: '黑體', 'Microsoft JhengHei', 'SimHei', sans-serif;
+  font-weight: 700;
+  color: black !important;
+  background: none !important;
+  text-decoration: none !important;
+  cursor: default;
+}
+body.dark .card-link.bold-black { color: white !important; }
+
+/* Slider */
+.slider { position: relative; width: 100%; margin-top: 20px; }
+.slider-window { overflow: hidden; }
+.slider-track { display: flex; transition: transform 0.4s ease; }
+.slide { min-width: 100%; text-align: center; }
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 5;
+  transition: 0.25s;
+}
+.prev { left: -50px; }
+.next { right: -50px; }
+.nav:hover { background: var(--main); color: white; border-color: var(--main); }
+body.dark .nav { background: #1f2937; color: #e0e7ff; border: 1px solid #374151; }
+body.dark .nav:hover { background: #3b82f6; color: #ffffff; border-color: #3b82f6; }
+
+/* Media Query */
+@media(max-width:1200px){
+  .layout{ grid-template-columns:1fr; }
+  .side{ order:2; }
+  .content{ order:1; }
+  .navbar a:first-child{ margin-bottom:5px; }
+}
+
+/* dots 分頁 */
+.dots {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.dots span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 5px;
+  background: #cbd5e1;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dots span.active {
+  background: var(--main);
+  transform: scale(1.2);
+}
+
+body.dark .dots span {
+  background: #475569;
+}
+
+body.dark .dots span.active {
+  background: #93c5fd;
+}
+
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <!-- 左側回目錄 -->
+  <a href="https://ba29bin06h.github.io/BL_Drama/Catalog.html" class="home-link">
+    🏠 回目錄 (Back To Catalog)
+  </a>
+  <a href="https://ba29bin06h.github.io/BL_Drama/KRBL.html" class="home-link">
+    📖 回韓國BL劇
+  </a>
+  
+  <!-- 右側按鈕群 -->
+  <div class="right-buttons">
+    <a href="https://www.dcard.tw/@ba06bin29h" target="_blank">
+      💬 Dcard 個人牆
+    </a>
+    <button id="darkBtn" onclick="toggleDark()">🌙 夜間模式</button>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- 左側欄 -->
+  <aside class="side left">
+    <h3>📂巴比恩整理區</h3>
+    <hr />
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBL1_Company.html">1. 依工作室分類</a>
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBL2_Others.html" >2. 其他分類</a>
+	<br><br>
+	<hr class="divider"> 
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBL4_Actors.html" >4. 依演員分類</a>
+    <a class="card-link bold-black">5. 依男團分類</a>
+	<hr class="divider"> 
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBL6_CityboyLog.html" >6_1. CityBoy_Log</a>
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBLX_Shortfilm.html" >6_2. 韓腐小短片</a>	
+	<br>
+  </aside>
+
+  <!-- 中間內容 ✅（重點） -->
+  <div class="content">
+	<div class="slider">
+	<h1>韓國BL劇5_依男團分類</h1>
+	  <button class="nav prev" onclick="moveSlide(-1)">❮</button>
+		<div class="slider-window">
+        <div class="slider-track" id="track">
+		
+<!-- BL資訊 -->		
+<!-- Slide 1 -->
+<div class="slide">
+  <h2>2005~2014年出道之韓國團體</h2>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>團體出道日</th>
+          <th>團體名稱</th>
+          <th>團員(韓)</th>
+          <th>團員</th>
+		  <th>BL上映日期</th>
+		  <th>BL劇名</th>
+		  <th>BL角色名稱</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <!-- 【2005年~2014年出道男團】的資料請放這裡 -->
+      <tr>
+        <td style='border-right:1px solid #000;'>2005.06.08</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/SS501' target='_blank'>SS501</a></td>
+        <td style='border-right:1px solid #000;'>김규종</td>
+        <td style='border-right:1px solid #000;'>金圭鐘</td>
+        <td style='border-right:1px solid #000;'>2023.04.27</td>
+        <td style='border-right:1px solid #000;'>婚禮心旋律</td>
+        <td>김주원</td>
+      </tr>
+      <tr class='blue-row'>
+        <td style='border-right:1px solid #000;'>2006.12.14</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/%EC%96%B4%EC%84%BC%ED%8A%B8(%EC%95%84%EC%9D%B4%EB%8F%8C)' target='_blank'>XING/DGNA/ASCENT</a></td>
+        <td style='border-right:1px solid #000;'>박현철</td>
+        <td style='border-right:1px solid #000;'>朴賢哲</td>
+        <td style='border-right:1px solid #000;'>2022.11.24</td>
+        <td style='border-right:1px solid #000;'>圍籬外的Happy Ending</td>
+        <td>차정우</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;'>2007.06.07</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/FTISLAND' target='_blank'>FT Island</a></td>
+        <td style='border-right:1px solid #000;'>송승현</td>
+        <td style='border-right:1px solid #000;'>宋承炫</td>
+        <td style='border-right:1px solid #000;'>2022.12.01</td>
+        <td style='border-right:1px solid #000;'>哦！我的助手大人</td>
+        <td>신선호</td>
+      </tr>
+      <tr class='blue-row'>
+        <td style='border-right:1px solid #000;' rowspan='2'>2009.05.26</td>
+        <td style='border-right:1px solid #000;' rowspan='2'><a href='https://namu.wiki/w/X-5' target='_blank'>3 Chongsa/X-5</a></td>
+        <td style='border-right:1px solid #000;' rowspan='2'>손현석</td>
+        <td style='border-right:1px solid #000;' rowspan='2'>孫玄石</td>
+        <td style='border-right:1px solid #000;'>2021.01.22</td>
+        <td style='border-right:1px solid #000;'>致我的星星</td>
+        <td>강서준</td>
+      </tr>
+      <tr class='blue-row'>
+        <td style='border-right:1px solid #000;'>2022.06.05</td>
+        <td style='border-right:1px solid #000;'>致我的星星 II</td>
+        <td>강서준</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;'>2010.07.10</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/%ED%8B%B4%ED%83%91' target='_blank'>TEENTOP</a></td>
+        <td style='border-right:1px solid #000;'>이병헌</td>
+        <td style='border-right:1px solid #000;'>李秉憲</td>
+        <td style='border-right:1px solid #000;'>2025.08.28</td>
+        <td style='border-right:1px solid #000;'>我的偶像倒追我</td>
+        <td>연주하</td>
+      </tr>
+      <tr class='blue-row'>
+        <td style='border-right:1px solid #000;'>2010.10.07</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/%EB%A0%88%EB%93%9C%ED%8B%B0(%EB%B0%B4%EB%93%9C)' target='_blank'>Ledapple/BEAT4</a></td>
+        <td style='border-right:1px solid #000;'>최재훈</td>
+        <td style='border-right:1px solid #000;'>崔宰勛</td>
+        <td style='border-right:1px solid #000;'>2021.09.24</td>
+        <td style='border-right:1px solid #000;'>佛羅里達飯店</td>
+        <td>하진</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;'>2011.04.23</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/B1A4' target='_blank'>B1A4</a></td>
+        <td style='border-right:1px solid #000;'>공찬식</td>
+        <td style='border-right:1px solid #000;'>孔燦植</td>
+        <td style='border-right:1px solid #000;'>2023.03.17</td>
+        <td style='border-right:1px solid #000;'>非意圖的戀愛談</td>
+        <td>지원영</td>
+      </tr>
+      <tr class='blue-row'>
+        <td style='border-right:1px solid #000;' rowspan='3'>2011.10.27</td>
+        <td style='border-right:1px solid #000;' rowspan='3'><a href='https://namu.wiki/w/%EB%A7%88%EC%9D%B4%EB%84%A4%EC%9E%84' target='_blank'>MYNAME</a></td>
+        <td style='border-right:1px solid #000;' rowspan='2'>강인수</td>
+        <td style='border-right:1px solid #000;' rowspan='2'>姜仁秀</td>
+        <td style='border-right:1px solid #000;'>2020.12.04</td>
+        <td style='border-right:1px solid #000;'>Wish You：你在我心中的旋律</td>
+        <td>강인수</td>
+      </tr>
+      <tr class='blue-row'>
+        <td style='border-right:1px solid #000;'>2021.04.15</td>
+        <td style='border-right:1px solid #000;'>柳書生的婚禮</td>
+        <td>류호선</td>
+      </tr>
+      <tr class='blue-row'>
+        <td style='border-right:1px solid #000;'>강준규</td>
+        <td style='border-right:1px solid #000;'>姜俊圭</td>
+        <td style='border-right:1px solid #000;'>2023.01.19</td>
+        <td style='border-right:1px solid #000;'>各自的理由</td>
+        <td>성우재</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;'>2012.01.27</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/B.A.P' target='_blank'>B.A.P</a></td>
+        <td style='border-right:1px solid #000;'>유영재</td>
+        <td style='border-right:1px solid #000;'>劉永才</td>
+        <td style='border-right:1px solid #000;'>2022.05.18</td>
+        <td style='border-right:1px solid #000;'>春情之亂</td>
+        <td>진금성</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;' rowspan='2'>2012.05.24</td>
+        <td style='border-right:1px solid #000;' rowspan='2'><a href='https://namu.wiki/w/VIXX' target='_blank'>VIXX</a></td>
+        <td style='border-right:1px solid #000;'>정택운</td>
+        <td style='border-right:1px solid #000;'>鄭澤運</td>
+        <td style='border-right:1px solid #000;'>2022.11.24</td>
+        <td style='border-right:1px solid #000;'>圍籬外的Happy Ending</td>
+        <td>김정현</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;'>한상혁</td>
+        <td style='border-right:1px solid #000;'>韓相爀</td>
+        <td style='border-right:1px solid #000;'>2022.01.21</td>
+        <td style='border-right:1px solid #000;'>遇見你之後 II</td>
+        <td>김세현</td>
+      </tr>
+      <tr class='blue-row'>
+        <td style='border-right:1px solid #000;'>2012.06.01</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/A-JAX' target='_blank'>A-JAX</a></td>
+        <td style='border-right:1px solid #000;'>문지후</td>
+        <td style='border-right:1px solid #000;'>文智厚</td>
+        <td style='border-right:1px solid #000;'>2022.02.03</td>
+        <td style='border-right:1px solid #000;'>想咬一口的嘴唇</td>
+        <td>권해수</td>
+      </tr>
+      <tr class='blue-row'>
+        <td style='border-right:1px solid #000;'>2012.10.04</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/%EB%AF%B8%EC%8A%A4%ED%84%B0%EB%AF%B8%EC%8A%A4%ED%84%B0' target='_blank'>MR.MR.</a></td>
+        <td style='border-right:1px solid #000;'>유승준</td>
+        <td style='border-right:1px solid #000;'>劉昇俊</td>
+        <td style='border-right:1px solid #000;'>2021.09.24</td>
+        <td style='border-right:1px solid #000;'>佛羅里達飯店</td>
+        <td>주서혁</td>
+      </tr>
+      <tr class='blue-row'>
+        <td style='border-right:1px solid #000;'>2013.01.17</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/SPEED(%EC%95%84%EC%9D%B4%EB%8F%8C)' target='_blank'>SPEED</a></td>
+        <td style='border-right:1px solid #000;'>김유환</td>
+        <td style='border-right:1px solid #000;'>金裕桓</td>
+        <td style='border-right:1px solid #000;'>2021.09.24</td>
+        <td style='border-right:1px solid #000;'>佛羅里達飯店</td>
+        <td>백은규</td>
+      </tr>
+      <tr class='blue-row'>
+        <td style='border-right:1px solid #000;'>2014.03.25</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/%EB%A6%AC%EC%98%A8%ED%8C%8C%EC%9D%B4%EB%B8%8C' target='_blank'>Rion Five/W.O.W</a></td>
+        <td style='border-right:1px solid #000;'>장유성</td>
+        <td style='border-right:1px solid #000;'>張宥城</td>
+        <td style='border-right:1px solid #000;'>2022.12.15</td>
+        <td style='border-right:1px solid #000;'>經常請吃飯的理事大人</td>
+        <td>데니스</td>
+      </tr>
+      <tr class='blue-row'>
+        <td style='border-right:1px solid #000;'>2014.06.19</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/%EB%B9%85%ED%94%8C%EB%A1%9C' target='_blank'>BIGFLO</a></td>
+        <td style='border-right:1px solid #000;'>전형민</td>
+        <td style='border-right:1px solid #000;'>全炯玟</td>
+        <td style='border-right:1px solid #000;'>2021.02.26</td>
+        <td style='border-right:1px solid #000;'>時光可期</td>
+        <td>이정훈</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;'>2014.10.31</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/%ED%95%AB%EC%83%B7(%EC%95%84%EC%9D%B4%EB%8F%8C)' target='_blank'>HOTSHOT</a></td>
+        <td style='border-right:1px solid #000;'>고호정</td>
+        <td style='border-right:1px solid #000;'>高鎬廷</td>
+        <td style='border-right:1px solid #000;'>2022.10.25</td>
+        <td style='border-right:1px solid #000;'>巧克力奶昔</td>
+        <td>정우</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide">
+  <h2>2015~2024年出道之韓國團體</h2>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>團體出道日</th>
+          <th>團體名稱</th>
+          <th>團員(韓)</th>
+          <th>團員</th>
+		  <th>BL上映日期</th>
+		  <th>BL劇名</th>
+		  <th>BL角色名稱</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <!-- 【2015年~2024年出道男團】的資料請放這裡 -->
+      <tr>
+        <td style='border-right:1px solid #000;'>2015.09.11</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/%EC%97%85%ED%85%90%EC%85%98' target='_blank'>UP10TION</a></td>
+        <td style='border-right:1px solid #000;'>이동열</td>
+        <td style='border-right:1px solid #000;'>李東烈</td>
+        <td style='border-right:1px solid #000;'>2025.09.18</td>
+        <td style='border-right:1px solid #000;'>騙人！哪有吸血鬼</td>
+        <td>정규민</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>2016.01.27</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/%EC%9E%84%ED%8C%A9%ED%8A%B8(%EC%95%84%EC%9D%B4%EB%8F%8C)' target='_blank'>IMFACT</a></td>
+        <td style='border-right:1px solid #000;'>이상</td>
+        <td style='border-right:1px solid #000;'>李想</td>
+        <td style='border-right:1px solid #000;'>2020.12.04</td>
+        <td style='border-right:1px solid #000;'>Wish You：你在我心中的旋律</td>
+        <td>윤상이</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;' rowspan='2'>2016.03.03</td>
+        <td style='border-right:1px solid #000;' rowspan='2'><a href='https://namu.wiki/w/%ED%81%AC%EB%82%98%ED%81%B0(%EC%95%84%EC%9D%B4%EB%8F%8C)' target='_blank'>KNK</a></td>
+        <td style='border-right:1px solid #000;'>박서함</td>
+        <td style='border-right:1px solid #000;'>朴栖含</td>
+        <td style='border-right:1px solid #000;'>2022.02.16</td>
+        <td style='border-right:1px solid #000;'>語意錯誤</td>
+        <td>장재영</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;'>이동원</td>
+        <td style='border-right:1px solid #000;'>李東源</td>
+        <td style='border-right:1px solid #000;'>2023.04.27</td>
+        <td style='border-right:1px solid #000;'>婚禮心旋律</td>
+        <td>이승준 </td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;' rowspan='2'>2016.08.05</td>
+        <td style='border-right:1px solid #000;' rowspan='2'><a href='https://namu.wiki/w/ZEROBASEONE' target='_blank'>INX/ZB1</a></td>
+        <td style='border-right:1px solid #000;' rowspan='2'>김지웅</td>
+        <td style='border-right:1px solid #000;' rowspan='2'>金地雄</td>
+        <td style='border-right:1px solid #000;'>2022.02.03</td>
+        <td style='border-right:1px solid #000;'>想咬一口的嘴唇</td>
+        <td>김준호</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>2022.10.13</td>
+        <td style='border-right:1px solid #000;'>豐德別墅304號隱情</td>
+        <td>지호준</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;'>2016.10.05</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/SF9' target='_blank'>SF9</a></td>
+        <td style='border-right:1px solid #000;'>백주호</td>
+        <td style='border-right:1px solid #000;'>白朱鎬</td>
+        <td style='border-right:1px solid #000;'>2023.05.18</td>
+        <td style='border-right:1px solid #000;'>星夜戀人</td>
+        <td>조유재</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;'>2016.11.09</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/VICTON' target='_blank'>VICTON</a></td>
+        <td style='border-right:1px solid #000;'>정수빈</td>
+        <td style='border-right:1px solid #000;'>鄭秀彬</td>
+        <td style='border-right:1px solid #000;'>2025.11.06</td>
+        <td style='border-right:1px solid #000;'>桃花盛開</td>
+        <td>유도하</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;'>2017.03.16</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/OMEGA X' target='_blank'>7OC/Omega X</a></td>
+        <td style='border-right:1px solid #000;'>송한겸</td>
+        <td style='border-right:1px solid #000;'>宋翰謙</td>
+        <td style='border-right:1px solid #000;'>2024.03.27</td>
+        <td style='border-right:1px solid #000;'>像爵士樂一樣</td>
+        <td>서도윤</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>2017.05.23</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/%EC%97%90%EC%9D%B4%EC%8A%A4(%EC%95%84%EC%9D%B4%EB%8F%8C)' target='_blank'>A.C.E</a></td>
+        <td style='border-right:1px solid #000;'>박준희</td>
+        <td style='border-right:1px solid #000;'>朴晙喜</td>
+        <td style='border-right:1px solid #000;'>2021.12.23</td>
+        <td style='border-right:1px solid #000;'>染色 </td>
+        <td>정은호</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;' rowspan='2'>2017.07.26</td>
+        <td style='border-right:1px solid #000;' rowspan='2'><a href='https://namu.wiki/w/%EB%A7%88%EC%9D%B4%ED%8B%B4' target='_blank'>MYTEEN</a></td>
+        <td style='border-right:1px solid #000;'>송유빈</td>
+        <td style='border-right:1px solid #000;'>宋有彬</td>
+        <td style='border-right:1px solid #000;'>2023.04.27</td>
+        <td style='border-right:1px solid #000;'>婚禮心旋律</td>
+        <td>김찬우</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>이태빈</td>
+        <td style='border-right:1px solid #000;'>李泰彬</td>
+        <td style='border-right:1px solid #000;'>2024.01.24</td>
+        <td style='border-right:1px solid #000;'>戀愛至上主義區域</td>
+        <td>태명하</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;'>2017.08.07</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/Wanna One' target='_blank'>Wanna One</a></td>
+        <td style='border-right:1px solid #000;'>윤지성</td>
+        <td style='border-right:1px solid #000;'>尹智聖</td>
+        <td style='border-right:1px solid #000;'>2025.11.28</td>
+        <td style='border-right:1px solid #000;'>雷雲暴雨</td>
+        <td>이일조</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>2017.10.10</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/BXB' target='_blank'>TRCNG/BXB</a></td>
+        <td style='border-right:1px solid #000;'>김강민</td>
+        <td style='border-right:1px solid #000;'>金岡玟</td>
+        <td style='border-right:1px solid #000;'>2025.02.06</td>
+        <td style='border-right:1px solid #000;'>我心臟的染色劑</td>
+        <td>박도하</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;'>2017.12.06</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/%EB%8D%94%EB%B3%B4%EC%9D%B4%EC%A6%88' target='_blank'>THE BOYZ</a></td>
+        <td style='border-right:1px solid #000;'>허현준</td>
+        <td style='border-right:1px solid #000;'>許玹準</td>
+        <td style='border-right:1px solid #000;'>2020.12.30</td>
+        <td style='border-right:1px solid #000;'>遇見你之後</td>
+        <td>고유한</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>2018.05.10</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/OMEGA X' target='_blank'>Spectrum/Omega X</a></td>
+        <td style='border-right:1px solid #000;'>김재한</td>
+        <td style='border-right:1px solid #000;'>金宰漢</td>
+        <td style='border-right:1px solid #000;'>2023.03.14</td>
+        <td style='border-right:1px solid #000;'>愛箭穿心</td>
+        <td>이다열</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;' rowspan='9'>2018.10.10</td>
+        <td style='border-right:1px solid #000;' rowspan='9'><a href='https://namu.wiki/w/%EB%8D%94 %EB%A7%A8 %EB%B8%94%EB%9E%99' target='_blank'>THE MAN BLK</a></td>
+        <td style='border-right:1px solid #000;' rowspan='3'>천승호</td>
+        <td style='border-right:1px solid #000;' rowspan='3'>千昇豪</td>
+        <td style='border-right:1px solid #000;'>2020.05.22</td>
+        <td style='border-right:1px solid #000;'>在你視線停留的地方</td>
+        <td>客串</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>2020.09.18</td>
+        <td style='border-right:1px solid #000;'>匆匆心動</td>
+        <td>진원</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>2023.07.20</td>
+        <td style='border-right:1px solid #000;'>戀愛準備中</td>
+        <td>客串Zeus團員</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>최찬이</td>
+        <td style='border-right:1px solid #000;'>磪燦怡</td>
+        <td style='border-right:1px solid #000;' rowspan='2'>2021.06.29</td>
+        <td style='border-right:1px solid #000;' rowspan='2'>新光男高學生會</td>
+        <td>신다온</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>고우진</td>
+        <td style='border-right:1px solid #000;'>高禹真</td>
+        <td>남궁시운</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>엄세웅</td>
+        <td style='border-right:1px solid #000;'>嚴世雄</td>
+        <td style='border-right:1px solid #000;'>2021.12.28</td>
+        <td style='border-right:1px solid #000;'>鏡頭之外</td>
+        <td>엄영우</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;' rowspan='2'>신정유</td>
+        <td style='border-right:1px solid #000;' rowspan='2'>申正祐</td>
+        <td style='border-right:1px solid #000;'>2023.11.10</td>
+        <td style='border-right:1px solid #000;'>氣象預報式戀愛</td>
+        <td>반동욱</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>2026.03.05</td>
+        <td style='border-right:1px solid #000;'>總會再次相遇</td>
+        <td>이우진</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>윤준원</td>
+        <td style='border-right:1px solid #000;'>尹俊源</td>
+        <td style='border-right:1px solid #000;'>2024.10.10</td>
+        <td style='border-right:1px solid #000;'>奇異戀愛史</td>
+        <td>최성훈</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;'>2019.04.13</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/OMEGA X' target='_blank'>1THE9/Omega X</a></td>
+        <td style='border-right:1px solid #000;'>신예찬</td>
+        <td style='border-right:1px solid #000;'>申藝燦</td>
+        <td style='border-right:1px solid #000;'>2023.03.14</td>
+        <td style='border-right:1px solid #000;'>愛箭穿心</td>
+        <td>조태현</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;'>2019.04.13</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/%EC%9C%84%EC%95%84%EC%9D%B4' target='_blank'>1THE9/WEi</a></td>
+        <td style='border-right:1px solid #000;'>김준서</td>
+        <td style='border-right:1px solid #000;'>金俊抒</td>
+        <td style='border-right:1px solid #000;'>2025.02.26</td>
+        <td style='border-right:1px solid #000;'>秘密關係</td>
+        <td>정다온</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;'>2019.04.19</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/OMEGA X' target='_blank'>ENOi/Omega X</a></td>
+        <td style='border-right:1px solid #000;'>박진우</td>
+        <td style='border-right:1px solid #000;'>朴珍宇</td>
+        <td style='border-right:1px solid #000;'>2025.08.28</td>
+        <td style='border-right:1px solid #000;'>我的偶像倒追我</td>
+        <td>나애준</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;'>2019.04.24</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/DKZ' target='_blank'>DKZ</a></td>
+        <td style='border-right:1px solid #000;'>박재찬</td>
+        <td style='border-right:1px solid #000;'>朴宰燦</td>
+        <td style='border-right:1px solid #000;'>2022.02.16</td>
+        <td style='border-right:1px solid #000;'>語意錯誤</td>
+        <td>추상우</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;' rowspan='3'>2019.04.25</td>
+        <td style='border-right:1px solid #000;' rowspan='3'><a href='https://namu.wiki/w/%EB%89%B4%ED%82%A4%EB%93%9C' target='_blank'>NEWKIDD</a></td>
+        <td style='border-right:1px solid #000;' rowspan='3'>김진권</td>
+        <td style='border-right:1px solid #000;' rowspan='3'>金真權</td>
+        <td style='border-right:1px solid #000;'>2021.01.22</td>
+        <td style='border-right:1px solid #000;'>致我的星星</td>
+        <td>백호민</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>2022.06.05</td>
+        <td style='border-right:1px solid #000;'>致我的星星 II</td>
+        <td>백호민</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>2024.03.27</td>
+        <td style='border-right:1px solid #000;'>像爵士樂一樣</td>
+        <td>윤세헌</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;' rowspan='6'>2019.05.28</td>
+        <td style='border-right:1px solid #000;' rowspan='6'><a href='https://namu.wiki/w/OnlyOneOf' target='_blank'>OnlyOneOf</a></td>
+        <td style='border-right:1px solid #000;'>신규빈</td>
+        <td style='border-right:1px solid #000;'>申揆彬</td>
+        <td style='border-right:1px solid #000;' rowspan='6'>2023.10.25</td>
+        <td style='border-right:1px solid #000;' rowspan='6'>偶像升級計劃</td>
+        <td>도현빈</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>이성호</td>
+        <td style='border-right:1px solid #000;'>李城昊</td>
+        <td>동건</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>이태엽</td>
+        <td style='border-right:1px solid #000;'>李泰燁</td>
+        <td>제이</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>김준형</td>
+        <td style='border-right:1px solid #000;'>金俊炯</td>
+        <td>우성</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>이용수</td>
+        <td style='border-right:1px solid #000;'>李鎔秀</td>
+        <td>강이든</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>정욱진</td>
+        <td style='border-right:1px solid #000;'>鄭煜縝</td>
+        <td>공지훈</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;' rowspan='2'>2020.01.14</td>
+        <td style='border-right:1px solid #000;' rowspan='2'><a href='https://namu.wiki/w/2Z' target='_blank'>2Z</a></td>
+        <td style='border-right:1px solid #000;'>박범준</td>
+        <td style='border-right:1px solid #000;'>朴范俊</td>
+        <td style='border-right:1px solid #000;'>2021.12.28</td>
+        <td style='border-right:1px solid #000;'>鏡頭之外</td>
+        <td>김기진</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>김호진</td>
+        <td style='border-right:1px solid #000;'>金虎真</td>
+        <td style='border-right:1px solid #000;'>2022.02.22</td>
+        <td style='border-right:1px solid #000;'>五號男子宿舍</td>
+        <td>남재우</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>2020.04.01</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/TO1' target='_blank'>TO1</a></td>
+        <td style='border-right:1px solid #000;'>차웅기</td>
+        <td style='border-right:1px solid #000;'>車雄基</td>
+        <td style='border-right:1px solid #000;'>2024.01.24</td>
+        <td style='border-right:1px solid #000;'>戀愛至上主義區域</td>
+        <td>안경훈</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;'>2022.08.22</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/%EB%8B%A4%EC%84%AF%EC%9E%A5' target='_blank'>SUPER FIVE</a></td>
+        <td style='border-right:1px solid #000;'>옥진욱</td>
+        <td style='border-right:1px solid #000;'>玉真旭</td>
+        <td style='border-right:1px solid #000;'>2022.02.24</td>
+        <td style='border-right:1px solid #000;'>冬日後的櫻花</td>
+        <td>서해봄</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;'>2020.11.19</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/BAE173' target='_blank'>BAE173</a></td>
+        <td style='border-right:1px solid #000;'>전민욱</td>
+        <td style='border-right:1px solid #000;'>全珉郁</td>
+        <td style='border-right:1px solid #000;'>2023.08.11</td>
+        <td style='border-right:1px solid #000;'>現正上課中 II</td>
+        <td>이현</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;' rowspan='2'>2021.02.24</td>
+        <td style='border-right:1px solid #000;' rowspan='2'>ATO6</td>
+        <td style='border-right:1px solid #000;'>유현우</td>
+        <td style='border-right:1px solid #000;'>劉賢宇</td>
+        <td style='border-right:1px solid #000;'>2021.12.23</td>
+        <td style='border-right:1px solid #000;'>染色 </td>
+        <td>이헌【李헌】</td>
+      </tr>
+      <tr>
+        <td style='border-right:1px solid #000;'>손현우</td>
+        <td style='border-right:1px solid #000;'>孫賢佑</td>
+        <td style='border-right:1px solid #000;'>2023.08.02</td>
+        <td style='border-right:1px solid #000;'>隨風</td>
+        <td>임한태</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;' rowspan='3'>2021.06.30</td>
+        <td style='border-right:1px solid #000;' rowspan='3'><a href='https://namu.wiki/w/JUSTB' target='_blank'>JUST B</a></td>
+        <td style='border-right:1px solid #000;'>추시우</td>
+        <td style='border-right:1px solid #000;'>秋시우</td>
+        <td style='border-right:1px solid #000;'>2024.04.01</td>
+        <td style='border-right:1px solid #000;'>像貓一樣的你</td>
+        <td>이대별</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;' rowspan='2'>이건우</td>
+        <td style='border-right:1px solid #000;' rowspan='2'>李建宇</td>
+        <td style='border-right:1px solid #000;'>2024.04.01</td>
+        <td style='border-right:1px solid #000;'>像貓一樣的你</td>
+        <td>오기민</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>2024.10.10</td>
+        <td style='border-right:1px solid #000;'>奇異戀愛史</td>
+        <td>정성주</td>
+      </tr>
+      <tr class='purple-row'>
+        <td style='border-right:1px solid #000;'>2022.02.17</td>
+        <td style='border-right:1px solid #000;'><a href='https://namu.wiki/w/JWiiver' target='_blank'>JWiiver</a></td>
+        <td style='border-right:1px solid #000;'>배시준</td>
+        <td style='border-right:1px solid #000;'>裴時晙</td>
+        <td style='border-right:1px solid #000;'>2023.03.02</td>
+        <td style='border-right:1px solid #000;'>為你沉醉</td>
+        <td>완</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!-- 如果有新的公司，請往下貼 -->
+	  
+        </div>
+      </div>
+	  <button class="nav next" onclick="moveSlide(1)">❯</button>
+	  <div class="dots" id="dots"></div>
+	</div>
+
+  </div>
+
+  <!-- 右側欄 -->
+  <aside class="side right">
+	<h3>📂韓團下海求生記</h3>
+    <hr />
+    <a class="card-link" href="https://www.dcard.tw/f/entertainer/p/254830204" target="_blank"><span class="num">(上) </span>(05~14出道)</a>
+    <a class="card-link" href="https://www.dcard.tw/f/entertainer/p/255051301" target="_blank"><span class="num">(下) </span>(15~24出道)</a>
+	<a class="card-link">&nbsp;</a>
+	<a class="card-link">&nbsp;</a>
+	<a class="card-link">&nbsp;</a>
+	<a class="card-link">&nbsp;</a>
+	<hr class="divider"> 
+	<a class="card-link">&nbsp;</a>
+	<a class="card-link">&nbsp;</a>
+	<a class="card-link">&nbsp;</a>
+  </aside>
+
+</div>
+
+<script>
+// 🌙 深色模式
+function toggleDark() {
+  document.body.classList.toggle("dark");
+  
+  const darkBtn = document.getElementById("darkBtn");
+  if (document.body.classList.contains("dark")) {
+    darkBtn.textContent = "☀️ 日間模式";
+  } else {
+    darkBtn.textContent = "🌙 夜間模式";
+  }
+}
+
+// ===== Slider（循環版 + 點點同步 + 點點瞬移） =====
+let currentIndex = 1; // ⭐ 從第1張開始（因為有 clone）
+let isAnimating = false;
+let dotsContainer;
+
+window.addEventListener("DOMContentLoaded", () => {
+
+const hash = window.location.hash;
+
+if (hash === "#table2") {
+  currentIndex = 2; // 第二張
+} else {
+  currentIndex = 1; // 預設第一張
+}
+
+  const track = document.getElementById("track");
+  const slides = document.querySelectorAll("#track .slide");
+  const realCount = slides.length; // 真正 slide 數量
+
+  // ⭐ clone 第一張 & 最後一張
+  const firstClone = slides[0].cloneNode(true);
+  const lastClone = slides[slides.length - 1].cloneNode(true);
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, slides[0]);
+
+  // 初始化位置
+  updatePosition();
+
+  // ===== 生成點點 =====
+  dotsContainer = document.getElementById("dots");
+  for (let i = 0; i < realCount; i++) {
+    const dot = document.createElement("span");
+    dot.addEventListener("click", () => {
+      // 點點瞬移
+      currentIndex = i + 1; // +1 因為有 clone
+      track.style.transition = "none"; // ⭐ 瞬移
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      updateDots(); // ⭐ 點點立刻亮
+    });
+    dotsContainer.appendChild(dot);
+  }
+
+  updateDots();
+});
+
+// ===== 左右按鈕滑動 =====
+function moveSlide(direction) {
+  if (isAnimating) return;
+
+  const track = document.getElementById("track");
+  const allSlides = document.querySelectorAll(".slide");
+
+  isAnimating = true;
+  currentIndex += direction;
+
+  track.style.transition = "transform 0.45s cubic-bezier(0.22,1,0.36,1)";
+  track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+  // 動畫結束後更新點點
+  track.addEventListener("transitionend", onTransitionEnd);
+
+  function onTransitionEnd() {
+    track.removeEventListener("transitionend", onTransitionEnd);
+
+    // 處理 clone 無縫循環
+    if (currentIndex === allSlides.length - 1) {
+      track.style.transition = "none";
+      currentIndex = 1;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    } else if (currentIndex === 0) {
+      track.style.transition = "none";
+      currentIndex = allSlides.length - 2;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    updateDots(); // ⭐ 動畫結束後才更新點點
+    isAnimating = false;
+  }
+}
+
+// ===== 更新 slide 位置（初始化用） =====
+function updatePosition() {
+  const track = document.getElementById("track");
+  track.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+
+// ===== 更新點點亮起 =====
+function updateDots() {
+  const dots = document.querySelectorAll(".dots span");
+  const total = dots.length;
+
+  dots.forEach(dot => dot.classList.remove("active"));
+
+  let realIndex = currentIndex - 1; // ⭐ 扣掉 clone
+  if (realIndex < 0) realIndex = total - 1;
+  if (realIndex >= total) realIndex = 0;
+
+  dots[realIndex].classList.add("active");
+}
+
+</script>
+
+</body>
+</html>
