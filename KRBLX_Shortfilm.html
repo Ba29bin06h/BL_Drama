@@ -185,26 +185,6 @@ thead tr th {
   text-align:center;
 }
 
-table th:nth-child(1),
-table td:nth-child(1) {
-  width: 100px;   /* 第1欄 */
-}
-
-table th:nth-child(2),
-table td:nth-child(2) {
-  width: 150px;   /* 第2欄 */
-}
-
-table th:nth-child(3),
-table td:nth-child(3) {
-  width: 200px;   /* 第3欄 */
-}
-
-table th:nth-child(4),
-table td:nth-child(4) {
-  width: 200px;   /* 第4欄 */
-}
-
 .even-year { background-color: var(--even-year); }
 .odd-year { background-color: var(--odd-year); }
 td.center { text-align: center; }
@@ -314,6 +294,14 @@ body.dark .dots span.active {
 }
 
 /* 客製化slide */
+
+.slide-A td:nth-child(6),
+.slide-A th:nth-child(6),
+.slide-C td:nth-child(6),
+.slide-C th:nth-child(6){
+  text-align: center;   /* 第6欄 */
+}
+
 .slide-B td:nth-child(5),
 .slide-B th:nth-child(5) {
   text-align: center;
@@ -375,7 +363,7 @@ body.dark .dots span.active {
 		
 <!-- BL資訊 -->		
 <!-- Slide 1 -->
-<div class="slide">
+<div class="slide slide-A">
   <h2>Lovememory 러브메모리</h2>
 
   <div class="table-wrapper">
@@ -398,6 +386,7 @@ body.dark .dots span.active {
       <th colspan="2">時長</th>
       <th rowspan="2">網址</th>
       <th rowspan="2">說明</th>
+	</tr>  
   </thead>
 
       <tbody>
@@ -493,6 +482,7 @@ body.dark .dots span.active {
       <th colspan="2">時長</th>
       <th rowspan="2">網址</th>
       <th rowspan="2">說明</th>
+	</tr>   
   </thead>
 
       <tbody>
@@ -535,7 +525,7 @@ body.dark .dots span.active {
 </div>
 
 <!-- Slide 3 -->
-<div class="slide">
+<div class="slide slide-C">
   <h2>TRUE FILM</h2>
 
   <div class="table-wrapper">
@@ -558,6 +548,7 @@ body.dark .dots span.active {
       <th colspan="2">時長</th>
       <th rowspan="2">網址</th>
       <th rowspan="2">說明</th>
+	</tr>   
   </thead>
 
       <tbody>
@@ -644,6 +635,7 @@ body.dark .dots span.active {
       <th colspan="2">BL劇名</th>
       <th colspan="3">時長</th>
       <th rowspan="2">網址</th>
+	</tr> 
   </thead>
 
       <tbody>
