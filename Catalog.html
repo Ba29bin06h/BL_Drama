@@ -445,7 +445,7 @@ button:hover{
 		<label><input type="radio" name="mode" value="drama" checked onchange="renderTable()"> 戲劇數</label>
 		<label><input type="radio" name="mode" value="episodes" onchange="renderTable()"> 集數</label>
 		<label><input type="radio" name="mode" value="duration" onchange="renderTable()"> 時長(單位：hr)</label>
-		<label><input type="radio" name="mode" value="intimacy" onchange="renderTable()"> 親密戲比例</label>
+		<label><input type="radio" name="mode" value="statistics" onchange="renderTable()"> 統計</label>
 	</div>
 
     <div class="table-wrapper">
@@ -546,21 +546,75 @@ function renderTable(){
   const tbody = document.querySelector("#dataTable tbody");
   tbody.innerHTML = "";
 
-  if(mode === "intimacy"){
-    // 計算總和
-    
-    tbody.innerHTML = `
-      <tr class="highlight">
-        <td>親密戲比例</td>
-		<td>${intimacyData[0].toFixed(2)}%</td>
-		<td>${intimacyData[1].toFixed(2)}%</td>
-		<td>${intimacyData[2].toFixed(2)}%</td>
-		<td>${intimacyData[3].toFixed(2)}%</td>
-        <td> - </td>
-      </tr>
-    `;
-    return;
+if(mode === "statistics"){
+
+  // ===== 每國總集數 =====
+  let epTotal = [0,0,0,0];
+
+  for(let year in data.episodes){
+    data.episodes[year].forEach((v,i)=>{
+      epTotal[i] += v;
+    });
   }
+
+  // ===== 每國總部數（來自 drama）=====
+  let showCount = [0,0,0,0];
+
+  for(let year in data.drama){
+    data.drama[year].forEach((v,i)=>{
+      showCount[i] += v;
+    });
+  }
+
+  // ===== 平均每部集數 =====
+  let avgEp = epTotal.map((v,i)=>{
+    return showCount[i] ? (v / showCount[i]).toFixed(0) : 0;
+  });
+
+  // ===== 時長（min）=====
+  let durTotal = [0,0,0,0];
+
+  for(let year in data.duration){
+    data.duration[year].forEach((v,i)=>{
+      durTotal[i] += v;
+    });
+  }
+
+  let avgMin = durTotal.map((h,i)=>{
+    return epTotal[i] ? Math.round((h * 60) / epTotal[i]) : 0;
+  });
+
+tbody.innerHTML = `
+  <tr class="highlight">
+    <td>親密戲比例</td>
+    <td>${intimacyData[0].toFixed(2)}%</td>
+    <td>${intimacyData[1].toFixed(2)}%</td>
+    <td>${intimacyData[2].toFixed(2)}%</td>
+    <td>${intimacyData[3].toFixed(2)}%</td>
+    <td>-</td>
+  </tr>
+
+  <tr>
+    <td>平均每部集數</td>
+    <td>${avgEp[0]}</td>
+    <td>${avgEp[1]}</td>
+    <td>${avgEp[2]}</td>
+    <td>${avgEp[3]}</td>
+    <td>-</td>
+  </tr>
+
+  <tr>
+    <td>平均每集時長 (min)</td>
+    <td>${avgMin[0]}</td>
+    <td>${avgMin[1]}</td>
+    <td>${avgMin[2]}</td>
+    <td>${avgMin[3]}</td>
+    <td>-</td>
+  </tr>
+`;
+
+  return;
+}
 
   let countryTotal = [0,0,0,0];
   for(let year in data[mode]){
