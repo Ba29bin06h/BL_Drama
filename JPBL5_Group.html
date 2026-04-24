@@ -172,8 +172,14 @@ body.dark .content h2 a { color: #93c5fd; }
 
 /* 表格 */
 .table-wrapper { overflow-x:auto; margin-top:20px; max-height:600px; overflow-y:auto; }
-table { width:100%; border-collapse:collapse; min-width:900px; }
-th, td { padding:8px; text-align:left; border-bottom:1px solid #000; }
+table { width:100%; border-collapse:collapse; min-width:900px;border: none; }
+th, td { 
+  padding:8px; 
+  text-align:left; 
+  border-bottom:1px solid #000;
+  border-right: 1px solid #000;
+}
+
 thead tr th {
   background:var(--table-head);
   position: sticky;
@@ -182,7 +188,14 @@ thead tr th {
   font-weight: 600;
   font-size: 0.9rem;
   border-bottom: 2px solid #000;
+  border-right: none; 
+  border-left: none;
   text-align:center;
+}
+
+/* 關鍵修正：移除每一行最後一個單元格的右邊框，避免出現最外層右框線 */
+th:last-child, td:last-child {
+  border-right: none;
 }
 
 .blue-row {
@@ -193,15 +206,19 @@ thead tr th {
   background-color: var(--odd-year);
 }
 
-
 td.center { text-align: center; }
+
 td:not(.center) { text-align: left; }
 table a { color: var(--main); text-decoration: underline; transition: 0.2s; }
 body.dark table a { color: #93c5fd; }
 .content table tbody tr:hover td,
 .content table tbody tr:hover td a { color: inherit !important; text-decoration: none !important; }
-body.dark table, body.dark th, body.dark td { color: #dfe2f0; border-bottom: 1px solid #3a3f52; }
-body.dark thead tr th { background-color: #2c3340; color: #e0e7ff; border-bottom: 2px solid #475569; }
+body.dark table, body.dark th, body.dark td { color: #dfe2f0; border-bottom: 1px solid #3a3f52; border-right: 1px solid #3a3f52;}
+body.dark th:last-child, 
+body.dark td:last-child {
+  border-right: none;
+}
+body.dark thead tr th { background-color: #2c3340; color: #e0e7ff; border-bottom: 2px solid #475569; border-right: none;}
 body.dark .even-year { background-color: #1e2a3b; }
 body.dark .odd-year { background-color: #2a223b; }
 
@@ -331,7 +348,7 @@ body.dark .dots span.active {
 <!-- BL資訊 -->		
 <!-- Slide 1 -->
 <div class="slide">
-  <h2>星塵遠征軍(スターダスト)，共6團／19人／25部</h2>
+  <h2>星塵遠征軍(スターダスト)</h2>
 
   <div class="table-wrapper">
     <table>
@@ -348,205 +365,205 @@ body.dark .dots span.active {
 
       <tbody>
         <!-- 【星塵傳播】的演員資料請放這裡 -->
-       <tr class='blue-row'>
-        <td style='border-right:1px solid #000;' rowspan='7'>2012.06.10</td>
-        <td style='border-right:1px solid #000;' rowspan='7'><a href='https://zh.wikipedia.org/wiki/%E8%B6%85%E7%89%B9%E6%80%A5_(%E9%9F%B3%E6%A8%82%E5%9C%98%E9%AB%94)' target='_blank'>超特急</a></td>
-        <td style='border-right:1px solid #000;' rowspan='3'><a href='https://ja.wikipedia.org/wiki/%E8%8D%89%E5%B7%9D%E6%8B%93%E5%BC%A5' target='_blank'>草川拓弥</a></td>
-        <td style='border-right:1px solid #000;'>2020.10.09</td>
-        <td style='border-right:1px solid #000;'>如果30歲還是處男，似乎就能成為魔法師</td>
+      <tr>
+        <td rowspan='7'>2012.06.10</td>
+        <td rowspan='7'><a href='https://zh.wikipedia.org/wiki/%E8%B6%85%E7%89%B9%E6%80%A5_(%E9%9F%B3%E6%A8%82%E5%9C%98%E9%AB%94)' target='_blank'>超特急</a></td>
+        <td rowspan='3'><a href='https://ja.wikipedia.org/wiki/%E8%8D%89%E5%B7%9D%E6%8B%93%E5%BC%A5' target='_blank'>草川拓弥</a></td>
+        <td>2020.10.09</td>
+        <td>如果30歲還是處男，似乎就能成為魔法師</td>
         <td>六角祐太</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'>2022.06.29</td>
-        <td style='border-right:1px solid #000;'>歡迎光臨自助洗衣店</td>
+      <tr>
+        <td>2022.06.29</td>
+        <td>歡迎光臨自助洗衣店</td>
         <td>湊晃</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'>2023.07.05</td>
-        <td style='border-right:1px solid #000;'>歡迎光臨自助洗衣店 II</td>
+      <tr>
+        <td>2023.07.05</td>
+        <td>歡迎光臨自助洗衣店 II</td>
         <td>湊晃</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;' rowspan='3'><a href='https://ja.wikipedia.org/wiki/%E9%AB%99%E6%9D%BE%E3%82%A2%E3%83%AD%E3%83%8F' target='_blank'>髙松アロハ</a></td>
-        <td style='border-right:1px solid #000;'>2023.06.16</td>
-        <td style='border-right:1px solid #000;'>4月的東京</td>
+      <tr>
+        <td rowspan='3'><a href='https://ja.wikipedia.org/wiki/%E9%AB%99%E6%9D%BE%E3%82%A2%E3%83%AD%E3%83%8F' target='_blank'>髙松アロハ</a></td>
+        <td>2023.06.16</td>
+        <td>4月的東京</td>
         <td>石原蓮</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'>2023.07.05</td>
-        <td style='border-right:1px solid #000;'>歡迎光臨自助洗衣店 II</td>
+      <tr>
+        <td>2023.07.05</td>
+        <td>歡迎光臨自助洗衣店 II</td>
         <td>EP9客串</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'>2024.03.06</td>
-        <td style='border-right:1px solid #000;'>第二次戀愛才完美</td>
+      <tr>
+        <td>2024.03.06</td>
+        <td>第二次戀愛才完美</td>
         <td>白石優人</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E6%9F%8F%E6%9C%A8%E6%82%A0' target='_blank'>柏木悠</a></td>
-        <td style='border-right:1px solid #000;'>2023.09.19</td>
-        <td style='border-right:1px solid #000;'>無法傳達給你</td>
+      <tr>
+        <td><a href='https://ja.wikipedia.org/wiki/%E6%9F%8F%E6%9C%A8%E6%82%A0' target='_blank'>柏木悠</a></td>
+        <td>2023.09.19</td>
+        <td>無法傳達給你</td>
         <td>芦屋架</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;' rowspan='5'>2015.03.25</td>
-        <td style='border-right:1px solid #000;' rowspan='5'><a href='https://zh.wikipedia.org/wiki/M!LK' target='_blank'>M!LK</a></td>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E5%B1%B1%E4%B8%AD%E6%9F%94%E5%A4%AA%E6%9C%97' target='_blank'>山中柔太朗</a></td>
-        <td style='border-right:1px solid #000;'>2022.12.16</td>
-        <td style='border-right:1px solid #000;'>糖果色的戀愛反論</td>
+      <tr>
+        <td rowspan='5'>2015.03.25</td>
+        <td rowspan='5'><a href='https://zh.wikipedia.org/wiki/M!LK' target='_blank'>M!LK</a></td>
+        <td><a href='https://ja.wikipedia.org/wiki/%E5%B1%B1%E4%B8%AD%E6%9F%94%E5%A4%AA%E6%9C%97' target='_blank'>山中柔太朗</a></td>
+        <td>2022.12.16</td>
+        <td>糖果色的戀愛反論</td>
         <td>蕪木元治</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;' rowspan='3'><a href='https://ja.wikipedia.org/wiki/%E6%9B%BD%E9%87%8E%E8%88%9C%E5%A4%AA' target='_blank'>曽野舜太</a></td>
-        <td style='border-right:1px solid #000;'>2023.12.01</td>
-        <td style='border-right:1px solid #000;'>佐原老師與土岐同學</td>
+      <tr>
+        <td rowspan='3'><a href='https://ja.wikipedia.org/wiki/%E6%9B%BD%E9%87%8E%E8%88%9C%E5%A4%AA' target='_blank'>曽野舜太</a></td>
+        <td>2023.12.01</td>
+        <td>佐原老師與土岐同學</td>
         <td>利瀬竜尚</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'>2024.08.05</td>
-        <td style='border-right:1px solid #000;'>美妝搭檔情人</td>
+      <tr>
+        <td>2024.08.05</td>
+        <td>美妝搭檔情人</td>
         <td>南条敦</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'>2026.01.16</td>
-        <td style='border-right:1px solid #000;'>美妝搭檔情人 II</td>
+      <tr>
+        <td>2026.01.16</td>
+        <td>美妝搭檔情人 II</td>
         <td>南条敦</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E5%A1%A9%EF%A8%91%E5%A4%AA%E6%99%BA' target='_blank'>塩﨑太智</a></td>
-        <td style='border-right:1px solid #000;'>2025.09.21</td>
-        <td style='border-right:1px solid #000;'>託生君_影集系列</td>
+      <tr>
+        <td><a href='https://ja.wikipedia.org/wiki/%E5%A1%A9%EF%A8%91%E5%A4%AA%E6%99%BA' target='_blank'>塩﨑太智</a></td>
+        <td>2025.09.21</td>
+        <td>託生君_影集系列</td>
         <td>葉山託生</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;' rowspan='3'>2015.09.27</td>
-        <td style='border-right:1px solid #000;' rowspan='3'><a href='https://ja.wikipedia.org/wiki/SUPER%E2%98%85DRAGON' target='_blank'>SUPER★DRAGON</a></td>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E5%8F%A4%E5%B7%9D%E6%AF%85_(%E4%BF%B3%E5%84%AA)' target='_blank'>古川毅</a></td>
-        <td style='border-right:1px solid #000;'>2023.06.16</td>
-        <td style='border-right:1px solid #000;'>4月的東京</td>
+      <tr>
+        <td rowspan='3'>2015.09.27</td>
+        <td rowspan='3'><a href='https://ja.wikipedia.org/wiki/SUPER%E2%98%85DRAGON' target='_blank'>SUPER★DRAGON</a></td>
+        <td><a href='https://ja.wikipedia.org/wiki/%E5%8F%A4%E5%B7%9D%E6%AF%85_(%E4%BF%B3%E5%84%AA)' target='_blank'>古川毅</a></td>
+        <td>2023.06.16</td>
+        <td>4月的東京</td>
         <td>八神龍之介</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;' rowspan='2'><a href='https://ja.wikipedia.org/wiki/%E7%94%B0%E4%B8%AD%E6%B4%B8%E5%B8%8C' target='_blank'>田中洸希</a></td>
-        <td style='border-right:1px solid #000;'>2023.10.20</td>
-        <td style='border-right:1px solid #000;'>單人房的天使</td>
+      <tr>
+        <td rowspan='2'><a href='https://ja.wikipedia.org/wiki/%E7%94%B0%E4%B8%AD%E6%B4%B8%E5%B8%8C' target='_blank'>田中洸希</a></td>
+        <td>2023.10.20</td>
+        <td>單人房的天使</td>
         <td>A君</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'>2024.08.03</td>
-        <td style='border-right:1px solid #000;'>甜蜜餵食生活</td>
+      <tr>
+        <td>2024.08.03</td>
+        <td>甜蜜餵食生活</td>
         <td>桜庭唯純</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;' rowspan='5'>2018.11.21</td>
-        <td style='border-right:1px solid #000;' rowspan='5'><a href='https://zh.wikipedia.org/wiki/ONE_N%27_ONLY' target='_blank'>ONE N' ONLY</a></td>
-        <td style='border-right:1px solid #000;' rowspan='3'><a href='https://ja.wikipedia.org/wiki/%E6%B2%A2%E6%9D%91%E7%8E%B2' target='_blank'>沢村玲</a></td>
-        <td style='border-right:1px solid #000;'>2024.04.12</td>
-        <td style='border-right:1px solid #000;'>有他在的生活</td>
+      <tr>
+        <td rowspan='5'>2018.11.21</td>
+        <td rowspan='5'><a href='https://zh.wikipedia.org/wiki/ONE_N%27_ONLY' target='_blank'>ONE N' ONLY</a></td>
+        <td rowspan='3'><a href='https://ja.wikipedia.org/wiki/%E6%B2%A2%E6%9D%91%E7%8E%B2' target='_blank'>沢村玲</a></td>
+        <td>2024.04.12</td>
+        <td>有他在的生活</td>
         <td>春名圭太</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'>2024.09.03</td>
-        <td style='border-right:1px solid #000;'>美好結局</td>
+      <tr>
+        <td>2024.09.03</td>
+        <td>美好結局</td>
         <td>浩然→隼人→圭斗</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'>2024.11.05</td>
-        <td style='border-right:1px solid #000;'>未成年</td>
+      <tr>
+        <td>2024.11.05</td>
+        <td>未成年</td>
         <td>客串真島撞球場朋友</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E4%B8%8A%E6%9D%91%E8%AC%99%E4%BF%A1' target='_blank'>上村謙信</a></td>
-        <td style='border-right:1px solid #000;'>2024.11.05</td>
-        <td style='border-right:1px solid #000;'>未成年</td>
+      <tr>
+        <td><a href='https://ja.wikipedia.org/wiki/%E4%B8%8A%E6%9D%91%E8%AC%99%E4%BF%A1' target='_blank'>上村謙信</a></td>
+        <td>2024.11.05</td>
+        <td>未成年</td>
         <td>蛭川晴喜</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E5%B1%B1%E4%B8%8B%E6%B0%B8%E7%8E%96' target='_blank'>山下永玖</a></td>
-        <td style='border-right:1px solid #000;'>2025.09.21</td>
-        <td style='border-right:1px solid #000;'>託生君_影集系列</td>
+      <tr>
+        <td><a href='https://ja.wikipedia.org/wiki/%E5%B1%B1%E4%B8%8B%E6%B0%B8%E7%8E%96' target='_blank'>山下永玖</a></td>
+        <td>2025.09.21</td>
+        <td>託生君_影集系列</td>
         <td>三洲新</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;' rowspan='9'>2019.07.07</td>
-        <td style='border-right:1px solid #000;' rowspan='9'><a href='https://ja.wikipedia.org/wiki/%E5%8E%9F%E5%9B%A0%E3%81%AF%E8%87%AA%E5%88%86%E3%81%AB%E3%81%82%E3%82%8B%E3%80%82' target='_blank'>原因は自分にある</a></td>
-        <td style='border-right:1px solid #000;' rowspan='2'><a href='https://ja.wikipedia.org/wiki/%E6%AD%A6%E8%97%A4%E6%BD%A4_(%E4%BF%B3%E5%84%AA)' target='_blank'>武藤潤</a></td>
-        <td style='border-right:1px solid #000;'>2021.07.16</td>
-        <td style='border-right:1px solid #000;'>GIVEN 被贈與的未來</td>
+      <tr>
+        <td rowspan='9'>2019.07.07</td>
+        <td rowspan='9'><a href='https://ja.wikipedia.org/wiki/%E5%8E%9F%E5%9B%A0%E3%81%AF%E8%87%AA%E5%88%86%E3%81%AB%E3%81%82%E3%82%8B%E3%80%82' target='_blank'>原因は自分にある</a></td>
+        <td rowspan='2'><a href='https://ja.wikipedia.org/wiki/%E6%AD%A6%E8%97%A4%E6%BD%A4_(%E4%BF%B3%E5%84%AA)' target='_blank'>武藤潤</a></td>
+        <td>2021.07.16</td>
+        <td>GIVEN 被贈與的未來</td>
         <td>植木涼</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'>2025.01.10</td>
-        <td style='border-right:1px solid #000;'>相遇驟雨中</td>
+      <tr>
+        <td>2025.01.10</td>
+        <td>相遇驟雨中</td>
         <td>萩原一顕</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;' rowspan='3'><a href='https://ja.wikipedia.org/wiki/%E9%95%B7%E9%87%8E%E5%87%8C%E5%A4%A7' target='_blank'>長野凌大</a></td>
-        <td style='border-right:1px solid #000;'>2022.06.29</td>
-        <td style='border-right:1px solid #000;'>歡迎光臨自助洗衣店</td>
+      <tr>
+        <td rowspan='3'><a href='https://ja.wikipedia.org/wiki/%E9%95%B7%E9%87%8E%E5%87%8C%E5%A4%A7' target='_blank'>長野凌大</a></td>
+        <td>2022.06.29</td>
+        <td>歡迎光臨自助洗衣店</td>
         <td>旭颯太</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'>2025.01.10</td>
-        <td style='border-right:1px solid #000;'>相遇驟雨中</td>
+      <tr>
+        <td>2025.01.10</td>
+        <td>相遇驟雨中</td>
         <td>參與同期會同事</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'>2025.10.10</td>
-        <td style='border-right:1px solid #000;'>龐克三角</td>
+      <tr>
+        <td>2025.10.10</td>
+        <td>龐克三角</td>
         <td>純浦千明</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%80%89%E7%A9%BA%E4%BA%BA' target='_blank'>大倉空人</a></td>
-        <td style='border-right:1px solid #000;'>2023.10.06</td>
-        <td style='border-right:1px solid #000;'>如果是你，或許可以相戀</td>
+      <tr>
+        <td><a href='https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%80%89%E7%A9%BA%E4%BA%BA' target='_blank'>大倉空人</a></td>
+        <td>2023.10.06</td>
+        <td>如果是你，或許可以相戀</td>
         <td>海堂天</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;' rowspan='2'><a href='https://ja.wikipedia.org/wiki/%E6%A1%9C%E6%9C%A8%E9%9B%85%E5%93%89' target='_blank'>桜木雅哉</a></td>
-        <td style='border-right:1px solid #000;'>2025.09.21</td>
-        <td style='border-right:1px solid #000;'>託生君_影集系列</td>
+      <tr>
+        <td rowspan='2'><a href='https://ja.wikipedia.org/wiki/%E6%A1%9C%E6%9C%A8%E9%9B%85%E5%93%89' target='_blank'>桜木雅哉</a></td>
+        <td>2025.09.21</td>
+        <td>託生君_影集系列</td>
         <td>山下清彦</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'>2025.10.18</td>
-        <td style='border-right:1px solid #000;'>我在學校旅行中被分到了一個糟糕的小組</td>
+      <tr>
+        <td>2025.10.18</td>
+        <td>我在學校旅行中被分到了一個糟糕的小組</td>
         <td>守崎尚哉</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E5%90%89%E6%BE%A4%E8%A6%81%E4%BA%BA' target='_blank'>吉澤要人</a></td>
-        <td style='border-right:1px solid #000;'>2026.01.13</td>
-        <td style='border-right:1px solid #000;'>在對死黨的同居要求說「好」之前</td>
+      <tr>
+        <td><a href='https://ja.wikipedia.org/wiki/%E5%90%89%E6%BE%A4%E8%A6%81%E4%BA%BA' target='_blank'>吉澤要人</a></td>
+        <td>2026.01.13</td>
+        <td>在對死黨的同居要求說「好」之前</td>
         <td>横井湊</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;' rowspan='5'>2023.03.20</td>
-        <td style='border-right:1px solid #000;' rowspan='5'><a href='https://ja.wikipedia.org/wiki/ICEx' target='_blank'>ICEx</a></td>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E7%AB%B9%E9%87%8E%E4%B8%96%E6%A2%9B' target='_blank'>竹野世梛</a></td>
-        <td style='border-right:1px solid #000;'>2023.06.16</td>
-        <td style='border-right:1px solid #000;'>4月的東京</td>
+      <tr>
+        <td rowspan='5'>2023.03.20</td>
+        <td rowspan='5'><a href='https://ja.wikipedia.org/wiki/ICEx' target='_blank'>ICEx</a></td>
+        <td><a href='https://ja.wikipedia.org/wiki/%E7%AB%B9%E9%87%8E%E4%B8%96%E6%A2%9B' target='_blank'>竹野世梛</a></td>
+        <td>2023.06.16</td>
+        <td>4月的東京</td>
         <td>滝沢和真(中學)</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;' rowspan='3'><a href='https://ja.wikipedia.org/wiki/%E9%98%BF%E4%B9%85%E6%A0%B9%E6%B8%A9%E4%B8%96' target='_blank'>阿久根温世</a></td>
-        <td style='border-right:1px solid #000;'>2023.07.05</td>
-        <td style='border-right:1px solid #000;'>歡迎光臨自助洗衣店 II</td>
+      <tr>
+        <td rowspan='3'><a href='https://ja.wikipedia.org/wiki/%E9%98%BF%E4%B9%85%E6%A0%B9%E6%B8%A9%E4%B8%96' target='_blank'>阿久根温世</a></td>
+        <td>2023.07.05</td>
+        <td>歡迎光臨自助洗衣店 II</td>
         <td>EP11客串香月妹妹男朋友</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'>2025.10.29</td>
-        <td style='border-right:1px solid #000;'>療傷遊戲</td>
+      <tr>
+        <td>2025.10.29</td>
+        <td>療傷遊戲</td>
         <td>巽(静真同學)</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'>2026.03.13</td>
-        <td style='border-right:1px solid #000;'>對比的我和你</td>
+      <tr>
+        <td>2026.03.13</td>
+        <td>對比的我和你</td>
         <td>千川陽</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9C%AC%E9%BE%8D%E4%BA%BA' target='_blank'>山本龍人</a></td>
-        <td style='border-right:1px solid #000;'>2026.04.07</td>
-        <td style='border-right:1px solid #000;'>霧藍色的雨後晴天</td>
+      <tr>
+        <td><a href='https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9C%AC%E9%BE%8D%E4%BA%BA' target='_blank'>山本龍人</a></td>
+        <td>2026.04.07</td>
+        <td>霧藍色的雨後晴天</td>
         <td>森元環</td>
       </tr>
       </tbody>
@@ -556,7 +573,7 @@ body.dark .dots span.active {
 
 <!-- Slide 2 -->
 <div class="slide">
-  <h2>EXILE TRIBE，共2團／4人／5部</h2>
+  <h2>EXILE TRIBE</h2>
 
   <div class="table-wrapper">
     <table>
@@ -573,37 +590,37 @@ body.dark .dots span.active {
 
       <tbody>
         <!-- 【EXILE TRIBE】的資料請放這裡 -->
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'>2014.11.18</td>
-        <td style='border-right:1px solid #000;'><a href='https://zh.wikipedia.org/zh-tw/THE_RAMPAGE_from_EXILE_TRIBE' target='_blank'>THE RAMPAGE from EXILE TRIBE</a></td>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E9%95%B7%E8%B0%B7%E5%B7%9D%E6%85%8E_(%E3%83%80%E3%83%B3%E3%82%B5%E3%83%BC)' target='_blank'>長谷川慎</a></td>
-        <td style='border-right:1px solid #000;'>2024.03.06</td>
-        <td style='border-right:1px solid #000;'>第二次戀愛才完美</td>
+      <tr>
+        <td>2014.11.18</td>
+        <td><a href='https://zh.wikipedia.org/zh-tw/THE_RAMPAGE_from_EXILE_TRIBE' target='_blank'>THE RAMPAGE from EXILE TRIBE</a></td>
+        <td><a href='https://ja.wikipedia.org/wiki/%E9%95%B7%E8%B0%B7%E5%B7%9D%E6%85%8E_(%E3%83%80%E3%83%B3%E3%82%B5%E3%83%BC)' target='_blank'>長谷川慎</a></td>
+        <td>2024.03.06</td>
+        <td>第二次戀愛才完美</td>
         <td>宮田晃</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;' rowspan='4'>2016.12.29</td>
-        <td style='border-right:1px solid #000;' rowspan='4'><a href='https://zh.wikipedia.org/zh-tw/FANTASTICS_from_EXILE_TRIBE' target='_blank'>FANTASTICS from EXILE TRIBE</a></td>
-        <td style='border-right:1px solid #000;' rowspan='2'><a href='https://ja.wikipedia.org/wiki/%E5%85%AB%E6%9C%A8%E5%8B%87%E5%BE%81' target='_blank'>八木勇征</a></td>
-        <td style='border-right:1px solid #000;'>2021.11.19</td>
-        <td style='border-right:1px solid #000;'>美麗的他</td>
+      <tr>
+        <td rowspan='4'>2016.12.29</td>
+        <td rowspan='4'><a href='https://zh.wikipedia.org/zh-tw/FANTASTICS_from_EXILE_TRIBE' target='_blank'>FANTASTICS from EXILE TRIBE</a></td>
+        <td rowspan='2'><a href='https://ja.wikipedia.org/wiki/%E5%85%AB%E6%9C%A8%E5%8B%87%E5%BE%81' target='_blank'>八木勇征</a></td>
+        <td>2021.11.19</td>
+        <td>美麗的他</td>
         <td>清居奏</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'>2023.02.08</td>
-        <td style='border-right:1px solid #000;'>美麗的他 II</td>
+      <tr>
+        <td>2023.02.08</td>
+        <td>美麗的他 II</td>
         <td>清居奏</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E6%9C%A8%E6%9D%91%E6%85%A7%E4%BA%BA' target='_blank'>木村慧人</a></td>
-        <td style='border-right:1px solid #000;'>2022.12.16</td>
-        <td style='border-right:1px solid #000;'>糖果色的戀愛反論</td>
+      <tr>
+        <td><a href='https://ja.wikipedia.org/wiki/%E6%9C%A8%E6%9D%91%E6%85%A7%E4%BA%BA' target='_blank'>木村慧人</a></td>
+        <td>2022.12.16</td>
+        <td>糖果色的戀愛反論</td>
         <td>尾上聡</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E5%A0%80%E5%A4%8F%E5%96%9C' target='_blank'>堀夏喜</a></td>
-        <td style='border-right:1px solid #000;'>2025.07.03</td>
-        <td style='border-right:1px solid #000;'>雨過天晴的我們</td>
+      <tr>
+        <td><a href='https://ja.wikipedia.org/wiki/%E5%A0%80%E5%A4%8F%E5%96%9C' target='_blank'>堀夏喜</a></td>
+        <td>2025.07.03</td>
+        <td>雨過天晴的我們</td>
         <td>真城洸輔</td>
       </tr>
       </tbody>
@@ -613,7 +630,7 @@ body.dark .dots span.active {
 
 <!-- Slide 3 -->
 <div class="slide">
-  <h2>小傑尼斯，共2團／2人／2部</h2>
+  <h2>小傑尼斯</h2>
 
   <div class="table-wrapper">
     <table>
@@ -630,20 +647,20 @@ body.dark .dots span.active {
 
       <tbody>
         <!-- 【小傑尼斯】的資料請放這裡 -->
-   <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'>2018.06.09</td>
-        <td style='border-right:1px solid #000;'><a href='https://zh.wikipedia.org/wiki/%E5%B0%8F%E5%82%91%E5%B0%BC%E6%96%AF' target='_blank'>少年忍者</a></td>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E7%B9%94%E5%B1%B1%E5%B0%9A%E5%A4%A7' target='_blank'>織山尚大</a></td>
-        <td style='border-right:1px solid #000;'>2022.08.19</td>
-        <td style='border-right:1px solid #000;'>高良君和天城君</td>
+      <tr>
+        <td>2018.06.09</td>
+        <td><a href='https://zh.wikipedia.org/wiki/%E5%B0%8F%E5%82%91%E5%B0%BC%E6%96%AF' target='_blank'>少年忍者</a></td>
+        <td><a href='https://ja.wikipedia.org/wiki/%E7%B9%94%E5%B1%B1%E5%B0%9A%E5%A4%A7' target='_blank'>織山尚大</a></td>
+        <td>2022.08.19</td>
+        <td>高良君和天城君</td>
         <td>天城太一</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'>2019.01.22</td>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A3%E3%83%8B%E3%83%BC%E3%82%BAJr.%E8%A7%A3%E6%95%A3%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97_(2000%E5%B9%B4%E4%BB%A5%E9%99%8D)' target='_blank'>Lil かんさい</a></td>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E8%A5%BF%E6%9D%91%E6%8B%93%E5%93%89' target='_blank'>西村拓哉</a></td>
-        <td style='border-right:1px solid #000;'>2023.10.20</td>
-        <td style='border-right:1px solid #000;'>單人房的天使</td>
+      <tr>
+        <td>2019.01.22</td>
+        <td><a href='https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A3%E3%83%8B%E3%83%BC%E3%82%BAJr.%E8%A7%A3%E6%95%A3%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97_(2000%E5%B9%B4%E4%BB%A5%E9%99%8D)' target='_blank'>Lil かんさい</a></td>
+        <td><a href='https://ja.wikipedia.org/wiki/%E8%A5%BF%E6%9D%91%E6%8B%93%E5%93%89' target='_blank'>西村拓哉</a></td>
+        <td>2023.10.20</td>
+        <td>單人房的天使</td>
         <td>高科天志(天使)</td>
       </tr>
       </tbody>
@@ -653,7 +670,7 @@ body.dark .dots span.active {
 
 <!-- Slide 4 -->
 <div class="slide">
-  <h2>其他1，共4團／8人／10部</h2>
+  <h2>其他1</h2>
 
   <div class="table-wrapper">
     <table>
@@ -670,72 +687,70 @@ body.dark .dots span.active {
 
       <tbody>
         <!-- 【其他1】的資料請放這裡 -->
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;' rowspan='2'>2018.05.23</td>
-        <td style='border-right:1px solid #000;' rowspan='2'><a href='https://zh.wikipedia.org/wiki/King_%26_Prince' target='_blank'>King &amp; Prince</a></td>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E5%B2%B8%E5%84%AA%E5%A4%AA' target='_blank'>岸優太</a></td>
-        <td style='border-right:1px solid #000;'>2023.01.24</td>
-        <td style='border-right:1px solid #000;'>喜歡喜愛汪汪</td>
+      <tr>
+        <td rowspan='2'>2018.05.23</td>
+        <td rowspan='2'><a href='https://zh.wikipedia.org/wiki/King_%26_Prince' target='_blank'>King &amp; Prince</a></td>
+        <td><a href='https://ja.wikipedia.org/wiki/%E5%B2%B8%E5%84%AA%E5%A4%AA' target='_blank'>岸優太</a></td>
+        <td>2023.01.24</td>
+        <td>喜歡喜愛汪汪</td>
         <td>雪井炬太郎</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E5%B2%A9%E6%A9%8B%E7%8E%84%E6%A8%B9' target='_blank'>岩橋玄樹</a></td>
-        <td style='border-right:1px solid #000;'>2025.07.13</td>
-        <td style='border-right:1px solid #000;'>戀愛的正確標記法</td>
+      <tr>
+        <td><a href='https://ja.wikipedia.org/wiki/%E5%B2%A9%E6%A9%8B%E7%8E%84%E6%A8%B9' target='_blank'>岩橋玄樹</a></td>
+        <td>2025.07.13</td>
+        <td>戀愛的正確標記法</td>
         <td>鈴木弘</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;' rowspan='3'>2019.01.18</td>
-        <td style='border-right:1px solid #000;' rowspan='3'><a href='https://zh.wikipedia.org/wiki/7ORDER' target='_blank'>7ORDER</a></td>
-        <td style='border-right:1px solid #000;' rowspan='2'><a href='https://ja.wikipedia.org/wiki/%E9%98%BF%E9%83%A8%E9%A1%95%E5%B5%90' target='_blank'>阿部顕嵐</a></td>
-        <td style='border-right:1px solid #000;'>2023.12.24</td>
-        <td style='border-right:1px solid #000;'>我成為BL劇的主角了</td>
-        <td>赤藤優一郎
-【桃城晃史】</td>
+      <tr>
+        <td rowspan='3'>2019.01.18</td>
+        <td rowspan='3'><a href='https://zh.wikipedia.org/wiki/7ORDER' target='_blank'>7ORDER</a></td>
+        <td rowspan='2'><a href='https://ja.wikipedia.org/wiki/%E9%98%BF%E9%83%A8%E9%A1%95%E5%B5%90' target='_blank'>阿部顕嵐</a></td>
+        <td>2023.12.24</td>
+        <td>我成為BL劇的主角了</td>
+        <td>赤藤優一郎【桃城晃史】</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'>2025.06.13</td>
-        <td style='border-right:1px solid #000;'>我成為BL劇的主角了 II</td>
-        <td>赤藤優一郎
-【桃城晃史】</td>
+      <tr>
+        <td>2025.06.13</td>
+        <td>我成為BL劇的主角了 II</td>
+        <td>赤藤優一郎【桃城晃史】</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E9%95%B7%E5%A6%BB%E6%80%9C%E5%A4%AE' target='_blank'>長妻怜央</a></td>
-        <td style='border-right:1px solid #000;'>2024.11.02</td>
-        <td style='border-right:1px solid #000;'>戀愛的預感</td>
+      <tr>
+        <td><a href='https://ja.wikipedia.org/wiki/%E9%95%B7%E5%A6%BB%E6%80%9C%E5%A4%AE' target='_blank'>長妻怜央</a></td>
+        <td>2024.11.02</td>
+        <td>戀愛的預感</td>
         <td>空野快</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;' rowspan='2'>2020.05.27</td>
-        <td style='border-right:1px solid #000;' rowspan='2'><a href='https://ja.wikipedia.org/wiki/GENIC' target='_blank'>GENIC</a></td>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E5%A2%97%E5%AD%90%E6%95%A6%E8%B2%B4' target='_blank'>増子敦貴</a></td>
-        <td style='border-right:1px solid #000;'>2023.08.11</td>
-        <td style='border-right:1px solid #000;'>體感預報</td>
+      <tr>
+        <td rowspan='2'>2020.05.27</td>
+        <td rowspan='2'><a href='https://ja.wikipedia.org/wiki/GENIC' target='_blank'>GENIC</a></td>
+        <td><a href='https://ja.wikipedia.org/wiki/%E5%A2%97%E5%AD%90%E6%95%A6%E8%B2%B4' target='_blank'>増子敦貴</a></td>
+        <td>2023.08.11</td>
+        <td>體感預報</td>
         <td>棚田葉</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E9%9B%A8%E5%AE%AE%E7%BF%94' target='_blank'>雨宮翔</a></td>
-        <td style='border-right:1px solid #000;'>2026.01.13</td>
-        <td style='border-right:1px solid #000;'>在對死黨的同居要求說「好」之前</td>
+      <tr>
+        <td><a href='https://ja.wikipedia.org/wiki/%E9%9B%A8%E5%AE%AE%E7%BF%94' target='_blank'>雨宮翔</a></td>
+        <td>2026.01.13</td>
+        <td>在對死黨的同居要求說「好」之前</td>
         <td>中乃航</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;' rowspan='3'>2024.05.24</td>
-        <td style='border-right:1px solid #000;' rowspan='3'><a href='https://ja.wikipedia.org/wiki/BLD_(%E9%9F%B3%E6%A5%BD%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97)' target='_blank'>BLD</a></td>
-        <td style='border-right:1px solid #000;' rowspan='2'><a href='https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E7%91%A0%E9%9B%85' target='_blank'>佐藤瑠雅</a></td>
-        <td style='border-right:1px solid #000;'>2024.04.12</td>
-        <td style='border-right:1px solid #000;'>有他在的生活</td>
+      <tr>
+        <td rowspan='3'>2024.05.24</td>
+        <td rowspan='3'><a href='https://ja.wikipedia.org/wiki/BLD_(%E9%9F%B3%E6%A5%BD%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97)' target='_blank'>BLD</a></td>
+        <td rowspan='2'><a href='https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E7%91%A0%E9%9B%85' target='_blank'>佐藤瑠雅</a></td>
+        <td>2024.04.12</td>
+        <td>有他在的生活</td>
         <td>田中一仁</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'>2025.10.29</td>
-        <td style='border-right:1px solid #000;'>療傷遊戲</td>
+      <tr>
+        <td>2025.10.29</td>
+        <td>療傷遊戲</td>
         <td>三兎樹</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'>岩元雅希</td>
-        <td style='border-right:1px solid #000;'>2025.09.21</td>
-        <td style='border-right:1px solid #000;'>託生君_影集系列</td>
+      <tr>
+        <td>岩元雅希</td>
+        <td>2025.09.21</td>
+        <td>託生君_影集系列</td>
         <td>野川勝</td>
       </tr>
       </tbody>
@@ -745,7 +760,7 @@ body.dark .dots span.active {
 
 <!-- Slide 5 -->
 <div class="slide">
-  <h2>其他2，共11團／9部</h2>
+  <h2>其他2</h2>
 
   <div class="table-wrapper">
     <table>
@@ -762,107 +777,107 @@ body.dark .dots span.active {
 
       <tbody>
         <!-- 【其他】的資料請放這裡 -->
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;' rowspan='2'>2015.08.12</td>
-        <td style='border-right:1px solid #000;' rowspan='2'><a href='https://zh.wikipedia.org/wiki/Lol_(%E5%9C%98%E9%AB%94)' target='_blank'>Lol</a></td>
-        <td style='border-right:1px solid #000;' rowspan='2'><a href='https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E5%8F%8B%E7%A5%90' target='_blank'>佐藤友祐</a></td>
-        <td style='border-right:1px solid #000;'>2022.04.22</td>
-        <td style='border-right:1px solid #000;'>只能親吻不幸同學了！ </td>
+      <tr>
+        <td rowspan='2'>2015.08.12</td>
+        <td rowspan='2'><a href='https://zh.wikipedia.org/wiki/Lol_(%E5%9C%98%E9%AB%94)' target='_blank'>Lol</a></td>
+        <td rowspan='2'><a href='https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E5%8F%8B%E7%A5%90' target='_blank'>佐藤友祐</a></td>
+        <td>2022.04.22</td>
+        <td>只能親吻不幸同學了！ </td>
         <td>篠宮直哉</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'>2026.04.24</td>
-        <td style='border-right:1px solid #000;'>偽裝的真實之吻</td>
+      <tr>
+        <td>2026.04.24</td>
+        <td>偽裝的真實之吻</td>
         <td>志藤全</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'>2018.09.18</td>
-        <td style='border-right:1px solid #000;'><a href='https://zh.wikipedia.org/zh-tw/WATWING' target='_blank'>WATWING</a></td>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E5%85%AB%E6%9D%91%E5%80%AB%E5%A4%AA%E9%83%8E' target='_blank'>八村倫太郎</a></td>
-        <td style='border-right:1px solid #000;'>2023.12.01</td>
-        <td style='border-right:1px solid #000;'>佐原老師與土岐同學</td>
+      <tr>
+        <td>2018.09.18</td>
+        <td><a href='https://zh.wikipedia.org/zh-tw/WATWING' target='_blank'>WATWING</a></td>
+        <td><a href='https://ja.wikipedia.org/wiki/%E5%85%AB%E6%9D%91%E5%80%AB%E5%A4%AA%E9%83%8E' target='_blank'>八村倫太郎</a></td>
+        <td>2023.12.01</td>
+        <td>佐原老師與土岐同學</td>
         <td>土岐奏</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'>2019.05.03</td>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/Zero_PLANET' target='_blank'>Zero PLANET</a></td>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E5%B0%8F%E5%AE%AE%E7%92%83%E5%A4%AE' target='_blank'>小宮璃央</a></td>
-        <td style='border-right:1px solid #000;'>2022.10.21</td>
-        <td style='border-right:1px solid #000;'>永遠的昨日</td>
+      <tr>
+        <td>2019.05.03</td>
+        <td><a href='https://ja.wikipedia.org/wiki/Zero_PLANET' target='_blank'>Zero PLANET</a></td>
+        <td><a href='https://ja.wikipedia.org/wiki/%E5%B0%8F%E5%AE%AE%E7%92%83%E5%A4%AE' target='_blank'>小宮璃央</a></td>
+        <td>2022.10.21</td>
+        <td>永遠的昨日</td>
         <td>山田浩一</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'>2020.01.22</td>
-        <td style='border-right:1px solid #000;'><a href='https://zh.wikipedia.org/wiki/Snow_Man' target='_blank'>Snow Man</a></td>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E7%9B%AE%E9%BB%92%E8%93%AE' target='_blank'>目黒蓮</a></td>
-        <td style='border-right:1px solid #000;'>2021.10.09</td>
-        <td style='border-right:1px solid #000;'>被擦掉的初戀</td>
+      <tr>
+        <td>2020.01.22</td>
+        <td><a href='https://zh.wikipedia.org/wiki/Snow_Man' target='_blank'>Snow Man</a></td>
+        <td><a href='https://ja.wikipedia.org/wiki/%E7%9B%AE%E9%BB%92%E8%93%AE' target='_blank'>目黒蓮</a></td>
+        <td>2021.10.09</td>
+        <td>被擦掉的初戀</td>
         <td>井田浩介</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'>2021.11.12</td>
-        <td style='border-right:1px solid #000;'><a href='https://zh.wikipedia.org/wiki/%E6%B5%AA%E8%8A%B1%E7%94%B7%E5%AD%90' target='_blank'>浪花男子</a></td>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E9%81%93%E6%9E%9D%E9%A7%BF%E4%BD%91' target='_blank'>道枝駿佑</a></td>
-        <td style='border-right:1px solid #000;'>2021.10.09</td>
-        <td style='border-right:1px solid #000;'>被擦掉的初戀</td>
+      <tr>
+        <td>2021.11.12</td>
+        <td><a href='https://zh.wikipedia.org/wiki/%E6%B5%AA%E8%8A%B1%E7%94%B7%E5%AD%90' target='_blank'>浪花男子</a></td>
+        <td><a href='https://ja.wikipedia.org/wiki/%E9%81%93%E6%9E%9D%E9%A7%BF%E4%BD%91' target='_blank'>道枝駿佑</a></td>
+        <td>2021.10.09</td>
+        <td>被擦掉的初戀</td>
         <td>青木想太</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'>2022.04.27</td>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/ONE_LOVE_ONE_HEART' target='_blank'>ONE LOVE ONE HEART</a></td>
-        <td style='border-right:1px solid #000;'>相原一心</td>
-        <td style='border-right:1px solid #000;'>2025.09.21</td>
-        <td style='border-right:1px solid #000;'>託生君_影集系列</td>
+      <tr>
+        <td>2022.04.27</td>
+        <td><a href='https://ja.wikipedia.org/wiki/ONE_LOVE_ONE_HEART' target='_blank'>ONE LOVE ONE HEART</a></td>
+        <td>相原一心</td>
+        <td>2025.09.21</td>
+        <td>託生君_影集系列</td>
         <td>真行寺兼満</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;' rowspan='2'>2023.02.28</td>
-        <td style='border-right:1px solid #000;' rowspan='2'><a href='https://ja.wikipedia.org/wiki/XY_(2023%E5%B9%B4%E3%81%AE%E9%9F%B3%E6%A5%BD%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97)' target='_blank'>XY</a></td>
-        <td style='border-right:1px solid #000;' rowspan='2'>HAYATO</td>
-        <td style='border-right:1px solid #000;'>2025.10.29</td>
-        <td style='border-right:1px solid #000;'>療傷遊戲</td>
+      <tr>
+        <td rowspan='2'>2023.02.28</td>
+        <td rowspan='2'><a href='https://ja.wikipedia.org/wiki/XY_(2023%E5%B9%B4%E3%81%AE%E9%9F%B3%E6%A5%BD%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97)' target='_blank'>XY</a></td>
+        <td rowspan='2'>HAYATO</td>
+        <td>2025.10.29</td>
+        <td>療傷遊戲</td>
         <td>生嶋翔平</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'>2026.03.13</td>
-        <td style='border-right:1px solid #000;'>對比的我和你</td>
+      <tr>
+        <td>2026.03.13</td>
+        <td>對比的我和你</td>
         <td>純(ジュン)</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;' rowspan='2'>2023.04.17</td>
-        <td style='border-right:1px solid #000;' rowspan='2'><a href='https://ja.wikipedia.org/wiki/%E9%BE%8D%E5%AE%AE%E5%9F%8E_(%E9%9F%B3%E6%A5%BD%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97)' target='_blank'>龍宮城</a></td>
-        <td style='border-right:1px solid #000;' rowspan='2'>冨田侑暉</td>
-        <td style='border-right:1px solid #000;'>2025.09.21</td>
-        <td style='border-right:1px solid #000;'>託生君_影集系列</td>
+      <tr>
+        <td rowspan='2'>2023.04.17</td>
+        <td rowspan='2'><a href='https://ja.wikipedia.org/wiki/%E9%BE%8D%E5%AE%AE%E5%9F%8E_(%E9%9F%B3%E6%A5%BD%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97)' target='_blank'>龍宮城</a></td>
+        <td rowspan='2'>冨田侑暉</td>
+        <td>2025.09.21</td>
+        <td>託生君_影集系列</td>
         <td>板見処</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'>2025.10.29</td>
-        <td style='border-right:1px solid #000;'>療傷遊戲</td>
+      <tr>
+        <td>2025.10.29</td>
+        <td>療傷遊戲</td>
         <td>生嶋静真</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'>2023.05.17</td>
-        <td style='border-right:1px solid #000;'><a href='https://zh.wikipedia.org/zh-tw/MAZZEL' target='_blank'>MAZZEL</a></td>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/NAOYA_(MAZZEL)' target='_blank'>NAOYA</a></td>
-        <td style='border-right:1px solid #000;'>2025.10.29</td>
-        <td style='border-right:1px solid #000;'>療傷遊戲</td>
+      <tr>
+        <td>2023.05.17</td>
+        <td><a href='https://zh.wikipedia.org/zh-tw/MAZZEL' target='_blank'>MAZZEL</a></td>
+        <td><a href='https://ja.wikipedia.org/wiki/NAOYA_(MAZZEL)' target='_blank'>NAOYA</a></td>
+        <td>2025.10.29</td>
+        <td>療傷遊戲</td>
         <td>三兎湊</td>
       </tr>
-      <tr class='purple-row'>
-        <td style='border-right:1px solid #000;'>2023.08.18</td>
-        <td style='border-right:1px solid #000;'><a href='https://zh.wikipedia.org/wiki/IMP.' target='_blank'>IMP.</a></td>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E6%96%B0' target='_blank'>佐藤新</a></td>
-        <td style='border-right:1px solid #000;'>2022.08.19</td>
-        <td style='border-right:1px solid #000;'>高良君和天城君</td>
+      <tr>
+        <td>2023.08.18</td>
+        <td><a href='https://zh.wikipedia.org/wiki/IMP.' target='_blank'>IMP.</a></td>
+        <td><a href='https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E6%96%B0' target='_blank'>佐藤新</a></td>
+        <td>2022.08.19</td>
+        <td>高良君和天城君</td>
         <td>高良瞬</td>
       </tr>
-      <tr class='blue-row'>
-        <td style='border-right:1px solid #000;'>2024.09.24</td>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/WAVE_(%E4%BF%B3%E5%84%AA%E3%83%A6%E3%83%8B%E3%83%83%E3%83%88)' target='_blank'>WAVE</a></td>
-        <td style='border-right:1px solid #000;'><a href='https://ja.wikipedia.org/wiki/%E4%BA%95%E5%86%85%E6%82%A0%E9%99%BD' target='_blank'>井内悠陽</a></td>
-        <td style='border-right:1px solid #000;'>2026.03.13</td>
-        <td style='border-right:1px solid #000;'>對比的我和你</td>
+      <tr>
+        <td>2024.09.24</td>
+        <td><a href='https://ja.wikipedia.org/wiki/WAVE_(%E4%BF%B3%E5%84%AA%E3%83%A6%E3%83%8B%E3%83%83%E3%83%88)' target='_blank'>WAVE</a></td>
+        <td><a href='https://ja.wikipedia.org/wiki/%E4%BA%95%E5%86%85%E6%82%A0%E9%99%BD' target='_blank'>井内悠陽</a></td>
+        <td>2026.03.13</td>
+        <td>對比的我和你</td>
         <td>青山翔太</td>
       </tr>
       </tbody>
@@ -929,31 +944,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // 初始化位置
   updatePosition();
-
-  // ===== 自動統計每個工作室作品數，只給名稱超連結 =====
-slides.forEach(slide => {
-  const title = slide.querySelector("h2");
-  if (!title) return;
-
-  const urlMap = {
-    "星塵遠征軍(スターダスト)": "https://zh.wikipedia.org/zh-tw/%E6%98%9F%E5%A1%B5%E5%82%B3%E6%92%AD",
-    "EXILE TRIBE": "https://zh.wikipedia.org/zh-tw/EXILE_TRIBE",
-    "小傑尼斯": "https://zh.wikipedia.org/wiki/%E5%B0%8F%E5%82%91%E5%B0%BC%E6%96%AF",
-  };
-
-  // 取出標題第一段（只抓團名）
-  const text = title.textContent.split("，")[0].trim();
-
-  const link = urlMap[text];
-
-  if (link) {
-    // 只替換「團名」為超連結，其餘文字完全保留
-    title.innerHTML = title.innerHTML.replace(
-      text,
-      `<a href="${link}" target="_blank">${text}</a>`
-    );
-  }
-});
 
   // ===== 生成點點 =====
   dotsContainer = document.getElementById("dots");
@@ -1027,6 +1017,114 @@ function updateDots() {
   dots[realIndex].classList.add("active");
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+    // 抓取所有的 Slide 區塊
+    const slides = document.querySelectorAll('.slide');
+
+    slides.forEach((slide) => {
+        const rows = slide.querySelectorAll('tbody tr');
+        let groupCounter = -1; 
+        
+        rows.forEach((row) => {
+            /**
+             * 核心邏輯：
+             * 在有 rowspan 的表格中，只有「第一列」會擁有「上映日期」或「特攝劇名」儲存格。
+             * 我們檢查 row.cells[0] 是否有特定的「rowspan」屬性，
+             * 或者根據您 HTML 的特性：新作品的第一列通常會包含「上映日期」。
+             */
+            
+            // 判斷這一行是否是「新作品的開始」
+            // 準則：如果這一行有大於 5 個儲存格 (完整列)，代表它不是被合併的殘缺列
+            const isNewSeries = row.cells.length > 5; 
+
+            if (isNewSeries) {
+                groupCounter++;
+            }
+
+            // 根據 groupCounter 的奇偶數決定填色
+            // 第 1 部 (index 0) -> blue-row
+            // 第 2 部 (index 1) -> purple-row
+            if (groupCounter % 2 === 0) {
+                row.classList.add('blue-row');
+            } else {
+                row.classList.add('purple-row');
+            }
+        });
+    });
+});
+
+
+// ===== 自動統計每個工作室作品數，並處理標題與連結 =====
+const allSlides = document.querySelectorAll('.slide');
+
+allSlides.forEach(slide => {
+  const title = slide.querySelector("h2");
+  if (!title) return;
+
+  // --- 1. 初始化統計容器 ---
+  const groupSet = new Set();
+  const actorSet = new Set();
+  const dramaSet = new Set();
+  
+  const rows = slide.querySelectorAll('tbody tr');
+
+  rows.forEach(row => {
+    const cells = row.cells;
+    const len = cells.length;
+
+    // 統計團體：新團體起點 (6格) 團體名稱在 cells[1]
+    if (len >= 6) {
+      const groupName = cells[1].textContent.trim();
+      if (groupName) groupSet.add(groupName);
+    }
+
+    // 統計演員：新團體起點 (6格) 在 cells[2]；同團體新演員 (4格) 在 cells[0]
+    let actorName = "";
+    if (len >= 6) {
+      actorName = cells[2].textContent.trim();
+    } else if (len === 4) {
+      actorName = cells[0].textContent.trim();
+    }
+    if (actorName) {
+      actorSet.add(actorName.replace(/\n/g, '').trim());
+    }
+
+    // 統計劇名：劇名固定在倒數第 2 格
+    if (len >= 2) {
+      const dramaName = cells[len - 2].textContent.trim();
+      if (dramaName && dramaName !== "BL劇名" && dramaName !== "劇名") {
+        dramaSet.add(dramaName);
+      }
+    }
+  });
+
+  // --- 2. 標題文字與連結處理 ---
+  const urlMap = {
+    "星塵遠征軍(スターダスト)": "https://zh.wikipedia.org/zh-tw/%E6%98%9F%E5%A1%B5%E5%82%B3%E6%92%AD",
+    "EXILE TRIBE": "https://zh.wikipedia.org/zh-tw/EXILE_TRIBE",
+    "小傑尼斯": "https://zh.wikipedia.org/wiki/%E5%B0%8F%E5%82%91%E5%B0%BC%E6%96%AF",
+  };
+
+  // 取得乾淨的團名 (使用正則同時排除逗號與括號後面的文字)
+  const originalText = title.textContent.split(/[，【]/)[0].trim();
+  const link = urlMap[originalText];
+
+  // --- 3. 判斷顯示格式 ---
+  let infoText = "";
+  if (originalText === "其他2") {
+    // 格式：【共 11 團／9 部】
+    infoText = `，共 ${groupSet.size} 團／${dramaSet.size} 部`;
+  } else {
+    // 格式：，共 X 團／Y 人／Z 部
+    infoText = `，共 ${groupSet.size} 團／${actorSet.size} 人／${dramaSet.size} 部`;
+  }
+
+  // 組合超連結 (如果有)
+  const displayTitle = link ? `<a href="${link}" target="_blank">${originalText}</a>` : originalText;
+
+  // 最後更新 HTML
+  title.innerHTML = displayTitle + infoText;
+});
 </script>
 
 </body>
