@@ -6,180 +6,130 @@
 <title>台灣BL劇4_依演員分類</title>
 
 <style>
+/* ============================================================
+   1. 變數與全域設定
+   ============================================================ */
 :root {
-  --main:#2563eb;
-  --main-dark:#1e40af;
-  --bg:linear-gradient(to right,#e6f2ff,#e6fce6);
-  --card:#ffffff;
-  --text:#111827;
-  --border:#e5e7eb;
-  --table-head:#f8fafc;
-  --even-year:#eef6ff;  
-  --odd-year:#f6f0ff;   
-  --link-main-dark:#93c5fd; /* 夜間模式連結顏色 */
+  --main: #2563eb;
+  --main-dark: #1e40af;
+  --bg: linear-gradient(to right, #e6f2ff, #e6fce6);
+  --card: #ffffff;
+  --text: #111827;
+  --border: #e5e7eb;
+  --table-head: #f8fafc;
+  --blue-row: #eef6ff;
+  --purple-row: #f6f0ff;
+  --link-main-dark: #93c5fd;
 }
 
 body {
-  margin:0;
-  font-family:"Segoe UI","Noto Sans TC","Noto Sans JP",sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  transition:0.3s;
+  margin: 0;
+  font-family: "Segoe UI", "Noto Sans TC", "Noto Sans JP", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
 }
 
 body.dark {
-  --bg: linear-gradient(to right,#0f172a,#111827);
+  --bg: linear-gradient(to right, #0f172a, #111827);
   --card: #1f2937;
   --text: #e0e7ff;
   --border: #374151;
   --table-head: #334155;
-  --even-year:#1e2c44;
-  --odd-year:#2a223b;
-  --link-main-dark:#80b3ff;
+  --blue-row: #1e2c44;
+  --purple-row: #2a223b;
+  --link-main-dark: #80b3ff;
 }
 
-/* Navbar 容器 */
+/* ============================================================
+   2. 導覽列與按鈕
+   ============================================================ */
 .navbar {
   position: sticky;
   top: 0;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(6px);
   padding: 10px 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   z-index: 10;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-/* 回目錄按鈕 */
-.navbar .home-link {
-  text-decoration: none;
-  color: #2563eb !important;
-  background-color: #ffffff !important;
-  border: 1px solid #2563eb !important;
-  padding: 4px 8px;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* 右側按鈕群 */
-.navbar .right-buttons {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.navbar .right-buttons a {
-  text-decoration: none;
-  color: #2563eb !important;
-  background-color: #ffffff !important;
-  border: 1px solid #2563eb !important;
-  padding: 4px 12px;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
+.navbar .home-link,
+.navbar .right-buttons a,
 .navbar .right-buttons button {
-  padding: 6px 12px;
+  text-decoration: none;
   border-radius: 8px;
-  border: 1px solid #2563eb;
-  background: var(--card);
-  color: var(--text);
-  cursor: pointer;
+  border: 1px solid var(--main);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   transition: 0.25s;
+  cursor: pointer;
 }
+
+.navbar .home-link,
+.navbar .right-buttons a {
+  color: var(--main) !important;
+  background-color: #ffffff !important;
+  border: 1px solid var(--main) !important;
+  padding: 4px 8px;
+}
+
+.navbar .right-buttons a { padding: 4px 12px; }
+.navbar .right-buttons { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.navbar .right-buttons button { padding: 6px 12px; background: var(--card); color: var(--text); }
 
 .navbar .home-link:hover,
-.navbar .right-buttons a:hover {
-  background-color: #1e40af !important;
-  color: white !important;
-  border-color: #1e40af !important;
-}
-
+.navbar .right-buttons a:hover,
 .navbar .right-buttons button:hover {
-  background-color: var(--main-dark);
-  color: white;
-  border-color: var(--main-dark);
+  background-color: var(--main-dark) !important;
+  color: white !important;
+  border-color: var(--main-dark) !important;
 }
 
-/* Layout */
+/* ============================================================
+   3. 頁面佈局與側邊欄
+   ============================================================ */
 .layout {
-  max-width:1600px;
-  margin:40px auto;
-  display:grid;
-  grid-template-columns:220px 1fr 220px;
-  gap:30px;
-  align-items:start;
+  max-width: 1600px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 220px 1fr 220px;
+  gap: 30px;
+  align-items: start;
 }
 
 .side {
-  background:var(--card);
-  border-radius:16px;
-  padding:20px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.08);
-  height:fit-content;
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  height: fit-content;
   color: var(--text);
 }
 
-.side h3 {
-  margin-top:0;
-  font-size:16px;
-  text-align:center;
-}
+.side h3 { margin-top: 0; font-size: 16px; text-align: center; }
+.side a { display: block; text-decoration: none; color: var(--main); margin: 8px 0; font-size: 14px; }
+.side a:hover { text-decoration: underline; color: var(--main-dark); }
 
-.side a {
-  display:block;
-  text-decoration:none;
-  color:var(--main);
-  margin:8px 0;
-  font-size:14px;
-}
+body.dark .side { color: #cbd5e1; }
+body.dark .side a { color: var(--link-main-dark); }
+body.dark .side a:hover { color: #ffffff; }
 
-.side a:hover {
-  text-decoration:underline;
-  color:var(--main-dark);
-}
-
-/* 左側深色模式 */
-body.dark .side.left {
-  color: #cbd5e1;
-}
-body.dark .side.left a {
-  color: #80b3ff;
-}
-body.dark .side.left a:hover {
-  color: #ffffff;
-}
-
-/* 右側深色模式 */
-body.dark .side.right {
-  color: #cbd5e1;
-}
-body.dark .side.right a {
-  color: #80b3ff;
-}
-body.dark .side.right a:hover {
-  color: #ffffff;
-}
-
-/* Content 區塊 */
+/* ============================================================
+   4. 內容區塊與文字排版
+   ============================================================ */
 .content {
-  background:var(--card);
-  padding:20px 30px;
-  border-radius:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  background: var(--card);
+  padding: 20px 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* 標題置中且支援深色模式反白 */
-.content h1,
-.content h2,
-.content h3 {
+.content h1, .content h2, .content h3 {
   text-align: center;
   color: var(--text);
   margin-top: 20px;
@@ -187,169 +137,75 @@ body.dark .side.right a:hover {
   font-weight: 600;
 }
 
-.content h1 {
-  font-size: 2rem;
-  margin-top: 0;
+.content h1 { font-size: 2rem; margin-top: 0; }
+
+.card-link.bold-black {
+  font-family: '黑體', 'Microsoft JhengHei', 'SimHei', sans-serif;
+  font-weight: 700;
+  background: none !important;
+  text-decoration: none !important;
+  cursor: default;
+  color: black !important;
 }
 
-/* 表格 */
-.table-wrapper {
-  overflow-x:auto;
-  margin-top:20px;
-  max-height:600px;
-  overflow-y:auto;
-}
+body.dark .card-link.bold-black { color: white !important; }
+.card-link .num { display: inline-block; text-align: right; margin-right: 6px; }
 
-table {
-  width:100%;
-  border-collapse:collapse;
-  min-width:900px;
-}
-
-th, td {
-  padding:8px;
-  text-align:left;
-  border-bottom:1px solid #000;
-}
+/* ============================================================
+   5. 資料表格 (包含深色模式支援)
+   ============================================================ */
+.table-wrapper { overflow: auto; margin-top: 20px; max-height: 600px; }
+table { width: 100%; border-collapse: collapse; min-width: 900px; }
+th, td { padding: 8px; text-align: left; border-bottom: 1px solid #000; }
 
 thead tr th {
-  background:var(--table-head);
+  background: var(--table-head);
   position: sticky;
   top: 0;
   z-index: 5;
   font-weight: 600;
   font-size: 0.9rem;
   border-bottom: 2px solid #000;
-  text-align:center;
-}
-
-/* 偶數、奇數列 */
-.even-year { background-color: var(--even-year); }
-.odd-year { background-color: var(--odd-year); }
-
-/* 所有加 class="center" 的 td 置中 */
-td.center {
   text-align: center;
 }
 
-/* 其他欄位靠左（確保沒有被覆蓋） */
-td:not(.center) {
-  text-align: left;
+table th:nth-child(1), table td:nth-child(1),
+table th:nth-child(2), table td:nth-child(2),
+table th:nth-child(4), table td:nth-child(4) { width: 100px; }
+table th:nth-child(3), table td:nth-child(3) { width: 300px; }
+
+td.center { text-align: center; border-right: 1px solid #000; }
+td:not(.center) { text-align: left; }
+
+.blue-row { background-color: var(--blue-row); }
+.purple-row { background-color: var(--purple-row); }
+
+table a { color: var(--main); text-decoration: underline; transition: 0.2s; }
+
+.content table tbody tr.blue-row:hover { background-color: var(--blue-row) !important; }
+.content table tbody tr.purple-row:hover { background-color: var(--purple-row) !important; }
+.content table tbody tr:hover td, .content table tbody tr:hover td a { color: inherit !important; text-decoration: none !important; }
+
+body.dark table, body.dark th, body.dark td { color: #dfe2f0; border-bottom: 1px solid #3a3f52; }
+body.dark thead tr th { background-color: #2c3340; color: #e0e7ff; border-bottom: 2px solid #475569; }
+body.dark .blue-row { background-color: #1e2a3b; }
+body.dark .purple-row { background-color: #2a223b; }
+body.dark table a { color: #93c5fd; }
+
+body.dark .link-boxes a { color: #80b3ff; border-color: #80b3ff; }
+body.dark .link-boxes a:hover { background-color: #4b6cb7; color: #ffffff; }
+
+body.dark td.center { border-right: 1px solid #3a3f52; }
+
+/* ============================================================
+   6. 響應式設定
+   ============================================================ */
+@media(max-width: 1200px) {
+  .layout { grid-template-columns: 1fr; }
+  .side { order: 2; }
+  .content { order: 1; }
+  .navbar a:first-child { margin-bottom: 5px; }
 }
-
-table th:nth-child(1),
-table td:nth-child(1) {
-  width: 100px;   /* 第1欄 */
-}
-
-
-table th:nth-child(2),
-table td:nth-child(2) {
-  width: 100px;   /* 第2欄 */
-}
-
-table th:nth-child(3),
-table td:nth-child(3) {
-  width: 300px;   /* 第3欄 */
-}
-
-table th:nth-child(4),
-table td:nth-child(4) {
-  width: 100px;   /* 第4欄 */
-}
-
-/* 淺色模式：黑體加粗，黑色文字，hover 不變 */
-.card-link.bold-black {
-  font-family: '黑體', 'Microsoft JhengHei', 'SimHei', sans-serif;
-  font-weight: 700;
-  color: black !important;        /* 保證文字黑色 */
-  background: none !important;
-  text-decoration: none !important;
-  cursor: default;
-}
-
-/* 深色模式：黑體加粗，白色文字，hover 不變 */
-body.dark .card-link.bold-black {
-  font-family: '黑體', 'Microsoft JhengHei', 'SimHei', sans-serif;
-  font-weight: 700;
-  color: white !important;        /* 強制白色文字 */
-  background: none !important;
-  text-decoration: none !important;
-  cursor: default;
-}
-
-/* 右邊對齊 */
-.card-link .num {
-  display: inline-block;
-  text-align: right;
-  margin-right: 6px;
-}
-
-/* 主表格 hover 保持原本背景 */
-.content table tbody tr.even-year:hover {
-  background-color: var(--even-year) !important;
-}
-
-.content table tbody tr.odd-year:hover {
-  background-color: var(--odd-year) !important;
-}
-
-/* 保持文字與連結顏色 */
-.content table tbody tr:hover td,
-.content table tbody tr:hover td a {
-  color: inherit !important;
-  text-decoration: none !important;
-}
-
-/* 深色模式表格優化 */
-body.dark table, body.dark th, body.dark td {
-  color: #dfe2f0;
-  border-bottom: 1px solid #3a3f52;
-}
-body.dark thead tr th {
-  background-color: #2c3340;
-  color: #e0e7ff;
-  border-bottom: 2px solid #475569;
-}
-body.dark .even-year { background-color: #1e2a3b; }
-body.dark .odd-year { background-color: #2a223b; }
-body.dark .link-boxes a { color:#80b3ff; border-color:#80b3ff; }
-body.dark .link-boxes a.ost { color:#d291ff; border-color:#d291ff; }
-body.dark .link-boxes a:hover { background-color:#4b6cb7; color:#ffffff; }
-body.dark .link-boxes a.ost:hover { background-color:#a564d1; color:#ffffff; }
-
-/* Media Query */
-@media(max-width:1200px){
-  .layout{
-    grid-template-columns:1fr;
-  }
-  .side{ order:2; }
-  .content{ order:1; }
-  .navbar a:first-child{ margin-bottom:5px; }
-}
-
-/* 表格偶奇列顏色（依照行號，不用 JS） */
-table tbody tr.even-year {
-  background-color: var(--even-year);
-}
-
-table tbody tr.odd-year {
-  background-color: var(--odd-year);
-}
-
-/* 表格內的超連結 */
-table a {
-  color: var(--main);
-  text-decoration: underline;
-  transition: 0.2s;
-}
-
-/* 深色模式連結保持亮色（反白） */
-body.dark table a {
-  color: #93c5fd;       /* 亮藍色，與深背景對比 */
-}
-
-
 </style>
 </head>
 <body>
@@ -381,7 +237,6 @@ body.dark table a {
     <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/TWBL1_Company.html">1. 依工作室分類</a>
     <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/TWBL2_IOT.html" >2. IOT模擬</a>
 	<br>
-	<br>
 	<hr class="divider"> 
     <a class="card-link bold-black">4. 依演員分類</a>
     <a class="card-link" href="https://www.dcard.tw/f/tvepisode/p/259107016" target="_blank">5. 依男團分類</a>
@@ -407,7 +262,7 @@ body.dark table a {
         </thead>
 <tbody>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E9%99%B3%E7%8E%B9%E5%AE%87' target='_blank'>陳玹宇</a></td>
+        <td class='center' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E9%99%B3%E7%8E%B9%E5%AE%87' target='_blank'>陳玹宇</a></td>
         <td>2017.05.10</td>
         <td>紅色氣球</td>
         <td>許洋</td>
@@ -418,7 +273,7 @@ body.dark table a {
         <td>劉歷</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='3'><a href='https://zh.wikipedia.org/wiki/%E7%9B%A7%E5%BD%A5%E6%BE%A4' target='_blank'>盧彥澤</a></td>
+        <td class='center' rowspan='3'><a href='https://zh.wikipedia.org/wiki/%E7%9B%A7%E5%BD%A5%E6%BE%A4' target='_blank'>盧彥澤</a></td>
         <td>2017.11.21</td>
         <td>深藍與月光</td>
         <td>游泳教練</td>
@@ -434,7 +289,7 @@ body.dark table a {
         <td>何進</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E5%8A%89%E9%9F%8B%E8%BE%B0_(%E6%BC%94%E5%93%A1)' target='_blank'>初孟軒</a></td>
+        <td class='center' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E5%8A%89%E9%9F%8B%E8%BE%B0_(%E6%BC%94%E5%93%A1)' target='_blank'>初孟軒</a></td>
         <td>2018.01.30</td>
         <td>是非</td>
         <td>周紹安</td>
@@ -445,7 +300,7 @@ body.dark table a {
         <td>陳皓維</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='3'><a href='https://zh.wikipedia.org/wiki/%E7%9F%B3%E6%89%BF%E6%B3%AB' target='_blank'>石承泫</a></td>
+        <td class='center' rowspan='3'><a href='https://zh.wikipedia.org/wiki/%E7%9F%B3%E6%89%BF%E6%B3%AB' target='_blank'>石承泫</a></td>
         <td>2019.10.16</td>
         <td>那一天</td>
         <td>高群</td>
@@ -461,7 +316,7 @@ body.dark table a {
         <td>傅理躬</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E5%8A%89%E9%9F%8B%E8%BE%B0_(%E6%BC%94%E5%93%A1)' target='_blank'>劉韋辰</a></td>
+        <td class='center' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E5%8A%89%E9%9F%8B%E8%BE%B0_(%E6%BC%94%E5%93%A1)' target='_blank'>劉韋辰</a></td>
         <td>2019.10.16</td>
         <td>那一天</td>
         <td>孫博翔</td>
@@ -472,7 +327,7 @@ body.dark table a {
         <td>Chris</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E5%BC%B5%E7%80%9A%E5%85%83' target='_blank'>張瀚元</a></td>
+        <td class='center' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E5%BC%B5%E7%80%9A%E5%85%83' target='_blank'>張瀚元</a></td>
         <td>2019.10.16</td>
         <td>那一天</td>
         <td>盧志剛</td>
@@ -483,7 +338,7 @@ body.dark table a {
         <td>黑道老大</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='2'>郭宇宸</td>
+        <td class='center' rowspan='2'>郭宇宸</td>
         <td>2020.02.14</td>
         <td>2020因為愛你</td>
         <td>楊翔實</td>
@@ -494,7 +349,7 @@ body.dark table a {
         <td>琯宇宸</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='3'>祐琋</td>
+        <td class='center' rowspan='3'>祐琋</td>
         <td>2020.10.15</td>
         <td>饞上你</td>
         <td>張柏融</td>
@@ -510,7 +365,7 @@ body.dark table a {
         <td>王靖</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='3'><a href='https://zh.wikipedia.org/wiki/%E6%9E%97%E5%AD%90%E9%96%8E' target='_blank'>林子閎</a></td>
+        <td class='center' rowspan='3'><a href='https://zh.wikipedia.org/wiki/%E6%9E%97%E5%AD%90%E9%96%8E' target='_blank'>林子閎</a></td>
         <td>2021.01.08</td>
         <td>永遠的第一名</td>
         <td>高仕德</td>
@@ -526,7 +381,7 @@ body.dark table a {
         <td>林祖源</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E5%AE%89%E4%BF%8A%E6%9C%8B' target='_blank'>安俊朋</a></td>
+        <td class='center' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E5%AE%89%E4%BF%8A%E6%9C%8B' target='_blank'>安俊朋</a></td>
         <td>2021.03.14</td>
         <td>近距離愛上你</td>
         <td>葉幸司</td>
@@ -537,7 +392,7 @@ body.dark table a {
         <td>季寰宇</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E6%9E%97%E5%98%89%E5%A8%81' target='_blank'>林嘉威</a></td>
+        <td class='center' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E6%9E%97%E5%98%89%E5%A8%81' target='_blank'>林嘉威</a></td>
         <td>2021.03.14</td>
         <td>近距離愛上你</td>
         <td>傅永傑</td>
@@ -548,7 +403,7 @@ body.dark table a {
         <td>詹文森</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E5%BB%96%E5%81%89%E5%8D%9A' target='_blank'>廖偉博</a></td>
+        <td class='center' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E5%BB%96%E5%81%89%E5%8D%9A' target='_blank'>廖偉博</a></td>
         <td>2021.05.20</td>
         <td>約·定</td>
         <td>言兆綱</td>
@@ -559,7 +414,7 @@ body.dark table a {
         <td>郭正宏</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='3'><a href='https://zh.wikipedia.org/wiki/%E4%BD%99%E6%9D%B0%E6%81%A9' target='_blank'>余杰恩</a></td>
+        <td class='center' rowspan='3'><a href='https://zh.wikipedia.org/wiki/%E4%BD%99%E6%9D%B0%E6%81%A9' target='_blank'>余杰恩</a></td>
         <td>2021.05.20</td>
         <td>約·定</td>
         <td>午思齊</td>
@@ -575,7 +430,7 @@ body.dark table a {
         <td>李宛哲</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='3'>李見騰</td>
+        <td class='center' rowspan='3'>李見騰</td>
         <td>2022.03.14</td>
         <td>基因決定我愛你</td>
         <td>謝見騰</td>
@@ -591,7 +446,7 @@ body.dark table a {
         <td>店長</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E6%A5%8A%E6%87%BF%E8%BB%92' target='_blank'>楊懿軒</a></td>
+        <td class='center' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E6%A5%8A%E6%87%BF%E8%BB%92' target='_blank'>楊懿軒</a></td>
         <td>2022.08.29</td>
         <td>默默的我，不默默的我們</td>
         <td>林翔</td>
@@ -602,7 +457,7 @@ body.dark table a {
         <td>江馳</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='2'>羅章恩</td>
+        <td class='center' rowspan='2'>羅章恩</td>
         <td>2022.08.29</td>
         <td>默默的我，不默默的我們</td>
         <td>小杰</td>
@@ -613,7 +468,7 @@ body.dark table a {
         <td>林賈騫</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='3'>鄭湋曄</td>
+        <td class='center' rowspan='3'>鄭湋曄</td>
         <td>2022.10.14</td>
         <td>我的牙想你</td>
         <td>高宇文</td>
@@ -629,7 +484,7 @@ body.dark table a {
         <td>齊家豪</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E9%87%91%E5%9C%A8%E5%8B%B3' target='_blank'>金在勳</a></td>
+        <td class='center' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E9%87%91%E5%9C%A8%E5%8B%B3' target='_blank'>金在勳</a></td>
         <td>2022.10.14</td>
         <td>我的牙想你</td>
         <td>葉其然</td>
@@ -640,7 +495,7 @@ body.dark table a {
         <td>譚于</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E5%BC%B5%E8%B1%90%E8%B1%AA' target='_blank'>張豐豪</a></td>
+        <td class='center' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E5%BC%B5%E8%B1%90%E8%B1%AA' target='_blank'>張豐豪</a></td>
         <td>2022.10.14</td>
         <td>我的牙想你</td>
         <td>何青畑</td>
@@ -651,7 +506,7 @@ body.dark table a {
         <td>Sea</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E5%BC%B5%E8%B1%90%E8%B1%AA' target='_blank'>吳岳擎</a></td>
+        <td class='center' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E5%BC%B5%E8%B1%90%E8%B1%AA' target='_blank'>吳岳擎</a></td>
         <td>2022.10.14</td>
         <td>我的牙想你</td>
         <td>白朗</td>
@@ -662,7 +517,7 @@ body.dark table a {
         <td>阿宏哥</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='3'><a href='https://zh.wikipedia.org/wiki/%E9%99%B3%E6%9F%8F%E6%96%87' target='_blank'>陳柏文</a></td>
+        <td class='center' rowspan='3'><a href='https://zh.wikipedia.org/wiki/%E9%99%B3%E6%9F%8F%E6%96%87' target='_blank'>陳柏文</a></td>
         <td>2023.08.22</td>
         <td>奇蹟 Kiseki</td>
         <td>陳毅</td>
@@ -678,7 +533,7 @@ body.dark table a {
         <td>禮儀師阿文</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E6%AF%9B%E7%A5%81%E7%94%9F' target='_blank'>毛祈生</a></td>
+        <td class='center' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E6%AF%9B%E7%A5%81%E7%94%9F' target='_blank'>毛祈生</a></td>
         <td>2023.09.15</td>
         <td>絕對佔領</td>
         <td>夏商舟</td>
@@ -689,7 +544,7 @@ body.dark table a {
         <td>唐篤知</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='2'><a href='https://zh.wikipedia.org/zh-tw/%E9%BB%83%E4%B8%9E%E9%82%A6' target='_blank'>黃丞邦</a></td>
+        <td class='center' rowspan='2'><a href='https://zh.wikipedia.org/zh-tw/%E9%BB%83%E4%B8%9E%E9%82%A6' target='_blank'>黃丞邦</a></td>
         <td>2023.11.24</td>
         <td>保留席位</td>
         <td>古勁</td>
@@ -700,7 +555,7 @@ body.dark table a {
         <td>史雨</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='3'><a href='https://zh.wikipedia.org/wiki/%E5%BC%B5%E6%A5%B7%E5%A5%95' target='_blank'>張楷奕</a></td>
+        <td class='center' rowspan='3'><a href='https://zh.wikipedia.org/wiki/%E5%BC%B5%E6%A5%B7%E5%A5%95' target='_blank'>張楷奕</a></td>
         <td>2024.02.24</td>
         <td>關於未知的我們</td>
         <td>阿虎</td>
@@ -716,7 +571,7 @@ body.dark table a {
         <td>陸玉樹</td>
       </tr>
       <tr>
-        <td class='center' style='border-right:1px solid #000;' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E5%8A%89%E9%9F%8B%E8%BE%B0_(%E6%BC%94%E5%93%A1)' target='_blank'>鍾岳軒</a></td>
+        <td class='center' rowspan='2'><a href='https://zh.wikipedia.org/wiki/%E5%8A%89%E9%9F%8B%E8%BE%B0_(%E6%BC%94%E5%93%A1)' target='_blank'>鍾岳軒</a></td>
         <td>2024.08.22</td>
         <td>某某</td>
         <td>徐天舒</td>
@@ -739,7 +594,6 @@ body.dark table a {
     <a class="card-link" href="https://www.dcard.tw/f/tvepisode/p/258441703" target="_blank"><span class="num">(上) </span>飛魚高校生	</a>
     <a class="card-link" href="https://www.dcard.tw/f/tvepisode/p/258698418" target="_blank"><span class="num">(中) </span>全明星運動會</a>
     <a class="card-link" href="https://www.dcard.tw/f/tvepisode/p/259107016" target="_blank"><span class="num">(下) </span>原子少年</a>
-	<br>
 	<br>
 	<br>
 	<hr class="divider"> 
@@ -774,12 +628,12 @@ window.addEventListener("DOMContentLoaded", () => {
     // 如果這一行有第一欄，表示新的 rowspan 組開始
     if (firstCell && firstCell.hasAttribute("rowspan")) {
       groupCount++; // 新組
-      currentColorClass = (groupCount % 2 === 0) ? "odd-year" : "even-year";
+      currentColorClass = (groupCount % 2 === 0) ? "purple-row" : "blue-row";
     }
 
     // 將整行每個 td 都套用當前顏色
     Array.from(row.cells).forEach(cell => {
-      cell.classList.remove("even-year", "odd-year");
+      cell.classList.remove("blue-row", "purple-row");
       cell.classList.add(currentColorClass);
     });
   });

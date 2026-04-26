@@ -6,151 +6,155 @@
 <title>日本BL劇6_依特攝分類</title>
 
 <style>
+/* ============================================================
+   1. 變數與全域設定 (Variables & Base)
+   ============================================================ */
 :root {
-  --main:#2563eb;
-  --main-dark:#1e40af;
-  --bg:linear-gradient(to right,#e6f2ff,#e6fce6);
-  --card:#ffffff;
-  --text:#111827;
-  --border:#e5e7eb;
-  --table-head:#f8fafc;
-  --even-year:#eef6ff;  
-  --odd-year:#f6f0ff;   
-  --link-main-dark:#93c5fd;
+  --main: #2563eb;
+  --main-dark: #1e40af;
+  --bg: linear-gradient(to right, #e6f2ff, #e6fce6);
+  --card: #ffffff;
+  --text: #111827;
+  --border: #e5e7eb;
+  --table-head: #f8fafc;
+  --blue-row: #eef6ff;
+  --purple-row: #f6f0ff;
+  --link-main-dark: #93c5fd;
 }
 
 body {
-  margin:0;
-  font-family:"Segoe UI","Noto Sans TC","Noto Sans JP",sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  transition:0.3s;
+  margin: 0;
+  font-family: "Segoe UI", "Noto Sans TC", "Noto Sans JP", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
 }
 
 body.dark {
-  --bg: linear-gradient(to right,#0f172a,#111827);
+  --bg: linear-gradient(to right, #0f172a, #111827);
   --card: #1f2937;
   --text: #e0e7ff;
   --border: #374151;
   --table-head: #334155;
-  --even-year:#1e2c44;
-  --odd-year:#2a223b;
-  --link-main-dark:#80b3ff;
+  --blue-row: #1e2c44;
+  --purple-row: #2a223b;
+  --link-main-dark: #80b3ff;
 }
 
-/* Navbar */
+/* ============================================================
+   2. 導覽列與按鈕 (Navbar & Buttons)
+   ============================================================ */
 .navbar {
   position: sticky;
   top: 0;
-  background: rgba(255,255,255,0.9);
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(6px);
   padding: 10px 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
+/* 統一導覽列按鈕樣式 */
 .navbar .home-link,
-.navbar .right-buttons a {
+.navbar .right-buttons a,
+.navbar .right-buttons button {
   text-decoration: none;
-  color: #2563eb !important;
-  background-color: #ffffff !important;
-  border: 1px solid #2563eb !important;
   padding: 4px 8px;
   border-radius: 8px;
+  border: 1px solid var(--main);
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.navbar .home-link,
+.navbar .right-buttons a {
+  color: var(--main) !important;
+  background-color: #fff !important;
 }
 
 .navbar .right-buttons {
   margin-left: auto;
   display: flex;
-  align-items: center;
   gap: 10px;
 }
 
 .navbar .right-buttons button {
   padding: 6px 12px;
-  border-radius: 8px;
-  border: 1px solid #2563eb;
   background: var(--card);
   color: var(--text);
-  cursor: pointer;
-  transition: 0.25s;
 }
 
+/* Hover 狀態合併 */
 .navbar .home-link:hover,
-.navbar .right-buttons a:hover {
-  background-color: #1e40af !important;
-  color: white !important;
-  border-color: #1e40af !important;
-}
-
+.navbar .right-buttons a:hover,
 .navbar .right-buttons button:hover {
-  background-color: var(--main-dark);
-  color: white;
-  border-color: var(--main-dark);
+  background-color: var(--main-dark) !important;
+  color: white !important;
+  border-color: var(--main-dark) !important;
 }
 
-/* Layout */
+/* ============================================================
+   3. 佈局與側邊欄 (Layout & Sidebars)
+   ============================================================ */
 .layout {
-  max-width:1600px;
-  margin:40px auto;
-  display:grid;
-  grid-template-columns:220px 1fr 220px;
-  gap:30px;
-  align-items:start;
+  max-width: 1600px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 220px 1fr 220px;
+  gap: 30px;
+  align-items: start;
 }
 
 .side {
-  background:var(--card);
-  border-radius:16px;
-  padding:20px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.08);
-  height:fit-content;
-  color: var(--text);
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  height: fit-content;
 }
 
-.side h3 { margin-top:0; font-size:16px; text-align:center; }
+.side h3 {
+  margin-top: 0;
+  font-size: 16px;
+  text-align: center;
+}
 
 .side a {
-  display:block;
-  text-decoration:none;
-  color:var(--main);
-  margin:8px 0;
-  font-size:14px;
+  display: block;
+  margin: 8px 0;
+  font-size: 14px;
+  text-decoration: none;
+  color: var(--main);
 }
 
-.side a:hover { text-decoration:underline; color:var(--main-dark); }
-
-/* 左右側深色模式 */
-body.dark .side.left,
-body.dark .side.right {
-  color: #cbd5e1;
-}
-body.dark .side.left a,
-body.dark .side.right a {
-  color: #80b3ff;
-}
-body.dark .side.left a:hover,
-body.dark .side.right a:hover {
-  color: #ffffff;
+.side a:hover {
+  text-decoration: underline;
+  color: var(--main-dark);
 }
 
-/* Content 區塊 */
+/* 深色模式側邊欄 */
+body.dark .side { color: #cbd5e1; }
+body.dark .side a { color: var(--link-main-dark); }
+body.dark .side a:hover { color: #ffffff; }
+
+/* ============================================================
+   4. 內容區與標題 (Content & Headings)
+   ============================================================ */
 .content {
   background: var(--card);
   padding: 20px 30px;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   min-width: 900px;
 }
 
-.content h1,
-.content h3 {
+.content h1, .content h2, .content h3 {
   text-align: center;
   color: var(--text);
   margin-top: 20px;
@@ -158,30 +162,35 @@ body.dark .side.right a:hover {
   font-weight: 600;
 }
 
-/* h2 標題（新增） */
-.content h2 {
-  text-align: center;
-  color: var(--text);
-  margin-top: 20px;
-  margin-bottom: 15px;
-  font-weight: 600;
-}
 .content h2 a { color: var(--main); text-decoration: underline; }
 body.dark .content h2 { color: #e0e7ff; }
-body.dark .content h2 a { color: #93c5fd; }
+body.dark .content h2 a { color: var(--link-main-dark); }
 
-/* 表格 */
-.table-wrapper { overflow-x:auto; margin-top:20px; max-height:600px; overflow-y:auto; }
-table { width:100%; border-collapse:collapse; min-width:900px;border: none; }
+/* 黑體加粗特殊樣式 */
+.card-link.bold-black {
+  font-family: '黑體', 'Microsoft JhengHei', sans-serif;
+  font-weight: 700;
+  color: black !important;
+  text-decoration: none !important;
+  cursor: default;
+}
+
+body.dark .card-link.bold-black { color: white !important; }
+
+/* ============================================================
+   5. 資料表格 (Tables)
+   ============================================================ */
+.table-wrapper { overflow: auto; margin-top: 20px; max-height: 600px; }
+table { width: 100%; border-collapse: collapse; min-width: 900px; border: none; }
 th, td { 
-  padding:8px; 
-  text-align:left; 
-  border-bottom:1px solid #000;
-  border-right: 1px solid #000;
+  padding: 8px; 
+  text-align: left; 
+  border-bottom: 1px solid #000; 
+  border-right: 1px solid #000; 
 }
 
 thead tr th {
-  background:var(--table-head);
+  background: var(--table-head);
   position: sticky;
   top: 0;
   z-index: 5;
@@ -190,37 +199,19 @@ thead tr th {
   border-bottom: 2px solid #000;
   border-right: none; 
   border-left: none;
-  text-align:center;
+  text-align: center;
 }
 
-/* 關鍵修正：移除每一行最後一個單元格的右邊框，避免出現最外層右框線 */
-th:last-child, td:last-child {
-  border-right: none;
-}
+/* 移除每一行最後一個單元格的右邊框 */
+th:last-child, td:last-child { border-right: none; }
 
-.blue-row {
-  background-color: var(--even-year);
-}
-
-.purple-row {
-  background-color: var(--odd-year);
-}
-
+/* 背景色類別合併 (讓語義化 class 與原本的 year class 共用相同變數) */
+.blue-row { background-color: var(--blue-row); }
+.purple-row { background-color: var(--purple-row); }
 td.center { text-align: center; }
 
-td:not(.center) { text-align: left; }
 table a { color: var(--main); text-decoration: underline; transition: 0.2s; }
-body.dark table a { color: #93c5fd; }
-.content table tbody tr:hover td,
-.content table tbody tr:hover td a { color: inherit !important; text-decoration: none !important; }
-body.dark table, body.dark th, body.dark td { color: #dfe2f0; border-bottom: 1px solid #3a3f52; border-right: 1px solid #3a3f52;}
-body.dark th:last-child, 
-body.dark td:last-child {
-  border-right: none;
-}
-body.dark thead tr th { background-color: #2c3340; color: #e0e7ff; border-bottom: 2px solid #475569; border-right: none;}
-body.dark .even-year { background-color: #1e2a3b; }
-body.dark .odd-year { background-color: #2a223b; }
+.content table tbody tr:hover td { color: inherit !important; }
 
 /* 日期（短） */
 table th:nth-child(1),
@@ -256,22 +247,44 @@ table td:nth-child(7){
   width: 200px;
 }
 
-/* Card Link 黑體加粗 */
-.card-link.bold-black {
-  font-family: '黑體', 'Microsoft JhengHei', 'SimHei', sans-serif;
-  font-weight: 700;
-  color: black !important;
-  background: none !important;
-  text-decoration: none !important;
-  cursor: default;
+/* 深色模式表格修正 */
+body.dark table, body.dark th, body.dark td { 
+  color: #dfe2f0; 
+  border-bottom: 1px solid #3a3f52; 
+  border-right: 1px solid #3a3f52; 
 }
-body.dark .card-link.bold-black { color: white !important; }
 
-/* Slider */
+body.dark th:last-child,
+body.dark td:last-child {
+  border-right: none;
+}
+
+body.dark thead th {
+  background-color: #2c3340;
+  border-bottom: 2px solid #475569;
+  border-right: none;
+}
+
+body.dark .blue-row {
+  background-color: #1e2a3b;
+}
+
+body.dark .purple-row {
+  background-color: #2a223b;
+}
+
+body.dark table a {
+  color: var(--link-main-dark);
+}
+
+/* ============================================================
+   6. 輪播組件與點 (Slider & Dots)
+   ============================================================ */
 .slider { position: relative; width: 100%; margin-top: 20px; }
 .slider-window { overflow: hidden; }
 .slider-track { display: flex; transition: transform 0.4s ease; }
 .slide { min-width: 100%; text-align: center; }
+
 .nav {
   position: absolute;
   top: 50%;
@@ -289,23 +302,8 @@ body.dark .card-link.bold-black { color: white !important; }
 .prev { left: -50px; }
 .next { right: -50px; }
 .nav:hover { background: var(--main); color: white; border-color: var(--main); }
-body.dark .nav { background: #1f2937; color: #e0e7ff; border: 1px solid #374151; }
-body.dark .nav:hover { background: #3b82f6; color: #ffffff; border-color: #3b82f6; }
 
-/* Media Query */
-@media(max-width:1200px){
-  .layout{ grid-template-columns:1fr; }
-  .side{ order:2; }
-  .content{ order:1; }
-  .navbar a:first-child{ margin-bottom:5px; }
-}
-
-/* dots 分頁 */
-.dots {
-  text-align: center;
-  margin-top: 15px;
-}
-
+.dots { text-align: center; margin-top: 15px; }
 .dots span {
   display: inline-block;
   width: 10px;
@@ -316,20 +314,21 @@ body.dark .nav:hover { background: #3b82f6; color: #ffffff; border-color: #3b82f
   cursor: pointer;
   transition: 0.3s;
 }
+.dots span.active { background: var(--main); transform: scale(1.2); }
 
-.dots span.active {
-  background: var(--main);
-  transform: scale(1.2);
+body.dark .nav { background: #1f2937; border-color: #374151; }
+body.dark .dots span { background: #475569; }
+body.dark .dots span.active { background: var(--link-main-dark); }
+
+/* ============================================================
+   7. 響應式佈局 (Media Queries)
+   ============================================================ */
+@media(max-width:1200px){
+  .layout { grid-template-columns: 1fr; }
+  .side { order: 2; }
+  .content { order: 1; min-width: unset; }
+  .navbar a:first-child { margin-bottom: 5px; }
 }
-
-body.dark .dots span {
-  background: #475569;
-}
-
-body.dark .dots span.active {
-  background: #93c5fd;
-}
-
 </style>
 </head>
 <body>
@@ -359,8 +358,7 @@ body.dark .dots span.active {
     <h3>📂巴比恩整理區</h3>
     <hr />
     <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL1_Company.html" >1. 依電視台分類</a>
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL2_Others1.html" >2_1. 其他分類1</a>
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL2_Others2.html" >2_2. 其他分類2</a>
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL2_Others.html" >2. 其他分類</a>
     <br>
 	<hr class="divider"> 
     <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL4_Actors.html" >4. 依演員分類</a>
@@ -807,15 +805,6 @@ body.dark .dots span.active {
       <tbody>
         <!-- 【超人力霸王】的資料請放這裡 -->
       <tr>
-        <td>上映日期</td>
-        <td>劇名</td>
-        <td>演員</td>
-        <td>特攝角色名稱</td>
-        <td>BL上映日期</td>
-        <td>BL劇名</td>
-        <td>BL角色名稱</td>
-      </tr>
-      <tr>
         <td rowspan='3'>2013.07.10</td>
         <td rowspan='3'><a href='https://zh.wikipedia.org/wiki/%E8%B6%85%E4%BA%BA%E5%8A%9B%E9%9C%B8%E7%8E%8B%E9%8A%80%E6%B2%B3' target='_blank'>超人力霸王銀河</a></td>
         <td rowspan='3'><a href='https://ja.wikipedia.org/wiki/%E8%8D%89%E5%B7%9D%E6%8B%93%E5%BC%A5' target='_blank'>草川拓弥</a></td>
@@ -1225,7 +1214,6 @@ body.dark .dots span.active {
 	<br>
 	<br>
 	<br>
-	<br>
 	<hr class="divider"> 
 	<br>
 	<br>
@@ -1235,144 +1223,85 @@ body.dark .dots span.active {
 </div>
 
 <script>
-// 🌙 深色模式
-function toggleDark() {
-  document.body.classList.toggle("dark");
-  
-  const darkBtn = document.getElementById("darkBtn");
-  if (document.body.classList.contains("dark")) {
-    darkBtn.textContent = "☀️ 日間模式";
-  } else {
-    darkBtn.textContent = "🌙 夜間模式";
-  }
-}
+// [01] 畫面深淺模式切換
+const toggleDark = () => {
+  const isDark = document.body.classList.toggle("dark");
+  document.getElementById("darkBtn").textContent = isDark ? "☀️ 日間模式" : "🌙 夜間模式";
+};
 
-// ===== Slider（循環版 + 點點同步 + 點點瞬移） =====
-let currentIndex = 1; // ⭐ 從第1張開始（因為有 clone）
+// [02] 輪播圖初始化與表格樣式處理
+let currentIndex = 1;
 let isAnimating = false;
-let dotsContainer;
+const track = document.getElementById("track");
 
 window.addEventListener("DOMContentLoaded", () => {
-  const track = document.getElementById("track");
   const slides = document.querySelectorAll("#track .slide");
-  const realCount = slides.length; // 真正 slide 數量
+  const realCount = slides.length;
+  const dotsContainer = document.getElementById("dots");
 
-  // ⭐ clone 第一張 & 最後一張
-  const firstClone = slides[0].cloneNode(true);
-  const lastClone = slides[slides.length - 1].cloneNode(true);
-  track.appendChild(firstClone);
-  track.insertBefore(lastClone, slides[0]);
+  // 1. 無縫循環：複製首尾節點
+  track.appendChild(slides[0].cloneNode(true));
+  track.insertBefore(slides[realCount - 1].cloneNode(true), slides[0]);
 
-  // 初始化位置
-  updatePosition();
+  // 2. 遍歷 Slide 同時完成「表格隔行變色」與「導覽點生成」
+  slides.forEach((slide, i) => {
+    // 處理表格變色邏輯
+    const rows = slide.querySelectorAll("tbody tr");
+    let groupCounter = -1;
 
-  // ===== 生成點點 =====
-  dotsContainer = document.getElementById("dots");
-  for (let i = 0; i < realCount; i++) {
+    rows.forEach((row) => {
+      // 判斷是否為新作品起點 (儲存格數 > 5)
+      if (row.cells.length > 5) groupCounter++;
+      row.classList.add(groupCounter % 2 === 0 ? "blue-row" : "purple-row");
+    });
+
+    // 生成分頁導覽點
     const dot = document.createElement("span");
-    dot.addEventListener("click", () => {
-      // 點點瞬移
-      currentIndex = i + 1; // +1 因為有 clone
-      track.style.transition = "none"; // ⭐ 瞬移
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
-      updateDots(); // ⭐ 點點立刻亮
-    });
+    dot.onclick = () => {
+      currentIndex = i + 1;
+      track.style.transition = "none";
+      updateUI();
+    };
     dotsContainer.appendChild(dot);
-  }
+  });
 
-  updateDots();
+  updateUI();
 });
 
-// ===== 左右按鈕滑動 =====
-function moveSlide(direction) {
+// [03] 輪播動畫控制與循環校正
+const moveSlide = (direction) => {
   if (isAnimating) return;
-
-  const track = document.getElementById("track");
-  const allSlides = document.querySelectorAll(".slide");
-
   isAnimating = true;
-  currentIndex += direction;
 
+  currentIndex += direction;
   track.style.transition = "transform 0.45s cubic-bezier(0.22,1,0.36,1)";
+  updateUI();
+
+  track.addEventListener("transitionend", function onEnd() {
+    track.removeEventListener("transitionend", onEnd);
+    const totalSlides = track.children.length;
+
+    // 無縫跳轉處理
+    if (currentIndex === totalSlides - 1) currentIndex = 1;
+    else if (currentIndex === 0) currentIndex = totalSlides - 2;
+
+    track.style.transition = "none";
+    updateUI();
+    isAnimating = false;
+  });
+};
+
+// [04] 介面更新工具 (同步位置與導覽點狀態)
+function updateUI() {
+  const dots = document.querySelectorAll(".dots span");
   track.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-  // 動畫結束後更新點點
-  track.addEventListener("transitionend", onTransitionEnd);
-
-  function onTransitionEnd() {
-    track.removeEventListener("transitionend", onTransitionEnd);
-
-    // 處理 clone 無縫循環
-    if (currentIndex === allSlides.length - 1) {
-      track.style.transition = "none";
-      currentIndex = 1;
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
-    } else if (currentIndex === 0) {
-      track.style.transition = "none";
-      currentIndex = allSlides.length - 2;
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
-
-    updateDots(); // ⭐ 動畫結束後才更新點點
-    isAnimating = false;
+  if (dots.length) {
+    dots.forEach(dot => dot.classList.remove("active"));
+    const realIndex = (currentIndex - 1 + dots.length) % dots.length;
+    dots[realIndex].classList.add("active");
   }
 }
-
-// ===== 更新 slide 位置（初始化用） =====
-function updatePosition() {
-  const track = document.getElementById("track");
-  track.style.transform = `translateX(-${currentIndex * 100}%)`;
-}
-
-// ===== 更新點點亮起 =====
-function updateDots() {
-  const dots = document.querySelectorAll(".dots span");
-  const total = dots.length;
-
-  dots.forEach(dot => dot.classList.remove("active"));
-
-  let realIndex = currentIndex - 1; // ⭐ 扣掉 clone
-  if (realIndex < 0) realIndex = total - 1;
-  if (realIndex >= total) realIndex = 0;
-
-  dots[realIndex].classList.add("active");
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-    // 抓取所有的 Slide 區塊
-    const slides = document.querySelectorAll('.slide');
-
-    slides.forEach((slide) => {
-        const rows = slide.querySelectorAll('tbody tr');
-        let groupCounter = -1; 
-        
-        rows.forEach((row) => {
-            /**
-             * 核心邏輯：
-             * 在有 rowspan 的表格中，只有「第一列」會擁有「上映日期」或「特攝劇名」儲存格。
-             * 我們檢查 row.cells[0] 是否有特定的「rowspan」屬性，
-             * 或者根據您 HTML 的特性：新作品的第一列通常會包含「上映日期」。
-             */
-            
-            // 判斷這一行是否是「新作品的開始」
-            // 準則：如果這一行有大於 5 個儲存格 (完整列)，代表它不是被合併的殘缺列
-            const isNewSeries = row.cells.length > 5; 
-
-            if (isNewSeries) {
-                groupCounter++;
-            }
-
-            // 根據 groupCounter 的奇偶數決定填色
-            // 第 1 部 (index 0) -> blue-row
-            // 第 2 部 (index 1) -> purple-row
-            if (groupCounter % 2 === 0) {
-                row.classList.add('blue-row');
-            } else {
-                row.classList.add('purple-row');
-            }
-        });
-    });
-});
 </script>
 
 </body>

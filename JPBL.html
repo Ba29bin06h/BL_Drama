@@ -6,57 +6,62 @@
 <title>日本BL劇</title>
 
 <style>
-:root{
-  --main:#2563eb;
-  --main-dark:#1e40af;
-  --bg:linear-gradient(to right,#e6f2ff,#e6fce6);
-  --card:#ffffff;
-  --text:#111827;
-  --border:#e5e7eb;
-  --table-head:#f8fafc;
-  --even-year:#eef6ff;  
-  --odd-year:#f6f0ff;   
-  --link-main-dark:#93c5fd; /* 夜間模式連結顏色 */
+/* ============================================================
+   1. 全域變數與基礎設定
+   ============================================================ */
+:root {
+  --main: #2563eb;
+  --main-dark: #1e40af;
+  --bg: linear-gradient(to right, #e6f2ff, #e6fce6);
+  --card: #ffffff;
+  --text: #111827;
+  --border: #e5e7eb;
+  --table-head: #f8fafc;
+  --even-year: #eef6ff;
+  --odd-year: #f6f0ff;
+  --link-main-dark: #93c5fd;
 }
 
-body{
-  margin:0;
-  font-family:"Segoe UI","Noto Sans TC","Noto Sans JP",sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  transition:0.3s;
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Noto Sans TC", "Noto Sans JP", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
 }
 
-body.dark{
-  --bg: linear-gradient(to right,#0f172a,#111827);
+body.dark {
+  --bg: linear-gradient(to right, #0f172a, #111827);
   --card: #1f2937;
   --text: #e0e7ff;
   --border: #374151;
   --table-head: #334155;
-  --even-year:#1e2c44; /* 深色模式偶數行：柔和藍灰 */
-  --odd-year:#2a223b;  /* 深色模式奇數行：柔和紫灰 */
-  --link-main-dark:#80b3ff;
+  --even-year: #1e2c44;
+  --odd-year: #2a223b;
+  --link-main-dark: #80b3ff;
 }
 
-/* Navbar 容器 */
+/* ============================================================
+   2. 導覽列與按鈕 (Navbar & Buttons)
+   ============================================================ */
 .navbar {
   position: sticky;
   top: 0;
-  background: rgba(255,255,255,0.9);
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(6px);
   padding: 10px 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-/* 回目錄按鈕 (靠左) */
-.navbar .home-link {
+.navbar .home-link,
+.navbar .right-buttons a {
   text-decoration: none;
-  color: #2563eb !important;             /* 藍色文字固定 */
-  background-color: #ffffff !important;  /* 白底 */
+  color: #2563eb !important;
+  background-color: #fff !important;
   border: 1px solid #2563eb !important;
   padding: 4px 8px;
   border-radius: 8px;
@@ -65,293 +70,216 @@ body.dark{
   gap: 4px;
 }
 
-/* 右側按鈕群 (Dcard + 夜間模式) */
 .navbar .right-buttons {
-  margin-left: auto;  /* 推到最右 */
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-/* Dcard 按鈕 (樣式同回目錄) */
 .navbar .right-buttons a {
-  text-decoration: none;
-  color: #2563eb !important;
-  background-color: #ffffff !important;
-  border: 1px solid #2563eb !important;
-  padding: 4px 12px;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+    padding: 4px 12px;
 }
 
-/* 夜間模式按鈕 */
 .navbar .right-buttons button {
   padding: 6px 12px;
   border-radius: 8px;
-  border: 1px solid #2563eb;
+  border: 1px solid var(--main);
   background: var(--card);
   color: var(--text);
   cursor: pointer;
   transition: 0.25s;
 }
 
-/* hover 效果 (回目錄 + Dcard) */
 .navbar .home-link:hover,
 .navbar .right-buttons a:hover {
-  background-color: #1e40af !important; /* 深藍底 */
-  color: white !important;               /* 白字 */
-  border-color: #1e40af !important;
+  background-color: var(--main-dark) !important;
+  color: #fff !important;
+  border-color: var(--main-dark) !important;
 }
 
-/* 夜間模式按鈕 hover */
 .navbar .right-buttons button:hover {
   background-color: var(--main-dark);
-  color: white;
+  color: #fff;
   border-color: var(--main-dark);
 }
 
-
-/* Layout */
-.layout{
-  max-width:1600px;
-  margin:40px auto;
-  display:grid;
-  grid-template-columns:220px 1fr 220px;
-  gap:30px;
-  align-items:start;
+/* ============================================================
+   3. 主要佈局與側邊欄 (Layout & Sidebars)
+   ============================================================ */
+.layout {
+  max-width: 1600px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 220px 1fr 220px;
+  gap: 30px;
+  align-items: start;
 }
 
-.side{
-  background:var(--card);
-  border-radius:16px;
-  padding:20px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.08);
-  height:fit-content;
+.side {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  height: fit-content;
   color: var(--text);
 }
 
-.side h3{
-  margin-top:0;
-  font-size:16px;
-  text-align:center;
+.side h3 {
+  margin-top: 0;
+  font-size: 16px;
+  text-align: center;
 }
 
-.side a{
-  display:block;
-  text-decoration:none;
-  color:var(--main);
-  margin:8px 0;
-  font-size:14px;
+.side a {
+  display: block;
+  text-decoration: none;
+  color: var(--main);
+  margin: 8px 0;
+  font-size: 14px;
 }
 
-.side a:hover{
-  text-decoration:underline;
-  color:var(--main-dark);
+.side a:hover {
+  text-decoration: underline;
+  color: var(--main-dark);
 }
 
-/* 左側欄深色模式 */
-body.dark .side.left {
+body.dark .side {
   color: #cbd5e1;
 }
 
-body.dark .side.left a {
-  color: #80b3ff;  /* 柔和藍 */
-}
-
-body.dark .side.left a:hover {
-  color: #ffffff;
-}
-
-/* 右側欄深色模式 */
-body.dark .side.right {
-  color: #cbd5e1;
-}
-
-body.dark .side.right a {
+body.dark .side a {
   color: #80b3ff;
 }
 
-body.dark .side.right a:hover {
-  color: #ffffff;
+body.dark .side a:hover {
+  color: #fff;
 }
 
-.content{
-  background:var(--card);
-  padding:20px 30px;
-  border-radius:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+/* ============================================================
+   4. 內容區塊與表格 (Content & Table)
+   ============================================================ */
+.content {
+  background: var(--card);
+  padding: 20px 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-h1{
-  text-align:center;
-  margin-bottom:10px;
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
 }
 
-h2{
-  margin-top:30px;
+h2 {
+    margin-top: 30px;
 }
 
-/* 表格 */
-.table-wrapper{
-  overflow-x:auto;
-  margin-top:20px;
-  max-height:600px;
-  overflow-y:auto;
+.table-wrapper {
+  overflow: auto;
+  margin-top: 20px;
+  max-height: 600px;
 }
 
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:900px;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
 }
 
-/* 表格文字與邊線 */
-th, td{
-  padding:8px;
-  text-align:left;
-  border-bottom:1px solid #000;
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #000;
 }
 
 thead tr th {
-  background:var(--table-head);
+  background: var(--table-head);
   position: sticky;
   top: 0;
   z-index: 5;
   font-weight: 600;
   font-size: 0.9rem;
   border-bottom: 2px solid #000;
+  text-align: center;
 }
 
-/* 偶數、奇數列 */
 .even-year { background-color: var(--even-year); }
 .odd-year { background-color: var(--odd-year); }
 
-thead th{
-  text-align: center;
-}
-
-/* 指定列寬 */
-th:nth-child(1), td:nth-child(1) {
-  min-width:90px;
-  width:90px;
-  text-align:left;
-}
-
-thead tr th:nth-child(1) {
-  text-align: center;
-}
-
+/* 特定欄位寬度與對齊 */
+th:nth-child(1), td:nth-child(1) { min-width: 90px; width: 90px; }
 th:nth-child(5), td:nth-child(5),
 th:nth-child(6), td:nth-child(6),
-th:nth-child(7), td:nth-child(7){
-  min-width:60px;
-  width:60px;
-  text-align:center;
+th:nth-child(7), td:nth-child(7) {
+  min-width: 60px;
+  width: 60px;
+  text-align: center;
 }
 
-/*右邊對齊*/
-.card-link {
-  display: block;
-}
+.card-link { display: block; }
+.card-link .num { display: inline-block; text-align: right; margin-right: 6px; }
 
-.card-link .num {
+/* ============================================================
+   5. 連結組件 (Link Boxes)
+   ============================================================ */
+.link-boxes { display: flex; align-items: center; gap: 6px; }
+
+.link-boxes a {
   display: inline-block;
-  
-  text-align: right;  /* 讓括號靠右更整齊 */
-  margin-right: 6px;
-}
-
-
-/* 連結盒子 */
-.link-boxes{
-  display:flex;
-  align-items:center;
-  gap:6px;
-}
-
-.link-boxes a{
-  display:inline-block;   /* 讓 width 生效 */
-  width:15px;             /* 所有按鈕固定寬度 */
-  height:15px;
-  padding:4px 6px;
-  font-size:0.75rem;
-  border:1px solid var(--main);
-  border-radius:4px;
-  text-align:center;
-  white-space:nowrap;
-  transition:0.2s;
+  width: 15px;
+  height: 15px;
+  padding: 4px 6px;
+  font-size: 0.75rem;
+  border: 1px solid var(--main);
+  border-radius: 4px;
+  text-align: center;
+  white-space: nowrap;
+  transition: 0.2s;
   color: var(--main);
+  text-decoration: none;
 }
 
-.link-boxes a.ost{
-  border-color:var(--ost-color);
-  color:var(--ost-color);
+.link-boxes a:hover {
+  color: #fff;
+  background-color: var(--main-dark);
+  border-color: var(--main-dark);
 }
 
-.link-boxes a:hover{
-  color:white;
-  background-color:var(--main-dark);
-  border-color:var(--main-dark);
-}
-
-
-/* 移除 hover 變色 */
-tbody tr:hover td {
-  background-color: inherit;
-}
-
-/* 深色模式表格優化 */
-body.dark table, body.dark th, body.dark td {
-  color: #dfe2f0;  /* 柔和文字 */
-  border-bottom: 1px solid #3a3f52; /* 柔和邊線 */
+/* ============================================================
+   6. 深色模式細節優化 (Dark Mode Refinement)
+   ============================================================ */
+body.dark table,
+body.dark th,
+body.dark td {
+    color: #dfe2f0;
+    border-bottom: 1px solid #3a3f52;
 }
 
 body.dark thead tr th {
-  background-color: #2c3340; /* 表頭柔和深色 */
-  color: #e0e7ff;
-  border-bottom: 2px solid #475569;
-}
-
-body.dark .even-year {
-  background-color: #1e2a3b; /* 深藍灰 */
-}
-
-body.dark .odd-year {
-  background-color: #2a223b; /* 深紫灰 */
+    background-color: #2c3340;
+    color: #e0e7ff;
+    border-bottom: 2px solid #475569;
 }
 
 body.dark .link-boxes a {
-  color: #80b3ff;  /* 柔和藍 */
-  border-color: #80b3ff;
-}
-
-body.dark .link-boxes a.ost {
-  color: #d291ff;  /* 柔和紫粉 */
-  border-color: #d291ff;
+    color: #80b3ff;
+    border-color: #80b3ff;
 }
 
 body.dark .link-boxes a:hover {
-  background-color: #4b6cb7; /* 深藍 hover */
-  color: #ffffff;
+    background-color: #4b6cb7;
+    color: #fff;
 }
 
-body.dark .link-boxes a.ost:hover {
-  background-color: #a564d1; /* 紫色 hover */
-  color: #ffffff;
-}
-
-/* Media Query */
-@media(max-width:1200px){
-  .layout{
-    grid-template-columns:1fr;
-  }
-  .side{ order:2; }
-  .content{ order:1; }
-  .navbar a:first-child{
-    margin-bottom:5px;
-  }
+/* ============================================================
+   7. 響應式設計 (Media Queries)
+   ============================================================ */
+@media (max-width: 1200px) {
+  .layout { grid-template-columns: 1fr; }
+  .side { order: 2; }
+  .content { order: 1; }
+  .navbar a:first-child { margin-bottom: 5px; }
 }
 </style>
 </head>
@@ -379,8 +307,7 @@ body.dark .link-boxes a.ost:hover {
     <h3>📂巴比恩整理區</h3>
     <hr />
     <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL1_Company.html">1. 依電視台分類</a>
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL2_Others1.html" >2_1. 其他分類1</a>
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL2_Others2.html" >2_2. 其他分類2</a>
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL2_Others.html" >2. 其他分類</a>
     <br>
 	<hr class="divider"> 
     <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL4_Actors.html" >4. 依演員分類</a>
@@ -1571,7 +1498,6 @@ body.dark .link-boxes a.ost:hover {
   <aside class="side right">
 	<h3>📂巴比恩文章</h3>
     <hr />
-	<br>
 	<br>
 	<br>
 	<br>

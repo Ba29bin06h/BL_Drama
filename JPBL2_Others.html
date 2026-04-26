@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>日本BL劇2_其他分類</title>
+
+<style>
+/* ============================================================
+   1. 全域變數與基礎設定
+   ============================================================ */
+:root {
+  --main: #2563eb;
+  --main-dark: #1e40af;
+  --bg: linear-gradient(to right, #e6f2ff, #e6fce6);
+  --card: #ffffff;
+  --text: #111827;
+  --border: #e5e7eb;
+  --table-head: #f8fafc;
+  --row-blue: #eef6ff;
+  --row-purple: #f6f0ff;
+  --row-green: #f1fbf4;
+  --link-main-dark: #93c5fd;
+  --table-border: #000000;
+}
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Noto Sans TC", "Noto Sans JP", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
+}
+body.dark {
+  --bg: linear-gradient(to right, #0f172a, #111827);
+  --card: #1f2937;
+  --text: #e0e7ff;
+  --border: #374151;
+  --table-head: #334155;
+  --row-blue: #1e2c44;
+  --row-purple: #2a223b;
+  --row-green: #1e3a2f;
+  --link-main-dark: #80b3ff;
+  --table-border: #3a3f52;
+}
+
+/* ============================================================
+   2. 導覽列與按鈕元件
+   ============================================================ */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px);
+  padding: 10px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.navbar .home-link,
+.navbar .right-buttons a,
+.navbar .right-buttons button {
+  text-decoration: none;
+  border-radius: 8px;
+  border: 1px solid var(--main);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: 0.25s;
+}
+.navbar .home-link, 
+.navbar .right-buttons a {
+  color: var(--main) !important;
+  background-color: #ffffff !important;
+  padding: 4px 8px;
+}
+.navbar .right-buttons { 
+  margin-left: auto; 
+  display: flex; 
+  gap: 10px; 
+}
+.navbar .right-buttons button { 
+  padding: 6px 12px; 
+  background: var(--card); 
+  color: var(--text); 
+  cursor: pointer; 
+}
+.navbar .home-link:hover,
+.navbar .right-buttons a:hover,
+.navbar .right-buttons button:hover {
+  background-color: var(--main-dark) !important;
+  color: #ffffff !important;
+  border-color: var(--main-dark) !important;
+}
+
+/* ============================================================
+   3. 核心佈局與側邊欄
+   ============================================================ */
+.layout {
+  max-width: 1600px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 220px 1fr 220px;
+  gap: 30px;
+  align-items: start;
+}
+.side {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+}
+.side h3 { margin-top: 0; font-size: 16px; text-align: center; }
+.side a { display: block; text-decoration: none; color: var(--main); margin: 8px 0; font-size: 14px; }
+.side a:hover, .content h2 a:hover { color: var(--main-dark); text-decoration: underline; }
+
+body.dark .side { color: #cbd5e1; }
+body.dark .side a { color: var(--link-main-dark); }
+body.dark .side a:hover, body.dark .content h2 a:hover { color: #ffffff; }
+
+/* ============================================================
+   4. 內容區塊與排版設定
+   ============================================================ */
+.content {
+  background: var(--card);
+  padding: 20px 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  min-width: 900px;
+}
+.content h1, .content h2, .content h3 { text-align: center; color: var(--text); margin: 20px 0 15px; font-weight: 600; }
+.content h2 a { color: var(--main); text-decoration: underline; }
+body.dark .content h2 a { color: var(--link-main-dark); }
+
+.card-link.bold-black { font-family: '黑體', 'Microsoft JhengHei', sans-serif; font-weight: 700; color: #000000 !important; text-decoration: none !important; cursor: default; }
+body.dark .card-link.bold-black { color: #ffffff !important; }
+
+.desc-list { list-style: none; padding: 0; margin: 0; }
+.desc-list li { margin: 3px 0; padding-left: 14px; position: relative; line-height: 1.4; }
+.desc-list li::before { content: "-"; position: absolute; left: 0; color: var(--text); }
+
+/* ============================================================
+   5. 資料表格共用樣式
+   ============================================================ */
+.table-wrapper { overflow: auto; margin-top: 20px; max-height: 600px; }
+table { width: 100%; border-collapse: collapse; min-width: 900px; table-layout: fixed; }
+th, td { padding: 8px; border-bottom: 1px solid var(--table-border); text-align: left; }
+
+table th:nth-child(1), table td:nth-child(1) { width: 15%; }
+table th:nth-child(2), table td:nth-child(2) { width: 20%; }
+table th:nth-child(3), table td:nth-child(3) { width: 65%; }
+
+table tbody td.center { border-right: 1px solid var(--table-border); text-align: center; }
+
+thead tr th { background: var(--table-head); position: sticky; top: 0; z-index: 5; font-weight: 600; border-bottom: 2px solid var(--table-border); text-align: center; }
+
+.row-blue { background-color: var(--row-blue); }
+.row-purple { background-color: var(--row-purple); }
+table a { color: var(--main); text-decoration: underline; }
+body.dark table a { color: var(--link-main-dark); }
+.content table tbody tr:hover td { color: inherit !important; }
+
+/* ============================================================
+   6. 輪播組件與互動分頁
+   ============================================================ */
+.slider { position: relative; width: 100%; margin-top: 20px; }
+.slider-window { overflow: hidden; }
+.slider-track { display: flex; transition: transform 0.4s ease; }
+.slide { min-width: 100%; text-align: center; }
+
+.nav { position: absolute; top: 50%; transform: translateY(-50%); background: var(--card); color: var(--text); border: 1px solid var(--border); border-radius: 50%; width: 40px; height: 40px; cursor: pointer; z-index: 5; transition: 0.25s; }
+.prev { left: -50px; }
+.next { right: -50px; }
+.nav:hover { background: var(--main); color: #ffffff; border-color: var(--main); }
+
+.dots { text-align: center; margin-top: 15px; }
+.dots span { display: inline-block; width: 10px; height: 10px; margin: 5px; background: #cbd5e1; border-radius: 50%; cursor: pointer; }
+.dots span.active { background: var(--main); transform: scale(1.2); }
+body.dark .dots span.active { background: var(--link-main-dark); }
+
+.tf-header { display: flex; justify-content: center; align-items: center; position: relative; }
+.tf-select { position: absolute; right: 0; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ============================================================
+   7. 響應式設定與通用工具類別
+   ============================================================ */
+@media(max-width: 1200px) {
+  .layout { grid-template-columns: 1fr; }
+  .side { order: 2; }
+  .content { order: 1; }
+}
+
+.row-bold { font-weight: bold; }
+/* 優化：統一交由 CSS 變數控制，精簡深色模式判斷 */
+.row-green, .row-green td, .slide-2 .cell-green { background-color: var(--row-green); }
+
+/* ============================================================
+   8. 獨立簡報區塊樣式 (Slide 1~6 專屬)
+   ============================================================ */
+/* 合併 Slide 1 & 2 重複的欄位寬度 */
+.slide-1 th:nth-child(3), .slide-1 td:nth-child(3), .slide-2 th:nth-child(3), .slide-2 td:nth-child(3) { width: 15%; }
+.slide-1 th:nth-child(4), .slide-1 td:nth-child(4), .slide-2 th:nth-child(4), .slide-2 td:nth-child(4) { width: 15%; }
+.slide-1 th:nth-child(5), .slide-1 td:nth-child(5), .slide-2 th:nth-child(5), .slide-2 td:nth-child(5) { width: 35%; }
+
+/* 合併 Slide 1 & 2 相同的置中與邊框設定 */
+.slide-1 table td:nth-child(3), .slide-1 table td:nth-child(4),
+.slide-2 table td:nth-child(3), .slide-2 table td:nth-child(4) {
+  text-align: center;
+  border-left: 1px solid var(--table-border);
+  border-right: 1px solid var(--table-border);
+} 
+
+.slide-3 th:nth-child(3), .slide-3 td:nth-child(3) { width: 20%; }
+.slide-3 th:nth-child(4), .slide-3 td:nth-child(4) { width: 5%; }
+.slide-3 th:nth-child(5), .slide-3 td:nth-child(5) { width: 40%; }
+.slide-3 table td:nth-child(4) { text-align: center; }
+
+.slide-4 th:nth-child(3), .slide-4 td:nth-child(3) { width: 20%; }
+.slide-4 th:nth-child(4), .slide-4 td:nth-child(4) { width: 45%; }
+.slide-4 td.actor { border-left: 1px solid var(--table-border); border-right: 1px solid var(--table-border); }
+
+/* 合併 Slide 6 重複的欄位寬度 */
+.slide-6 th:nth-child(1), .slide-6 td:nth-child(1) { width: 20%; }
+.slide-6 th:nth-child(2), .slide-6 td:nth-child(2), .slide-6 th:nth-child(3), .slide-6 td:nth-child(3) { width: 40%; }
+
+/* Slide 1 的斑馬紋特殊色設定 */
+.slide-1 tbody tr:nth-child(4n+1), .slide-1 tbody tr:nth-child(4n+2) { background-color: var(--row-blue); }
+.slide-1 tbody tr:nth-child(4n+3), .slide-1 tbody tr:nth-child(4n+4) { background-color: var(--row-purple); }
+.slide-1 tbody tr:nth-last-child(-n+3) { background-color: var(--row-green); }
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <!-- 左側回目錄 -->
+  <a href="https://ba29bin06h.github.io/BL_Drama/Catalog.html" class="home-link">
+    🏠 回目錄 (Back To Catalog)
+  </a>
+  <a href="https://ba29bin06h.github.io/BL_Drama/JPBL.html" class="home-link">
+    📖 回日本BL劇
+  </a>
+  
+  <!-- 右側按鈕群 -->
+  <div class="right-buttons">
+    <a href="https://www.dcard.tw/@ba06bin29h" target="_blank">
+      💬 Dcard 個人牆
+    </a>
+    <button id="darkBtn" onclick="toggleDark()">🌙 夜間模式</button>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- 左側欄 -->
+  <aside class="side left">
+    <h3>📂巴比恩整理區</h3>
+    <hr />
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL1_Company.html">1. 依電視台分類</a>
+    <a class="card-link bold-black">2. 其他分類</a>
+    <br>
+	<hr class="divider"> 
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL4_Actors.html" >4. 依演員分類</a>
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL5_Group.html" >5. 依男團分類</a>
+	<hr class="divider"> 	
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL6_Tokusatsu.html" >6. 依特攝分類</a>
+	<br>
+	<br>
+  </aside>
+
+  <!-- 中間內容 ✅（重點） -->
+  <div class="content">
+	<div class="slider">
+	<h1>日本BL劇2_其他分類</h1>
+	  <button class="nav prev" onclick="moveSlide(-1)">❮</button>
+		<div class="slider-window">
+        <div class="slider-track" id="track">
+		
+<!-- BL資訊 -->		
+<!-- Slide 1 -->
+<div class="slide slide-1">
+  <h2>有S2的BL劇</h2>
+  <div class="table-wrapper">
+    <table> 
+      <thead>
+      <tr>
+        <th>BL上映日期</th>
+        <th>BL劇名</th>
+        <th>攻</th>
+        <th>受</th>
+        <th>補充說明</th>
+      </tr>
+      </thead>
+
+      <tbody>
+	  <!-- 有【S2的BL劇】的資料請放這裡 -->
+      <tr>
+        <td>2018.04.21</td>
+        <td>大叔的愛</td>
+        <td rowspan='2'>田中圭<br>↓<br>春田創一</td>
+        <td rowspan='2'>林遣都<br>↓<br>牧凌太</td>
+        <td rowspan='2'>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>2024.01.05</td>
+        <td>大叔的愛－Returns</td>
+      </tr>
+      <tr>
+        <td>2019.04.06</td>
+        <td>昨日的美食</td>
+        <td rowspan='2'>西島秀俊<br>↓<br>筧史朗</td>
+        <td rowspan='2'>内野聖陽<br>↓<br>矢吹賢二</td>
+        <td rowspan='2'>有副CP</td>
+      </tr>
+      <tr>
+        <td>2023.10.07</td>
+        <td>昨日的美食 II</td>
+      </tr>
+      <tr>
+        <td>2021.11.19</td>
+        <td>美麗的他</td>
+        <td rowspan='2'>八木勇征<br>↓<br>清居奏</td>
+        <td rowspan='2'>萩原利久<br>↓<br>平良一成</td>
+        <td rowspan='2'>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>2023.02.08</td>
+        <td>美麗的他 II</td>
+      </tr>
+      <tr>
+        <td>2022.06.29</td>
+        <td>歡迎光臨自助洗衣店</td>
+        <td rowspan='2'>西垣匠<br>↓<br>香月慎太郎</td>
+        <td rowspan='2'>草川拓弥<br>↓<br>湊晃</td>
+        <td rowspan='2'>有副CP</td>
+      </tr>
+      <tr>
+        <td>2023.07.05</td>
+        <td>歡迎光臨自助洗衣店 II</td>
+      </tr>
+      <tr>
+        <td>2023.12.24</td>
+        <td>我成為BL劇的主角了</td>
+        <td rowspan='2'>阿部顕嵐<br>↓<br>赤藤優一郎<br>↓<br>桃城晃史</td>
+        <td rowspan='2'>阿久津仁愛<br>↓<br>青柳萌<br>↓<br>水谷春日</td>
+        <td rowspan='2'>有副CP??</td>
+      </tr>
+      <tr>
+        <td>2025.06.13</td>
+        <td>我成為BL劇的主角了 II</td>
+      </tr>
+      <tr>
+        <td>2024.04.19</td>
+        <td>25時，赤坂見</td>
+        <td rowspan='2'>駒木根葵汰<br>↓<br>羽山麻水<br>↓<br>涼二</td>
+        <td rowspan='2'>新原泰佑<br>↓<br>白崎由岐<br>↓<br>拓海</td>
+        <td rowspan='2'>有副CP??</td>
+      </tr>
+      <tr>
+        <td>2025.10.02</td>
+        <td>25時，赤坂見 II</td>
+      </tr>
+      <tr>
+        <td>2024.08.05</td>
+        <td>美妝搭檔情人</td>
+        <td rowspan='2'>豐田裕大<br>↓<br>佐橋斗真</td>
+        <td rowspan='2'>奧野壯<br>↓<br>間宮棗</td>
+        <td rowspan='2'>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>2026.01.16</td>
+        <td>美妝搭檔情人 II</td>
+      </tr>
+      <tr>
+        <td>2024.11.02</td>
+        <td>戀愛的預感</td>
+        <td rowspan='3'>南雲奨馬</td>
+        <td rowspan='3'>濱屋拓斗</td>
+        <td rowspan='3'><ul class='desc-list'><li>有副CP</li></ul></td>
+      </tr>
+      <tr>
+        <td>2025.08.12</td>
+        <td>海洋之戀～愛之歸處～</td>
+      </tr>
+      <tr>
+        <td>2026.02.01</td>
+        <td>The Boy Next World ～平行世界的戀人～</td>
+      </tr>
+	  <!--貼到這裡 -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide slide-2">
+  <h2>(湊)ミナト的多重宇宙</h2>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+      <tr>
+        <th>BL上映日期</th>
+        <th>BL劇名</th>
+        <th>演員</th>
+        <th>角色</th>
+        <th>說明</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <!-- 有【ミナト】的資料請放這裡 -->
+      <tr>
+        <td>2020.10.09</td>
+        <td>如果30歲還是處男，似乎就能成為魔法師</td>
+        <td>ゆうたろう</td>
+        <td>綿矢湊</td>
+        <td>外送員</td>
+      </tr>
+      <tr>
+        <td>2022.04.22</td>
+        <td>只能親吻不幸同學了！ </td>
+        <td>坪根悠仁</td>
+        <td>ミナト</td>
+        <td>大學生</td>
+      </tr>
+      <tr>
+        <td>2022.06.29</td>
+        <td>歡迎光臨自助洗衣店<br>(みなと商事コインランドリー)</td>
+        <td rowspan='2'>草川拓弥</td>
+        <td rowspan='2'>湊晃</td>
+        <td rowspan='2'>跟老師有故事</td>
+      </tr>
+      <tr>
+        <td>2023.07.05</td>
+        <td>歡迎光臨自助洗衣店 II<br>(みなと商事コインランドリー II)</td>
+      </tr>
+      <tr>
+        <td>2022.10.21</td>
+        <td>永遠的昨日</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>浩一的表弟</td>
+      </tr>
+      <tr>
+        <td>2022.10.03</td>
+        <td>人氣同人作家貓屋敷想得到認同</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>4人團隊長弟弟，後因車禍無法跳舞</td>
+      </tr>
+      <tr>
+        <td>2023.12.01</td>
+        <td>佐原老師與土岐同學</td>
+        <td>堀海登</td>
+        <td>猫戸湊</td>
+        <td>跟佐原老師有交情</td>
+      </tr>
+      <tr>
+        <td>2025.10.29</td>
+        <td>療傷遊戲</td>
+        <td>紀田直哉(NAOYA)</td>
+        <td>三兎湊</td>
+        <td>戀兄情節</td>
+      </tr>
+      <tr>
+        <td>2026.01.13</td>
+        <td>在對死黨的同居要求說「好」之前</td>
+        <td>吉澤要人</td>
+        <td>橫井湊</td>
+        <td>橫井湊，卡片擺直的</td>
+      </tr>
+		<!-- 貼到這裡 -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide slide-3">
+  <h2>我的偶像倒追我</h2>
+  <div class="table-wrapper">
+  <table>
+  <thead>
+      <tr>
+        <th>BL上映日期</th>
+        <th>BL劇名</th>
+        <th>公媽被發現的時間</th>
+        <th>橋</th>
+        <th>劇情</th>
+      </tr>    
+  </thead>
+      <tbody>
+	  <!-- 【我的偶像倒追我】的資料請放這裡 -->
+      <tr>
+        <td>2022.06.17</td>
+        <td>前輩，這不叫戀愛！</td>
+        <td>EP7_1700</td>
+        <td>X</td>
+        <td><ul class='desc-list'><li>去溫哥華的時候，後輩跟別人%%%</li><li>是你，讓我重拾對CG的愛</li><li>新原泰佑：「瀨戶，想跟你換前輩，渡部前輩好難搞」</li><li>別府由來：「這還好吧，他看到我是直接開揍ㄟ」</li></ul></td>
+      </tr>
+      <tr>
+        <td>2022.10.03</td>
+        <td>人氣同人作家貓屋敷想得到認同</td>
+        <td>EP6_0700</td>
+        <td>O</td>
+        <td><ul class='desc-list'><li>那麼愛笑，那就去當偶像啊<br>(a.k.a一星愛上貓屋敷的理由)</li><li>EP3_1900一星媽媽外遇</li><li>一星講完之後，拉著貓屋敷跑+轉<br>(xx2104xxx表示頭好暈)</li></ul></td>
+      </tr>
+      <tr>
+        <td>2023.12.24</td>
+        <td>我成為BL劇的主角了</td>
+        <td>EP3_4500</td>
+        <td>O</td>
+        <td><ul class='desc-list'><li>你宅男的樣子很專業，我很喜歡<br>(a.k.a赤藤愛上青柳的理由)</li><li>青柳→赤藤(扛著招牌)，青柳摔</li><li>渡部秀在這裡當青柳的經紀人</li></ul></td>
+      </tr>
+      <tr>
+        <td>2025.06.13</td>
+        <td>我成為BL劇的主角了 II</td>
+        <td>X(for紫黃CP)</td>
+        <td>X</td>
+        <td><ul class='desc-list'><li>黃島因傷引退(紫宏：我難過的是放棄你~...)</li><li>赤藤(濃妝豔抹)→青柳，赤藤摔</li><li>紫宏臣的黃島鏈成陣沒被發現</li></ul></td>
+      </tr>
+      <tr>
+        <td>2025.10.10</td>
+        <td>龐克三角</td>
+        <td>EP4_2300</td>
+        <td>O</td>
+        <td><ul class='desc-list'><li>概念式連結?卡洞，哈麻油菸彈</li><li>EP2_0100因為喜歡純浦做的衣服，所以決定追他</li><li>EP5_0730媽媽外遇，進而愛上AE(a.k.a江永)</li><li>江永在台上講完之後，跟純浦玩你追我跑<br>(江永→純浦)</li><li>中川大輔：概念式連結，我也略懂略懂</li></ul></td>
+      </tr>
+	  <!--貼到這裡 -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Slide 4 -->
+<div class="slide slide-4">
+  <h2>串場型BL劇</h2>
+  <div class="table-wrapper">
+  <table>
+  <thead>
+    <tr>
+      <th>BL上映日期</th>
+      <th>BL劇名</th>
+	  <th>演員</th>
+      <th>其他戲劇</th>
+	</tr>   
+  </thead>
+      <tbody>
+      <!-- 【串場型BL劇】的資料請放這裡 -->
+      <tr>
+        <td rowspan='3'>2020-10-09</td>
+        <td rowspan='3'>如果30歲還是處男，似乎就能成為魔法師</td>
+        <td class='actor' rowspan='2'>優太朗</td>
+        <td>《全裸開動》</td>
+      </tr>
+      <tr>
+        <td>《BL世界(I、II、III、IV)》</td>
+      </tr>
+      <tr>
+        <td class='actor'>草川拓弥</td>
+        <td>《歡迎光臨自助洗衣店》</td>
+      </tr>
+      <tr>
+        <td rowspan='10'>2021-07-16</td>
+        <td rowspan='10'>GIVEN 被贈與的未來</td>
+        <td class='actor'>鈴木仁</td>
+        <td>《被擦掉的初戀》</td>
+      </tr>
+      <tr>
+        <td class='actor' rowspan='2'>奧野壯</td>
+        <td>《我很喜歡你，那你呢》</td>
+      </tr>
+      <tr>
+        <td>《美妝搭檔情人(I、II)》</td>
+      </tr>
+      <tr>
+        <td class='actor'>稲葉友</td>
+        <td>《歡迎光臨自助洗衣店(I、II)》</td>
+      </tr>
+      <tr>
+        <td class='actor' rowspan='3'>武藤潤</td>
+        <td>《相遇驟雨中》</td>
+      </tr>
+      <tr>
+        <td>     -EP3_0950被搶畫的同學</td>
+      </tr>
+      <tr>
+        <td>     -EP3_2200叫上山起床的同學</td>
+      </tr>
+      <tr>
+        <td class='actor' rowspan='3'>小野寺晃良</td>
+        <td>《Given被贈與的未來》EP5_1130</td>
+      </tr>
+      <tr>
+        <td>《相遇驟雨中》EP2_1530</td>
+      </tr>
+      <tr>
+        <td>《BL世界IV》EP6_不幸的小賀</td>
+      </tr>
+      <tr>
+        <td rowspan='15'>2022-06-29</td>
+        <td rowspan='15'>歡迎光臨自助洗衣店</td>
+        <td class='actor'>西垣匠(I、II)</td>
+        <td>《被擦掉的初戀》</td>
+      </tr>
+      <tr>
+        <td class='actor'>草川拓弥(I、II)</td>
+        <td>《如果30歲還是處男，似乎就能成為魔法師》</td>
+      </tr>
+      <tr>
+        <td class='actor'>稲葉友(I、II)</td>
+        <td>《GIVEN 被贈與的未來》</td>
+      </tr>
+      <tr>
+        <td class='actor' rowspan='4'>南雲奨馬<br>(I、EP5_1600相片)</td>
+        <td>《25時，赤坂見(I、II)》</td>
+      </tr>
+      <tr>
+        <td>《戀愛的預感》</td>
+      </tr>
+      <tr>
+        <td>《海洋之戀～愛之歸處～》EP6_1530學長來當監軍</td>
+      </tr>
+      <tr>
+        <td>《平行世界的戀人～》</td>
+      </tr>
+      <tr>
+        <td class='actor' rowspan='2'>長野綾大<br>(I、EP7_0200)</td>
+        <td>《相遇驟雨中》EP2_1400</td>
+      </tr>
+      <tr>
+        <td>《龐克三角》</td>
+      </tr>
+      <tr>
+        <td class='actor' rowspan='2'>武田航平(II)</td>
+        <td>《經典杯子蛋糕》</td>
+      </tr>
+      <tr>
+        <td>《霧藍色的雨後晴天》</td>
+      </tr>
+      <tr>
+        <td class='actor' rowspan='2'>髙松アロハ<br>(II、EP9_0930)</td>
+        <td>《4月的東京》</td>
+      </tr>
+      <tr>
+        <td>《第二次戀愛才完美》</td>
+      </tr>
+      <tr>
+        <td class='actor' rowspan='2'>阿久根温世<br>(II、EP11_0000)</td>
+        <td>《療傷遊戲》獸醫系同學</td>
+      </tr>
+      <tr>
+        <td>《對比的我和你》</td>
+      </tr>
+      <tr>
+        <td rowspan='5'>2022-08-19</td>
+        <td rowspan='5'>高良君和天城君</td>
+        <td class='actor'>小宮璃央</td>
+        <td>《永遠的昨日》</td>
+      </tr>
+      <tr>
+        <td class='actor'>鈴木康介(戴眼鏡)</td>
+        <td>《愛在記憶凍結時》</td>
+      </tr>
+      <tr>
+        <td class='actor' rowspan='3'>坂井翔</td>
+        <td>《高良君和天城君》EP1_0415</td>
+      </tr>
+      <tr>
+        <td>《愛在記憶凍結時》客串</td>
+      </tr>
+      <tr>
+        <td>《有他在的生活》</td>
+      </tr>
+      <tr>
+        <td rowspan='8'>2024-04-19</td>
+        <td rowspan='8'>25時，赤坂見</td>
+        <td class='actor' rowspan='2'>新原泰佑</td>
+        <td>《前輩，這不叫戀愛！》</td>
+      </tr>
+      <tr>
+        <td>《永遠的昨日》</td>
+      </tr>
+      <tr>
+        <td class='actor' rowspan='2'>宇佐卓真</td>
+        <td>《聽見向陽之聲》EP1開頭的黃毛仔</td>
+      </tr>
+      <tr>
+        <td>《失焦的深度》</td>
+      </tr>
+      <tr>
+        <td class='actor' rowspan='4'>南雲獎馬</td>
+        <td>《歡迎光臨自助洗衣店I》</td>
+      </tr>
+      <tr>
+        <td>《戀愛的預感》</td>
+      </tr>
+      <tr>
+        <td>《海洋之戀～愛之歸處～》EP6_1530學長來當監軍</td>
+      </tr>
+      <tr>
+        <td>《平行世界的戀人～》</td>
+      </tr>
+      <tr>
+        <td rowspan='10'>2025-10-29</td>
+        <td rowspan='10'>療傷遊戲</td>
+        <td class='actor'>冨田侑暉</td>
+        <td>《託生君_影集系列》：被旗野尻2拳</td>
+      </tr>
+      <tr>
+        <td class='actor'>佐藤瑠雅</td>
+        <td>《有他在的生活》</td>
+      </tr>
+      <tr>
+        <td class='actor'>HAYATO</td>
+        <td>《對比的我和你》</td>
+      </tr>
+      <tr>
+        <td class='actor' rowspan='2'>阿久根温世</td>
+        <td>《歡迎光臨自助洗衣店 II》EP11_0000客串香月妹妹男朋友</td>
+      </tr>
+      <tr>
+        <td>《對比的我和你》</td>
+      </tr>
+      <tr>
+        <td class='actor' rowspan='2'>小西詠斗</td>
+        <td>《人氣同人作家貓屋敷想得到認同》4人團成員</td>
+      </tr>
+      <tr>
+        <td>《如寶物般的玻璃珠》</td>
+      </tr>
+      <tr>
+        <td class='actor'>山中崇</td>
+        <td>《美妝搭檔情人 II》攻的老爸</td>
+      </tr>
+      <tr>
+        <td class='actor' rowspan='2'>井手上漠</td>
+        <td>《BL世界 II》客串</td>
+      </tr>
+      <tr>
+        <td>《我們的微小終末》跟團的妹子??</td>
+      </tr>
+	  <!--貼到這裡 -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Slide 5 -->
+<div class="slide">
+
+  <div class="tf-header">
+    <h2>其他分類方式1</h2>
+
+    <!-- 🔘 子分類按鈕 -->
+    <select class="tf-select" onchange="switchTab(this)">
+      <option value="food">美食型BL劇</option>
+      <option value="plant">植物型BL劇</option>
+	  <option value="office">特殊職場型BL劇</option>
+	  <option value="age_gap">忘年型BL劇</option>
+	  <option value="design">設計型BL劇</option>
+    </select>
+  </div>
+
+  <!-- ===== 美食 ===== -->
+  <div class="tab-content active" id="food">
+    <div class="table-wrapper">
+      <table>	
+  <thead>
+    <tr>
+      <th>BL上映日期</th>
+      <th>BL劇名</th>
+      <th>說明</th>
+	</tr>   
+  </thead>
+      <tbody>
+	  <!-- 【美食BL】的資料請放這裡 -->
+      <tr>
+        <td>2019.04.06</td>
+        <td>昨日的美食</td>
+        <td>料理高手</td>
+      </tr>
+      <tr>
+        <td>2023.04.06</td>
+        <td>我們的餐桌</td>
+        <td>加工食品</td>
+      </tr>
+      <tr>
+        <td>2023.04.14</td>
+        <td>全裸開動</td>
+        <td>異國料理</td>
+      </tr>
+      <tr>
+        <td>2024.01.12</td>
+        <td>我很喜歡你，那你呢</td>
+        <td>居酒屋老闆</td>
+      </tr>
+      <tr>
+        <td>2024.02.02</td>
+        <td>完美求婚</td>
+        <td>這部攻很愛煮飯</td>
+      </tr>
+      <tr>
+        <td>2024.04.12</td>
+        <td>有他在的生活</td>
+        <td>同居嘛，基本的煮飯是必要的(不過484對餅乾情有獨鍾)</td>
+      </tr>
+      <tr>
+        <td>2024.07.26</td>
+        <td>三矢老師有計劃的餵食</td>
+        <td>美食家+記者的忘年戀愛</td>
+      </tr>
+      <tr>
+        <td>2024.08.03</td>
+        <td>甜蜜餵食生活</td>
+        <td>料理社社員</td>
+      </tr>
+      <tr>
+        <td>2025.07.13</td>
+        <td>戀愛的正確標記法</td>
+        <td>這部攻(?)也很愛煮飯</td>
+      </tr>
+      <tr>
+        <td>2025.08.12</td>
+        <td>海洋之戀～愛之歸處～</td>
+        <td>對不起我只會煮義大利麵T_T</td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- ===== 植物 ===== -->
+  <div class="tab-content" id="plant">
+    <div class="table-wrapper">
+      <table>	
+  <thead>
+    <tr>
+      <th>BL上映日期</th>
+      <th>BL劇名</th>
+      <th>說明</th>
+	</tr>   
+  </thead>
+      <tbody>
+	  <!-- 【植物BL】的資料請放這裡 -->
+      <tr>
+        <td>2024.09.10</td>
+        <td>毒戀～毒過了頭就會變成戀愛</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>2025.07.03</td>
+        <td>雨過天晴的我們</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>2025.07.13</td>
+        <td>戀愛的正確標記法</td>
+        <td>&nbsp;</td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- ===== 特殊職場 ===== -->
+  <div class="tab-content" id="office">
+    <div class="table-wrapper">
+      <table>	
+  <thead>
+    <tr>
+      <th>BL上映日期</th>
+      <th>BL劇名</th>
+      <th>說明</th>
+	</tr>   
+  </thead>
+      <tbody>
+	  <!-- 【特殊職場BL】的資料請放這裡 -->
+      <tr>
+        <td>2022.06.13</td>
+        <td>經典杯子蛋糕</td>
+        <td>下剋上</td>
+      </tr>
+      <tr>
+        <td>2022.06.17</td>
+        <td>前輩，這不叫戀愛！</td>
+        <td>取而代之</td>
+      </tr>
+      <tr>
+        <td>2023.06.16</td>
+        <td>4月的東京</td>
+        <td>藝術總監老鳥受v.s.人事總務部新人攻</td>
+      </tr>
+      <tr>
+        <td>2024.08.05</td>
+        <td>美妝搭檔情人</td>
+        <td>上司受v.s.下屬攻</td>
+      </tr>
+      <tr>
+        <td>2025.07.05</td>
+        <td>40歲以前想達成的10件事</td>
+        <td><ul class='desc-list'><li>上司受v.s.下屬攻</li><li>《只能親吻不幸同學了》的約會行程與小鳥玩偶!?</li><li>《前輩，這不叫戀愛！》前輩也有想跟金田完成的10件事</li><li>《我很喜歡你，那你呢?》章魚燒、壁球、生病的粥</li></ul></td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- ===== 忘年 ===== -->
+  <div class="tab-content" id="age_gap">
+    <div class="table-wrapper">
+      <table>	
+  <thead>
+    <tr>
+      <th>BL上映日期</th>
+      <th>BL劇名</th>
+      <th>說明</th>
+	</tr>   
+  </thead>
+      <tbody>
+	  <!-- 【忘年BL】的資料請放這裡 -->
+      <tr>
+        <td>2018.04.21</td>
+        <td>大叔的愛</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>2019.11.02</td>
+        <td>大叔的愛－in the sky</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>2022.06.13</td>
+        <td>經典杯子蛋糕</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>2022.06.29</td>
+        <td>歡迎光臨自助洗衣店</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>2023.07.05</td>
+        <td>歡迎光臨自助洗衣店 II</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>2024.01.05</td>
+        <td>大叔的愛－Returns</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>2024.02.02</td>
+        <td>完美求婚</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>2024.07.26</td>
+        <td>三矢老師有計劃的餵食</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>2025.07.05</td>
+        <td>40歲以前想達成的10件事</td>
+        <td>&nbsp;</td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- ===== 設計 ===== -->
+  <div class="tab-content" id="design">
+    <div class="table-wrapper">
+      <table>	
+  <thead>
+    <tr>
+      <th>BL上映日期</th>
+      <th>BL劇名</th>
+      <th>說明</th>
+	</tr>   
+  </thead>
+      <tbody>
+	  <!-- 【設計BL】的資料請放這裡 -->
+      <tr>
+        <td>2024.08.05</td>
+        <td>美妝搭檔情人</td>
+        <td>美妝專員(BA)</td>
+      </tr>
+      <tr>
+        <td>2026.01.16</td>
+        <td>美妝搭檔情人 II</td>
+        <td>美妝專員(BA)</td>
+      </tr>
+      <tr>
+        <td>2025.07.13</td>
+        <td>戀愛的正確標記法</td>
+        <td>理髮師</td>
+      </tr>
+      <tr>
+        <td>2025.10.10</td>
+        <td>龐克三角</td>
+        <td>服裝設計師</td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <!-- 如果有新的公司，請往下貼 -->
+  
+  
+   <!-- 這裡是第5張最後面 --> 
+	  </div>
+	  
+<!-- Slide 6 -->
+<div class="slide slide-6">
+
+  <div class="tf-header">
+    <h2>其他分類方式2</h2>
+
+    <!-- 🔘 子分類按鈕 -->
+    <select class="tf-select" onchange="switchTab(this)">
+      <option value="BL_Role">劇中劇BL劇</option>
+	  <option value="Eternal_Yesterday">永遠的昨日</option>
+      <option value="When_It_Rains">相遇驟雨中</option>
+	  <option value="Therapy_Game">療傷遊戲</option>
+    </select>
+  </div>
+
+  <!-- ===== 劇中劇BL劇 ===== -->
+  <div class="tab-content active" id="BL_Role">
+    <div class="table-wrapper">
+      <table>	
+  <thead>
+    <tr>
+      <th></th>
+      <th>我成為BL劇的主角了</th>
+      <th>25時，赤坂見</th>
+	</tr>   
+  </thead>
+      <tbody>
+	  <!-- 【劇中劇BL劇】的資料請放這裡 -->
+      <tr>
+        <td>S1上映</td>
+        <td>2023.12.24，3集×49min，σ = 4.44min</td>
+        <td>2024.04.19，10集×24min，σ = 0.09min</td>
+      </tr>
+      <tr>
+        <td>S2上映</td>
+        <td>2025.06.13，6集×22min，σ = 1.24min</td>
+        <td>2025.10.02，10+1集×24min，σ = 0.08min</td>
+      </tr>
+      <tr>
+        <td>攻演員</td>
+        <td style="text-align: center;">阿部顕嵐<br>↓<br>赤藤優一郎<br>↓<br>桃城晃史</td>
+        <td style="text-align: center;">駒木根葵汰<br>↓<br>羽山麻水<br>↓<br>涼二</td>
+      </tr>
+      <tr>
+        <td>受演員</td>
+        <td style="text-align: center;">阿久津仁愛<br>↓<br>青柳萌<br>↓<br>水谷春日</td>
+        <td style="text-align: center;">新原泰佑<br>↓<br>白崎由岐<br>↓<br>拓海</td>
+      </tr>
+      <tr>
+        <td>第2層演員1</td>
+        <td><ul class='desc-list'><li>攻：23歲，母胎單身+十項全能</li><li>受：25歲，有過女友，愛蘋果汁</li></ul></td>
+        <td><ul class='desc-list'><li>攻：28歲，母胎單身→26歲社員</li><li>受：26歲，母胎單身→21歲咖啡廳工讀生</li></ul></td>
+      </tr>
+      <tr>
+        <td>第2層演員2</td>
+        <td><ul class='desc-list'><li>大學：自卑宅男攻v.s. 當紅男星受</li><li>社會：當紅明星攻 v.s. 過氣童星受</li></ul></td>
+        <td><ul class='desc-list'><li>大學：包裝自我攻v.s. 直言不諱受</li><li>社會：星探挖掘演員v.s. 乏人問津打工仔</li></ul></td>
+      </tr>
+      <tr>
+        <td>受的戀愛</td>
+        <td>景仰</td>
+        <td>景仰</td>
+      </tr>
+      <tr>
+        <td>攻的陷入</td>
+        <td>EP3_0900<br>喜好不被他人嫌棄</td>
+        <td>EP7_0700<br>直言不諱，讓他意識到原來自己也適合演戲</td>
+      </tr>
+      <tr>
+        <td>攻的暗箭</td>
+        <td>暗在內心，有公媽</td>
+        <td>暗在技術，小手段很多</td>
+      </tr>
+      <tr>
+        <td>家庭故事</td>
+        <td>S1EP2_2930<br>受國中雙親離婚，爭奪扶養權</td>
+        <td>劇裡沒說，但總覺得父母關係不太好<br>S1EP7_開頭攻媽媽→攻想用演戲證明自己<br>S2EP8_開頭攻爸爸→打算去英國精進自己</td>
+      </tr>
+      <tr>
+        <td>第三者</td>
+        <td><ul class='desc-list'><li>黒宮遼河(岩谷翔吾 飾演)，喜歡受</li><li>灰原龍之介(古屋呂敏 飾演)，喜歡受</li><li>山吹若葉(押田岳 飾演)，喜歡攻?</li></ul></td>
+        <td><ul class='desc-list'><li>山瀬一真(南雲奨馬 飾演)</li><li>佐久間はじめ【哲平】(宇佐卓真 飾演)</li></ul></td>
+      </tr>
+      <tr>
+        <td>經紀人</td>
+        <td><ul class='desc-list'><li>彼此是ㄆ友，也有一些情愫在</li><li>攻：男生</li><li>受：男生</li></ul></td>
+        <td><ul class='desc-list'><li>攻:女生</li><li>受:男生</li></ul></td>
+      </tr>
+      <tr>
+	    <td></td>
+        <td colspan='2'></td>
+      </tr>
+	  <tr>
+	    <td></td>
+        <td colspan='2'></td>
+      </tr>
+      <tr>
+        <td>戲劇名稱</td>
+        <td>恋する俺とおさななじみ</td>
+        <td>昼のゆめ</td>
+      </tr>
+      <tr>
+        <td>初次劇場見面</td>
+        <td>攻最後才到</td>
+        <td>攻最後才到</td>
+      </tr>
+      <tr>
+        <td>NG劇</td>
+        <td>S1EP3_2330</td>
+        <td>S1EP3_0130</td>
+      </tr>
+      <tr>
+        <td>常見食物</td>
+        <td><ul class='desc-list'><li>煮飯        ：S1EP1_3730</li><li>咖哩飯    ：S1EP3_0230(辣味更好吃)</li><li>草莓蛋糕：S1EP3_1830(生日)</li><li>水餃        ：S2EP2_0530</li></ul></td>
+        <td><ul class='desc-list'><li>煮飯        ：S1EP6_0200</li><li>咖哩飯    ：S1EP3_0630、S2EP9_1500</li><li>草莓蛋糕：S1EP4_1400</li><li>水餃        ：S2EP3_1630</li></ul></td>
+      </tr>
+      <tr>
+        <td>約會模擬</td>
+        <td>S1EP2_3300</td>
+        <td>S1EP2_1500八景島(小雀表示羨慕)</td>
+      </tr>
+      <tr>
+        <td>同居送別禮</td>
+        <td>S2EP1_0530</td>
+        <td>S2EP1_0530</td>
+      </tr>
+      <tr>
+        <td>受拍攝被嫌棄</td>
+        <td>S1EP1_4100、S1EP2_2200</td>
+        <td>S1EP2_1100</td>
+      </tr>
+      <tr>
+        <td>手手不乖</td>
+        <td>S1EP1_0730摸頭摸得好尷尬</td>
+        <td>S2EP7_0900不打你，只想摸你</td>
+      </tr>
+      <tr>
+        <td>偷抱抱</td>
+        <td>S1EP2_0730、S1EP2_1330(射箭)</td>
+        <td>S1EP2_一開頭打赤膊</td>
+      </tr>
+      <tr>
+        <td>拍戲緋聞</td>
+        <td>S1EP3_2800</td>
+        <td>S1EP6_1100</td>
+      </tr>
+      <tr>
+        <td>親吻戲</td>
+        <td><ul class='desc-list'><li>S1EP2_1700</li><li>S1EP2_4330</li></ul></td>
+        <td><ul class='desc-list'><li>S1EP1_2200</li><li>S1EP5_1800</li></ul></td>
+      </tr>
+      <tr>
+        <td>床戲</td>
+        <td><ul class='desc-list'><li>S1EP1_3300(X)</li><li>S2EP1_1900(昏倒失敗)</li><li>S2EP6_1800(終於成功了)</li></ul></td>
+        <td><ul class='desc-list'><li>S1EP9_1000(劇中劇)</li><li>S1EP10、S2EP1、S2EP10(直接滾)</li></ul></td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- ===== 永遠的昨日 ===== -->
+  <div class="tab-content" id="Eternal_Yesterday">
+    <div class="table-wrapper">
+      <table>	
+  <thead>
+    <tr>
+      <th>趕工中~</th>
+      <th>趕工中~</th>
+      <th>趕工中~</th>
+	</tr>   
+  </thead>
+      <tbody>
+	  <!-- 【永遠的昨日】的資料請放這裡 -->
+      <tr>
+        <td>趕工中~</td>
+        <td>趕工中~</td>
+        <td>趕工中~</td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+
+  <!-- ===== 相遇驟雨中 ===== -->
+  <div class="tab-content" id="When_It_Rains">
+    <div class="table-wrapper">
+      <table>	
+  <thead>
+    <tr>
+      <th>演員</th>
+      <th>武藤潤</th>
+      <th>伊藤明日陽</th>
+	</tr>   
+  </thead>
+      <tbody>
+	  <!-- 【相遇驟雨中】的資料請放這裡 -->
+      <tr>
+        <td>角色</td>
+        <td>萩原一顕(攻)</td>
+        <td>半井整(受)</td>
+      </tr>
+      <tr>
+        <td>角色</td>
+        <td>萩原一顕(攻)</td>
+        <td>半井整(受)</td>
+      </tr>
+      <tr>
+        <td>演員其他地方</td>
+        <td><ul class='desc-list'><li>《Given》植木涼</li><li>EP3_0950被搶畫的</li><li>EP3_2200叫上山起床</li></ul></td>
+        <td><ul class='desc-list'><li>《BL世界》菊池</li><li>-4季都有他的存在</li><li>狗狗的位置被世古口凌搶走嚕T_T</li></ul></td>
+      </tr>
+      <tr>
+        <td>信箱</td>
+        <td><ul class='desc-list'><li>Kazuaki0927@degole.com</li><li>(不懂??)</li></ul></td>
+        <td><ul class='desc-list'><li>Kazuaki0927@kuhoo.com</li><li>(對和章有感情)</li></ul></td>
+      </tr>
+      <tr>
+        <td>搞錯對象</td>
+        <td><ul class='desc-list'><li>EP1_0200信箱位址</li></ul></td>
+        <td><ul class='desc-list'><li>EP2_0630名片姓名</li></ul></td>
+      </tr>
+      <tr>
+        <td>對雨的感覺(EP2_1800)</td>
+        <td><ul class='desc-list'><li>討厭雨，每次都會聽到</li></ul></td>
+        <td><ul class='desc-list'><li>喜歡雨，但聽不到雨</li></ul></td>
+      </tr>
+      <tr>
+        <td>前愛人</td>
+        <td><ul class='desc-list'><li>水谷香織</li><li>(論及婚嫁的女友)</li></ul></td>
+        <td><ul class='desc-list'><li>藤原和章</li><li>(同居人+砲友?)</li></ul></td>
+      </tr>
+      <tr>
+        <td>雙方的佔有欲</td>
+        <td><ul class='desc-list'><li>EP6_1800</li></ul></td>
+        <td><ul class='desc-list'><li>EP7_1200</li></ul></td>
+      </tr>
+      <tr>
+        <td>交往時間</td>
+        <td><ul class='desc-list'><li>Before 3 years(EP3_0800)</li></ul></td>
+        <td><ul class='desc-list'><li>Since 大三(EP4_0230)</li></ul></td>
+      </tr>
+      <tr>
+        <td>受傷處</td>
+        <td><ul class='desc-list'><li>EP6_1500</li><li>右手食指關節處</li><li>半井送的天氣瓶破掉</li></ul></td>
+        <td><ul class='desc-list'><li>EP4_0930</li><li>左腳食指左上方</li><li>敲到桌腳</li></ul></td>
+      </tr>
+      <tr>
+        <td>鼓起勇氣但被拒絕</td>
+        <td><ul class='desc-list'><li>EP4_2200</li></ul></td>
+        <td><ul class='desc-list'><li>EP2_2030喝酒泡澡+壯膽</li></ul></td>
+      </tr>
+      <tr>
+        <td>分手時間</td>
+        <td><ul class='desc-list'><li>EP6_1610成功</li></ul></td>
+        <td><ul class='desc-list'><li>EP5_0530失敗</li><li>EP7_0930成功</li></ul></td>
+      </tr>
+      <tr>
+        <td>烤肉負責人</td>
+        <td><ul class='desc-list'><li>EP1一開始</li></ul></td>
+        <td><ul class='desc-list'><li>EP7最後</li></ul></td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- ===== 療傷遊戲 ===== -->
+  <div class="tab-content" id="Therapy_Game">
+    <div class="table-wrapper">
+      <table>	
+  <thead>
+    <tr>
+      <th></th>
+      <th>生嶋家</th>
+      <th>三兎家</th>
+	</tr>   
+  </thead>
+      <tbody>
+	  <!-- 【療傷遊戲】的資料請放這裡 -->
+      <tr>
+        <td>演員</td>
+        <td>冨田侑暉</td>
+        <td>NAOYA</td>
+      </tr>
+      <tr>
+        <td>生日</td>
+        <td>2004.12.07</td>
+        <td>2003.04.28</td>
+      </tr>
+      <tr>
+        <td>所屬團體</td>
+        <td>龍宮城</td>
+        <td>MAZZEL</td>
+      </tr>
+      <tr>
+        <td>飾演角色</td>
+        <td>生嶋静真(翔平的哥哥)→攻</td>
+        <td>三兎湊→受</td>
+      </tr>
+      <tr>
+        <td>有無飾演其他角色</td>
+        <td><ul class='desc-list'><li>《託生君_影集系列》：被旗野尻2拳</li><li>名字有玄機</li></ul></td>
+        <td>X</td>
+      </tr>
+      <tr>
+        <td>角色_特性</td>
+        <td><ul class='desc-list'><li>黑髮白袍</li></ul></td>
+        <td><ul class='desc-list'><li>白髮黑衣服</li></ul></td>
+      </tr>
+      <tr>
+        <td>角色_家庭故事</td>
+        <td><ul class='desc-list'><li>父親未知</li><li>母親健在，觀察力很強</li></ul></td>
+        <td><ul class='desc-list'><li>父親被同性情人騙錢後遇刺</li><li>母親被戴綠帽，然後自縊</li></ul></td>
+      </tr>
+      <tr>
+        <td>角色_忘記的東西</td>
+        <td><ul class='desc-list'><li>EP2白底的學生證</li></ul></td>
+        <td><ul class='desc-list'><li>EP4太陽眼鏡</li><li>EP5黑色項圈?</li></ul></td>
+      </tr>
+      <tr>
+        <td>角色_職業</td>
+        <td><ul class='desc-list'><li>獸醫</li></ul></td>
+        <td><ul class='desc-list'><li>攝影師</li></ul></td>
+      </tr>
+      <tr>
+        <td>角色_感情狀態</td>
+        <td><ul class='desc-list'><li>被前女友戴綠帽</li></ul></td>
+        <td><ul class='desc-list'><li>母胎單身，喜歡哥哥</li></ul></td>
+      </tr>
+      <tr>
+        <td colspan='3' style="text-align: center;" >EP5_1400相遇公園中</td>
+      </tr>
+      <tr>
+        <td>副CP</td>
+        <td>HAYATO</td>
+        <td>佐藤瑠雅</td>
+      </tr>
+      <tr>
+        <td>生日</td>
+        <td>1999.02.25</td>
+        <td>2001.04.17</td>
+      </tr>
+      <tr>
+        <td>所屬團體</td>
+        <td>XY</td>
+        <td>BLD</td>
+      </tr>
+      <tr>
+        <td>飾演角色</td>
+        <td>生嶋翔平→受</td>
+        <td>三兎樹(湊的哥哥)→攻</td>
+      </tr>
+      <tr>
+        <td>有無飾演其他角色</td>
+        <td><ul class='desc-list'><li>《對比的我和你》：ジュン</li></ul></td>
+        <td><ul class='desc-list'><li>《有他在的生活》：主攻</li></ul></td>
+      </tr>
+      <tr>
+        <td>角色_特性</td>
+        <td><ul class='desc-list'><li>紅髮淺色系衣服</li></ul></td>
+        <td><ul class='desc-list'><li>黑髮黑色系衣服</li></ul></td>
+      </tr>
+      <tr>
+        <td>角色_職業</td>
+        <td><ul class='desc-list'><li>大學生</li></ul></td>
+        <td><ul class='desc-list'><li>酒店保全?</li></ul></td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+
+  <!-- 如果有新的劇，請往下貼 -->
+  
+  
+   <!-- 這裡是第6張最後面 --> 
+	  </div>	  
+      </div>
+      </div>
+	  <button class="nav next" onclick="moveSlide(1)">❯</button>
+	  <div class="dots" id="dots"></div>
+	</div>
+
+  </div>
+
+  <!-- 右側欄 -->
+  <aside class="side right">
+	<h3>📂巴比恩文章</h3>
+    <hr />
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<hr class="divider"> 
+	<br>
+	<br>
+	<br>
+  </aside>
+
+</div>
+
+<script>
+// [01] 全域狀態與深色模式
+let currentIndex = 1;
+let isAnimating = false;
+
+function toggleDark() {
+  const isDark = document.body.classList.toggle("dark");
+  document.getElementById("darkBtn").textContent = isDark ? "☀️ 日間模式" : "🌙 夜間模式";
+}
+
+// [02] 畫面載入初始化 (包含統計數目、輪播圖建置、表格套色)
+window.addEventListener("DOMContentLoaded", () => {
+  let totalBLDramas = 0;
+  
+  // 處理各 Slide 的數量計算與標題更新
+  document.querySelectorAll(".slide").forEach(slide => {
+    let dramaCount = 0;
+    slide.querySelectorAll("tbody tr").forEach(row => {
+      const firstCell = row.cells[0];
+      if (firstCell && /^\d{4}[./-]\d{2}[./-]\d{2}/.test(firstCell.textContent.trim())) {
+        dramaCount++;
+      }
+    });
+
+    if (slide.classList.contains("slide-1")) {
+      const h2 = slide.querySelector("h2");
+      if (h2) {
+        h2.textContent = h2.textContent.includes("共")
+          ? h2.textContent.replace(/共\s*\d*\s*部/, `共 ${dramaCount} 部`)
+          : `${h2.textContent} ，共 ${dramaCount} 部`;
+      }
+      totalBLDramas += dramaCount;
+    }
+  });
+
+  console.log(`Slide 1 計算完成：共 ${totalBLDramas} 部`);
+
+  // 初始化輪播圖與導覽點
+  const track = document.getElementById("track");
+  const slides = document.querySelectorAll("#track .slide");
+  const dotsContainer = document.getElementById("dots");
+  const realCount = slides.length;
+
+  if (track && realCount > 0) {
+    track.append(slides[0].cloneNode(true));
+    track.prepend(slides[realCount - 1].cloneNode(true));
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+    dotsContainer.innerHTML = "";
+    for (let i = 0; i < realCount; i++) {
+      const dot = document.createElement("span");
+      dot.addEventListener("click", () => {
+        if (isAnimating) return;
+        currentIndex = i + 1;
+        track.style.transition = "transform 0.5s ease-in-out";
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        updateDots();
+      });
+      dotsContainer.append(dot);
+    }
+    updateDots();
+  }
+
+  // 處理 .slide-4 表格群組列的隔行套色
+  document.querySelectorAll(".slide-4 tbody").forEach(tbody => {
+    let groupIndex = -1;
+    let remaining = 0;
+    
+    tbody.querySelectorAll("tr").forEach(row => {
+      if (remaining > 0) {
+        remaining--;
+      } else {
+        groupIndex++;
+        const firstCell = row.cells[0];
+        remaining = (firstCell && firstCell.hasAttribute("rowspan"))
+          ? parseInt(firstCell.getAttribute("rowspan")) - 1 
+          : 0;
+      }
+      row.classList.add(groupIndex % 2 === 0 ? "row-blue" : "row-purple");
+    });
+  });
+});
+
+// [03] 輪播圖操作與導覽點狀態更新
+function moveSlide(direction) {
+  if (isAnimating) return;
+  isAnimating = true;
+  currentIndex += direction;
+
+  const track = document.getElementById("track");
+  const allSlides = document.querySelectorAll(".slide");
+
+  track.style.transition = "transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)";
+  track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+  track.addEventListener("transitionend", function onTransitionEnd() {
+    track.removeEventListener("transitionend", onTransitionEnd);
+
+    // 無縫循環邊界判斷
+    if (currentIndex === allSlides.length - 1 || currentIndex === 0) {
+      currentIndex = currentIndex === 0 ? allSlides.length - 2 : 1;
+      track.style.transition = "none";
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    updateDots();
+    isAnimating = false;
+  });
+}
+
+function updateDots() {
+  const dots = document.querySelectorAll(".dots span");
+  if (!dots.length) return;
+
+  dots.forEach(dot => dot.classList.remove("active"));
+  dots[(currentIndex - 1 + dots.length) % dots.length].classList.add("active");
+}
+
+// [04] 頁籤切換
+function switchTab(selectEl) {
+  const slide = selectEl.closest(".slide");
+  slide.querySelectorAll(".tab-content").forEach(el => el.classList.remove("active"));
+  slide.querySelector("#" + selectEl.value).classList.add("active");
+}
+</script>
+
+</body>
+</html>
