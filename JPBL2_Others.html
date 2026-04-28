@@ -68,12 +68,9 @@ body.dark {
   align-items: center;
   gap: 4px;
   transition: 0.25s;
-}
-.navbar .home-link, 
-.navbar .right-buttons a {
-  color: var(--main) !important;
-  background-color: #ffffff !important;
   padding: 4px 8px;
+  color: var(--main);
+  background-color: #ffffff;
 }
 .navbar .right-buttons { 
   margin-left: auto; 
@@ -103,7 +100,6 @@ body.dark {
   display: grid;
   grid-template-columns: 220px 1fr 220px;
   gap: 30px;
-  align-items: start;
 }
 .side {
   background: var(--card);
@@ -112,7 +108,7 @@ body.dark {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   height: fit-content;
 }
-.side h3 { margin-top: 0; font-size: 16px; text-align: center; }
+.side h3 { margin: 0 0 10px; font-size: 16px; text-align: center; }
 .side a { display: block; text-decoration: none; color: var(--main); margin: 8px 0; font-size: 14px; }
 .side a:hover, .content h2 a:hover { color: var(--main-dark); text-decoration: underline; }
 
@@ -152,15 +148,20 @@ table th:nth-child(1), table td:nth-child(1) { width: 15%; }
 table th:nth-child(2), table td:nth-child(2) { width: 20%; }
 table th:nth-child(3), table td:nth-child(3) { width: 65%; }
 
-table tbody td.center { border-right: 1px solid var(--table-border); text-align: center; }
+thead tr th { 
+  background: var(--table-head); 
+  position: sticky; 
+  top: 0; 
+  z-index: 5; 
+  border-bottom: 2px solid var(--table-border); 
+  text-align: center; 
+}
 
-thead tr th { background: var(--table-head); position: sticky; top: 0; z-index: 5; font-weight: 600; border-bottom: 2px solid var(--table-border); text-align: center; }
-
-.row-blue { background-color: var(--row-blue); }
-.row-purple { background-color: var(--row-purple); }
 table a { color: var(--main); text-decoration: underline; }
 body.dark table a { color: var(--link-main-dark); }
-.content table tbody tr:hover td { color: inherit !important; }
+.row-blue { background-color: var(--row-blue); }
+.row-purple { background-color: var(--row-purple); }
+.row-green, .row-green td { background-color: var(--row-green); }
 
 /* ============================================================
    6. 輪播組件與互動分頁
@@ -170,7 +171,11 @@ body.dark table a { color: var(--link-main-dark); }
 .slider-track { display: flex; transition: transform 0.4s ease; }
 .slide { min-width: 100%; text-align: center; }
 
-.nav { position: absolute; top: 50%; transform: translateY(-50%); background: var(--card); color: var(--text); border: 1px solid var(--border); border-radius: 50%; width: 40px; height: 40px; cursor: pointer; z-index: 5; transition: 0.25s; }
+.nav { 
+  position: absolute; top: 50%; transform: translateY(-50%); 
+  background: var(--card); color: var(--text); border: 1px solid var(--border); 
+  border-radius: 50%; width: 40px; height: 40px; cursor: pointer; z-index: 5; 
+}
 .prev { left: -50px; }
 .next { right: -50px; }
 .nav:hover { background: var(--main); color: #ffffff; border-color: var(--main); }
@@ -201,36 +206,38 @@ body.dark .dots span.active { background: var(--link-main-dark); }
 /* ============================================================
    8. 獨立簡報區塊樣式 (Slide 1~6 專屬)
    ============================================================ */
-/* 合併 Slide 1 & 2 重複的欄位寬度 */
-.slide-1 th:nth-child(3), .slide-1 td:nth-child(3), .slide-2 th:nth-child(3), .slide-2 td:nth-child(3) { width: 15%; }
-.slide-1 th:nth-child(4), .slide-1 td:nth-child(4), .slide-2 th:nth-child(4), .slide-2 td:nth-child(4) { width: 15%; }
-.slide-1 th:nth-child(5), .slide-1 td:nth-child(5), .slide-2 th:nth-child(5), .slide-2 td:nth-child(5) { width: 35%; }
+/* 合併處理 Slide 1 & 2 的共用寬度與邊框 */
+.slide-1 th:nth-child(3), .slide-1 td:nth-child(3), 
+.slide-2 th:nth-child(3), .slide-2 td:nth-child(3),
+.slide-1 th:nth-child(4), .slide-1 td:nth-child(4), 
+.slide-2 th:nth-child(4), .slide-2 td:nth-child(4) { width: 15%; text-align: center; }
 
-/* 合併 Slide 1 & 2 相同的置中與邊框設定 */
-.slide-1 table td:nth-child(3), .slide-1 table td:nth-child(4),
-.slide-2 table td:nth-child(3), .slide-2 table td:nth-child(4) {
-  text-align: center;
-  border-left: 1px solid var(--table-border);
-  border-right: 1px solid var(--table-border);
-} 
+.slide-1 th:nth-child(5), .slide-1 td:nth-child(5), 
+.slide-2 th:nth-child(5), .slide-2 td:nth-child(5) { width: 35%; }
 
+.slide-1 table td:nth-child(3), .slide-1 table td:nth-child(4) { border-left: 1px solid var(--table-border); border-right: 1px solid var(--table-border); }
+
+/* Slide 3 & 4 & 6 的獨立寬度設定 */
 .slide-3 th:nth-child(3), .slide-3 td:nth-child(3) { width: 20%; }
-.slide-3 th:nth-child(4), .slide-3 td:nth-child(4) { width: 5%; }
+.slide-3 th:nth-child(4), .slide-3 td:nth-child(4) { width: 5%; text-align: center; }
 .slide-3 th:nth-child(5), .slide-3 td:nth-child(5) { width: 40%; }
-.slide-3 table td:nth-child(4) { text-align: center; }
 
 .slide-4 th:nth-child(3), .slide-4 td:nth-child(3) { width: 20%; }
 .slide-4 th:nth-child(4), .slide-4 td:nth-child(4) { width: 45%; }
-.slide-4 td.actor { border-left: 1px solid var(--table-border); border-right: 1px solid var(--table-border); }
 
-/* 合併 Slide 6 重複的欄位寬度 */
+.slide-2 td:not(:last-child), .slide-4 td:not(:last-child) { border-right: 1px solid var(--table-border); }
+
 .slide-6 th:nth-child(1), .slide-6 td:nth-child(1) { width: 20%; }
-.slide-6 th:nth-child(2), .slide-6 td:nth-child(2), .slide-6 th:nth-child(3), .slide-6 td:nth-child(3) { width: 40%; }
+.slide-6 th:nth-child(2), .slide-6 td:nth-child(2), 
+.slide-6 th:nth-child(3), .slide-6 td:nth-child(3) { width: 40%; }
 
-/* Slide 1 的斑馬紋特殊色設定 */
+/* Slide 1 特殊斑馬紋與通用工具類 */
 .slide-1 tbody tr:nth-child(4n+1), .slide-1 tbody tr:nth-child(4n+2) { background-color: var(--row-blue); }
 .slide-1 tbody tr:nth-child(4n+3), .slide-1 tbody tr:nth-child(4n+4) { background-color: var(--row-purple); }
 .slide-1 tbody tr:nth-last-child(-n+3) { background-color: var(--row-green); }
+
+.row-bold { font-weight: bold; }
+.force-right-border { border-right: 1px solid var(--table-border) !important; }
 </style>
 </head>
 <body>
@@ -413,66 +420,67 @@ body.dark .dots span.active { background: var(--link-main-dark); }
 
       <tbody>
       <!-- 有【ミナト】的資料請放這裡 -->
-      <tr>
-        <td>2020.10.09</td>
-        <td>如果30歲還是處男，似乎就能成為魔法師</td>
-        <td>ゆうたろう</td>
-        <td>綿矢湊</td>
-        <td>外送員</td>
-      </tr>
-      <tr>
-        <td>2022.04.22</td>
-        <td>只能親吻不幸同學了！ </td>
-        <td>坪根悠仁</td>
-        <td>ミナト</td>
-        <td>大學生</td>
-      </tr>
-      <tr>
-        <td>2022.06.29</td>
-        <td>歡迎光臨自助洗衣店<br>(みなと商事コインランドリー)</td>
-        <td rowspan='2'>草川拓弥</td>
-        <td rowspan='2'>湊晃</td>
-        <td rowspan='2'>跟老師有故事</td>
-      </tr>
-      <tr>
-        <td>2023.07.05</td>
-        <td>歡迎光臨自助洗衣店 II<br>(みなと商事コインランドリー II)</td>
-      </tr>
-      <tr>
-        <td>2022.10.21</td>
-        <td>永遠的昨日</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>浩一的表弟</td>
-      </tr>
-      <tr>
-        <td>2022.10.03</td>
-        <td>人氣同人作家貓屋敷想得到認同</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>4人團隊長弟弟，後因車禍無法跳舞</td>
-      </tr>
-      <tr>
-        <td>2023.12.01</td>
-        <td>佐原老師與土岐同學</td>
-        <td>堀海登</td>
-        <td>猫戸湊</td>
-        <td>跟佐原老師有交情</td>
-      </tr>
-      <tr>
-        <td>2025.10.29</td>
-        <td>療傷遊戲</td>
-        <td>紀田直哉(NAOYA)</td>
-        <td>三兎湊</td>
-        <td>戀兄情節</td>
-      </tr>
-      <tr>
-        <td>2026.01.13</td>
-        <td>在對死黨的同居要求說「好」之前</td>
-        <td>吉澤要人</td>
-        <td>橫井湊</td>
-        <td>橫井湊，卡片擺直的</td>
-      </tr>
+	  <!-- 記得加上這段【<td class="force-right-border">歡迎光臨自助洗衣店 II<br>(みなと商事コインランドリー II)</td>】 -->
+			<tr>
+			<td>2020.10.09</td>
+			<td>如果30歲還是處男，似乎就能成為魔法師</td>
+			<td>ゆうたろう</td>
+			<td>綿矢湊</td>
+			<td>外送員</td>
+			</tr>
+			<tr>
+			<td>2022.04.22</td>
+			<td>只能親吻不幸同學了！ </td>
+			<td>坪根悠仁</td>
+			<td>ミナト</td>
+			<td>大學生</td>
+			</tr>
+			<tr>
+			<td>2022.06.29</td>
+			<td>歡迎光臨自助洗衣店<br>(みなと商事コインランドリー)</td>
+			<td rowspan='2'>草川拓弥</td>
+			<td rowspan='2'>湊晃</td>
+			<td rowspan='2'>跟老師有故事</td>
+			</tr>
+			<tr>
+			<td>2023.07.05</td>
+			<td class="force-right-border">歡迎光臨自助洗衣店 II<br>(みなと商事コインランドリー II)</td>
+			</tr>
+			<tr>
+			<td>2022.10.21</td>
+			<td>永遠的昨日</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>浩一的表弟</td>
+			</tr>
+			<tr>
+			<td>2022.10.03</td>
+			<td>人氣同人作家貓屋敷想得到認同</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>4人團隊長弟弟，後因車禍無法跳舞</td>
+			</tr>
+			<tr>
+			<td>2023.12.01</td>
+			<td>佐原老師與土岐同學</td>
+			<td>堀海登</td>
+			<td>猫戸湊</td>
+			<td>跟佐原老師有交情</td>
+			</tr>
+			<tr>
+			<td>2025.10.29</td>
+			<td>療傷遊戲</td>
+			<td>紀田直哉(NAOYA)</td>
+			<td>三兎湊</td>
+			<td>戀兄情節</td>
+			</tr>
+			<tr>
+			<td>2026.01.13</td>
+			<td>在對死黨的同居要求說「好」之前</td>
+			<td>吉澤要人</td>
+			<td>橫井湊</td>
+			<td>橫井湊，卡片擺直的</td>
+			</tr>
 		<!-- 貼到這裡 -->
       </tbody>
     </table>
@@ -495,41 +503,41 @@ body.dark .dots span.active { background: var(--link-main-dark); }
   </thead>
       <tbody>
 	  <!-- 【我的偶像倒追我】的資料請放這裡 -->
-      <tr>
-        <td>2022.06.17</td>
-        <td>前輩，這不叫戀愛！</td>
-        <td>EP7_1700</td>
-        <td>X</td>
-        <td><ul class='desc-list'><li>去溫哥華的時候，後輩跟別人%%%</li><li>是你，讓我重拾對CG的愛</li><li>新原泰佑：「瀨戶，想跟你換前輩，渡部前輩好難搞」</li><li>別府由來：「這還好吧，他看到我是直接開揍ㄟ」</li></ul></td>
-      </tr>
-      <tr>
-        <td>2022.10.03</td>
-        <td>人氣同人作家貓屋敷想得到認同</td>
-        <td>EP6_0700</td>
-        <td>O</td>
-        <td><ul class='desc-list'><li>那麼愛笑，那就去當偶像啊<br>(a.k.a一星愛上貓屋敷的理由)</li><li>EP3_1900一星媽媽外遇</li><li>一星講完之後，拉著貓屋敷跑+轉<br>(xx2104xxx表示頭好暈)</li></ul></td>
-      </tr>
-      <tr>
-        <td>2023.12.24</td>
-        <td>我成為BL劇的主角了</td>
-        <td>EP3_4500</td>
-        <td>O</td>
-        <td><ul class='desc-list'><li>你宅男的樣子很專業，我很喜歡<br>(a.k.a赤藤愛上青柳的理由)</li><li>青柳→赤藤(扛著招牌)，青柳摔</li><li>渡部秀在這裡當青柳的經紀人</li></ul></td>
-      </tr>
-      <tr>
-        <td>2025.06.13</td>
-        <td>我成為BL劇的主角了 II</td>
-        <td>X(for紫黃CP)</td>
-        <td>X</td>
-        <td><ul class='desc-list'><li>黃島因傷引退(紫宏：我難過的是放棄你~...)</li><li>赤藤(濃妝豔抹)→青柳，赤藤摔</li><li>紫宏臣的黃島鏈成陣沒被發現</li></ul></td>
-      </tr>
-      <tr>
-        <td>2025.10.10</td>
-        <td>龐克三角</td>
-        <td>EP4_2300</td>
-        <td>O</td>
-        <td><ul class='desc-list'><li>概念式連結?卡洞，哈麻油菸彈</li><li>EP2_0100因為喜歡純浦做的衣服，所以決定追他</li><li>EP5_0730媽媽外遇，進而愛上AE(a.k.a江永)</li><li>江永在台上講完之後，跟純浦玩你追我跑<br>(江永→純浦)</li><li>中川大輔：概念式連結，我也略懂略懂</li></ul></td>
-      </tr>
+		<tr>
+		<td>2022.06.17</td>
+		<td>前輩，這不叫戀愛！</td>
+		<td>EP7_1700</td>
+		<td>X</td>
+		<td><ul class='desc-list'><li>去溫哥華的時候，後輩跟別人%%%</li><li>是你，讓我重拾對CG的愛</li><li>新原泰佑：「瀨戶，想跟你換前輩，渡部前輩好難搞」</li><li>別府由來：「這還好吧，他看到我是直接開揍ㄟ」</li></ul></td>
+		</tr>
+		<tr>
+		<td>2022.10.03</td>
+		<td>人氣同人作家貓屋敷想得到認同</td>
+		<td>EP6_0700</td>
+		<td>O</td>
+		<td><ul class='desc-list'><li>那麼愛笑，那就去當偶像啊<br>(a.k.a一星愛上貓屋敷的理由)</li><li>EP3_1900一星媽媽外遇</li><li>一星講完之後，拉著貓屋敷跑+轉<br>(xx2104xxx表示頭好暈)</li></ul></td>
+		</tr>
+		<tr>
+		<td>2023.12.24</td>
+		<td>我成為BL劇的主角了</td>
+		<td>EP3_4500</td>
+		<td>O</td>
+		<td><ul class='desc-list'><li>你宅男的樣子很專業，我很喜歡<br>(a.k.a赤藤愛上青柳的理由)</li><li>青柳→赤藤(扛著招牌)，青柳摔</li><li>渡部秀在這裡當青柳的經紀人</li></ul></td>
+		</tr>
+		<tr>
+		<td>2025.06.13</td>
+		<td>我成為BL劇的主角了 II</td>
+		<td>X(for紫黃CP)</td>
+		<td>X</td>
+		<td><ul class='desc-list'><li>黃島因傷引退(紫宏：我難過的是放棄你~...)</li><li>赤藤(濃妝豔抹)→青柳，赤藤摔</li><li>紫宏臣的黃島鏈成陣沒被發現</li></ul></td>
+		</tr>
+		<tr>
+		<td>2025.10.10</td>
+		<td>龐克三角</td>
+		<td>EP4_2300</td>
+		<td>O</td>
+		<td><ul class='desc-list'><li>概念式連結?卡洞，哈麻油菸彈</li><li>EP2_0100因為喜歡純浦做的衣服，所以決定追他</li><li>EP5_0730媽媽外遇，進而愛上AE(a.k.a江永)</li><li>江永在台上講完之後，跟純浦玩你追我跑<br>(江永→純浦)</li><li>中川大輔：概念式連結，我也略懂略懂</li></ul></td>
+		</tr>
 	  <!--貼到這裡 -->
       </tbody>
     </table>
@@ -551,199 +559,199 @@ body.dark .dots span.active { background: var(--link-main-dark); }
   </thead>
       <tbody>
       <!-- 【串場型BL劇】的資料請放這裡 -->
-      <tr>
-        <td rowspan='3'>2020-10-09</td>
-        <td rowspan='3'>如果30歲還是處男，似乎就能成為魔法師</td>
-        <td class='actor' rowspan='2'>優太朗</td>
-        <td>《全裸開動》</td>
-      </tr>
-      <tr>
-        <td>《BL世界(I、II、III、IV)》</td>
-      </tr>
-      <tr>
-        <td class='actor'>草川拓弥</td>
-        <td>《歡迎光臨自助洗衣店》</td>
-      </tr>
-      <tr>
-        <td rowspan='10'>2021-07-16</td>
-        <td rowspan='10'>GIVEN 被贈與的未來</td>
-        <td class='actor'>鈴木仁</td>
-        <td>《被擦掉的初戀》</td>
-      </tr>
-      <tr>
-        <td class='actor' rowspan='2'>奧野壯</td>
-        <td>《我很喜歡你，那你呢》</td>
-      </tr>
-      <tr>
-        <td>《美妝搭檔情人(I、II)》</td>
-      </tr>
-      <tr>
-        <td class='actor'>稲葉友</td>
-        <td>《歡迎光臨自助洗衣店(I、II)》</td>
-      </tr>
-      <tr>
-        <td class='actor' rowspan='3'>武藤潤</td>
-        <td>《相遇驟雨中》</td>
-      </tr>
-      <tr>
-        <td>     -EP3_0950被搶畫的同學</td>
-      </tr>
-      <tr>
-        <td>     -EP3_2200叫上山起床的同學</td>
-      </tr>
-      <tr>
-        <td class='actor' rowspan='3'>小野寺晃良</td>
-        <td>《Given被贈與的未來》EP5_1130</td>
-      </tr>
-      <tr>
-        <td>《相遇驟雨中》EP2_1530</td>
-      </tr>
-      <tr>
-        <td>《BL世界IV》EP6_不幸的小賀</td>
-      </tr>
-      <tr>
-        <td rowspan='15'>2022-06-29</td>
-        <td rowspan='15'>歡迎光臨自助洗衣店</td>
-        <td class='actor'>西垣匠(I、II)</td>
-        <td>《被擦掉的初戀》</td>
-      </tr>
-      <tr>
-        <td class='actor'>草川拓弥(I、II)</td>
-        <td>《如果30歲還是處男，似乎就能成為魔法師》</td>
-      </tr>
-      <tr>
-        <td class='actor'>稲葉友(I、II)</td>
-        <td>《GIVEN 被贈與的未來》</td>
-      </tr>
-      <tr>
-        <td class='actor' rowspan='4'>南雲奨馬<br>(I、EP5_1600相片)</td>
-        <td>《25時，赤坂見(I、II)》</td>
-      </tr>
-      <tr>
-        <td>《戀愛的預感》</td>
-      </tr>
-      <tr>
-        <td>《海洋之戀～愛之歸處～》EP6_1530學長來當監軍</td>
-      </tr>
-      <tr>
-        <td>《平行世界的戀人～》</td>
-      </tr>
-      <tr>
-        <td class='actor' rowspan='2'>長野綾大<br>(I、EP7_0200)</td>
-        <td>《相遇驟雨中》EP2_1400</td>
-      </tr>
-      <tr>
-        <td>《龐克三角》</td>
-      </tr>
-      <tr>
-        <td class='actor' rowspan='2'>武田航平(II)</td>
-        <td>《經典杯子蛋糕》</td>
-      </tr>
-      <tr>
-        <td>《霧藍色的雨後晴天》</td>
-      </tr>
-      <tr>
-        <td class='actor' rowspan='2'>髙松アロハ<br>(II、EP9_0930)</td>
-        <td>《4月的東京》</td>
-      </tr>
-      <tr>
-        <td>《第二次戀愛才完美》</td>
-      </tr>
-      <tr>
-        <td class='actor' rowspan='2'>阿久根温世<br>(II、EP11_0000)</td>
-        <td>《療傷遊戲》獸醫系同學</td>
-      </tr>
-      <tr>
-        <td>《對比的我和你》</td>
-      </tr>
-      <tr>
-        <td rowspan='5'>2022-08-19</td>
-        <td rowspan='5'>高良君和天城君</td>
-        <td class='actor'>小宮璃央</td>
-        <td>《永遠的昨日》</td>
-      </tr>
-      <tr>
-        <td class='actor'>鈴木康介(戴眼鏡)</td>
-        <td>《愛在記憶凍結時》</td>
-      </tr>
-      <tr>
-        <td class='actor' rowspan='3'>坂井翔</td>
-        <td>《高良君和天城君》EP1_0415</td>
-      </tr>
-      <tr>
-        <td>《愛在記憶凍結時》客串</td>
-      </tr>
-      <tr>
-        <td>《有他在的生活》</td>
-      </tr>
-      <tr>
-        <td rowspan='8'>2024-04-19</td>
-        <td rowspan='8'>25時，赤坂見</td>
-        <td class='actor' rowspan='2'>新原泰佑</td>
-        <td>《前輩，這不叫戀愛！》</td>
-      </tr>
-      <tr>
-        <td>《永遠的昨日》</td>
-      </tr>
-      <tr>
-        <td class='actor' rowspan='2'>宇佐卓真</td>
-        <td>《聽見向陽之聲》EP1開頭的黃毛仔</td>
-      </tr>
-      <tr>
-        <td>《失焦的深度》</td>
-      </tr>
-      <tr>
-        <td class='actor' rowspan='4'>南雲獎馬</td>
-        <td>《歡迎光臨自助洗衣店I》</td>
-      </tr>
-      <tr>
-        <td>《戀愛的預感》</td>
-      </tr>
-      <tr>
-        <td>《海洋之戀～愛之歸處～》EP6_1530學長來當監軍</td>
-      </tr>
-      <tr>
-        <td>《平行世界的戀人～》</td>
-      </tr>
-      <tr>
-        <td rowspan='10'>2025-10-29</td>
-        <td rowspan='10'>療傷遊戲</td>
-        <td class='actor'>冨田侑暉</td>
-        <td>《託生君_影集系列》：被旗野尻2拳</td>
-      </tr>
-      <tr>
-        <td class='actor'>佐藤瑠雅</td>
-        <td>《有他在的生活》</td>
-      </tr>
-      <tr>
-        <td class='actor'>HAYATO</td>
-        <td>《對比的我和你》</td>
-      </tr>
-      <tr>
-        <td class='actor' rowspan='2'>阿久根温世</td>
-        <td>《歡迎光臨自助洗衣店 II》EP11_0000客串香月妹妹男朋友</td>
-      </tr>
-      <tr>
-        <td>《對比的我和你》</td>
-      </tr>
-      <tr>
-        <td class='actor' rowspan='2'>小西詠斗</td>
-        <td>《人氣同人作家貓屋敷想得到認同》4人團成員</td>
-      </tr>
-      <tr>
-        <td>《如寶物般的玻璃珠》</td>
-      </tr>
-      <tr>
-        <td class='actor'>山中崇</td>
-        <td>《美妝搭檔情人 II》攻的老爸</td>
-      </tr>
-      <tr>
-        <td class='actor' rowspan='2'>井手上漠</td>
-        <td>《BL世界 II》客串</td>
-      </tr>
-      <tr>
-        <td>《我們的微小終末》跟團的妹子??</td>
-      </tr>
+		<tr>
+		<td rowspan='3'>2020.10.09</td>
+		<td rowspan='3'>如果30歲還是處男，似乎就能成為魔法師</td>
+		<td rowspan='2'>優太朗</td>
+		<td>《全裸開動》</td>
+		</tr>
+		<tr>
+		<td>《BL世界(I、II、III、IV)》</td>
+		</tr>
+		<tr>
+		<td>草川拓弥</td>
+		<td>《歡迎光臨自助洗衣店》</td>
+		</tr>
+		<tr>
+		<td rowspan='10'>2021.07.16</td>
+		<td rowspan='10'>GIVEN 被贈與的未來</td>
+		<td>鈴木仁</td>
+		<td>《被擦掉的初戀》</td>
+		</tr>
+		<tr>
+		<td rowspan='2'>奧野壯</td>
+		<td>《我很喜歡你，那你呢》</td>
+		</tr>
+		<tr>
+		<td>《美妝搭檔情人(I、II)》</td>
+		</tr>
+		<tr>
+		<td>稲葉友</td>
+		<td>《歡迎光臨自助洗衣店(I、II)》</td>
+		</tr>
+		<tr>
+		<td rowspan='3'>武藤潤</td>
+		<td>《相遇驟雨中》</td>
+		</tr>
+		<tr>
+		<td><ul class='desc-list'><li>EP3_0950被搶畫的同學</li></ul></td>
+		</tr>
+		<tr>
+		<td><ul class='desc-list'><li>EP3_2200叫上山起床的同學</li></ul></td>
+		</tr>
+		<tr>
+		<td rowspan='3'>小野寺晃良</td>
+		<td>《Given被贈與的未來》EP5_1130</td>
+		</tr>
+		<tr>
+		<td>《相遇驟雨中》EP2_1530</td>
+		</tr>
+		<tr>
+		<td>《BL世界IV》EP6_不幸的小賀</td>
+		</tr>
+		<tr>
+		<td rowspan='15'>2022.06.29</td>
+		<td rowspan='15'>歡迎光臨自助洗衣店</td>
+		<td>西垣匠(I、II)</td>
+		<td>《被擦掉的初戀》</td>
+		</tr>
+		<tr>
+		<td>草川拓弥(I、II)</td>
+		<td>《如果30歲還是處男，似乎就能成為魔法師》</td>
+		</tr>
+		<tr>
+		<td>稲葉友(I、II)</td>
+		<td>《GIVEN 被贈與的未來》</td>
+		</tr>
+		<tr>
+		<td rowspan='4'>南雲奨馬<br>(I、EP5_1600相片)</td>
+		<td>《25時，赤坂見(I、II)》</td>
+		</tr>
+		<tr>
+		<td>《戀愛的預感》</td>
+		</tr>
+		<tr>
+		<td>《海洋之戀～愛之歸處～》EP6_1530學長來當監軍</td>
+		</tr>
+		<tr>
+		<td>《平行世界的戀人～》</td>
+		</tr>
+		<tr>
+		<td rowspan='2'>長野綾大<br>(I、EP7_0200)</td>
+		<td>《相遇驟雨中》EP2_1400</td>
+		</tr>
+		<tr>
+		<td>《龐克三角》</td>
+		</tr>
+		<tr>
+		<td rowspan='2'>武田航平(II)</td>
+		<td>《經典杯子蛋糕》</td>
+		</tr>
+		<tr>
+		<td>《霧藍色的雨後晴天》</td>
+		</tr>
+		<tr>
+		<td rowspan='2'>髙松アロハ<br>(II、EP9_0930)</td>
+		<td>《4月的東京》</td>
+		</tr>
+		<tr>
+		<td>《第二次戀愛才完美》</td>
+		</tr>
+		<tr>
+		<td rowspan='2'>阿久根温世<br>(II、EP11_0000)</td>
+		<td>《療傷遊戲》獸醫系同學</td>
+		</tr>
+		<tr>
+		<td>《對比的我和你》</td>
+		</tr>
+		<tr>
+		<td rowspan='5'>2022.08.19</td>
+		<td rowspan='5'>高良君和天城君</td>
+		<td>小宮璃央</td>
+		<td>《永遠的昨日》</td>
+		</tr>
+		<tr>
+		<td>鈴木康介(戴眼鏡)</td>
+		<td>《愛在記憶凍結時》</td>
+		</tr>
+		<tr>
+		<td rowspan='3'>坂井翔</td>
+		<td>《高良君和天城君》EP1_0415</td>
+		</tr>
+		<tr>
+		<td>《愛在記憶凍結時》客串</td>
+		</tr>
+		<tr>
+		<td>《有他在的生活》</td>
+		</tr>
+		<tr>
+		<td rowspan='8'>2024.04.19</td>
+		<td rowspan='8'>25時，赤坂見</td>
+		<td rowspan='2'>新原泰佑</td>
+		<td>《前輩，這不叫戀愛！》</td>
+		</tr>
+		<tr>
+		<td>《永遠的昨日》</td>
+		</tr>
+		<tr>
+		<td rowspan='2'>宇佐卓真</td>
+		<td>《聽見向陽之聲》EP1開頭的黃毛仔</td>
+		</tr>
+		<tr>
+		<td>《失焦的深度》</td>
+		</tr>
+		<tr>
+		<td rowspan='4'>南雲獎馬</td>
+		<td>《歡迎光臨自助洗衣店I》</td>
+		</tr>
+		<tr>
+		<td>《戀愛的預感》</td>
+		</tr>
+		<tr>
+		<td>《海洋之戀～愛之歸處～》EP6_1530學長來當監軍</td>
+		</tr>
+		<tr>
+		<td>《平行世界的戀人～》</td>
+		</tr>
+		<tr>
+		<td rowspan='10'>2025.10.29</td>
+		<td rowspan='10'>療傷遊戲</td>
+		<td>冨田侑暉</td>
+		<td>《託生君_影集系列》：被旗野尻2拳</td>
+		</tr>
+		<tr>
+		<td>佐藤瑠雅</td>
+		<td>《有他在的生活》</td>
+		</tr>
+		<tr>
+		<td>HAYATO</td>
+		<td>《對比的我和你》</td>
+		</tr>
+		<tr>
+		<td rowspan='2'>阿久根温世</td>
+		<td>《歡迎光臨自助洗衣店 II》<br>EP11_0000客串香月妹妹男朋友</td>
+		</tr>
+		<tr>
+		<td>《對比的我和你》</td>
+		</tr>
+		<tr>
+		<td rowspan='2'>小西詠斗</td>
+		<td>《人氣同人作家貓屋敷想得到認同》4人團成員</td>
+		</tr>
+		<tr>
+		<td>《如寶物般的玻璃珠》</td>
+		</tr>
+		<tr>
+		<td>山中崇</td>
+		<td>《美妝搭檔情人 II》攻的老爸</td>
+		</tr>
+		<tr>
+		<td rowspan='2'>井手上漠</td>
+		<td>《BL世界 II》客串</td>
+		</tr>
+		<tr>
+		<td>《我們的微小終末》跟團的妹子??</td>
+		</tr>
 	  <!--貼到這裡 -->
       </tbody>
     </table>
@@ -758,6 +766,7 @@ body.dark .dots span.active { background: var(--link-main-dark); }
 
     <!-- 🔘 子分類按鈕 -->
     <select class="tf-select" onchange="switchTab(this)">
+	  <option value="Red">託生君紅色風暴</option>
       <option value="food">美食型BL劇</option>
       <option value="plant">植物型BL劇</option>
 	  <option value="office">特殊職場型BL劇</option>
@@ -765,9 +774,118 @@ body.dark .dots span.active { background: var(--link-main-dark); }
 	  <option value="design">設計型BL劇</option>
     </select>
   </div>
-
+<!-- ===== 超級戰隊紅戰士當主角 ===== -->
+  <div class="tab-content active" id="Red">
+    <style>
+		#Red td:nth-child(6),
+		#Red th:nth-child(6),
+		#Red td:nth-child(7),
+		#Red th:nth-child(7) {text-align: center;}
+  </style>
+    <div class="table-wrapper">
+      <table>	
+	    <colgroup>
+        <col style="width:100px;">
+        <col style="width:130px;">
+        <col style="width:100px;">
+        <col style="width:130px;">
+        <col style="width:100px;">
+        <col style="width:100px;">
+        <col style="width:50px;">
+      </colgroup>
+  <thead>
+    <tr>
+		<th>演員</th>
+		<th>超級戰隊名稱</th>
+		<th>超級戰隊<br>角色名稱</th>
+		<th>BL劇名</th>
+		<th>BL角色名稱</th>
+		<th>BL角色定位</th>
+		<th>床戲</th>
+	</tr>   
+  </thead>
+      <tbody>
+	  <!-- 【超級戰隊紅戰士當主角】的資料請放這裡 -->
+		<tr>
+		<td>中尾暢樹</td>
+		<td>動物戰隊</td>
+		<td>風切大和</td>
+		<td>人氣同人作家貓屋敷想得到認同</td>
+		<td>風間一星</td>
+		<td>攻</td>
+		<td>X</td>
+		</tr>
+		<tr>
+		<td>岐洲匠</td>
+		<td>宇宙戰隊</td>
+		<td>拉奇</td>
+		<td>佐原老師與土岐同學</td>
+		<td>佐原一狼</td>
+		<td>攻</td>
+		<td>X</td>
+		</tr>
+		<tr>
+		<td>伊藤明日陽</td>
+		<td>快盜戰隊VS警察戰隊</td>
+		<td>魯邦紅</td>
+		<td>相遇驟雨中</td>
+		<td>半井整</td>
+		<td>女王受</td>
+		<td>O</td>
+		</tr>
+		<tr>
+		<td>小宮璃央</td>
+		<td>魔進戰隊</td>
+		<td>熱田充瑠</td>
+		<td>永遠的昨日</td>
+		<td>山田浩一</td>
+		<td>攻</td>
+		<td>O</td>
+		</tr>
+		<tr>
+		<td>駒木根葵汰</td>
+		<td>機界戰隊</td>
+		<td>五色田介人</td>
+		<td>25時，赤坂見</td>
+		<td>羽山麻水</td>
+		<td>攻</td>
+		<td>O</td>
+		</tr>
+		<tr>
+		<td>樋口幸平</td>
+		<td>暴太郎戰隊</td>
+		<td>桃井太郎</td>
+		<td>體感預報</td>
+		<td>瀬ヶ崎瑞貴</td>
+		<td>攻</td>
+		<td>O</td>
+		</tr>
+		<tr>
+		<td>酒井大成</td>
+		<td>國王戰隊</td>
+		<td>基拉·哈斯帝</td>
+		<td>三矢老師有計劃的餵食</td>
+		<td>石田友也</td>
+		<td>攻</td>
+		<td>X</td>
+		</tr>
+		<tr>
+		<td>井内悠陽</td>
+		<td>爆上戰隊</td>
+		<td>範道大也</td>
+		<td>對比的我和你</td>
+		<td>青山翔太</td>
+		<td>攻</td>
+		<td>X</td>
+		</tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+  
+  
   <!-- ===== 美食 ===== -->
-  <div class="tab-content active" id="food">
+  <div class="tab-content" id="food">
     <div class="table-wrapper">
       <table>	
   <thead>
