@@ -216,6 +216,7 @@ body.dark .dots span.active { background: var(--link-main-dark); }
 .slide-2 th:nth-child(5), .slide-2 td:nth-child(5) { width: 35%; }
 
 .slide-1 table td:nth-child(3), .slide-1 table td:nth-child(4) { border-left: 1px solid var(--table-border); border-right: 1px solid var(--table-border); }
+.slide-2 td:not(:last-child), .slide-4 td:not(:last-child) { border-right: 1px solid var(--table-border); }
 
 /* Slide 3 & 4 & 6 的獨立寬度設定 */
 .slide-3 th:nth-child(3), .slide-3 td:nth-child(3) { width: 20%; }
@@ -224,8 +225,6 @@ body.dark .dots span.active { background: var(--link-main-dark); }
 
 .slide-4 th:nth-child(3), .slide-4 td:nth-child(3) { width: 20%; }
 .slide-4 th:nth-child(4), .slide-4 td:nth-child(4) { width: 45%; }
-
-.slide-2 td:not(:last-child), .slide-4 td:not(:last-child) { border-right: 1px solid var(--table-border); }
 
 .slide-6 th:nth-child(1), .slide-6 td:nth-child(1) { width: 20%; }
 .slide-6 th:nth-child(2), .slide-6 td:nth-child(2), 
@@ -238,6 +237,12 @@ body.dark .dots span.active { background: var(--link-main-dark); }
 
 .row-bold { font-weight: bold; }
 .force-right-border { border-right: 1px solid var(--table-border) !important; }
+
+#Red td:nth-child(6),
+#Red th:nth-child(6),
+#Red td:nth-child(7),
+#Red th:nth-child(7) {text-align: center;}
+
 </style>
 </head>
 <body>
@@ -776,12 +781,6 @@ body.dark .dots span.active { background: var(--link-main-dark); }
   </div>
 <!-- ===== 超級戰隊紅戰士當主角 ===== -->
   <div class="tab-content active" id="Red">
-    <style>
-		#Red td:nth-child(6),
-		#Red th:nth-child(6),
-		#Red td:nth-child(7),
-		#Red th:nth-child(7) {text-align: center;}
-  </style>
     <div class="table-wrapper">
       <table>	
 	    <colgroup>
