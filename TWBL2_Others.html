@@ -182,7 +182,7 @@ select { height: 32px; padding: 0 5px; border: 1px solid var(--border); border-r
 #drillTable th, #drillTable td { white-space: normal !important; word-wrap: break-word; word-break: break-all; vertical-align: middle; }
 #drillTable td { max-width: 300px; }
 
-#drillTable thead th { text-align: center !important; line-height: 1.2 !important; background-color: var(--table-head); }
+#drillTable thead th { text-align: center !important; line-height: 1.2 !important; background-color: var(--table-head);user-select: none; }
 
 .dataTables_scrollBody td { white-space: normal !important; word-break: break-all; line-height: 1.5; }
 .dataTables_scrollBody::-webkit-scrollbar { width: 8px; }
@@ -1231,6 +1231,7 @@ const supplyModeCols = [colDefs.supplyType, colDefs.supplySub, colDefs.supplySub
 const demandModeCols = [colDefs.demandType, colDefs.Date, colDefs.demandType2, colDefs.actor, colDefs.role];
 
 let tableInstance = null;
+orderMulti: true,
 
 // --- [06] 介面監聽與核心邏輯 ---
 $(document).ready(function() {
@@ -1333,7 +1334,7 @@ function applyStepFilters() {
 function reinitTable(cols, order) {
   if ($.fn.DataTable.isDataTable('#drillTable')) {
     tableInstance.destroy();
-    $('#drillTable').empty();
+    $('#drillTable').html('<thead></thead><tbody></tbody>');
   }
   
   const currentDir = $('#mainCategory').val(); 
@@ -1358,11 +1359,12 @@ function reinitTable(cols, order) {
     columnDefs: [
       { 
         targets: '_all', 
+		type: "num",
         orderable: true, 
         render: function(data, type, row, meta) {
           if (type === 'sort') {
             const colName = cols[meta.col].data;
-            if (colName === "Date") return data ? new Date(data).getTime() : 0;
+            if (colName === "Date") return data ? new Date(data.replace(/\./g, '-')).getTime() : 0;
             if (colName === "Actor") return (customSortOrder && customSortOrder[data] !== undefined) ? customSortOrder[data] : data;
             return (customSortOrder && customSortOrder[data] !== undefined) ? customSortOrder[data] : 999;
           }
@@ -1413,6 +1415,27 @@ function unlockAll() {
   $('#mainCategory, #filterAct').val("");
   resetStepFilters(1);
   reinitTable(defaultCols, [[0, 'asc']]);
+}
+
+// [07] 自定義排序觸發器
+function triggerManualSort(columnKey, direction = 'asc') {
+  if (!tableInstance) return;
+
+  // 嘗試透過 name 找到欄位索引
+  const colIndex = tableInstance.column(columnKey + ':name').index();
+
+  if (colIndex !== undefined) {
+    // 執行排序並重繪
+    tableInstance.order([colIndex, direction]).draw();
+    console.log(`已執行排序：${columnKey} (${direction})`);
+  } else {
+    // 如果找不到 name，嘗試直接使用 index (如果傳入的是數字)
+    if (!isNaN(columnKey)) {
+      tableInstance.order([columnKey, direction]).draw();
+    } else {
+      console.error("排序失敗：找不到欄位名稱或索引 " + columnKey);
+    }
+  }
 }
 </script>
 
