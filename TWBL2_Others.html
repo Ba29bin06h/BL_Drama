@@ -1160,7 +1160,7 @@ function switchTab(selectEl) {
 const customSortOrder = { 
   "高校系列": 1, "全明星運動會": 2, "選秀節目": 3,
   "料理高校生": 11, "飛魚高校生": 12, "高校英雄傳": 13,
-  "S1": 21, "S2": 22, "S3": 23, "S4": 24,
+  "S1_1": 21, "S1_2": 22, "S2_1": 23, "S2_2": 24, "S2_3": 25,
   "原子少年": 31, "SCOOL": 32,
   "HIStory": 101, "結果娛樂": 201, "艾雨帆": 301, "VBL": 401, "其他1": 501, "其他2": 601,
   "My Hero": 111, "離我遠一點": 112, "圈套": 116, "那一天": 117, "近距離愛上你": 118, "遇見未來的你": 119, "獨佔接班人": 120,
@@ -1168,7 +1168,7 @@ const customSortOrder = {
   "約·定": 311, "看見愛": 314,
   "全面管控": 421, "對立而已": 422, "靈魂約定": 423,
   "2020因為愛你": 511, "基因決定我愛你": 512, "印象 青春": 513,
-  "紅色氣球": 611, "默默的我，不默默的我們": 612, "彈一場完美戀愛": 613, "秘密關係": 614
+  "紅色氣球": 611, "默默的我，不默默的我們": 612, "彈一場完美戀愛": 613, "秘密關係": 614,"轉過頭幫你擦眼淚": 615
 };
 
 // 為了配合 DataTables 外掛的自訂排序需求
@@ -1179,40 +1179,45 @@ $.extend($.fn.dataTable.ext.type.order, {
 });
 
 const rawData = [
-  { "SupplyType": "高校系列", "SupplySubType": "料理高校生", "SupplySubType2": "", "Actor": "洪言翔", "Date": "2024.12.20", "DemandType2": "全面管控", "DemandType": "VBL", "Role": "周禎群" },
-  { "SupplyType": "高校系列", "SupplySubType": "料理高校生", "SupplySubType2": "", "Actor": "黃新皓", "Date": "2022.03.14", "DemandType2": "基因決定我愛你", "DemandType": "其他1", "Role": "浦樂建" },
-  { "SupplyType": "高校系列", "SupplySubType": "飛魚高校生", "SupplySubType2": "飛魚隊_蝶式", "Actor": "賴東賢", "Date": "2017.02.14", "DemandType2": "My Hero", "DemandType": "HIStory", "Role": "麥英雄" },
-  { "SupplyType": "高校系列", "SupplySubType": "飛魚高校生", "SupplySubType2": "飛魚隊_蝶式", "Actor": "賴東賢", "Date": "2021.05.20", "DemandType2": "約·定", "DemandType": "艾雨帆", "Role": "金予真" },
-  { "SupplyType": "高校系列", "SupplySubType": "飛魚高校生", "SupplySubType2": "飛魚隊_蛙式", "Actor": "黃宏軒", "Date": "2024.02.24", "DemandType2": "關於未知的我們", "DemandType": "結果娛樂", "Role": "魏之遠" },
-  { "SupplyType": "高校系列", "SupplySubType": "飛魚高校生", "SupplySubType2": "馬林魚隊_自由式", "Actor": "涂善存", "Date": "2021.03.14", "DemandType2": "近距離愛上你", "DemandType": "HIStory", "Role": "蕭立呈" },
-  { "SupplyType": "高校系列", "SupplySubType": "飛魚高校生", "SupplySubType2": "馬林魚隊_自由式", "Actor": "涂善存", "Date": "2024.08.12", "DemandType2": "彈一場完美戀愛", "DemandType": "其他2", "Role": "Neil" },
-  { "SupplyType": "高校系列", "SupplySubType": "飛魚高校生", "SupplySubType2": "馬林魚隊_仰式", "Actor": "英成晞", "Date": "2025.07.22", "DemandType2": "秘密關係", "DemandType": "其他2", "Role": "韓拓" },
-  { "SupplyType": "高校系列", "SupplySubType": "飛魚高校生", "SupplySubType2": "馬林魚隊_蛙式", "Actor": "宋偉恩", "Date": "2019.10.16", "DemandType2": "那一天", "DemandType": "HIStory", "Role": "項豪廷" },
-  { "SupplyType": "高校系列", "SupplySubType": "高校英雄傳", "SupplySubType2": "", "Actor": "宋偉恩", "Date": "2019.10.16", "DemandType2": "那一天", "DemandType": "HIStory", "Role": "項豪廷" },
-  { "SupplyType": "高校系列", "SupplySubType": "高校英雄傳", "SupplySubType2": "", "Actor": "徐韜", "Date": "2017.05.10", "DemandType2": "紅色氣球", "DemandType": "其他2", "Role": "李向晚" },
-  { "SupplyType": "高校系列", "SupplySubType": "高校英雄傳", "SupplySubType2": "", "Actor": "徐韜", "Date": "2022.12.28", "DemandType2": "遇見未來的你", "DemandType": "HIStory", "Role": "林懷恩" },
-  { "SupplyType": "高校系列", "SupplySubType": "高校英雄傳", "SupplySubType2": "", "Actor": "陳立安", "Date": "2021.03.14", "DemandType2": "近距離愛上你", "DemandType": "HIStory", "Role": "藤沐仁" },
-  { "SupplyType": "高校系列", "SupplySubType": "高校英雄傳", "SupplySubType2": "", "Actor": "張碩航", "Date": "2022.12.28", "DemandType2": "遇見未來的你", "DemandType": "HIStory", "Role": "何柏緯/戴哲尼" },
-  { "SupplyType": "全明星運動會", "SupplySubType": "S1", "SupplySubType2": "Blue", "Actor": "邱宇辰", "Date": "2024.02.24", "DemandType2": "關於未知的我們", "DemandType": "結果娛樂", "Role": "魏謙" },
-  { "SupplyType": "全明星運動會", "SupplySubType": "S3", "SupplySubType2": "Red", "Actor": "徐謀俊", "Date": "2020.02.14", "DemandType2": "2020因為愛你", "DemandType": "其他1", "Role": "林尋" },
-  { "SupplyType": "全明星運動會", "SupplySubType": "S3", "SupplySubType2": "Red", "Actor": "徐謀俊", "Date": "2025.01.15", "DemandType2": "印象 青春", "DemandType": "其他1", "Role": "余行" },
-  { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Blue", "Actor": "林家佑", "Date": "2024.10.23", "DemandType2": "看見愛", "DemandType": "艾雨帆", "Role": "成豐傑" },
-  { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Blue", "Actor": "吳珝陽", "Date": "2017.02.21", "DemandType2": "離我遠一點", "DemandType": "HIStory", "Role": "程清" },
-  { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Blue", "Actor": "涂善存", "Date": "2021.03.14", "DemandType2": "近距離愛上你", "DemandType": "HIStory", "Role": "蕭立呈" },
-  { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Blue", "Actor": "涂善存", "Date": "2024.08.12", "DemandType2": "彈一場完美戀愛", "DemandType": "其他2", "Role": "Neil" },
-  { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Blue", "Actor": "黃宏軒", "Date": "2024.02.24", "DemandType2": "關於未知的我們", "DemandType": "結果娛樂", "Role": "魏之遠" },
-  { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Blue", "Actor": "林輝瑝", "Date": "2025.03.28", "DemandType2": "對立而已", "DemandType": "VBL", "Role": "白舟國" },
-  { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Red", "Actor": "張家陞", "Date": "2025.02.14", "DemandType2": "獨佔接班人", "DemandType": "HIStory", "Role": "王湛" },
-  { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Yellow", "Actor": "徐瑋澤", "Date": "2025.02.14", "DemandType2": "獨佔接班人", "DemandType": "HIStory", "Role": "張以慶" },
-  { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Yellow", "Actor": "各務孝太", "Date": "2026.03.26", "DemandType2": "向流星許願的我們", "DemandType": "結果娛樂", "Role": "濱口蒼海" },
-  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S1", "Actor": "陳廷軒", "Date": "2019.04.16", "DemandType2": "圈套", "DemandType": "HIStory", "Role": "趙立安" },
-  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S1", "Actor": "金雲", "Date": "2024.10.23", "DemandType2": "看見愛", "DemandType": "艾雨帆", "Role": "姜紹朋" },
-  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S1_FEniX", "Actor": "陳峻廷", "Date": "2024.12.20", "DemandType2": "全面管控", "DemandType": "VBL", "Role": "羅布仕" },
-  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S1_VERA", "Actor": "紀成澔", "Date": "2025.03.28", "DemandType2": "對立而已", "DemandType": "VBL", "Role": "白舟齊" },
-  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S1_OPENsi", "Actor": "邱勝揚", "Date": "2025.06.27", "DemandType2": "靈魂約定", "DemandType": "VBL", "Role": "關日清" },
-  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S2_WOFA", "Actor": "洪暐", "Date": "2025.06.27", "DemandType2": "靈魂約定", "DemandType": "VBL", "Role": "江百凌" },
-  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S2_ARKis", "Actor": "李定", "Date": "2025.06.27", "DemandType2": "靈魂約定", "DemandType": "VBL", "Role": "陳千歲" },
-  { "SupplyType": "選秀節目", "SupplySubType": "SCOOL", "SupplySubType2": "", "Actor": "李振浩", "Date": "2022.08.29", "DemandType2": "默默的我，不默默的我們", "DemandType": "其他2", "Role": "葉廣" }
+  { "SupplyType": "高校系列", "SupplySubType": "料理高校生", "SupplySubType2": "", "Actor": "洪言翔", "Date": "2024.12.20", "DemandSubType2": "全面管控", "DemandType": "VBL", "DemandSubType": "S2_1", "Role": "周禎群" },
+  { "SupplyType": "高校系列", "SupplySubType": "料理高校生", "SupplySubType2": "", "Actor": "黃新皓", "Date": "2022.03.14", "DemandSubType2": "基因決定我愛你", "DemandType": "其他1", "DemandSubType": "", "Role": "浦樂建" },
+  { "SupplyType": "高校系列", "SupplySubType": "飛魚高校生", "SupplySubType2": "飛魚隊_蝶式", "Actor": "賴東賢", "Date": "2017.02.14", "DemandSubType2": "My Hero", "DemandType": "HIStory", "DemandSubType": "S1_1", "Role": "麥英雄" },
+  { "SupplyType": "高校系列", "SupplySubType": "飛魚高校生", "SupplySubType2": "飛魚隊_蝶式", "Actor": "賴東賢", "Date": "2021.05.20", "DemandSubType2": "約·定", "DemandType": "艾雨帆", "DemandSubType": "", "Role": "金予真" },
+  { "SupplyType": "高校系列", "SupplySubType": "飛魚高校生", "SupplySubType2": "飛魚隊_蛙式", "Actor": "黃宏軒", "Date": "2024.02.24", "DemandSubType2": "關於未知的我們", "DemandType": "結果娛樂", "DemandSubType": "", "Role": "魏之遠" },
+  { "SupplyType": "高校系列", "SupplySubType": "飛魚高校生", "SupplySubType2": "馬林魚隊_自由式", "Actor": "涂善存", "Date": "2021.03.14", "DemandSubType2": "近距離愛上你", "DemandType": "HIStory", "DemandSubType": "S4", "Role": "蕭立呈" },
+  { "SupplyType": "高校系列", "SupplySubType": "飛魚高校生", "SupplySubType2": "馬林魚隊_自由式", "Actor": "涂善存", "Date": "2024.08.12", "DemandSubType2": "彈一場完美戀愛", "DemandType": "其他2", "DemandSubType": "", "Role": "Neil" },
+  { "SupplyType": "高校系列", "SupplySubType": "飛魚高校生", "SupplySubType2": "馬林魚隊_仰式", "Actor": "英成晞", "Date": "2025.07.22", "DemandSubType2": "秘密關係", "DemandType": "其他2", "DemandSubType": "", "Role": "韓拓" },
+  { "SupplyType": "高校系列", "SupplySubType": "飛魚高校生", "SupplySubType2": "馬林魚隊_蛙式", "Actor": "宋偉恩", "Date": "2019.10.16", "DemandSubType2": "那一天", "DemandType": "HIStory", "DemandSubType": "S3_2", "Role": "項豪廷" },
+  { "SupplyType": "高校系列", "SupplySubType": "高校英雄傳", "SupplySubType2": "", "Actor": "宋偉恩", "Date": "2019.10.16", "DemandSubType2": "那一天", "DemandType": "HIStory", "DemandSubType": "S3_2", "Role": "項豪廷" },
+  { "SupplyType": "高校系列", "SupplySubType": "高校英雄傳", "SupplySubType2": "", "Actor": "徐韜", "Date": "2017.05.10", "DemandSubType2": "紅色氣球", "DemandType": "其他2", "DemandSubType": "", "Role": "李向晚" },
+  { "SupplyType": "高校系列", "SupplySubType": "高校英雄傳", "SupplySubType2": "", "Actor": "徐韜", "Date": "2022.12.28", "DemandSubType2": "遇見未來的你", "DemandType": "HIStory", "DemandSubType": "S5", "Role": "林懷恩" },
+  { "SupplyType": "高校系列", "SupplySubType": "高校英雄傳", "SupplySubType2": "", "Actor": "陳立安", "Date": "2021.03.14", "DemandSubType2": "近距離愛上你", "DemandType": "HIStory", "DemandSubType": "S4", "Role": "藤沐仁" },
+  { "SupplyType": "高校系列", "SupplySubType": "高校英雄傳", "SupplySubType2": "", "Actor": "張碩航", "Date": "2022.12.28", "DemandSubType2": "遇見未來的你", "DemandType": "HIStory", "DemandSubType": "S5", "Role": "何柏緯/戴哲尼" },
+  { "SupplyType": "全明星運動會", "SupplySubType": "S1", "SupplySubType2": "Blue", "Actor": "邱宇辰", "Date": "2024.02.24", "DemandSubType2": "關於未知的我們", "DemandType": "結果娛樂", "DemandSubType": "", "Role": "魏謙" },
+  { "SupplyType": "全明星運動會", "SupplySubType": "S3", "SupplySubType2": "Red", "Actor": "徐謀俊", "Date": "2020.02.14", "DemandSubType2": "2020因為愛你", "DemandType": "其他1", "DemandSubType": "", "Role": "林尋" },
+  { "SupplyType": "全明星運動會", "SupplySubType": "S3", "SupplySubType2": "Red", "Actor": "徐謀俊", "Date": "2025.01.15", "DemandSubType2": "印象 青春", "DemandType": "其他1", "DemandSubType": "", "Role": "余行" },
+  { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Blue", "Actor": "吳珝陽", "Date": "2017.02.21", "DemandSubType2": "離我遠一點", "DemandType": "HIStory", "DemandSubType": "S1_2", "Role": "程清" },
+  { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Blue", "Actor": "涂善存", "Date": "2021.03.14", "DemandSubType2": "近距離愛上你", "DemandType": "HIStory", "DemandSubType": "S4", "Role": "蕭立呈" },
+  { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Blue", "Actor": "涂善存", "Date": "2024.08.12", "DemandSubType2": "彈一場完美戀愛", "DemandType": "其他2", "DemandSubType": "", "Role": "Neil" },
+  { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Blue", "Actor": "黃宏軒", "Date": "2024.02.24", "DemandSubType2": "關於未知的我們", "DemandType": "結果娛樂", "DemandSubType": "", "Role": "魏之遠" },
+  { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Blue", "Actor": "林家佑", "Date": "2024.10.23", "DemandSubType2": "看見愛", "DemandType": "艾雨帆", "DemandSubType": "", "Role": "成豐傑" },
+  { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Blue", "Actor": "林輝瑝", "Date": "2025.03.28", "DemandSubType2": "對立而已", "DemandType": "VBL", "DemandSubType": "S2_2", "Role": "白舟國" },
+  { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Red", "Actor": "張家陞", "Date": "2025.02.14", "DemandSubType2": "獨佔接班人", "DemandType": "HIStory", "DemandSubType": "S6", "Role": "王湛" },
+  { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Yellow", "Actor": "徐瑋澤", "Date": "2025.02.14", "DemandSubType2": "獨佔接班人", "DemandType": "HIStory", "DemandSubType": "S6", "Role": "張以慶" },
+  { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Yellow", "Actor": "各務孝太", "Date": "2026.03.26", "DemandSubType2": "向流星許願的我們", "DemandType": "結果娛樂", "DemandSubType": "", "Role": "濱口蒼海" },
+  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S1", "Actor": "陳廷軒", "Date": "2019.04.16", "DemandSubType2": "圈套", "DemandType": "HIStory", "DemandSubType": "S3_1", "Role": "趙立安" },
+  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S1", "Actor": "金雲", "Date": "2024.10.23", "DemandSubType2": "看見愛", "DemandType": "艾雨帆", "DemandSubType": "", "Role": "姜紹朋" },
+  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S1", "Actor": "羅奕傑", "Date": "", "DemandSubType2": "星光燦爛的你", "DemandType": "", "DemandSubType": "", "Role": "" },
+  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S1_FEniX", "Actor": "陳峻廷", "Date": "2024.12.20", "DemandSubType2": "全面管控", "DemandType": "VBL", "DemandSubType": "S2_1", "Role": "羅布仕" },
+  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S1_VERA", "Actor": "紀成澔", "Date": "2025.03.28", "DemandSubType2": "對立而已", "DemandType": "VBL", "DemandSubType": "S2_2", "Role": "白舟齊" },
+  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S1_OPENsi", "Actor": "邱勝揚", "Date": "2025.06.27", "DemandSubType2": "靈魂約定", "DemandType": "VBL", "DemandSubType": "S2_3", "Role": "關日清" },
+  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S2_WOFA", "Actor": "洪暐", "Date": "2025.06.27", "DemandSubType2": "靈魂約定", "DemandType": "VBL", "DemandSubType": "S2_3", "Role": "江百凌" },
+  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S2_ARKis", "Actor": "李定", "Date": "2025.06.27", "DemandSubType2": "靈魂約定", "DemandType": "VBL", "DemandSubType": "S2_3", "Role": "陳千歲" },
+  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S2_ARKis", "Actor": "禾雁凱", "Date": "2026.05.20", "DemandSubType2": "轉過頭幫你擦眼淚", "DemandType": "其他2", "DemandSubType": "", "Role": "" },
+  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S2_ARKis", "Actor": "鄭彫秦", "Date": "2026.05.20", "DemandSubType2": "轉過頭幫你擦眼淚", "DemandType": "其他2", "DemandSubType": "", "Role": "" },
+  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S2_F.F.O", "Actor": "張鈞嘉", "Date": "2026.05.20", "DemandSubType2": "轉過頭幫你擦眼淚", "DemandType": "其他2", "DemandSubType": "", "Role": "" },
+  { "SupplyType": "選秀節目", "SupplySubType": "SCOOL", "SupplySubType2": "", "Actor": "李振浩", "Date": "2022.08.29", "DemandSubType2": "默默的我，不默默的我們", "DemandType": "其他2", "DemandSubType": "", "Role": "葉廣" },
+  { "SupplyType": "選秀節目", "SupplySubType": "SCOOL", "SupplySubType2": "", "Actor": "韓晨", "Date": "", "DemandSubType2": "星光燦爛的你", "DemandType": "", "DemandSubType": "", "Role": "" }
 ];
 
 const colDefs = {
@@ -1221,17 +1226,17 @@ const colDefs = {
   supplySub2: { title: "台腐搖籃集<br>細項2", data: "SupplySubType2", name: "SupplySubType2", width: "10%" },
   actor:      { title: "演員", data: "Actor", name: "Actor", width: "10%" },
   role:       { title: "角色", data: "Role", name: "Role", width: "10%" },
-  demandType2:{ title: "BL劇名", data: "DemandType2", name: "DemandType2", width: "10%" },
+  DemandSubType2:{ title: "BL劇名", data: "DemandSubType2", name: "DemandSubType2", width: "10%" },
   demandType: { title: "BL分類", data: "DemandType", name: "DemandType", width: "10%" },
+  DemandSubType: { title: "BL分類_細項", data: "DemandSubType", name: "DemandSubType", width: "10%" },
   Date:       { title: "BL上映日期", data: "Date", name: "Date", width: "10%" }
 };
 
-const defaultCols = [colDefs.actor, colDefs.Date, colDefs.demandType2, colDefs.role];
-const supplyModeCols = [colDefs.supplyType, colDefs.supplySub, colDefs.supplySub2, colDefs.actor, colDefs.Date, colDefs.demandType2, colDefs.role];
-const demandModeCols = [colDefs.demandType, colDefs.Date, colDefs.demandType2, colDefs.actor, colDefs.role];
+const defaultCols = [colDefs.actor, colDefs.Date, colDefs.DemandSubType2, colDefs.role];
+const supplyModeCols = [colDefs.supplyType, colDefs.supplySub, colDefs.supplySub2, colDefs.actor, colDefs.Date, colDefs.DemandSubType2, colDefs.role];
+const demandModeCols = [colDefs.demandType, colDefs.DemandSubType, colDefs.Date, colDefs.DemandSubType2, colDefs.actor, colDefs.role];
 
 let tableInstance = null;
-orderMulti: true,
 
 // --- [06] 介面監聽與核心邏輯 ---
 $(document).ready(function() {
@@ -1243,7 +1248,7 @@ $(document).ready(function() {
     $('#filterAct').append(`<option value="${act}">${act}</option>`);
   });
 
-  // 監聽：主分類 (Supply / Demand) 切換
+// 監聽：主分類 (Supply / Demand) 切換
   $('#mainCategory').on('change', function() {
     const dir = $(this).val();
     
@@ -1266,6 +1271,8 @@ $(document).ready(function() {
       $('#step4-group').hide(); 
       $('#labelStep2').text("BL分類");
       $('#labelStep3').text("BL劇名");
+      
+      // 切換至 Demand 模式，設定排序順序為 0 -> 1 -> 2
       reinitTable(demandModeCols, [[0, 'asc'], [1, 'asc'], [2, 'asc']]);
       populateStepSelect($('#step2'), "DemandType");
     }
@@ -1278,7 +1285,7 @@ $(document).ready(function() {
     resetStepFilters(2);
     
     if (val) {
-      populateStepSelect($('#step3'), dir === "Supply" ? "SupplySubType" : "DemandType2", dir === "Supply" ? "SupplyType" : "DemandType", val);
+      populateStepSelect($('#step3'), dir === "Supply" ? "SupplySubType" : "DemandSubType2", dir === "Supply" ? "SupplyType" : "DemandType", val);
     }
     applyStepFilters();
   });
@@ -1324,7 +1331,7 @@ function applyStepFilters() {
     if ($('#step4').val()) tableInstance.column('SupplySubType2:name').search('^' + $('#step4').val() + '$', true, false);
   } else if (dir === "Demand") {
     if ($('#step2').val()) tableInstance.column('DemandType:name').search('^' + $('#step2').val() + '$', true, false);
-    if ($('#step3').val()) tableInstance.column('DemandType2:name').search('^' + $('#step3').val() + '$', true, false);
+    if ($('#step3').val()) tableInstance.column('DemandSubType2:name').search('^' + $('#step3').val() + '$', true, false);
   }
 
   tableInstance.draw();
@@ -1339,34 +1346,41 @@ function reinitTable(cols, order) {
   
   const currentDir = $('#mainCategory').val(); 
   
-  // 依據當前模式進行資料去重
   const filteredData = rawData.filter((item, index, self) => 
     index === self.findIndex(t => {
       if (currentDir === "Supply") return t.SupplyType === item.SupplyType && t.SupplySubType === item.SupplySubType && t.SupplySubType2 === item.SupplySubType2 && t.Actor === item.Actor && t.Date === item.Date && t.Role === item.Role;
-      if (currentDir === "Demand") return t.DemandType === item.DemandType && t.DemandType2 === item.DemandType2 && t.Date === item.Date && t.Actor === item.Actor && t.Role === item.Role;
-      return t.Actor === item.Actor && t.Date === item.Date && t.DemandType2 === item.DemandType2 && t.Role === item.Role;
+      if (currentDir === "Demand") return t.DemandType === item.DemandType && t.DemandSubType2 === item.DemandSubType2 && t.Date === item.Date && t.Actor === item.Actor && t.Role === item.Role;
+      return t.Actor === item.Actor && t.Date === item.Date && t.DemandSubType2 === item.DemandSubType2 && t.Role === item.Role;
     })
   );
 
   tableInstance = $('#drillTable').DataTable({
-    stripeClasses: [],
     data: filteredData, 
     columns: cols,
-    order: order,
+    order: order, 
     paging: false,
     info: false,
     ordering: true, 
     columnDefs: [
       { 
         targets: '_all', 
-		type: "num",
         orderable: true, 
         render: function(data, type, row, meta) {
           if (type === 'sort') {
             const colName = cols[meta.col].data;
-            if (colName === "Date") return data ? new Date(data.replace(/\./g, '-')).getTime() : 0;
-            if (colName === "Actor") return (customSortOrder && customSortOrder[data] !== undefined) ? customSortOrder[data] : data;
-            return (customSortOrder && customSortOrder[data] !== undefined) ? customSortOrder[data] : 999;
+            
+            // 1. 日期特殊處理
+            if (colName === "Date") {
+              return data ? data.replace(/\./g, '') : "0";
+            }
+            
+            // 2. 檢查是否有自定義權重
+            if (customSortOrder && customSortOrder[data] !== undefined) {
+              return customSortOrder[data].toString().padStart(5, '0');
+            }
+            
+            // 3. 如果沒有權重，回傳原始資料（確保空值排最後）
+            return data ? data.toLowerCase() : "zzzz";
           }
           return data || "";
         }
@@ -1378,11 +1392,8 @@ function reinitTable(cols, order) {
     scrollX: true,
     scrollCollapse: true,
     autoWidth: false,
-    language: { "emptyTable": "查無資料" },
     drawCallback: function() {
-      // 表格重繪時同步更新總數
       $('#statTotal').text(this.api().rows({ filter: 'applied' }).count());
-      setTimeout(() => { this.api().columns.adjust(); }, 100);
     }
   });
 }
