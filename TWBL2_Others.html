@@ -84,6 +84,9 @@ body.dark .side { color: #cbd5e1; }
 body.dark .side a { color: var(--link-main-dark); }
 body.dark .side a:hover, body.dark .content h2 a:hover { color: #ffffff; }
 
+/* ============================================================
+   3. 主要內容區、文字排版與清單樣式
+   ============================================================ */
 .content { background: var(--card); padding: 20px 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); min-width: 900px; }
 .content h1, .content h2, .content h3 { text-align: center; color: var(--text); margin: 20px 0 15px; font-weight: 600; }
 .content h2 a { color: var(--main); text-decoration: underline; }
@@ -97,7 +100,7 @@ body.dark .card-link.bold-black { color: #ffffff !important; }
 .desc-list li::before { content: "-"; position: absolute; left: 0; color: var(--text); }
 
 /* ============================================================
-   3. 基礎表格與輪播元件
+   4. 基礎表格與輪播元件
    ============================================================ */
 .table-wrapper { overflow: auto; margin-top: 20px; max-height: 600px; }
 table { width: 100%; border-collapse: collapse; min-width: 900px; table-layout: fixed; }
@@ -113,7 +116,6 @@ body.dark table a { color: var(--link-main-dark); }
 .slider-window { overflow: hidden; }
 .slider-track { display: flex; transition: transform 0.4s ease; }
 .slide { min-width: 100%; text-align: center; }
-.slide table { table-layout: fixed; width: 100%; }
 
 .nav { position: absolute; top: 50%; transform: translateY(-50%); background: var(--card); color: var(--text); border: 1px solid var(--border); border-radius: 50%; width: 40px; height: 40px; cursor: pointer; z-index: 5; transition: 0.25s; }
 .prev { left: -50px; }
@@ -126,93 +128,51 @@ body.dark table a { color: var(--link-main-dark); }
 body.dark .dots span.active { background: var(--link-main-dark); }
 
 /* ============================================================
-   4. 簡報專屬樣式 (Slide 1 ~ 5)
+   5. 簡報專屬樣式 (Slide 1 ~ 5)
    ============================================================ */
-/* Slide 1 - 僅保留欄寬設定，移除所有交叉配色 */
-.slide-1 th:nth-child(1), .slide-1 td:nth-child(1) { width: 15%; }
-.slide-1 th:nth-child(2), .slide-1 td:nth-child(2) { width: 25%; }
-.slide-1 th:nth-child(3), .slide-1 td:nth-child(3) { width: 35%; }
-.slide-1 th:nth-child(4), .slide-1 td:nth-child(4) { width: 25%; }
-
-/* Slide 2 */
 .slide-2 th, .slide-2 td:last-child, .slide-2 th:last-child { border-right: none !important; }
 .slide-2 td:nth-child(1), .slide-2 td:nth-child(3), .slide-2 td:nth-child(5) { border-right: 1px solid var(--table-border); }
-.slide-2 th[rowspan], .slide-2 td:first-child { border-right: 1px solid var(--table-border) !important; }
-.slide-2 td[colspan="2"], .slide-2 th[colspan="2"] { border-right: 1px solid var(--table-border); }
+.slide-2 th[rowspan], .slide-2 td:first-child, .slide-2 td[colspan="2"], .slide-2 th[colspan="2"] { border-right: 1px solid var(--table-border) !important; }
 
-/* Slide 3, 4, 5 */
 .slide-3 th:nth-child(1), .slide-3 td:nth-child(1) { width: 10%; }
 .slide-3 th:nth-child(2), .slide-3 td:nth-child(2) { width: 25%; }
 .slide-3 th:nth-child(n+3), .slide-3 td:nth-child(n+3) { width: 14%; }
 
-.slide-4 table, .slide-5 table, .slide-5 .table-wrapper table { table-layout: fixed; width: 100%; }
 .slide-4 th:nth-child(1), .slide-4 td:nth-child(1), .slide-5 th:nth-child(1), .slide-5 td:nth-child(1) { width: 20%; }
-.slide-4 th:nth-child(2), .slide-4 td:nth-child(2), .slide-5 th:nth-child(2), .slide-5 td:nth-child(2) { width: 40%; }
-.slide-4 th:nth-child(3), .slide-4 td:nth-child(3), .slide-5 th:nth-child(3), .slide-5 td:nth-child(3) { width: 40%; }
+.slide-4 th:nth-child(n+2), .slide-4 td:nth-child(n+2), .slide-5 th:nth-child(n+2), .slide-5 td:nth-child(n+2) { width: 40%; }
 
 #Summary th.no-right-border { border-right: none !important; }
 #Summary .text-center td { text-align: center; }
 
 /* ============================================================
-   5. 資料篩選器與 DataTables 覆寫設定
+   6. 資料篩選器與 DataTables 覆寫設定
    ============================================================ */
-/* 修正：將寫死的淺色背景改為 CSS 變數，解決深色模式反白問題 */
 .filter-panel { background: var(--table-head); padding: 15px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 20px; }
 .filter-container { background: var(--card); border-radius: 8px; padding: 8px 12px; }
 .row-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
 .row-bottom { display: flex; align-items: center; gap: 20px; border-top: 1px solid var(--border); padding-top: 15px; }
-.row-mid { display: none; flex-direction: row; gap: 15px; background: var(--table-head); padding: 15px; border-radius: 8px; margin-bottom: 15px; align-items: flex-start; }
+.row-mid { display: none; gap: 15px; background: var(--table-head); padding: 15px; border-radius: 8px; margin-bottom: 15px; }
 
 .filter-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
-.filter-row:last-child { margin-bottom: 0; }
 .filter-item { display: flex; align-items: center; gap: 8px; white-space: nowrap; flex: 1; min-width: 120px; }
-.filter-item label { display: block; font-size: 0.85rem; font-weight: bold; margin-bottom: 5px; }
-.filter-item select { width: 100%; padding: 6px; }
-
 .filter-group { display: flex; flex-direction: column; min-width: 150px; }
 .filter-group label { font-size: 0.9rem; font-weight: bold; margin-bottom: 5px; color: var(--text); }
-.filter-group select { padding: 8px; border: 1px solid var(--border); border-radius: 4px; }
 
-.mode-disabled { opacity: 0.5; pointer-events: none; filter: grayscale(0.5); transition: opacity 0.3s ease; }
-.reset-btn { padding: 8px 16px; background-color: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
+.mode-disabled { opacity: 0.5; pointer-events: none; filter: grayscale(0.5); }
+.reset-btn { padding: 8px 16px; background-color: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer; }
 .reset-btn:hover { background-color: #c82333; }
 
 select { height: 32px; padding: 0 5px; border: 1px solid var(--border); border-radius: 4px; background-color: var(--card); color: var(--text); }
 
-#drillTable th, #drillTable td { white-space: normal !important; word-wrap: break-word; word-break: break-all; vertical-align: middle; }
-#drillTable td { max-width: 300px; }
+#drillTable th, #drillTable td { white-space: normal !important; word-break: break-all; vertical-align: middle; }
+#drillTable thead th { text-align: center !important; cursor: pointer !important; position: relative; padding-right: 18px !important; }
+#drillTable thead th::after { content: " ↕"; font-size: 10px; color: #999; position: absolute; right: 4px; top: 50%; transform: translateY(-50%); }
+#drillTable thead th.sorting_asc::after { content: " ↑"; color: #0d6efd; }
+#drillTable thead th.sorting_desc::after { content: " ↓"; color: #dc3545; }
 
-#drillTable thead th { text-align: center !important; line-height: 1.2 !important; background-color: var(--table-head);user-select: none; }
-
-.dataTables_scrollBody td { white-space: normal !important; word-break: break-all; line-height: 1.5; }
-.dataTables_scrollBody::-webkit-scrollbar { width: 8px; }
-.dataTables_scrollBody::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
-.dataTables_scrollHead { overflow: visible !important; }
-.dataTables_scrollHeadInner { width: 100% !important; }
-
-table.dataTable thead .sorting::after, table.dataTable thead .sorting_asc::after, table.dataTable thead .sorting_desc::after { right: 2px !important; top: 50% !important; transform: translateY(-50%); opacity: 0.5; }
-table.dataTable thead .sorting::before, table.dataTable thead .sorting_asc::before, table.dataTable thead .sorting_desc::before { right: 2px !important; top: 30% !important; opacity: 0.5; }
-
-table tbody tr,
-table tbody td {
-    background-color: var(--card) !important;
-    color: var(--text);
-}
-
-table tbody tr:hover td {
-    background-color: rgba(37, 99, 235, 0.08);
-    color: var(--text);
-}
-
-.dataTables_scrollBody td {
-    background-color: var(--card) !important;
-    color: var(--text);
-}
-
-.slide-1 tbody td {
-    background-color: var(--card) !important;
-    color: var(--text);
-}
+table.dataTable thead .sorting::after, table.dataTable thead .sorting_asc::after, table.dataTable thead .sorting_desc::after { display: none !important; }
+table tbody tr, table tbody td, .dataTables_scrollBody td, .slide-1 tbody td { background-color: var(--card) !important; color: var(--text); }
+table tbody tr:hover td { background-color: rgba(37, 99, 235, 0.08); }
 
 /* ============================================================
    6. 響應式與通用工具類別
@@ -224,11 +184,10 @@ table tbody tr:hover td {
 }
 
 .tf-header { display: flex; justify-content: center; align-items: center; position: relative; }
-.tf-select { position: absolute; right: 0; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); }
+.tf-select { position: absolute; right: 0; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); }
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 .row-bold { font-weight: bold; }
-
 .row-green, .row-green td, .slide-2 .cell-green { background-color: var(--row-green); }
 </style>
 </head>
@@ -1049,78 +1008,64 @@ table tbody tr:hover td {
 
 
 <script>
-// --- [01] 佈景主題切換 ---
+/* [01]=== UI 佈景與模式切換 === */
 function toggleDark() {
   const isDark = document.body.classList.toggle("dark");
   document.getElementById("darkBtn").textContent = isDark ? "☀️ 日間模式" : "🌙 夜間模式";
 }
 
-// --- [02] 輪播圖全域變數與初始化 ---
-let currentIndex = 1;
-let isAnimating = false;
+/* [02]=== 輪播圖與分頁狀態管理 === */
+let currentIndex = 1, isAnimating = false;
 
 window.addEventListener("DOMContentLoaded", () => {
-  // 統計特定格式的日期資料數量並輸出至主控台
   const totalBLDramas = Array.from(document.querySelectorAll(".slide tbody tr"))
     .filter(row => row.cells[0] && /^\d{4}[./-]\d{2}[./-]\d{2}/.test(row.cells[0].textContent.trim())).length;
   console.log(`Slide 1+2 計算完成：共 ${totalBLDramas} 部`);
 
-  // 輪播圖 DOM 元素綁定
   const track = document.getElementById("track");
   const slides = document.querySelectorAll("#track .slide");
   const dotsContainer = document.getElementById("dots");
   const realCount = slides.length;
 
   if (track && realCount > 0) {
-    // 複製首尾節點以實作無縫輪播
     track.append(slides[0].cloneNode(true));
     track.prepend(slides[realCount - 1].cloneNode(true));
 
-    // 解析網址 Hash 並定位初始投影片
     const match = window.location.hash.match(/\d+/);
-    if (match) {
-      const index = parseInt(match[0], 10);
-      if (index >= 1 && index <= realCount) currentIndex = index;
-    }
+    if (match) currentIndex = Math.max(1, Math.min(parseInt(match[0], 10), realCount));
     track.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-    // 建立輪播圖導覽點 (Dots)
-    dotsContainer.innerHTML = "";
-    for (let i = 0; i < realCount; i++) {
-      const dot = document.createElement("span");
+    dotsContainer.innerHTML = Array.from({ length: realCount }, () => `<span></span>`).join('');
+    dotsContainer.querySelectorAll("span").forEach((dot, i) => {
       dot.addEventListener("click", () => {
-        if (isAnimating) return;
+        if (isAnimating || currentIndex === i + 1) return;
         currentIndex = i + 1;
         track.style.transition = "transform 0.5s ease-in-out";
         track.style.transform = `translateX(-${currentIndex * 100}%)`;
         updateDots();
         syncHash();
       });
-      dotsContainer.append(dot);
-    }
+    });
     updateDots();
   }
 });
 
-// --- [03] 輪播圖操作與狀態同步 ---
-// 處理左右滑動與無縫循環動畫
-function moveSlide(direction) {
+/* [03]=== 輪播圖動畫與位移控制 === */
+function moveSlide(dir) {
   if (isAnimating) return;
   isAnimating = true;
-  currentIndex += direction;
-
+  currentIndex += dir;
+  
   const track = document.getElementById("track");
-  const allSlides = document.querySelectorAll(".slide");
+  const realCount = document.querySelectorAll(".dots span").length;
 
   track.style.transition = "transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)";
   track.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-  track.addEventListener("transitionend", function onTransitionEnd() {
-    track.removeEventListener("transitionend", onTransitionEnd);
-    
-    // 處理無縫循環的邊界重置
-    if (currentIndex === allSlides.length - 1 || currentIndex === 0) {
-      currentIndex = currentIndex === 0 ? allSlides.length - 2 : 1;
+  track.addEventListener("transitionend", function onEnd() {
+    track.removeEventListener("transitionend", onEnd);
+    if (currentIndex === 0 || currentIndex === realCount + 1) {
+      currentIndex = currentIndex === 0 ? realCount : 1;
       track.style.transition = "none";
       track.style.transform = `translateX(-${currentIndex * 100}%)`;
     }
@@ -1130,52 +1075,46 @@ function moveSlide(direction) {
   });
 }
 
-// 更新導覽點啟用樣式
 function updateDots() {
   const dots = document.querySelectorAll(".dots span");
   if (!dots.length) return;
-  dots.forEach(dot => dot.classList.remove("active"));
+  dots.forEach(d => d.classList.remove("active"));
   dots[(currentIndex - 1 + dots.length) % dots.length].classList.add("active");
 }
 
-// 同步輪播進度至網址 Hash
 function syncHash() {
   const total = document.querySelectorAll(".dots span").length;
-  const realIndex = (currentIndex - 1 + total) % total + 1;
-  if (realIndex === 1) {
-    history.replaceState(null, document.title, window.location.pathname + window.location.search);
-  } else {
-    window.location.hash = `table${realIndex}`;
-  }
+  const realIndex = ((currentIndex - 1 + total) % total) + 1;
+  realIndex === 1 
+    ? history.replaceState(null, "", location.pathname + location.search) 
+    : (location.hash = `table${realIndex}`);
 }
 
-// --- [04] 頁籤切換邏輯 ---
-function switchTab(selectEl) {
-  const slide = selectEl.closest(".slide");
-  slide.querySelectorAll(".tab-content").forEach(el => el.classList.remove("active"));
-  slide.querySelector("#" + selectEl.value).classList.add("active");
+function switchTab(el) {
+  const slide = el.closest(".slide");
+  slide.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+  slide.querySelector(`#${el.value}`).classList.add("active");
 }
 
-// --- [05] 資料集與表格設定 ---
+/* [04]=== 全域資料與 DataTables 結構設定 === */
 const customSortOrder = { 
   "高校系列": 1, "全明星運動會": 2, "選秀節目": 3,
   "料理高校生": 11, "飛魚高校生": 12, "高校英雄傳": 13,
-  "S1_1": 21, "S1_2": 22, "S2_1": 23, "S2_2": 24, "S2_3": 25,
+  "S1": 21, "S1_1": 22, "S1_2": 23, "S2": 24, "S2_1": 25, "S2_2": 26, "S2_3": 27, "S3": 28, "S4": 29,  
   "原子少年": 31, "SCOOL": 32,
+  "飛魚隊_蝶式": 42, "飛魚隊_蛙式": 43, "馬林魚隊_自由式": 45, "馬林魚隊_蛙式": 47, "馬林魚隊_仰式": 48,
+  "Blue": 51, "Red": 52, "Yellow": 53,
   "HIStory": 101, "結果娛樂": 201, "艾雨帆": 301, "VBL": 401, "其他1": 501, "其他2": 601,
   "My Hero": 111, "離我遠一點": 112, "圈套": 116, "那一天": 117, "近距離愛上你": 118, "遇見未來的你": 119, "獨佔接班人": 120,
   "關於未知的我們": 214, "向流星許願的我們": 215,
   "約·定": 311, "看見愛": 314,
   "全面管控": 421, "對立而已": 422, "靈魂約定": 423,
   "2020因為愛你": 511, "基因決定我愛你": 512, "印象 青春": 513,
-  "紅色氣球": 611, "默默的我，不默默的我們": 612, "彈一場完美戀愛": 613, "秘密關係": 614,"轉過頭幫你擦眼淚": 615
+  "紅色氣球": 611, "默默的我，不默默的我們": 612, "彈一場完美戀愛": 613, "秘密關係": 614, "轉過頭幫你擦眼淚": 615
 };
 
-// 為了配合 DataTables 外掛的自訂排序需求
 $.extend($.fn.dataTable.ext.type.order, {
-  "custom-sort-pre": function(s) {
-    return customSortOrder[s] || 9999;
-  }
+  "custom-sort-pre": s => customSortOrder[s] || 9999
 });
 
 const rawData = [
@@ -1220,172 +1159,130 @@ const rawData = [
   { "SupplyType": "選秀節目", "SupplySubType": "SCOOL", "SupplySubType2": "", "Actor": "韓晨", "Date": "", "DemandSubType2": "星光燦爛的你", "DemandType": "", "DemandSubType": "", "Role": "" }
 ];
 
-const colDefs = {
-  supplyType: { title: "台腐搖籃集", data: "SupplyType", name: "SupplyType", width: "10%" },
-  supplySub:  { title: "台腐搖籃集<br>細項", data: "SupplySubType", name: "SupplySubType", width: "10%" },
-  supplySub2: { title: "台腐搖籃集<br>細項2", data: "SupplySubType2", name: "SupplySubType2", width: "10%" },
-  actor:      { title: "演員", data: "Actor", name: "Actor", width: "10%" },
-  role:       { title: "角色", data: "Role", name: "Role", width: "10%" },
-  DemandSubType2:{ title: "BL劇名", data: "DemandSubType2", name: "DemandSubType2", width: "10%" },
-  demandType: { title: "BL分類", data: "DemandType", name: "DemandType", width: "10%" },
-  DemandSubType: { title: "BL分類_細項", data: "DemandSubType", name: "DemandSubType", width: "10%" },
-  Date:       { title: "BL上映日期", data: "Date", name: "Date", width: "10%" }
+const cD = {
+  sT: { title: "台腐搖籃集", data: "SupplyType", name: "SupplyType", width: "10%" },
+  sS: { title: "台腐搖籃集<br>細項", data: "SupplySubType", name: "SupplySubType", width: "10%" },
+  sS2: { title: "台腐搖籃集<br>細項2", data: "SupplySubType2", name: "SupplySubType2", width: "10%" },
+  act: { title: "演員", data: "Actor", name: "Actor", width: "10%" },
+  rol: { title: "角色", data: "Role", name: "Role", width: "10%" },
+  dT2: { title: "BL劇名", data: "DemandSubType2", name: "DemandSubType2", width: "10%" },
+  dT: { title: "BL分類", data: "DemandType", name: "DemandType", width: "10%" },
+  dS: { title: "BL分類_細項", data: "DemandSubType", name: "DemandSubType", width: "10%" },
+  dat: { title: "BL上映日期", data: "Date", name: "Date", width: "10%" }
 };
 
-const defaultCols = [colDefs.actor, colDefs.Date, colDefs.DemandSubType2, colDefs.role];
-const supplyModeCols = [colDefs.supplyType, colDefs.supplySub, colDefs.supplySub2, colDefs.actor, colDefs.Date, colDefs.DemandSubType2, colDefs.role];
-const demandModeCols = [colDefs.demandType, colDefs.DemandSubType, colDefs.Date, colDefs.DemandSubType2, colDefs.actor, colDefs.role];
+const defaultCols = [cD.act, cD.dat, cD.dT2, cD.rol];
+const supplyModeCols = [cD.sT, cD.sS, cD.sS2, cD.act, cD.dat, cD.dT2, cD.rol];
+const demandModeCols = [cD.dT, cD.dS, cD.dat, cD.dT2, cD.act, cD.rol];
 
 let tableInstance = null;
 
-// --- [06] 介面監聽與核心邏輯 ---
-$(document).ready(function() {
-  // 載入預設表格
+/* [05]=== 核心操作邏輯與 DOM 監聽 === */
+$(() => {
   reinitTable(defaultCols, [[0, 'asc']]);
 
-  // 載入獨立演員篩選選項
-  [...new Set(rawData.map(i => i.Actor))].filter(Boolean).sort().forEach(act => {
-    $('#filterAct').append(`<option value="${act}">${act}</option>`);
-  });
+  const actors = [...new Set(rawData.map(i => i.Actor).filter(Boolean))].sort();
+  $('#filterAct').append(actors.map(a => `<option value="${a}">${a}</option>`));
 
-// 監聽：主分類 (Supply / Demand) 切換
   $('#mainCategory').on('change', function() {
     const dir = $(this).val();
-    
     if (!dir) return unlockAll();
-    
+
     $('#dynamic-row').css('display', 'flex').removeClass('dynamic-row-hidden');
     $('#areaB').addClass('mode-disabled');
     resetStepFilters(1);
 
-    if (dir === "Supply") {
-      $('#step2-group, #step3-group, #step4-group').show().css('display', 'flex');
-      $('#labelStep2').text("台腐搖籃集");
-      $('#labelStep3').text("台腐搖籃集細項");
-      $('#labelStep4').text("台腐搖籃集細項2");
-      reinitTable(supplyModeCols, [[0, 'asc']]);
-      populateStepSelect($('#step2'), "SupplyType");
-    } 
-    else if (dir === "Demand") {
-      $('#step2-group, #step3-group').show().css('display', 'flex');
-      $('#step4-group').hide(); 
-      $('#labelStep2').text("BL分類");
-      $('#labelStep3').text("BL劇名");
-      
-      // 切換至 Demand 模式，設定排序順序為 0 -> 1 -> 2
-      reinitTable(demandModeCols, [[0, 'asc'], [1, 'asc'], [2, 'asc']]);
-      populateStepSelect($('#step2'), "DemandType");
-    }
+    const isSup = dir === "Supply";
+    $('#step4-group').toggle(isSup).css('display', isSup ? 'flex' : 'none');
+    $('#labelStep2').text(isSup ? "台腐搖籃集" : "BL分類");
+    $('#labelStep3').text(isSup ? "台腐搖籃集細項" : "BL劇名");
+    if (isSup) $('#labelStep4').text("台腐搖籃集細項2");
+
+    reinitTable(isSup ? supplyModeCols : demandModeCols, isSup ? [[0, 'asc'], [1, 'asc'], [2, 'asc']] : [[0, 'asc'], [2, 'asc'], [3, 'asc']]);
+    populateStepSelect($('#step2'), isSup ? "SupplyType" : "DemandType");
   });
 
-  // 監聽：多層級下拉選單連動 (Step 2 到 Step 4)
   $('#step2').on('change', function() {
-    const val = $(this).val();
-    const dir = $('#mainCategory').val();
+    const val = $(this).val(), isSup = $('#mainCategory').val() === "Supply";
     resetStepFilters(2);
-    
-    if (val) {
-      populateStepSelect($('#step3'), dir === "Supply" ? "SupplySubType" : "DemandSubType2", dir === "Supply" ? "SupplyType" : "DemandType", val);
-    }
+    if (val) populateStepSelect($('#step3'), isSup ? "SupplySubType" : "DemandSubType2", isSup ? "SupplyType" : "DemandType", val);
     applyStepFilters();
   });
 
   $('#step3').on('change', function() {
     const val = $(this).val();
     resetStepFilters(3);
-    
-    if (val && $('#mainCategory').val() === "Supply") {
-      populateStepSelect($('#step4'), "SupplySubType2", "SupplySubType", val);
-    }
+    if (val && $('#mainCategory').val() === "Supply") populateStepSelect($('#step4'), "SupplySubType2", "SupplySubType", val);
     applyStepFilters();
   });
 
   $('#step4').on('change', applyStepFilters);
 
-  // 監聽：演員獨立篩選功能
   $('#filterAct').on('change', function() {
     const val = $(this).val();
-    if(val) {
+    if (val) {
       $('#areaA').addClass('mode-disabled');
-      reinitTable(defaultCols, [[0, 'asc']]); 
-      tableInstance.column('Actor:name').search('^' + val + '$', true, false).draw();
+      reinitTable(defaultCols, [[0, 'asc']]);
+      tableInstance.column('Actor:name').search(`^${val}$`, true, false).draw();
     } else {
       unlockAll();
     }
   });
 
-  // 監聽：重置表單
   $('#btnReset').on('click', unlockAll);
 });
 
-// 套用 DataTable 搜尋過濾
+/* [06]=== 過濾與表格刷新機制 === */
 function applyStepFilters() {
   if (!tableInstance) return;
+  tableInstance.columns().search('');
+  
+  const rules = $('#mainCategory').val() === "Supply" 
+    ? [['step2', 'SupplyType'], ['step3', 'SupplySubType'], ['step4', 'SupplySubType2']]
+    : [['step2', 'DemandType'], ['step3', 'DemandSubType2']];
 
-  const dir = $('#mainCategory').val();
-  tableInstance.columns().search(''); // 重置過濾條件
-
-  if (dir === "Supply") {
-    if ($('#step2').val()) tableInstance.column('SupplyType:name').search('^' + $('#step2').val() + '$', true, false);
-    if ($('#step3').val()) tableInstance.column('SupplySubType:name').search('^' + $('#step3').val() + '$', true, false);
-    if ($('#step4').val()) tableInstance.column('SupplySubType2:name').search('^' + $('#step4').val() + '$', true, false);
-  } else if (dir === "Demand") {
-    if ($('#step2').val()) tableInstance.column('DemandType:name').search('^' + $('#step2').val() + '$', true, false);
-    if ($('#step3').val()) tableInstance.column('DemandSubType2:name').search('^' + $('#step3').val() + '$', true, false);
-  }
-
+  rules.forEach(([id, col]) => {
+    const val = $(`#${id}`).val();
+    if (val) tableInstance.column(`${col}:name`).search(`^${val}$`, true, false);
+  });
   tableInstance.draw();
 }
 
-// 動態初始化 DataTables 並處理去重邏輯
 function reinitTable(cols, order) {
   if ($.fn.DataTable.isDataTable('#drillTable')) {
     tableInstance.destroy();
-    $('#drillTable').html('<thead></thead><tbody></tbody>');
+    $('#drillTable').empty().html('<thead></thead><tbody></tbody>');
   }
-  
-  const currentDir = $('#mainCategory').val(); 
-  
+
+  const dir = $('#mainCategory').val();
   const filteredData = rawData.filter((item, index, self) => 
     index === self.findIndex(t => {
-      if (currentDir === "Supply") return t.SupplyType === item.SupplyType && t.SupplySubType === item.SupplySubType && t.SupplySubType2 === item.SupplySubType2 && t.Actor === item.Actor && t.Date === item.Date && t.Role === item.Role;
-      if (currentDir === "Demand") return t.DemandType === item.DemandType && t.DemandSubType2 === item.DemandSubType2 && t.Date === item.Date && t.Actor === item.Actor && t.Role === item.Role;
+      if (dir === "Supply") return t.SupplyType === item.SupplyType && t.SupplySubType === item.SupplySubType && t.SupplySubType2 === item.SupplySubType2 && t.Actor === item.Actor && t.Date === item.Date && t.Role === item.Role;
+      if (dir === "Demand") return t.DemandType === item.DemandType && t.DemandSubType === item.DemandSubType && t.DemandSubType2 === item.DemandSubType2 && t.Actor === item.Actor && t.Date === item.Date && t.Role === item.Role;
       return t.Actor === item.Actor && t.Date === item.Date && t.DemandSubType2 === item.DemandSubType2 && t.Role === item.Role;
     })
   );
 
   tableInstance = $('#drillTable').DataTable({
-    data: filteredData, 
+    data: filteredData,
     columns: cols,
-    order: order, 
+    order: order,
     paging: false,
     info: false,
-    ordering: true, 
-    columnDefs: [
-      { 
-        targets: '_all', 
-        orderable: true, 
-        render: function(data, type, row, meta) {
-          if (type === 'sort') {
-            const colName = cols[meta.col].data;
-            
-            // 1. 日期特殊處理
-            if (colName === "Date") {
-              return data ? data.replace(/\./g, '') : "0";
-            }
-            
-            // 2. 檢查是否有自定義權重
-            if (customSortOrder && customSortOrder[data] !== undefined) {
-              return customSortOrder[data].toString().padStart(5, '0');
-            }
-            
-            // 3. 如果沒有權重，回傳原始資料（確保空值排最後）
-            return data ? data.toLowerCase() : "zzzz";
-          }
-          return data || "";
+    ordering: true,
+    columnDefs: [{
+      targets: '_all',
+      type: 'string',
+      render: (data, type, row, meta) => {
+        if (type === 'sort') {
+          const colName = cols[meta.col].data;
+          if (colName === "Date") return (!data || !data.trim() || data === "待定") ? "99999999" : data.replace(/\./g, '');
+          if (customSortOrder[data] !== undefined) return String(customSortOrder[data]).padStart(5, '0');
+          return data ? String(data).toLowerCase() : "zzzzzz";
         }
+        return data || "";
       }
-    ],
+    }],
     searching: true,
     dom: 'rt',
     scrollY: "500px",
@@ -1394,59 +1291,38 @@ function reinitTable(cols, order) {
     autoWidth: false,
     drawCallback: function() {
       $('#statTotal').text(this.api().rows({ filter: 'applied' }).count());
+      setTimeout(() => this.api().columns.adjust(), 50);
     }
   });
 }
 
-// 產生動態下拉選單的內容
+/* [07]=== 選單產生與狀態重置 === */
 function populateStepSelect(target, key, filterKey, filterVal) {
-  target.empty().append('<option value="">-- 全部 --</option>');
+  target.html('<option value="">-- 全部 --</option>');
   const list = filterKey ? rawData.filter(i => i[filterKey] === filterVal) : rawData;
-  
-  [...new Set(list.map(i => i[key]))].sort((a, b) => {
-    const orderA = customSortOrder[a] || 999;
-    const orderB = customSortOrder[b] || 999;
-    return (orderA - orderB) || String(a).localeCompare(String(b));
-  }).forEach(v => {
-    if(v) target.append(`<option value="${v}">${v}</option>`);
-  });
+  [...new Set(list.map(i => i[key]))].filter(Boolean).sort((a, b) => 
+    (customSortOrder[a] || 999) - (customSortOrder[b] || 999) || String(a).localeCompare(String(b))
+  ).forEach(v => target.append(`<option value="${v}">${v}</option>`));
 }
 
-// 清空不同層級的下拉選單
 function resetStepFilters(level) {
-  if (level <= 1) $('#step2').empty().append('<option value="">-- 全部 --</option>');
-  if (level <= 2) $('#step3').empty().append('<option value="">-- 全部 --</option>');
-  if (level <= 3) $('#step4').empty().append('<option value="">-- 全部 --</option>');
+  if (level <= 1) $('#step2').html('<option value="">-- 全部 --</option>');
+  if (level <= 2) $('#step3').html('<option value="">-- 全部 --</option>');
+  if (level <= 3) $('#step4').html('<option value="">-- 全部 --</option>');
 }
 
-// 重置所有 UI 狀態與表格回初始畫面
 function unlockAll() {
   $('#areaA, #areaB').removeClass('mode-disabled');
-  $('#dynamic-row').hide(); 
+  $('#dynamic-row').hide();
   $('#mainCategory, #filterAct').val("");
   resetStepFilters(1);
   reinitTable(defaultCols, [[0, 'asc']]);
 }
 
-// [07] 自定義排序觸發器
-function triggerManualSort(columnKey, direction = 'asc') {
+function triggerManualSort(colKey, dir = 'asc') {
   if (!tableInstance) return;
-
-  // 嘗試透過 name 找到欄位索引
-  const colIndex = tableInstance.column(columnKey + ':name').index();
-
-  if (colIndex !== undefined) {
-    // 執行排序並重繪
-    tableInstance.order([colIndex, direction]).draw();
-    console.log(`已執行排序：${columnKey} (${direction})`);
-  } else {
-    // 如果找不到 name，嘗試直接使用 index (如果傳入的是數字)
-    if (!isNaN(columnKey)) {
-      tableInstance.order([columnKey, direction]).draw();
-    } else {
-      console.error("排序失敗：找不到欄位名稱或索引 " + columnKey);
-    }
-  }
+  const idx = tableInstance.column(`${colKey}:name`).index();
+  idx !== undefined ? tableInstance.order([idx, dir]).draw() : (!isNaN(colKey) && tableInstance.order([colKey, dir]).draw());
 }
 </script>
 
