@@ -289,8 +289,8 @@ table tbody tr:hover td {
             <label class="method-label">方式 A. 方向篩選</label>
             <select id="mainCategory">
                 <option value="">-- 請選擇 --</option>
-                <option value="Supply">Supply Type</option>
-                <option value="Demand">Demand Type</option>
+                <option value="Supply">S. 台腐搖籃集</option>
+                <option value="Demand">D. 依工作室分類</option>
             </select>
         </div>
         <button class="reset-btn" id="btnReset">全部重設</button>
@@ -1216,9 +1216,9 @@ const rawData = [
 ];
 
 const colDefs = {
-  supplyType: { title: "臺腐搖籃集", data: "SupplyType", name: "SupplyType", width: "10%" },
-  supplySub:  { title: "臺腐搖籃集<br>細項", data: "SupplySubType", name: "SupplySubType", width: "10%" },
-  supplySub2: { title: "臺腐搖籃集<br>細項2", data: "SupplySubType2", name: "SupplySubType2", width: "10%" },
+  supplyType: { title: "台腐搖籃集", data: "SupplyType", name: "SupplyType", width: "10%" },
+  supplySub:  { title: "台腐搖籃集<br>細項", data: "SupplySubType", name: "SupplySubType", width: "10%" },
+  supplySub2: { title: "台腐搖籃集<br>細項2", data: "SupplySubType2", name: "SupplySubType2", width: "10%" },
   actor:      { title: "演員", data: "Actor", name: "Actor", width: "10%" },
   role:       { title: "角色", data: "Role", name: "Role", width: "10%" },
   demandType2:{ title: "BL劇名", data: "DemandType2", name: "DemandType2", width: "10%" },
@@ -1255,17 +1255,17 @@ $(document).ready(function() {
 
     if (dir === "Supply") {
       $('#step2-group, #step3-group, #step4-group').show().css('display', 'flex');
-      $('#labelStep2').text("Supply Type");
-      $('#labelStep3').text("Supply Sub Type");
-      $('#labelStep4').text("Supply Sub Type 2");
+      $('#labelStep2').text("台腐搖籃集");
+      $('#labelStep3').text("台腐搖籃集細項");
+      $('#labelStep4').text("台腐搖籃集細項2");
       reinitTable(supplyModeCols, [[0, 'asc']]);
       populateStepSelect($('#step2'), "SupplyType");
     } 
     else if (dir === "Demand") {
       $('#step2-group, #step3-group').show().css('display', 'flex');
       $('#step4-group').hide(); 
-      $('#labelStep2').text("Demand Type");
-      $('#labelStep3').text("Demand Type 2");
+      $('#labelStep2').text("BL分類");
+      $('#labelStep3').text("BL劇名");
       reinitTable(demandModeCols, [[0, 'asc'], [1, 'asc'], [2, 'asc']]);
       populateStepSelect($('#step2'), "DemandType");
     }
