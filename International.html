@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>3_跨國整理</title>
+
+<style>
+/* ============================================================
+   1. 全域變數與基礎設定
+   ============================================================ */
+:root {
+  --main: #2563eb;
+  --main-dark: #1e40af;
+  --bg: linear-gradient(to right, #e6f2ff, #e6fce6);
+  --card: #ffffff;
+  --text: #111827;
+  --border: #e5e7eb;
+  --table-head: #f8fafc;
+  --row-blue: #eef6ff;
+  --row-purple: #f6f0ff;
+  --row-green: #f1fbf4;
+  --link-main-dark: #93c5fd;
+  --table-border: #000000;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Noto Sans TC", "Noto Sans JP", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
+}
+
+body.dark {
+  --bg: linear-gradient(to right, #0f172a, #111827);
+  --card: #1f2937;
+  --text: #e0e7ff;
+  --border: #374151;
+  --table-head: #334155;
+  --row-blue: #1e2c44;
+  --row-purple: #2a223b;
+  --row-green: #1e3a2f;
+  --link-main-dark: #80b3ff;
+  --table-border: #3a3f52;
+}
+
+/* ============================================================
+   2. 導覽列與按鈕元件
+   ============================================================ */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px);
+  padding: 10px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar .home-link,
+.navbar .right-buttons a,
+.navbar .right-buttons button {
+  text-decoration: none;
+  border-radius: 8px;
+  border: 1px solid var(--main);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.navbar .home-link,
+.navbar .right-buttons a {
+  color: var(--main) !important;
+  background-color: #ffffff !important;
+  border: 1px solid var(--main) !important;
+  padding: 4px 8px;
+}
+
+.navbar .right-buttons a { padding: 4px 12px; }
+.navbar .right-buttons { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.navbar .right-buttons button { padding: 6px 12px; background: var(--card); color: var(--text); }
+
+.navbar .home-link:hover,
+.navbar .right-buttons a:hover,
+.navbar .right-buttons button:hover {
+  background-color: var(--main-dark) !important;
+  color: white !important;
+  border-color: var(--main-dark) !important;
+}
+
+/* ============================================================
+   3. 核心佈局與側邊欄
+   ============================================================ */
+.layout {
+  max-width: 1600px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 220px 1fr 220px;
+  gap: 30px;
+  align-items: start;
+}
+
+.side {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+  color: var(--text);
+}
+
+.side h3 { margin-top: 0; font-size: 16px; text-align: center; }
+.side a { display: block; text-decoration: none; color: var(--main); margin: 8px 0; font-size: 14px; }
+.side a:hover { text-decoration: underline; color: var(--main-dark); }
+
+body.dark .side { color: #cbd5e1; }
+body.dark .side a { color: var(--link-main-dark); }
+body.dark .side a:hover { color: #ffffff; }
+
+/* ============================================================
+   4. 內容區塊與排版設定
+   ============================================================ */
+.content { background: var(--card); padding: 20px 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); min-width: 900px; }
+.content h1, .content h2, .content h3 { text-align: center; color: var(--text); margin: 20px 0 15px; font-weight: 600; }
+.content h2 a { color: var(--main); text-decoration: underline; }
+body.dark .content h2 a { color: var(--link-main-dark); }
+
+.card { display: block; border: 1px solid var(--border); border-radius: 14px; padding: 18px; background: var(--card); box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: 0.25s; cursor: pointer; text-decoration: none; color: inherit; }
+.card:hover { transform: translateY(-6px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+.card h3 { border-bottom: 2px solid var(--main); padding-bottom: 6px; margin-bottom: 12px; text-align: center; }
+
+.card-link { display: block; padding: 4px 0 4px 20px; color: var(--main); position: relative; text-decoration: none; }
+.card span { display: block; padding: 4px 0 4px 16px; color: var(--main); position: relative; }
+
+.dot-list::before, .card span::before { content: "•"; position: absolute; left: 0; color: var(--main); }
+.symbol.no-dot::before { content: ""; }
+
+.number-group { counter-reset: item; }
+.number-list::before { counter-increment: item; content: "(" counter(item) ")"; position: absolute; left: 0; color: var(--main); }
+.card-link .num { display: inline-block; text-align: right; margin-right: 6px; }
+
+hr.divider { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
+body.dark .card-link.bold-black { color: #ffffff !important; }
+body.dark .side a {color: var(--link-main-dark);}
+body.dark .card-link.number-list {color: var(--link-main-dark);}
+body.dark .card-link.number-list::before {color: var(--link-main-dark);}
+
+.desc-list { list-style: none; padding: 0; margin: 0; }
+.desc-list li { margin: 3px 0; padding-left: 14px; position: relative; line-height: 1.4; }
+.desc-list li::before { content: "-"; position: absolute; left: 0; color: var(--text); }
+
+/* ============================================================
+   5. 資料表格共用樣式
+   ============================================================ */
+.table-wrapper { overflow: auto; margin-top: 20px; max-height: 600px; }
+table { width: 100%; border-collapse: collapse; min-width: 900px; table-layout: fixed; }
+th, td { padding: 8px; border-bottom: 1px solid var(--table-border); text-align: left; }
+thead tr th { background: var(--table-head); position: sticky; top: 0; z-index: 5; border-bottom: 2px solid var(--table-border); text-align: center; }
+
+#Summary td:first-child, th:first-child { text-align: center; }
+table a { color: var(--main); text-decoration: underline; }
+body.dark table a { color: var(--link-main-dark); }
+
+.row-blue { background-color: var(--row-blue); }
+.row-purple { background-color: var(--row-purple); }
+.row-green, .row-green td { background-color: var(--row-green); }
+
+#Summary th:nth-child(1), #Summary td:nth-child(1) { width: 10%; }
+#Dragon th:nth-child(1), #Dragon td:nth-child(1), #DongDuong th:nth-child(1), #DongDuong td:nth-child(1) { width: 20%; }
+
+/* ============================================================
+   6. 輪播組件與互動分頁
+   ============================================================ */
+.slider { position: relative; width: 100%; margin-top: 20px; }
+.slider-window { overflow: hidden; }
+.slider-track { display: flex; transition: transform 0.4s ease; }
+.slide { min-width: 100%; text-align: center; }
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 5;
+  transition: 0.25s;
+}
+.prev { left: -50px; }
+.next { right: -50px; }
+.nav:hover { background: var(--main); color: white; border-color: var(--main); }
+
+.dots { text-align: center; margin-top: 15px; }
+.dots span {
+  display: inline-block;
+  width: 10px; height: 10px; margin: 5px;
+  background: #cbd5e1; border-radius: 50%;
+  cursor: pointer; transition: 0.3s;
+}
+.dots span.active { background: var(--main); transform: scale(1.2); }
+
+
+.tf-header { display: flex; justify-content: center; align-items: center; position: relative; }
+.tf-select { position: absolute; right: 0; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ============================================================
+   7. 響應式設定與通用工具類別
+   ============================================================ */
+@media(max-width: 1200px) {
+  .layout { grid-template-columns: 1fr; }
+  .side { order: 2; }
+  .content { order: 1; }
+  .navbar a:first-child { margin-bottom: 5px; }
+}
+
+.row-bold { font-weight: bold; }
+.row-green, .row-green td, .slide-2 .cell-green { background-color: var(--row-green); }
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <!-- 左側回目錄 -->
+  <a href="https://ba29bin06h.github.io/BL_Drama/Catalog.html" class="home-link">
+    🏠 回目錄 (Back To Catalog)
+  </a>
+  
+  <!-- 右側按鈕群 -->
+  <div class="right-buttons">
+    <a href="https://www.dcard.tw/@ba06bin29h" target="_blank">
+      💬 Dcard 個人牆
+    </a>
+    <button id="darkBtn" onclick="toggleDark()">🌙 夜間模式</button>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- 左側欄 -->
+  <aside class="side left">
+    <h3 style="text-align:center;"><strong>📂 四腐全書</strong></h3>
+    <hr />
+	    <a class="symbol no-dot" href="https://www.dcard.tw/f/tvepisode/p/260161966" style="font-size: 16px"; target="_blank" >概論</a>
+		<a class="card-link dot-list" href="https://www.dcard.tw/f/boyslovedrama/p/259908931" target="_blank">大和文章</a>
+		<a class="card-link dot-list" href="https://www.dcard.tw/f/boyslovedrama/p/259959033" target="_blank">大員文章</a>
+		<a class="card-link dot-list" href="https://www.dcard.tw/f/boyslovedrama/p/260003653" target="_blank">大越文章</a>
+		<a class="card-link dot-list" href="https://www.dcard.tw/f/boyslovedrama/p/260108050" target="_blank">大韓文章</a>
+		<div class="card-spacer"></div>
+		<div class="card-spacer"></div>
+	 <hr>
+    <p>待續...</p>
+    <a></a>
+  </aside>
+
+  <!-- 中間內容 ✅（重點） -->
+  <div class="content">
+	<div class="slider">
+	<h1>3_跨國整理</h1>
+	  <button class="nav prev" onclick="moveSlide(-1)">❮</button>
+		<div class="slider-window">
+        <div class="slider-track" id="track">
+		
+<!-- BL資訊 -->
+<!-- Slide 1 -->
+<div class="slide slide-1">
+
+  <div class="tf-header">
+    <h2>(1) 概論</h2>
+
+    <!-- 🔘 子分類按鈕 -->
+    <select class="tf-select" onchange="switchTab(this)">
+	  <option value="Summary">概論劇</option>
+	  <option value="Dragon">小龍軸</option>
+      <option value="DongDuong">東洋軸</option>
+      
+    </select>
+  </div>
+  
+  <!-- ===== 補上那12部戲劇 ===== -->
+  <div class="tab-content active" id="Summary">
+    <div class="table-wrapper">
+      <table>	
+  <thead>
+    <tr>
+      <th>國家</th>	
+      <th>模板劇</th>
+      <th>推薦劇</th>
+      <th>生態劇</th>
+	</tr>   
+  </thead>
+      <tbody>
+	  <!-- 補上那12部戲劇 -->
+      <tr>
+        <td>日本</td>
+        <td>被擦掉的初戀</td>
+        <td>聽見向陽之聲<br>(ひだまりが聴こえる)</td>
+        <td>25時，赤坂見</td>
+      </tr>
+      <tr>
+        <td>台灣</td>
+        <td>約定</td>
+        <td>奇蹟 Kiseki<br>(個人推主CP)</td>
+        <td>印象青春</td>
+      </tr>
+      <tr>
+        <td>越南</td>
+        <td>You Are ma Boy</td>
+        <td>Want to See You<br>(Muốn Nhìn Thấy Em)</td>
+        <td>Love Bill</td>
+      </tr>
+      <tr>
+        <td>韓國</td>
+        <td>佛羅里達飯店</td>
+        <td>You Make Me Dance<br>(床戲就是香~~)</td>
+        <td>偶像升級計劃</td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>  
+  
+  
+<!-- ===== 台韓比較 ===== -->
+  <div class="tab-content" id="Dragon">
+    <div class="table-wrapper">
+      <table>	
+  <thead>
+    <tr>
+		<th></th>
+		<th>台灣</th>
+		<th>韓國</th>
+	</tr>   
+  </thead>
+      <tbody>
+	  <!-- 【台韓比較】的資料請放這裡 -->
+      <tr>
+        <td>時間安排</td>
+        <td><ul class='desc-list'><li>固定12集×25~30min</li></ul></td>
+        <td><ul class='desc-list'><li>6/8/10×25~30min</li></ul></td>
+      </tr>
+      <tr>
+        <td>設定</td>
+        <td><ul class='desc-list'><li>雙CP+第三者</li><li>五邊形</li></ul></td>
+        <td><ul class='desc-list'><li>以第三者為主</li><li>2025年有雙CP的趨勢?</li></ul></td>
+      </tr>
+      <tr>
+        <td>題材</td>
+        <td><ul class='desc-list'><li>比較多元</li></ul></td>
+        <td><ul class='desc-list'><li>比較單一</li></ul></td>
+      </tr>
+	 <tr class="row-green">
+	    <td>比喻</td>
+	    <td><ul class='desc-list'><li>紅色五邊形、黃色五邊形</li><li>綠色五邊形…</li></ul></td>
+	    <td><ul class='desc-list'><li>黃色三角形、黃色正方形</li><li>白色三角形、白色五邊形、…</li></ul></td>
+	  </tr>
+      <tr>
+        <td>床戲</td>
+        <td><ul class='desc-list'><li>幾乎每部都有</li></ul></td>
+        <td><ul class='desc-list'><li>屈指可數，而且只要有男團下海，基本上就不會有床戲</li></ul></td>
+      </tr>
+      <tr>
+        <td>政令宣導</td>
+        <td><ul class='desc-list'><li>每部都有</li></ul></td>
+        <td><ul class='desc-list'><li>屈指可數</li></ul></td>
+      </tr>
+      <tr>
+        <td>個人推薦好戲</td>
+        <td><ul class='desc-list'><li>奇蹟Kiseki(個人推主CP)</li></ul></td>
+        <td><ul class='desc-list'><li>You Make Me Dance</li></ul></td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+  
+  
+  <!-- ===== 日越比較 ===== -->
+  <div class="tab-content" id="DongDuong">
+    <div class="table-wrapper">
+      <table>	
+  <thead>
+    <tr>
+		<th></th>
+		<th>越南</th>
+		<th>日本</th>
+	</tr>    
+  </thead>
+      <tbody>
+	  <!-- 【日越比較】的資料請放這裡 -->
+      <tr>
+        <td>時間安排</td>
+        <td><ul class='desc-list'><li>隨心所欲，像在抽盲盒</li></ul></td>
+        <td><ul class='desc-list'><li>6/8/10/12×25~30min</li><li>切的剛剛好</li></ul></td>
+      </tr>
+      <tr>
+        <td>觀看連結</td>
+        <td><ul class='desc-list'><li>YouTube(免費)</li></ul></td>
+        <td><ul class='desc-list'><li>OTT(通常要付費)</li></ul></td>
+      </tr>
+      <tr>
+        <td>設定</td>
+        <td><ul class='desc-list'><li>聽覺攻受</li><li>(北攻南受、南攻北受、...)</li></ul></td>
+        <td><ul class='desc-list'><li>視覺攻受</li><li>(黑攻白受、白攻黑受、...)</li></ul></td>
+      </tr>
+      <tr>
+        <td>串場</td>
+        <td><ul class='desc-list'><li>直式串場</li></ul></td>
+        <td><ul class='desc-list'><li>橫式串場</li></ul></td>
+      </tr>
+      <tr>
+        <td>儀式</td>
+        <td><ul class='desc-list'><li>日式跑</li><li>日式額頭燒</li></ul></td>
+        <td><ul class='desc-list'><li>越式接待(Chia tay)</li><li>越式捧沙(Buông Ra)</li></ul></td>
+      </tr>
+      <tr>
+        <td>個人推薦好戲</td>
+        <td><ul class='desc-list'><li>聽見向陽之聲</li><li>(ひだまりが<span style="color: red;">聴こえる</span>)</li></ul></td>
+        <td><ul class='desc-list'><li>Want to See You</li><li>(Muốn <span style="color: red;">Nhìn Thấy</span> Em)</li></ul></td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+   <!-- 這裡是第1張最後面 --> 
+	  </div>
+	
+<!-- Slide 2 -->
+<div class="slide slide-2">
+  <h2>趕工中~</h2>
+  <div class="table-wrapper">
+    <table> 
+  <thead>
+    <tr>
+      <th>趕工中~</th>
+      <th>趕工中~</th>
+      <th>趕工中~</th>
+	</tr>   
+  </thead>
+      <tbody>
+	  <!-- 【永遠的昨日】的資料請放這裡 -->
+      <tr>
+        <td>趕工中~</td>
+        <td>趕工中~</td>
+        <td>趕工中~</td>
+      </tr>
+	  <!--貼到這裡 -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+	  
+
+  
+  
+   <!-- 這裡是第7張最後面 --> 	  
+      </div>
+      </div>
+	  <button class="nav next" onclick="moveSlide(1)">❯</button>
+	  <div class="dots" id="dots"></div>
+	</div>
+
+  </div>
+
+  <!-- 右側欄 -->
+  <aside class="side right number-group">
+	<h3>📂腐視角</h3>
+	    <hr />
+	    <a class="card-link number-list" href="https://www.dcard.tw/f/boyslovedrama/p/261404626" target="_blank">BL生態</a>
+		<br>
+		<br>
+        <br>
+		<br>
+	<hr> 
+	<br>
+	<br>
+	<br>
+  </aside>
+
+</div>
+
+<script>
+// [01] 全域狀態與深色模式
+let currentIndex = 1, isAnimating = false;
+
+function toggleDark() {
+  const isDark = document.body.classList.toggle("dark");
+  document.getElementById("darkBtn").textContent = isDark ? "☀️ 日間模式" : "🌙 夜間模式";
+}
+
+function switchTab(selectEl) {
+  const slide = selectEl.closest(".slide");
+  slide.querySelectorAll(".tab-content").forEach(el => el.classList.remove("active"));
+  slide.querySelector("#" + selectEl.value).classList.add("active");
+}
+
+// [02] 無縫輪播圖 (初始化與操作邏輯)
+window.addEventListener("DOMContentLoaded", () => {
+  const track = document.getElementById("track"),
+        slides = document.querySelectorAll("#track .slide"),
+        dotsContainer = document.getElementById("dots"),
+        realCount = slides.length;
+
+  if (!track || realCount === 0) return;
+
+  track.append(slides[0].cloneNode(true));
+  track.prepend(slides[realCount - 1].cloneNode(true));
+  track.style.transform = `translateX(-${currentIndex * 100}%)`;
+  dotsContainer.innerHTML = "";
+
+  for (let i = 0; i < realCount; i++) {
+    const dot = document.createElement("span");
+    dot.addEventListener("click", () => {
+      if (isAnimating) return;
+      currentIndex = i + 1;
+      track.style.transition = "transform 0.5s ease-in-out";
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      updateDots();
+    });
+    dotsContainer.append(dot);
+  }
+  updateDots();
+});
+
+function moveSlide(direction) {
+  if (isAnimating) return;
+  isAnimating = true;
+  currentIndex += direction;
+
+  const track = document.getElementById("track");
+  const allSlides = document.querySelectorAll(".slide");
+
+  track.style.transition = "transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)";
+  track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+  track.addEventListener("transitionend", () => {
+    if (currentIndex === 0 || currentIndex === allSlides.length - 1) {
+      currentIndex = currentIndex === 0 ? allSlides.length - 2 : 1;
+      track.style.transition = "none";
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+    updateDots();
+    isAnimating = false;
+  }, { once: true });
+}
+
+function updateDots() {
+  const dots = document.querySelectorAll(".dots span");
+  if (!dots.length) return;
+  
+  dots.forEach(dot => dot.classList.remove("active"));
+  dots[(currentIndex - 1 + dots.length) % dots.length].classList.add("active");
+}
+</script>
+
+</body>
+</html>

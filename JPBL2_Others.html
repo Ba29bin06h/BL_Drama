@@ -23,6 +23,7 @@
   --link-main-dark: #93c5fd;
   --table-border: #000000;
 }
+
 body {
   margin: 0;
   font-family: "Segoe UI", "Noto Sans TC", "Noto Sans JP", sans-serif;
@@ -30,6 +31,7 @@ body {
   color: var(--text);
   transition: 0.3s;
 }
+
 body.dark {
   --bg: linear-gradient(to right, #0f172a, #111827);
   --card: #1f2937;
@@ -49,15 +51,16 @@ body.dark {
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 10;
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(6px);
   padding: 10px 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
   display: flex;
   align-items: center;
   gap: 10px;
 }
+
 .navbar .home-link,
 .navbar .right-buttons a,
 .navbar .right-buttons button {
@@ -68,26 +71,26 @@ body.dark {
   align-items: center;
   gap: 4px;
   transition: 0.25s;
+  cursor: pointer;
+}
+
+.navbar .home-link,
+.navbar .right-buttons a {
+  color: var(--main) !important;
+  background-color: #ffffff !important;
+  border: 1px solid var(--main) !important;
   padding: 4px 8px;
-  color: var(--main);
-  background-color: #ffffff;
 }
-.navbar .right-buttons { 
-  margin-left: auto; 
-  display: flex; 
-  gap: 10px; 
-}
-.navbar .right-buttons button { 
-  padding: 6px 12px; 
-  background: var(--card); 
-  color: var(--text); 
-  cursor: pointer; 
-}
+
+.navbar .right-buttons a { padding: 4px 12px; }
+.navbar .right-buttons { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.navbar .right-buttons button { padding: 6px 12px; background: var(--card); color: var(--text); }
+
 .navbar .home-link:hover,
 .navbar .right-buttons a:hover,
 .navbar .right-buttons button:hover {
   background-color: var(--main-dark) !important;
-  color: #ffffff !important;
+  color: white !important;
   border-color: var(--main-dark) !important;
 }
 
@@ -100,21 +103,25 @@ body.dark {
   display: grid;
   grid-template-columns: 220px 1fr 220px;
   gap: 30px;
+  align-items: start;
 }
+
 .side {
   background: var(--card);
   border-radius: 16px;
   padding: 20px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   height: fit-content;
+  color: var(--text);
 }
-.side h3 { margin: 0 0 10px; font-size: 16px; text-align: center; }
+
+.side h3 { margin-top: 0; font-size: 16px; text-align: center; }
 .side a { display: block; text-decoration: none; color: var(--main); margin: 8px 0; font-size: 14px; }
-.side a:hover, .content h2 a:hover { color: var(--main-dark); text-decoration: underline; }
+.side a:hover { text-decoration: underline; color: var(--main-dark); }
 
 body.dark .side { color: #cbd5e1; }
 body.dark .side a { color: var(--link-main-dark); }
-body.dark .side a:hover, body.dark .content h2 a:hover { color: #ffffff; }
+body.dark .side a:hover { color: #ffffff; }
 
 /* ============================================================
    4. 內容區塊與排版設定
@@ -136,6 +143,9 @@ body.dark .card-link.bold-black { color: #ffffff !important; }
 .desc-list { list-style: none; padding: 0; margin: 0; }
 .desc-list li { margin: 3px 0; padding-left: 14px; position: relative; line-height: 1.4; }
 .desc-list li::before { content: "-"; position: absolute; left: 0; color: var(--text); }
+
+body.dark .card-link.bold-black { color: white !important; }
+.card-link .num { display: inline-block; text-align: right; margin-right: 6px; }
 
 /* ============================================================
    5. 資料表格共用樣式
@@ -171,19 +181,33 @@ body.dark table a { color: var(--link-main-dark); }
 .slider-track { display: flex; transition: transform 0.4s ease; }
 .slide { min-width: 100%; text-align: center; }
 
-.nav { 
-  position: absolute; top: 50%; transform: translateY(-50%); 
-  background: var(--card); color: var(--text); border: 1px solid var(--border); 
-  border-radius: 50%; width: 40px; height: 40px; cursor: pointer; z-index: 5; 
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 5;
+  transition: 0.25s;
 }
 .prev { left: -50px; }
 .next { right: -50px; }
-.nav:hover { background: var(--main); color: #ffffff; border-color: var(--main); }
+.nav:hover { background: var(--main); color: white; border-color: var(--main); }
 
 .dots { text-align: center; margin-top: 15px; }
-.dots span { display: inline-block; width: 10px; height: 10px; margin: 5px; background: #cbd5e1; border-radius: 50%; cursor: pointer; }
+.dots span {
+  display: inline-block;
+  width: 10px; height: 10px; margin: 5px;
+  background: #cbd5e1; border-radius: 50%;
+  cursor: pointer; transition: 0.3s;
+}
 .dots span.active { background: var(--main); transform: scale(1.2); }
-body.dark .dots span.active { background: var(--link-main-dark); }
+
 
 .tf-header { display: flex; justify-content: center; align-items: center; position: relative; }
 .tf-select { position: absolute; right: 0; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); }
@@ -197,10 +221,10 @@ body.dark .dots span.active { background: var(--link-main-dark); }
   .layout { grid-template-columns: 1fr; }
   .side { order: 2; }
   .content { order: 1; }
+  .navbar a:first-child { margin-bottom: 5px; }
 }
 
 .row-bold { font-weight: bold; }
-/* 優化：統一交由 CSS 變數控制，精簡深色模式判斷 */
 .row-green, .row-green td, .slide-2 .cell-green { background-color: var(--row-green); }
 
 /* ============================================================
@@ -271,14 +295,14 @@ body.dark .dots span.active { background: var(--link-main-dark); }
   <aside class="side left">
     <h3>📂巴比恩整理區</h3>
     <hr />
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL1_Company.html">1. 依電視台分類</a>
-    <a class="card-link bold-black">2. 其他分類</a>
-    <br>
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL1_Company.html"><span class="num">1.</span>依電視台分類</a>
+    <a class="card-link bold-black"><span class="num">2.</span>其他分類</a>
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/International.html" target="_blank"><span class="num">3.</span>跨國整理(另開視窗)</a>
 	<hr class="divider"> 
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL4_Actors.html" >4. 依演員分類</a>
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL5_Group.html" >5. 依男團分類</a>
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL4_Actors.html"><span class="num">4.</span>依演員分類</a>
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL5_Group.html"><span class="num">5.</span>依男團分類</a>
 	<hr class="divider"> 	
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL6_Tokusatsu.html" >6. 依特攝分類</a>
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL6_Tokusatsu.html"><span class="num">6.</span>依特攝分類</a>
 	<br>
 	<br>
   </aside>

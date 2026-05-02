@@ -47,61 +47,47 @@ body.dark {
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 10;
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(6px);
   padding: 10px 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
 .navbar .home-link,
-.navbar .right-buttons a {
+.navbar .right-buttons a,
+.navbar .right-buttons button {
   text-decoration: none;
-  color: #2563eb !important;
-  background-color: #fff !important;
-  border: 1px solid #2563eb !important;
-  padding: 4px 8px;
   border-radius: 8px;
+  border: 1px solid var(--main);
   display: inline-flex;
   align-items: center;
   gap: 4px;
-}
-
-.navbar .right-buttons {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.navbar .right-buttons a {
-    padding: 4px 12px;
-}
-
-.navbar .right-buttons button {
-  padding: 6px 12px;
-  border-radius: 8px;
-  border: 1px solid var(--main);
-  background: var(--card);
-  color: var(--text);
-  cursor: pointer;
   transition: 0.25s;
+  cursor: pointer;
 }
+
+.navbar .home-link,
+.navbar .right-buttons a {
+  color: var(--main) !important;
+  background-color: #ffffff !important;
+  border: 1px solid var(--main) !important;
+  padding: 4px 8px;
+}
+
+.navbar .right-buttons a { padding: 4px 12px; }
+.navbar .right-buttons { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.navbar .right-buttons button { padding: 6px 12px; background: var(--card); color: var(--text); }
 
 .navbar .home-link:hover,
-.navbar .right-buttons a:hover {
-  background-color: var(--main-dark) !important;
-  color: #fff !important;
-  border-color: var(--main-dark) !important;
-}
-
+.navbar .right-buttons a:hover,
 .navbar .right-buttons button:hover {
-  background-color: var(--main-dark);
-  color: #fff;
-  border-color: var(--main-dark);
+  background-color: var(--main-dark) !important;
+  color: white !important;
+  border-color: var(--main-dark) !important;
 }
 
 /* ============================================================
@@ -125,36 +111,13 @@ body.dark {
   color: var(--text);
 }
 
-.side h3 {
-  margin-top: 0;
-  font-size: 16px;
-  text-align: center;
-}
+.side h3 { margin-top: 0; font-size: 16px; text-align: center; }
+.side a { display: block; text-decoration: none; color: var(--main); margin: 8px 0; font-size: 14px; }
+.side a:hover { text-decoration: underline; color: var(--main-dark); }
 
-.side a {
-  display: block;
-  text-decoration: none;
-  color: var(--main);
-  margin: 8px 0;
-  font-size: 14px;
-}
-
-.side a:hover {
-  text-decoration: underline;
-  color: var(--main-dark);
-}
-
-body.dark .side {
-  color: #cbd5e1;
-}
-
-body.dark .side a {
-  color: #80b3ff;
-}
-
-body.dark .side a:hover {
-  color: #fff;
-}
+body.dark .side { color: #cbd5e1; }
+body.dark .side a { color: var(--link-main-dark); }
+body.dark .side a:hover { color: #ffffff; }
 
 /* ============================================================
    4. 內容區塊與表格 (Content & Table)
@@ -275,7 +238,7 @@ body.dark .link-boxes a:hover {
 /* ============================================================
    7. 響應式設計 (Media Queries)
    ============================================================ */
-@media (max-width: 1200px) {
+@media(max-width: 1200px) {
   .layout { grid-template-columns: 1fr; }
   .side { order: 2; }
   .content { order: 1; }
@@ -306,14 +269,14 @@ body.dark .link-boxes a:hover {
   <aside class="side left">
     <h3>📂巴比恩整理區</h3>
     <hr />
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL1_Company.html">1. 依電視台分類</a>
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL2_Others.html" >2. 其他分類</a>
-    <br>
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL1_Company.html"><span class="num">1.</span>依電視台分類</a>
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL2_Others.html"><span class="num">2.</span>其他分類</a>
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/International.html" target="_blank"><span class="num">3.</span>跨國整理(另開視窗)</a>
 	<hr class="divider"> 
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL4_Actors.html" >4. 依演員分類</a>
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL5_Group.html" >5. 依男團分類</a>
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL4_Actors.html"><span class="num">4.</span>依演員分類</a>
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL5_Group.html"><span class="num">5.</span>依男團分類</a>
 	<hr class="divider"> 	
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL6_Tokusatsu.html" >6. 依特攝分類</a>
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/JPBL6_Tokusatsu.html"><span class="num">6.</span>依特攝分類</a>
 	<br>
 	<br>
   </aside>

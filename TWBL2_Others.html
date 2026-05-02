@@ -52,25 +52,49 @@ body.dark {
    2. 頁面佈局、導覽列與側邊欄
    ============================================================ */
 .navbar {
-  position: sticky; top: 0; z-index: 10;
+  position: sticky;
+  top: 0;
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(6px);
   padding: 10px 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  display: flex; align-items: center; gap: 10px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.navbar .home-link, .navbar .right-buttons a, .navbar .right-buttons button {
-  text-decoration: none; border-radius: 8px; border: 1px solid var(--main);
-  display: inline-flex; align-items: center; gap: 4px; transition: 0.25s;
+.navbar .home-link,
+.navbar .right-buttons a,
+.navbar .right-buttons button {
+  text-decoration: none;
+  border-radius: 8px;
+  border: 1px solid var(--main);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: 0.25s;
+  cursor: pointer;
 }
 
-.navbar .home-link, .navbar .right-buttons a { color: var(--main) !important; background-color: #ffffff !important; padding: 4px 8px; }
-.navbar .right-buttons { margin-left: auto; display: flex; gap: 10px; }
-.navbar .right-buttons button { padding: 6px 12px; background: var(--card); color: var(--text); cursor: pointer; }
+.navbar .home-link,
+.navbar .right-buttons a {
+  color: var(--main) !important;
+  background-color: #ffffff !important;
+  border: 1px solid var(--main) !important;
+  padding: 4px 8px;
+}
 
-.navbar .home-link:hover, .navbar .right-buttons a:hover, .navbar .right-buttons button:hover {
-  background-color: var(--main-dark) !important; color: #ffffff !important; border-color: var(--main-dark) !important;
+.navbar .right-buttons a { padding: 4px 12px; }
+.navbar .right-buttons { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.navbar .right-buttons button { padding: 6px 12px; background: var(--card); color: var(--text); }
+
+.navbar .home-link:hover,
+.navbar .right-buttons a:hover,
+.navbar .right-buttons button:hover {
+  background-color: var(--main-dark) !important;
+  color: white !important;
+  border-color: var(--main-dark) !important;
 }
 
 .layout { max-width: 1600px; margin: 40px auto; display: grid; grid-template-columns: 220px 1fr 220px; gap: 30px; align-items: start; }
@@ -93,6 +117,7 @@ body.dark .side a:hover, body.dark .content h2 a:hover { color: #ffffff; }
 body.dark .content h2 a { color: var(--link-main-dark); }
 
 .card-link.bold-black { font-family: '黑體', 'Microsoft JhengHei', sans-serif; font-weight: 700; color: var(--text) !important; text-decoration: none !important; cursor: default; }
+.card-link .num { display: inline-block; text-align: right; margin-right: 6px; }
 body.dark .card-link.bold-black { color: #ffffff !important; }
 
 .desc-list { list-style: none; padding: 0; margin: 0; }
@@ -126,6 +151,7 @@ body.dark table a { color: var(--link-main-dark); }
 .dots span { display: inline-block; width: 10px; height: 10px; margin: 5px; background: #cbd5e1; border-radius: 50%; cursor: pointer; }
 .dots span.active { background: var(--main); transform: scale(1.2); }
 body.dark .dots span.active { background: var(--link-main-dark); }
+body.dark .card-link.bold-black { color: white !important; }
 
 /* ============================================================
    5. 簡報專屬樣式 (Slide 1 ~ 5)
@@ -217,12 +243,12 @@ table tbody tr:hover td { background-color: rgba(37, 99, 235, 0.08); }
   <aside class="side left">
     <h3>📂巴比恩整理區</h3>
     <hr />
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/TWBL1_Company.html" >1. 依工作室分類</a>
-    <a class="card-link bold-black">2. 其他分類</a>
-	<br>
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/TWBL1_Company.html"><span class="num">1.</span>依工作室分類</a>
+    <a class="card-link bold-black"><span class="num">2.</span>其他分類</a>
+	<a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/International.html" target="_blank"><span class="num">3.</span>跨國整理(另開視窗)</a>
 	<hr class="divider"> 
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/TWBL4_Actors.html" >4. 依演員分類</a>
-    <a class="card-link" href="https://www.dcard.tw/f/tvepisode/p/259107016" target="_blank">5. 依男團分類</a>
+    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/TWBL4_Actors.html"><span class="num">4.</span>依演員分類</a>
+    <a class="card-link" href="https://www.dcard.tw/f/tvepisode/p/259107016" target="_blank"><span class="num">5.</span>依男團分類</a>
 	<hr class="divider"> 
 	<br>
 	<br>
