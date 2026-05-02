@@ -113,6 +113,13 @@ body.dark {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   height: fit-content;
   color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.side-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
 }
 
 .side h3 { margin-top: 0; font-size: 16px; text-align: center; }
@@ -249,20 +256,31 @@ body.dark table a { color: var(--link-main-dark); }
 <div class="layout">
 
   <!-- 左側欄 -->
-  <aside class="side left">
-    <h3 style="text-align:center;"><strong>📂 四腐全書</strong></h3>
-    <hr />
-	    <a class="symbol no-dot" href="https://www.dcard.tw/f/tvepisode/p/260161966" style="font-size: 16px"; target="_blank" >概論</a>
+<!-- 左側欄：現在由兩個獨立的框框組成 -->
+  <div class="side-container">
+    <!-- 框框一：導覽 -->
+    <aside class="side">
+      <h3 style="text-align:center;">📂 四腐全書Dcard</h3>
+      <hr />
+      <a href="https://www.dcard.tw/f/tvepisode/p/260161966" target="_blank" style="font-weight:bold;">概論</a>
 		<a class="card-link dot-list" href="https://www.dcard.tw/f/boyslovedrama/p/259908931" target="_blank">大和文章</a>
 		<a class="card-link dot-list" href="https://www.dcard.tw/f/boyslovedrama/p/259959033" target="_blank">大員文章</a>
 		<a class="card-link dot-list" href="https://www.dcard.tw/f/boyslovedrama/p/260003653" target="_blank">大越文章</a>
 		<a class="card-link dot-list" href="https://www.dcard.tw/f/boyslovedrama/p/260108050" target="_blank">大韓文章</a>
-		<div class="card-spacer"></div>
-		<div class="card-spacer"></div>
-	 <hr>
-    <p>待續...</p>
-    <a></a>
-  </aside>
+    </aside>
+
+    <!-- 框框二：其他資訊/公告 -->
+    <aside class="side">
+      <h3 style="text-align:center;">📂 四腐全書HTML</h3>
+      <hr />
+      <div style="font-size: 14px; line-height: 1.6;">
+		<a class="card-link dot-list" href="https://ba29bin06h.github.io/BL_Drama/JPBL.html">🇯🇵 日本BL總表</a>
+		<a class="card-link dot-list" href="https://ba29bin06h.github.io/BL_Drama/TWBL.html">🇹🇼 台灣BL總表</a>
+		<a class="card-link dot-list" href="https://ba29bin06h.github.io/BL_Drama/VNBL.html">🇻🇳 越南BL總表</a>
+		<a class="card-link dot-list" href="https://ba29bin06h.github.io/BL_Drama/KRBL.html">🇰🇷 韓國BL總表</a>
+      </div>
+    </aside>
+  </div>
 
   <!-- 中間內容 ✅（重點） -->
   <div class="content">
@@ -562,8 +580,21 @@ function updateDots() {
   const dots = document.querySelectorAll(".dots span");
   if (!dots.length) return;
   
+  const realIndex = (currentIndex - 1 + dots.length) % dots.length;
+
   dots.forEach(dot => dot.classList.remove("active"));
-  dots[(currentIndex - 1 + dots.length) % dots.length].classList.add("active");
+  dots[realIndex].classList.add("active");
+
+  let newHash = "";
+  if (realIndex > 0) {
+    newHash = `#table${realIndex + 1}`;
+  }
+
+  if (newHash === "") {
+    history.replaceState(null, null, window.location.pathname + window.location.search);
+  } else {
+    history.replaceState(null, null, newHash);
+  }
 }
 </script>
 
