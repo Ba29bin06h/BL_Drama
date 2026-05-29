@@ -190,6 +190,32 @@ td.center { text-align: center; }
 table a { color: var(--main); text-decoration: underline; transition: 0.2s; }
 .content table tbody tr:hover td { color: inherit !important; }
 
+/* 日期（短） */
+table th:nth-child(1),
+table td:nth-child(1),
+table th:nth-child(4),
+table td:nth-child(4){
+  width: 110px;
+}
+
+/* 作品名稱（中長） */
+table th:nth-child(5),
+table td:nth-child(5),{
+  width: 300px;
+}
+
+/* 演員（中） */
+table th:nth-child(3),
+table td:nth-child(3),{
+  width: 100px;
+}
+
+/* 團名 */
+table th:nth-child(2),
+table td:nth-child(2){
+  width: 130px;
+}
+
 /* 深色模式表格修正 */
 body.dark table, body.dark th, body.dark td { 
   color: #dfe2f0; 
@@ -429,8 +455,8 @@ body.dark .dots span.active { background: var(--link-main-dark); }
         <td class='highlight'>桜庭唯純</td>
       </tr>
       <tr>
-        <td rowspan='5'>2018.11.21</td>
-        <td rowspan='5'><a href='https://zh.wikipedia.org/wiki/ONE_N%27_ONLY' target='_blank'>ONE N' ONLY</a></td>
+        <td rowspan='6'>2018.11.21</td>
+        <td rowspan='6'><a href='https://zh.wikipedia.org/wiki/ONE_N%27_ONLY' target='_blank'>ONE N' ONLY</a></td>
         <td rowspan='3'><a href='https://ja.wikipedia.org/wiki/%E6%B2%A2%E6%9D%91%E7%8E%B2' target='_blank'>沢村玲</a></td>
         <td>2024.04.12</td>
         <td>有他在的生活</td>
@@ -451,6 +477,12 @@ body.dark .dots span.active { background: var(--link-main-dark); }
         <td>2024.11.05</td>
         <td>未成年</td>
         <td class='highlight'>蛭川晴喜</td>
+      </tr>
+      <tr>
+        <td><a href='https://ja.wikipedia.org/wiki/%E9%96%A2%E5%93%B2%E6%B1%B0' target='_blank'>関哲汰</a></td>
+        <td>2024.11.05</td>
+        <td>未成年</td>
+        <td>客串真島撞球場朋友</td>
       </tr>
       <tr>
         <td><a href='https://ja.wikipedia.org/wiki/%E5%B1%B1%E4%B8%8B%E6%B0%B8%E7%8E%96' target='_blank'>山下永玖</a></td>
@@ -515,6 +547,14 @@ body.dark .dots span.active { background: var(--link-main-dark); }
         <td>未知</td>
         <td>你在夏日之中</td>
         <td class='highlight'>佐伯千晴</td>
+      </tr>
+      <tr>
+        <td>2020.09.16</td>
+        <td><a href='https://ja.wikipedia.org/wiki/BUDDiiS' target='_blank'>BUDDiiS</a></td>
+        <td><a href='https://ja.wikipedia.org/wiki/%E5%B0%8F%E5%B7%9D%E5%8F%B2%E8%A8%98' target='_blank'>小川史記</a></td>
+        <td>未知</td>
+        <td>しもべの王子様</td>
+        <td class='highlight'>五藤直也</td>
       </tr>
       <tr>
         <td rowspan='5'>2023.03.20</td>
@@ -637,7 +677,7 @@ body.dark .dots span.active { background: var(--link-main-dark); }
       </tr>
       <tr>
         <td>2019.01.22</td>
-        <td><a href='https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A3%E3%83%8B%E3%83%BC%E3%82%BAJr.%E8%A7%A3%E6%95%A3%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97_(2000%E5%B9%B4%E4%BB%A5%E9%99%8D)' target='_blank'>Lil かんさい</a></td>
+        <td><a href='https://zh.wikipedia.org/wiki/%E5%B0%8F%E5%82%91%E5%B0%BC%E6%96%AF' target='_blank'>Lil かんさい</a></td>
         <td><a href='https://ja.wikipedia.org/wiki/%E8%A5%BF%E6%9D%91%E6%8B%93%E5%93%89' target='_blank'>西村拓哉</a></td>
         <td>2023.10.20</td>
         <td>單人房的天使</td>
@@ -645,7 +685,7 @@ body.dark .dots span.active { background: var(--link-main-dark); }
       </tr>
       <tr>
         <td rowspan='3'>2025.02.16</td>
-        <td rowspan='3'><a href='https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A3%E3%83%8B%E3%83%BC%E3%82%BAJr.%E8%A7%A3%E6%95%A3%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97_(2000%E5%B9%B4%E4%BB%A5%E9%99%8D)' target='_blank'>ACEes</a></td>
+        <td rowspan='3'><a href='https://zh.wikipedia.org/wiki/%E5%B0%8F%E5%82%91%E5%B0%BC%E6%96%AF' target='_blank'>ACEes</a></td>
         <td rowspan='2'><a href='https://ja.wikipedia.org/wiki/%E6%B5%AE%E6%89%80%E9%A3%9B%E8%B2%B4' target='_blank'>浮所飛貴</a></td>
         <td>2023.01.24</td>
         <td>喜歡喜愛汪汪</td>
@@ -744,7 +784,7 @@ body.dark .dots span.active { background: var(--link-main-dark); }
       <tr>
         <td>2025.10.29</td>
         <td>療傷遊戲</td>
-        <td>三兎樹</td>
+        <td class='highlight'>三兎樹</td>
       </tr>
       <tr>
         <td>岩元雅希</td>
@@ -835,7 +875,7 @@ body.dark .dots span.active { background: var(--link-main-dark); }
         <td rowspan='2'>HAYATO</td>
         <td>2025.10.29</td>
         <td>療傷遊戲</td>
-        <td>生嶋翔平</td>
+        <td class='highlight'>生嶋翔平</td>
       </tr>
       <tr>
         <td>2026.03.13</td>
@@ -869,7 +909,7 @@ body.dark .dots span.active { background: var(--link-main-dark); }
         <td rowspan='3'>濱屋拓斗</td>
         <td>2024.11.02</td>
         <td>戀愛的預感</td>
-        <td>雨宮玲</td>
+        <td class='highlight'>雨宮玲</td>
       </tr>
       <tr>
         <td>2025.08.12</td>
@@ -879,7 +919,7 @@ body.dark .dots span.active { background: var(--link-main-dark); }
       <tr>
         <td>2026.02.01</td>
         <td>The Boy Next World ～平行世界的戀人～</td>
-        <td>四葉楓</td>
+        <td class='highlight'>四葉楓</td>
       </tr>
       <tr>
         <td>2023.08.18</td>
@@ -952,20 +992,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // 整合所有工作室與經紀公司的超連結
   const urlMap = {
-    "O2 production": "https://www.youtube.com/@O2PRODUCTION",
-    "RL Studio": "https://www.youtube.com/@RLStudioVN",
-    "2B Entertainment": "https://www.youtube.com/@2BEntertainmentOfficial",
-    "Qplus TV": "https://www.youtube.com/@QPlusTVOfficial",
-    "CiF TV": "https://www.youtube.com/@CiFTV",
-    "ABStudio": "https://www.youtube.com/@ABSTUDIOvn",
-    "MOI Studio": "https://www.youtube.com/@Moistudio21",
-    "星塵遠征軍(スターダスト)": "https://zh.wikipedia.org/zh-tw/%E6%98%9F%E5%A1%B5%E5%82%B3%E6%92%AD",
+    "星塵遠征軍(Ébịdân)": "https://zh.wikipedia.org/zh-tw/%E6%98%9F%E5%A1%B5%E5%82%B3%E6%92%AD",
     "EXILE TRIBE": "https://zh.wikipedia.org/zh-tw/EXILE_TRIBE",
     "小傑尼斯": "https://zh.wikipedia.org/wiki/%E5%B0%8F%E5%82%91%E5%B0%BC%E6%96%AF"
   };
 
   // 統一處理所有的 Slide：表格上色、資料統計、標題更新
-  document.querySelectorAll('.slide').forEach(slide => {
+  // 👉 這裡加上 index 參數
+  document.querySelectorAll('.slide').forEach((slide, index) => {
     const title = slide.querySelector("h2");
     const rows = slide.querySelectorAll("tbody tr");
     if (!title || !rows.length) return;
@@ -978,13 +1012,20 @@ window.addEventListener("DOMContentLoaded", () => {
     const dramaSet = new Set();
     let groupCounter = -1;
 
+    // 👉 判斷當前處理的 slide 是否為「最後一張」或是「最後一張的無縫複製節點」
+    const isLastSlide = (index === 0 || index === realCount);
+
     rows.forEach(row => {
       const cells = row.cells;
       const len = cells.length;
 
       // 1. 表格依作品群組上色 (隔作變色)
       if (len > 5) groupCounter++;
-      row.classList.add(groupCounter % 2 === 0 ? "blue-row" : "purple-row");
+      
+      // 👉 修改這裡：如果「不是」最後一張 slide，才執行上色動作
+      if (!isLastSlide) {
+        row.classList.add(groupCounter % 2 === 0 ? "blue-row" : "purple-row");
+      }
 
       // 2. 統計團體與演員 (針對複雜表格)
       if (len >= 6) {
