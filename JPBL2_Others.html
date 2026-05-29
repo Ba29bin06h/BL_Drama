@@ -225,42 +225,36 @@ body.dark table a { color: var(--link-main-dark); }
 }
 
 .row-bold { font-weight: bold; }
-.row-green, .row-green td, .slide-2 .cell-green { background-color: var(--row-green); }
+.row-green, .row-green td, .slide-3 .cell-green { background-color: var(--row-green); }
 
 /* ============================================================
    8. 獨立簡報區塊樣式 (Slide 1~6 專屬)
    ============================================================ */
-/* 合併處理 Slide 1 & 2 的共用寬度與邊框 */
-.slide-1 th:nth-child(3), .slide-1 td:nth-child(3), 
-.slide-2 th:nth-child(3), .slide-2 td:nth-child(3),
-.slide-1 th:nth-child(4), .slide-1 td:nth-child(4), 
-.slide-2 th:nth-child(4), .slide-2 td:nth-child(4) { width: 15%; text-align: center; }
+:is(.slide-1, .slide-3) :is(th, td):is(:nth-child(3), :nth-child(4)) { width: 15%; text-align: center; }
+:is(.slide-1, .slide-3) :is(th, td):nth-child(5) { width: 35%; }
+.slide-1 table td:is(:nth-child(3), :nth-child(4)) {border-inline: 1px solid var(--table-border); }
+:is(.slide-3, .slide-5) td:not(:last-child) {border-right: 1px solid var(--table-border);}
 
-.slide-1 th:nth-child(5), .slide-1 td:nth-child(5), 
-.slide-2 th:nth-child(5), .slide-2 td:nth-child(5) { width: 35%; }
+.slide-2 :is(th, td):is(:nth-child(1), :nth-child(2), :nth-child(4), :nth-child(5)) { width: 12.5%; }
+.slide-2 :is(th, td):is(:nth-child(3), :nth-child(6)) { width: 25%; }
+.slide-2 table td:first-child[rowspan] { border-right: 1px solid var(--table-border); }
 
-.slide-1 table td:nth-child(3), .slide-1 table td:nth-child(4) { border-left: 1px solid var(--table-border); border-right: 1px solid var(--table-border); }
-.slide-2 td:not(:last-child), .slide-4 td:not(:last-child) { border-right: 1px solid var(--table-border); }
+.slide-4 :is(th, td):nth-child(3) { width: 20%; }
+.slide-4 :is(th, td):nth-child(4) { width: 5%; text-align: center; }
+.slide-4 :is(th, td):nth-child(5) { width: 40%; }
 
-/* Slide 3 & 4 & 6 的獨立寬度設定 */
-.slide-3 th:nth-child(3), .slide-3 td:nth-child(3) { width: 20%; }
-.slide-3 th:nth-child(4), .slide-3 td:nth-child(4) { width: 5%; text-align: center; }
-.slide-3 th:nth-child(5), .slide-3 td:nth-child(5) { width: 40%; }
+.slide-5 :is(th, td):nth-child(3) { width: 20%; }
+.slide-5 :is(th, td):nth-child(4) { width: 45%; }
 
-.slide-4 th:nth-child(3), .slide-4 td:nth-child(3) { width: 20%; }
-.slide-4 th:nth-child(4), .slide-4 td:nth-child(4) { width: 45%; }
+.slide-7 :is(th, td):nth-child(1) { width: 20%; }
+.slide-7 :is(th, td):is(:nth-child(2), :nth-child(3)) { width: 40%; }
 
-.slide-6 th:nth-child(1), .slide-6 td:nth-child(1) { width: 20%; }
-.slide-6 th:nth-child(2), .slide-6 td:nth-child(2), 
-.slide-6 th:nth-child(3), .slide-6 td:nth-child(3) { width: 40%; }
-
-/* Slide 1 特殊斑馬紋與通用工具類 */
-.slide-1 tbody tr:nth-child(4n+1), .slide-1 tbody tr:nth-child(4n+2) { background-color: var(--row-blue); }
-.slide-1 tbody tr:nth-child(4n+3), .slide-1 tbody tr:nth-child(4n+4) { background-color: var(--row-purple); }
+.slide-1 tbody tr:is(:nth-child(4n+1), :nth-child(4n+2)) {background-color: var(--row-blue); }
+.slide-1 tbody tr:is(:nth-child(4n+3), :nth-child(4n+4)) { background-color: var(--row-purple); }
 .slide-1 tbody tr:nth-last-child(-n+3) { background-color: var(--row-green); }
 
 .row-bold { font-weight: bold; }
-.force-right-border { border-right: 1px solid var(--table-border) !important; }
+.force-right-border {border-right: 1px solid var(--table-border) !important; }
 
 #Red td:nth-child(6),
 #Red th:nth-child(6),
@@ -433,6 +427,178 @@ body.dark table a { color: var(--link-main-dark); }
 
 <!-- Slide 2 -->
 <div class="slide slide-2">
+  <h2>換乘戀愛BL劇</h2>
+  <div class="table-wrapper">
+  <table>
+  <thead>
+    <tr>
+	  <th>演員</th>
+      <th>BL上映日期</th>
+      <th>BL劇名</th>
+	  <th>角色</th>
+	  <th>定位</th>
+      <th>對手</th>
+	</tr>   
+  </thead>
+      <tbody>
+      <!-- 【換乘戀愛BL劇】的資料請放這裡 -->
+		<tr>
+		<td rowspan='3'>優太朗</td>
+		<td>2020.10.09</td>
+		<td>如果30歲還是處男，似乎就能成為魔法師</td>
+		<td>綿矢湊</td>
+		<td>2B. 副受</td>
+		<td>浅香航大→柘植将人</td>
+		</tr>
+		<tr>
+		<td>2021.03.27</td>
+		<td>絕對會變成BL的世界VS絕不想變成BL的男人</td>
+		<td>綾人</td>
+		<td>2B. 副受</td>
+		<td>塩野瑛久→東條</td>
+		</tr>
+		<tr>
+		<td>2023.04.14</td>
+		<td>全裸開動</td>
+		<td>三木真尋</td>
+		<td>1B. 主受</td>
+		<td>近藤頌利→一条颯太</td>
+		</tr>
+		<tr>
+		<td rowspan='2'>佐藤友祐</td>
+		<td>2022.04.22</td>
+		<td>只能親吻不幸同學了！ </td>
+		<td>篠宮直哉</td>
+		<td>1A. 主攻</td>
+		<td>曽田陵介→福原幸多</td>
+		</tr>
+		<tr>
+		<td>2026.04.24</td>
+		<td>偽裝的真實之吻</td>
+		<td>志藤全</td>
+		<td>1B. 主受</td>
+		<td>堀海登→四ツ谷良</td>
+		</tr>
+		<tr>
+		<td rowspan='2'>武田航平</td>
+		<td>2022.06.13</td>
+		<td>經典杯子蛋糕</td>
+		<td>野末</td>
+		<td>1B. 主受</td>
+		<td>木村達成→外川</td>
+		</tr>
+		<tr>
+		<td>2026.04.07</td>
+		<td>霧藍色的雨後晴天</td>
+		<td>吾妻朔太郎</td>
+		<td>未知</td>
+		<td>→</td>
+		</tr>
+		<tr>
+		<td rowspan='3'>瀬戸利樹</td>
+		<td>2022.06.17</td>
+		<td>前輩，這不叫戀愛！</td>
+		<td>金田優希</td>
+		<td>1B. 主受</td>
+		<td>内藤秀一郎→柳瀬淳</td>
+		</tr>
+		<tr>
+		<td>2023.01.30</td>
+		<td>我們的微小終末</td>
+		<td>仁科真澄</td>
+		<td>1B. 主受</td>
+		<td>中田圭祐→日下部律</td>
+		</tr>
+		<tr>
+		<td>未知</td>
+		<td>しもべの王子様</td>
+		<td>佐藤高明</td>
+		<td>1A. 主攻</td>
+		<td>小川史記→五藤直也</td>
+		</tr>
+		<tr>
+		<td rowspan='2'>奥智哉</td>
+		<td>2022.06.29</td>
+		<td>歡迎光臨自助洗衣店</td>
+		<td>英明日香</td>
+		<td>2B. 副受</td>
+		<td>稲葉友→佐久間柊</td>
+		</tr>
+		<tr>
+		<td>2026.06.24</td>
+		<td>你在夏日之中</td>
+		<td>戸田渉</td>
+		<td>1B. 主受</td>
+		<td>杢代和人→佐伯千晴</td>
+		</tr>
+		<tr>
+		<td rowspan='2'>浮所飛貴</td>
+		<td>2023.01.24</td>
+		<td>喜歡喜愛汪汪</td>
+		<td>木ノ宮天</td>
+		<td>1B. 主受</td>
+		<td>岸優太→雪井炬太郎</td>
+		</tr>
+		<tr>
+		<td>未知</td>
+		<td>夏日的雲朵帶來愛情與風暴</td>
+		<td>小早川蒼汰</td>
+		<td>未知</td>
+		<td>深田竜生→武宮夏輝</td>
+		</tr>
+		<tr>
+		<td rowspan='2'>簡秀吉</td>
+		<td>2024.01.12</td>
+		<td>我很喜歡你，那你呢</td>
+		<td>松本榮枝</td>
+		<td>1A. 主攻</td>
+		<td>西山潤→曽我久志</td>
+		</tr>
+		<tr>
+		<td>2025.10.18</td>
+		<td>我在學校旅行中被分到了一個糟糕的小組</td>
+		<td>渡会紬嵩</td>
+		<td>1A. 主攻</td>
+		<td>藤本洸大→日置朝陽</td>
+		</tr>
+		<tr>
+		<td rowspan='2'>佐藤瑠雅</td>
+		<td>2024.04.12</td>
+		<td>有他在的生活</td>
+		<td>田中一仁</td>
+		<td>1A. 主攻</td>
+		<td>坂井翔→夏川涼太</td>
+		</tr>
+		<tr>
+		<td>2025.10.29</td>
+		<td>療傷遊戲</td>
+		<td>三兎樹</td>
+		<td>2A. 副攻</td>
+		<td>丸尾隼→生嶋翔平</td>
+		</tr>
+		<tr>
+		<td rowspan='2'>坂井翔</td>
+		<td>2024.04.12</td>
+		<td>有他在的生活</td>
+		<td>夏川涼太</td>
+		<td>1B. 主受</td>
+		<td>佐藤瑠雅→田中一仁</td>
+		</tr>
+		<tr>
+		<td>未知</td>
+		<td>不喜歡色色的我嗎？</td>
+		<td>日崎藍之助</td>
+		<td>1B. 主受</td>
+		<td>君沢ユウキ→奥海英明</td>
+		</tr>
+	  <!--貼到這裡 -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide slide-3">
   <h2>(湊)ミナト的多重宇宙</h2>
 
   <div class="table-wrapper">
@@ -516,8 +682,8 @@ body.dark table a { color: var(--link-main-dark); }
   </div>
 </div>
 
-<!-- Slide 3 -->
-<div class="slide slide-3">
+<!-- Slide 4 -->
+<div class="slide slide-4">
   <h2>我的偶像倒追我</h2>
   <div class="table-wrapper">
   <table>
@@ -573,8 +739,8 @@ body.dark table a { color: var(--link-main-dark); }
   </div>
 </div>
 
-<!-- Slide 4 -->
-<div class="slide slide-4">
+<!-- Slide 5 -->
+<div class="slide slide-5">
   <h2>串場型BL劇</h2>
   <div class="table-wrapper">
   <table>
@@ -602,8 +768,8 @@ body.dark table a { color: var(--link-main-dark); }
 		<td>《歡迎光臨自助洗衣店》</td>
 		</tr>
 		<tr>
-		<td rowspan='10'>2021.07.16</td>
-		<td rowspan='10'>GIVEN 被贈與的未來</td>
+		<td rowspan='8'>2021.07.16</td>
+		<td rowspan='8'>GIVEN 被贈與的未來</td>
 		<td>鈴木仁</td>
 		<td>《被擦掉的初戀》</td>
 		</tr>
@@ -619,14 +785,8 @@ body.dark table a { color: var(--link-main-dark); }
 		<td>《歡迎光臨自助洗衣店(I、II)》</td>
 		</tr>
 		<tr>
-		<td rowspan='3'>武藤潤</td>
+		<td>武藤潤<br>(EP3_0950)<br>(EP3_2200)</td>
 		<td>《相遇驟雨中》</td>
-		</tr>
-		<tr>
-		<td><ul class='desc-list'><li>-EP3_0950被搶畫的同學</li></ul></td>
-		</tr>
-		<tr>
-		<td><ul class='desc-list'><li>-EP3_2200叫上山起床的同學</li></ul></td>
 		</tr>
 		<tr>
 		<td rowspan='3'>小野寺晃良</td>
@@ -704,14 +864,14 @@ body.dark table a { color: var(--link-main-dark); }
 		<td>《愛在記憶凍結時》</td>
 		</tr>
 		<tr>
-		<td rowspan='3'>坂井翔</td>
-		<td>《高良君和天城君》EP1_0415</td>
-		</tr>
-		<tr>
+		<td rowspan='3'>坂井翔<br>(EP1_0415)</td>
 		<td>《愛在記憶凍結時》客串</td>
 		</tr>
 		<tr>
 		<td>《有他在的生活》</td>
+		</tr>
+		<tr>
+		<td>《不喜歡色色的我嗎？》</td>
 		</tr>
 		<tr>
 		<td rowspan='8'>2024.04.19</td>
@@ -758,7 +918,7 @@ body.dark table a { color: var(--link-main-dark); }
 		</tr>
 		<tr>
 		<td rowspan='2'>阿久根温世</td>
-		<td>《歡迎光臨自助洗衣店 II》EP11_0000客串香月妹妹男朋友</td>
+		<td>《歡迎光臨自助洗衣店 II》<br>EP11_0000客串香月妹妹男朋友</td>
 		</tr>
 		<tr>
 		<td>《對比的我和你》</td>
@@ -787,7 +947,7 @@ body.dark table a { color: var(--link-main-dark); }
   </div>
 </div>
 
-<!-- Slide 5 -->
+<!-- Slide 6 -->
 <div class="slide">
 
   <div class="tf-header">
@@ -1154,11 +1314,11 @@ body.dark table a { color: var(--link-main-dark); }
   <!-- 如果有新的公司，請往下貼 -->
   
   
-   <!-- 這裡是第5張最後面 --> 
+   <!-- 這裡是第6張最後面 --> 
 	  </div>
 	  
-<!-- Slide 6 -->
-<div class="slide slide-6">
+<!-- Slide 7 -->
+<div class="slide slide-7">
 
   <div class="tf-header">
     <h2>劇間比較</h2>
@@ -1211,7 +1371,7 @@ body.dark table a { color: var(--link-main-dark); }
       <tr>
         <td>上映日期與數據</td>
         <td>2022.10.03，8集×23min，σ = 0.13min</td>
-        <td>2022.12.，8集×24min，σ = 0.09min</td>
+        <td>2022.12.16，8集×24min，σ = 0.09min</td>
       </tr>
       <tr>
         <td>床戲</td>
@@ -1554,12 +1714,12 @@ body.dark table a { color: var(--link-main-dark); }
   <!-- 如果有新的劇，請往下貼 -->
   
   
-   <!-- 這裡是第6張最後面 --> 
+   <!-- 這裡是第7張最後面 --> 
 </div>
 	  
 	  
-<!-- Slide 7 -->
-<div class="slide slide-6">
+<!-- Slide 8 -->
+<div class="slide slide-7">
 
   <div class="tf-header">
     <h2>劇內比較</h2>
@@ -1783,7 +1943,7 @@ body.dark table a { color: var(--link-main-dark); }
   <!-- 如果有新的劇，請往下貼 -->
   
   
-   <!-- 這裡是第7張最後面 --> 
+   <!-- 這裡是第8張最後面 --> 
 	  </div>	  
       </div>
       </div>
@@ -1873,8 +2033,8 @@ window.addEventListener("DOMContentLoaded", () => {
     updateDots();
   }
 
-  // 處理 .slide-4 表格群組列的隔行套色
-  document.querySelectorAll(".slide-4 tbody").forEach(tbody => {
+  // 處理 .slide-5 表格群組列的隔行套色
+  document.querySelectorAll(".slide-2 tbody, .slide-5 tbody").forEach(tbody => {
     let groupIndex = -1;
     let remaining = 0;
     
