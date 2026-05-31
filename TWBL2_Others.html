@@ -156,20 +156,34 @@ body.dark .card-link.bold-black { color: white !important; }
 /* ============================================================
    5. 簡報專屬樣式 (Slide 1 ~ 5)
    ============================================================ */
-.slide-2 th, .slide-2 td:last-child, .slide-2 th:last-child { border-right: none !important; }
-.slide-2 td:nth-child(1), .slide-2 td:nth-child(3), .slide-2 td:nth-child(5) { border-right: 1px solid var(--table-border); }
-.slide-2 th[rowspan], .slide-2 td:first-child { border-right: 1px solid var(--table-border) !important; }
-.slide-2 td[colspan="2"], .slide-2 th[colspan="2"] { border-right: 1px solid var(--table-border); }
+.slide-2 th:nth-child(1), .slide-2 td:nth-child(1) { width: 10%; }
+.slide-2 th:nth-child(2), .slide-2 td:nth-child(2) { width: 25%; }
+.slide-2 th:nth-child(n+3), .slide-2 td:nth-child(n+3) { width: 14%; }
+   
+.slide-3 th, .slide-3 td:last-child, .slide-3 th:last-child { border-right: none !important; }
+.slide-3 td:nth-child(1), .slide-3 td:nth-child(3), .slide-3 td:nth-child(5) { border-right: 1px solid var(--table-border); }
+.slide-3 th[rowspan], .slide-3 td:first-child { border-right: 1px solid var(--table-border) !important; }
+.slide-3 td[colspan="2"], .slide-3 th[colspan="2"] { border-right: 1px solid var(--table-border); }
 
-.slide-3 th:nth-child(1), .slide-3 td:nth-child(1) { width: 10%; }
-.slide-3 th:nth-child(2), .slide-3 td:nth-child(2) { width: 25%; }
-.slide-3 th:nth-child(n+3), .slide-3 td:nth-child(n+3) { width: 14%; }
+.slide-4 th:nth-child(1), 
+.slide-4 td:nth-child(1),
+.slide-5 th:nth-child(1), 
+.slide-5 td:nth-child(1), 
+.slide-6 th:nth-child(1), 
+.slide-6 td:nth-child(1) { width: 20%; }
 
-.slide-4 th:nth-child(1), .slide-4 td:nth-child(1), .slide-5 th:nth-child(1), .slide-5 td:nth-child(1) { width: 20%; }
-.slide-4 th:nth-child(n+2), .slide-4 td:nth-child(n+2), .slide-5 th:nth-child(n+2), .slide-5 td:nth-child(n+2) { width: 40%; }
+.slide-4 th:nth-child(n+2), 
+.slide-4 td:nth-child(n+2),
+.slide-5 th:nth-child(n+2), 
+.slide-5 td:nth-child(n+2), 
+.slide-6 th:nth-child(n+2), 
+.slide-6 td:nth-child(n+2) { width: 40%; }
 
 #Summary th.no-right-border { border-right: none !important; }
 #Summary .text-center td { text-align: center; }
+
+#ARKis th:nth-child(1),#ARKis td:nth-child(1) {width: 20%;}
+#ARKis th:nth-child(n+2),#ARKis td:nth-child(n+2) {width: 26.666%;}
 
 /* ============================================================
    6. 資料篩選器與 DataTables 覆寫設定
@@ -215,7 +229,7 @@ table tbody tr:hover td { background-color: rgba(37, 99, 235, 0.08); }
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 .row-bold { font-weight: bold; }
-.row-green, .row-green td, .slide-2 .cell-green { background-color: var(--row-green); }
+.row-green, .row-green td, .slide-3 .cell-green { background-color: var(--row-green); }
 </style>
 </head>
 <body>
@@ -315,8 +329,120 @@ table tbody tr:hover td { background-color: rgba(37, 99, 235, 0.08); }
 <!-- 貼到這裡 -->
 
 
+
 <!-- Slide 2 -->
 <div class="slide slide-2" id="table2">
+  <h2>台灣BL劇如何取名字</h2>
+  <div class="table-wrapper">
+  <table>
+  <thead>
+    <tr>
+      <th>BL上映日期</th>
+      <th>BL劇名</th>
+      <th>主攻</th>
+	  <th>主受</th>
+	  <th>副攻</th>
+	  <th>副受</th>
+	</tr>     
+  </thead>
+      <tbody>
+      <!-- 【台灣BL劇取名相關資料】的資料請放這裡 -->
+      <tr>
+        <td>2018.01.30</td>
+        <td>是非</td>
+        <td>是奕杰</td>
+        <td>非盛哲</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>2018.03.06</td>
+        <td>越界</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>王振武</td>
+        <td>王振文</td>
+      </tr>
+      <tr>
+        <td>2021.05.20</td>
+        <td>約·定</td>
+        <td>金予真</td>
+        <td>石磊</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>2022.04.15</td>
+        <td>正負之間</td>
+        <td>鄭則守</td>
+        <td>傅理躬</td>
+        <td>加藤勇氣</td>
+        <td>簡英澤</td>
+      </tr>
+      <tr>
+        <td>2024.02.02</td>
+        <td>恆久定律</td>
+        <td>褚一平</td>
+        <td>恆9</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>2024.08.12</td>
+        <td>彈一場完美戀愛</td>
+        <td>Neil</td>
+        <td>Sea</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>2024.10.23</td>
+        <td>看見愛</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>2024.12.20</td>
+        <td>全面管控</td>
+        <td>恆4</td>
+        <td>羅布仕</td>
+        <td>林賈騫</td>
+        <td>周禎群</td>
+      </tr>
+      <tr>
+        <td>2025.03.28</td>
+        <td>對立而已</td>
+        <td>黑宇柏</td>
+        <td>白舟齊</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td rowspan='2'>2025.06.27</td>
+        <td rowspan='2'>靈魂約定</td>
+        <td>葉海淵</td>
+        <td>夏茶</td>
+        <td>江百凌</td>
+        <td>陳千歲</td>
+      </tr>
+      <tr>
+        <td>關日清</td>
+        <td>夏澤方</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+	  <!--貼到這裡 -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+<!-- Slide 3 -->
+<div class="slide slide-3" id="table3">
 
   <div class="tf-header">
     <h2>功高震主廢二代</h2>
@@ -345,7 +471,7 @@ table tbody tr:hover td { background-color: rgba(37, 99, 235, 0.08); }
       <tbody>
 	  <!-- 【劇情大綱】的資料請放這裡 -->
 	<tr class="text-center">
-	  <td>上映日期</td>
+	  <td style="text-align: left;">上映日期</td>
 	  <td colspan="2">2024.10.23</td>
 	  <td colspan="2">2024.12.20</td>
 	  <td colspan="2">2025.02.14</td>
@@ -456,6 +582,7 @@ table tbody tr:hover td { background-color: rgba(37, 99, 235, 0.08); }
     </table>
     </div>
   </div>
+
 
   <!-- ===== 角色設定 ===== -->
   <div class="tab-content" id="Role">
@@ -588,120 +715,30 @@ table tbody tr:hover td { background-color: rgba(37, 99, 235, 0.08); }
     </table>
     </div>
   </div>
-
-
-
-  <!-- 如果有新的劇，請往下貼 -->
-  
-  
-   <!-- 這裡是第2張最後面 --> 
+  <!-- 如果有新的劇，請往下貼 -->  
+  <!-- 這裡是第3張最後面 --> 
 </div>
 
 
 
-
-<!-- Slide 3 -->
-<div class="slide slide-3" id="table3">
-  <h2>台灣BL劇如何取名字</h2>
+<!-- Slide 4 -->
+<div class="slide slide-4" id="table4">
+  <h2>龐克三角</h2>
   <div class="table-wrapper">
   <table>
   <thead>
     <tr>
-      <th>BL上映日期</th>
-      <th>BL劇名</th>
-      <th>主攻</th>
-	  <th>主受</th>
-	  <th>副攻</th>
-	  <th>副受</th>
-	</tr>     
+      <th></th>
+      <th>靈魂約定</th>
+      <th>向流星許願的我們</th>
+	</tr>   
   </thead>
       <tbody>
-      <!-- 【台灣BL劇取名相關資料】的資料請放這裡 -->
+      <!-- 【AI男友】的資料請放這裡 -->
       <tr>
-        <td>2018.01.30</td>
-        <td>是非</td>
-        <td>是奕杰</td>
-        <td>非盛哲</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>2018.03.06</td>
-        <td>越界</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>王振武</td>
-        <td>王振文</td>
-      </tr>
-      <tr>
-        <td>2021.05.20</td>
-        <td>約·定</td>
-        <td>金予真</td>
-        <td>石磊</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>2022.04.15</td>
-        <td>正負之間</td>
-        <td>鄭則守</td>
-        <td>傅理躬</td>
-        <td>加藤勇氣</td>
-        <td>簡英澤</td>
-      </tr>
-      <tr>
-        <td>2024.02.02</td>
-        <td>恆久定律</td>
-        <td>褚一平</td>
-        <td>恆9</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>2024.08.12</td>
-        <td>彈一場完美戀愛</td>
-        <td>Neil</td>
-        <td>Sea</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>2024.10.23</td>
-        <td>看見愛</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>2024.12.20</td>
-        <td>全面管控</td>
-        <td>恆4</td>
-        <td>羅布仕</td>
-        <td>林賈騫</td>
-        <td>周禎群</td>
-      </tr>
-      <tr>
-        <td>2025.03.28</td>
-        <td>對立而已</td>
-        <td>黑宇柏</td>
-        <td>白舟齊</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td rowspan='2'>2025.06.27</td>
-        <td rowspan='2'>靈魂約定</td>
-        <td>葉海淵</td>
-        <td>夏茶</td>
-        <td>江百凌</td>
-        <td>陳千歲</td>
-      </tr>
-      <tr>
-        <td>關日清</td>
-        <td>夏澤方</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
+        <td>趕工中~</td>
+        <td>趕工中~</td>
+        <td>趕工中~</td>
       </tr>
 	  <!--貼到這裡 -->
       </tbody>
@@ -709,11 +746,26 @@ table tbody tr:hover td { background-color: rgba(37, 99, 235, 0.08); }
   </div>
 </div>
 
-<!-- Slide 4 -->
-<div class="slide slide-4" id="table4">
-  <h2>AI男友比較表</h2>
-  <div class="table-wrapper">
-  <table>
+
+
+<!-- Slide 5 -->
+<div class="slide slide-5" id="table5">
+
+  <div class="tf-header">
+    <h2>男友比較表</h2>
+
+    <!-- 🔘 子分類按鈕 -->
+    <select class="tf-select" onchange="switchTab(this)">
+      <option value="AI">AI</option>
+      <option value="ARKis">ARphaKiss</option>
+      <option value="FFO">F.F.Omega</option>
+    </select>
+  </div>
+
+  <!-- ===== AI男友 ===== -->
+  <div class="tab-content active" id="AI">
+    <div class="table-wrapper">
+      <table>	
   <thead>
     <tr>
       <th></th>
@@ -722,7 +774,7 @@ table tbody tr:hover td { background-color: rgba(37, 99, 235, 0.08); }
 	</tr>   
   </thead>
       <tbody>
-      <!-- 【AI男友】的資料請放這裡 -->
+	  <!-- 【AI男友】的資料請放這裡 -->
       <tr>
         <td>定位</td>
         <td>忙內</td>
@@ -826,11 +878,66 @@ table tbody tr:hover td { background-color: rgba(37, 99, 235, 0.08); }
 	  <!--貼到這裡 -->
       </tbody>
     </table>
+    </div>
   </div>
+
+  <!-- ===== ARKis ===== -->
+  <div class="tab-content" id="ARKis">
+    <div class="table-wrapper">
+      <table>	
+  <thead>
+    <tr>
+      <th></th>
+	  <th>李定?</th>
+      <th>禾雁凱</th>
+      <th>鄭彫秦</th>
+	</tr>   
+  </thead>
+      <tbody>
+	  <!-- 【ARKis】的資料請放這裡 -->
+      <tr>
+		<td>趕工中~</td>
+        <td>趕工中~</td>
+        <td>趕工中~</td>
+        <td>趕工中~</td>
+      </tr>
+	  <!--貼到這裡 -->
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- ===== F.F.O. ===== -->  
+  <div class="tab-content" id="FFO">
+    <div class="table-wrapper">
+      <table>	
+  <thead>
+    <tr>
+      <th></th>
+      <th>張鈞嘉</th>
+      <th>陳彥旭</th>
+	</tr>   
+  </thead>
+      <tbody>
+	  <!-- 【F.F.O.】的資料請放這裡 -->
+      <tr>
+        <td>趕工中~</td>
+        <td>趕工中~</td>
+        <td>趕工中~</td>
+      </tr>
+	  <!--貼到這裡 -->
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+ <!--要再加標籤的話，請往下加 --> 
 </div>
 
-<!-- Slide 5 -->
-<div class="slide slide-5" id="table5">
+
+
+<!-- Slide 6 -->
+<div class="slide slide-6" id="table6">
 
   <div class="tf-header">
     <h2>演員比較表</h2>
@@ -1003,8 +1110,6 @@ table tbody tr:hover td { background-color: rgba(37, 99, 235, 0.08); }
   </div>
 
 
-  
-  
   
 <!-- 如果有新的公司，請往下貼 -->
 	  </div>
@@ -1179,9 +1284,10 @@ const rawData = [
   { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S1_OPENsi", "Actor": "邱勝揚", "Date": "2025.06.27", "DemandSubType2": "靈魂約定", "DemandType": "VBL", "DemandSubType": "S2_3", "Role": "關日清" },
   { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S2_WOFA", "Actor": "洪暐", "Date": "2025.06.27", "DemandSubType2": "靈魂約定", "DemandType": "VBL", "DemandSubType": "S2_3", "Role": "江百凌" },
   { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S2_ARKis", "Actor": "李定", "Date": "2025.06.27", "DemandSubType2": "靈魂約定", "DemandType": "VBL", "DemandSubType": "S2_3", "Role": "陳千歲" },
-  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S2_ARKis", "Actor": "禾雁凱", "Date": "2026.05.20", "DemandSubType2": "轉過頭幫你擦眼淚", "DemandType": "其他2", "DemandSubType": "", "Role": "" },
-  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S2_ARKis", "Actor": "鄭彫秦", "Date": "2026.05.20", "DemandSubType2": "轉過頭幫你擦眼淚", "DemandType": "其他2", "DemandSubType": "", "Role": "" },
-  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S2_F.F.O", "Actor": "張鈞嘉", "Date": "2026.05.20", "DemandSubType2": "轉過頭幫你擦眼淚", "DemandType": "其他2", "DemandSubType": "", "Role": "" },
+  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S2_ARKis", "Actor": "禾雁凱", "Date": "2026.05.20", "DemandSubType2": "轉過頭幫你擦眼淚", "DemandType": "其他2", "DemandSubType": "", "Role": "禾雁凱<br>(同名演出)" },
+  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S2_ARKis", "Actor": "鄭彫秦", "Date": "2026.05.20", "DemandSubType2": "轉過頭幫你擦眼淚", "DemandType": "其他2", "DemandSubType": "", "Role": "鄭彫秦<br>(同名演出)" },
+  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S2_F.F.O", "Actor": "陳彥旭", "Date": "2026.03.26", "DemandSubType2": "向流星許願的我們", "DemandType": "結果娛樂", "DemandSubType": "", "Role": "少年何向永" },
+  { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S2_F.F.O", "Actor": "張鈞嘉", "Date": "2026.05.20", "DemandSubType2": "轉過頭幫你擦眼淚", "DemandType": "其他2", "DemandSubType": "", "Role": "張鈞嘉<br>(同名演出)" },
   { "SupplyType": "選秀節目", "SupplySubType": "SCOOL", "SupplySubType2": "", "Actor": "李振浩", "Date": "2022.08.29", "DemandSubType2": "默默的我，不默默的我們", "DemandType": "其他2", "DemandSubType": "", "Role": "葉廣" },
   { "SupplyType": "選秀節目", "SupplySubType": "SCOOL", "SupplySubType2": "", "Actor": "韓晨", "Date": "", "DemandSubType2": "星光燦爛的你", "DemandType": "", "DemandSubType": "", "Role": "" }
 ];
