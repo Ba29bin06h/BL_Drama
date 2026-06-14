@@ -178,6 +178,12 @@ body.dark .card-link.bold-black { color: white !important; }
 #Summary th.no-right-border { border-right: none !important; }
 #Summary .text-center td { text-align: center; }
 
+#Role thead tr:nth-child(1) th {z-index: 6;}
+#Role thead tr:nth-child(2) th {top: 41px; z-index: 6;}
+#Role thead tr:nth-child(1) th {border-bottom: 1px solid var(--table-border);}
+#Role thead tr:nth-child(1) th[rowspan] {border-bottom: 2px solid var(--table-border);}
+#Role thead tr:nth-child(2) th {border-bottom: 3px solid var(--table-border);}
+
 #ARKis th:nth-child(1),#ARKis td:nth-child(1) {width: 20%;}
 #ARKis th:nth-child(n+2),#ARKis td:nth-child(n+2) {width: 26.666%;}
 
@@ -458,7 +464,7 @@ table tbody tr:hover td { background-color: rgba(37, 99, 235, 0.08); }
       <table>	
   <thead>
   <tr>
-    <th rowspan="2" class="no-right-border">項目</th>
+    <th class="no-right-border">項目</th>
     <th colspan="2">看見愛</th>
     <th colspan="2">全面管控</th>
     <th colspan="2">獨佔接班人</th>
@@ -716,34 +722,282 @@ table tbody tr:hover td { background-color: rgba(37, 99, 235, 0.08); }
 </div>
 
 
-
-<!-- Slide 4 -->
 <div class="slide slide-3" id="table4">
-  <h2>平行世界的戀人</h2>
-  <div class="table-wrapper">
-  <table>
+
+  <div class="tf-header">
+    <h2>平行世界的戀人</h2>
+	<h4>(底下內容屆時會更正，請耐心等候)</h4>
+    <!-- 🔘 子分類按鈕 -->
+    <select class="tf-select" onchange="switchTab(this)">
+      <option value="Summary">劇情大綱</option>
+	  <option value="Role">角色設定</option>
+    </select>
+  </div>
+
+  <!-- ===== 劇情大綱 ===== -->
+  <!-- 要在style裡面加上 【<th rowspan="2" class="no-right-border">項目</th>】 -->
+  <!-- 要在上映日期上面的<tr>加上 【class="text-center】 -->
+  <div class="tab-content active" id="Summary">
+    <div class="table-wrapper">
+      <table>	
   <thead>
-    <tr>
-      <th></th>
-	  <th>遇見未來的你</th>
-      <th>靈魂約定</th>
-      <th>向流星許願的我們</th>
-	</tr>   
+  <tr>
+    <th rowspan="2" class="no-right-border">項目</th>
+    <th colspan="2">遇見未來的你</th>
+    <th colspan="2">靈魂約定</th>
+    <th colspan="2">向流星許願的我們</th>
+  </tr>   
   </thead>
       <tbody>
-      <!-- 【AI男友】的資料請放這裡 -->
+	  <!-- 【劇情大綱】的資料請放這裡 -->
+	<tr class="text-center">
+	  <td style="text-align: left;">上映日期</td>
+	  <td colspan="2">2024.10.23</td>
+	  <td colspan="2">2024.12.20</td>
+	  <td colspan="2">2025.02.14</td>
+	</tr>
       <tr>
-	    <td>趕工中~</td>
-        <td>趕工中~</td>
-        <td>趕工中~</td>
-        <td>趕工中~</td>
+        <td>公司</td>
+        <td>Ep11</td>
+        <td>恆鋒集團</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>Ep10</td>
+        <td>鴻澤禮儀</td>
       </tr>
-	  <!--貼到這裡 -->
+      <tr>
+        <td>家庭狀況</td>
+        <td>&nbsp;</td>
+        <td>堂兄弟<br>母親未知</td>
+        <td>EP5_1000</td>
+        <td>外面兄弟姊妹很多<br>媽媽離婚</td>
+        <td>&nbsp;</td>
+        <td>養兄弟<br>父親離開，母親改嫁</td>
+      </tr>
+      <tr>
+        <td>接班態勢</td>
+        <td>&nbsp;</td>
+        <td>父傳子<br>但堂哥來搶</td>
+        <td>&nbsp;</td>
+        <td>?</td>
+        <td>&nbsp;</td>
+        <td>養兄傳給親弟</td>
+      </tr>
+      <tr>
+        <td>婚約</td>
+        <td>&nbsp;</td>
+        <td>主CP</td>
+        <td>&nbsp;</td>
+        <td>X</td>
+        <td>&nbsp;</td>
+        <td>副CP</td>
+      </tr>
+      <tr>
+        <td>找廢二代</td>
+        <td>EP4</td>
+        <td>摔到山谷</td>
+        <td>EP1</td>
+        <td>10點門禁</td>
+        <td>EP4</td>
+        <td>被當作通緝犯</td>
+      </tr>
+      <tr>
+        <td>綁架廢二代</td>
+        <td>EP6_0800</td>
+        <td>搞錯人</td>
+        <td>EP9_2000</td>
+        <td>2nd綁架</td>
+        <td>EP1<br>EP11</td>
+        <td>綁來強制訓練<br>真的綁起來</td>
+      </tr>
+      <tr>
+        <td>特殊形態</td>
+        <td>&nbsp;</td>
+        <td>聽不見</td>
+        <td>&nbsp;</td>
+        <td>沒有心跳</td>
+        <td>&nbsp;</td>
+        <td>弟弟坐輪椅</td>
+      </tr>
+      <tr>
+        <td>生日</td>
+        <td>EP12_1800</td>
+        <td>兩人生日</td>
+        <td>EP6_0800</td>
+        <td>684生日<br>恆4出廠日</td>
+        <td>EP8</td>
+        <td>唐篤知父母忌日</td>
+      </tr>
+      <tr>
+        <td>定情物</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>EP6_1200</td>
+        <td>手環<br>軍工廠製造?</td>
+        <td>EP7_last</td>
+        <td>手環<br>琴弦製作</td>
+      </tr>
+      <tr>
+        <td>頓悟</td>
+        <td>&nbsp;</td>
+        <td>自己領悟</td>
+        <td>&nbsp;</td>
+        <td>先調教<br>後領悟</td>
+        <td>&nbsp;</td>
+        <td>哥哥的事<br>被迫成長</td>
+      </tr>
+      <tr>
+        <td>雙向治癒</td>
+        <td colspan='2'>讓彼此知道存在的意義</td>
+        <td colspan='2'>讓彼此知道自己是不可複製的</td>
+        <td colspan='2'>攻因為受走出傷痛；受??</td>
+      </tr>
+      <tr>
+        <td>廢物型態</td>
+        <td colspan='2'>為了反抗家庭的束縛所以耍廢</td>
+        <td colspan='2'>因為母親離開，所以開始耍廢</td>
+        <td colspan='2'>因為對血害怕，所以逃避接班<br>(進公司還穿短褲)</td>
+      </tr>
       </tbody>
     </table>
+    </div>
   </div>
-</div>
 
+
+  <!-- ===== 角色設定 ===== -->
+  <div class="tab-content" id="Role">
+    <div class="table-wrapper">
+      <table>	
+<thead>
+  <tr>
+    <th rowspan="2">項目</th>
+    <th colspan="2">遇見未來的你</th>
+    <th colspan="2">靈魂約定</th>
+    <th colspan="2">向流星許願的我們</th>
+  </tr>
+
+  <tr>
+    <th class="sub-head">演員</th>
+    <th class="sub-head">角色</th>
+
+    <th class="sub-head">演員</th>
+    <th class="sub-head">角色</th>
+
+    <th class="sub-head">演員</th>
+    <th class="sub-head">角色</th>
+  </tr>  
+  </thead>
+      <tbody>
+	  <!-- 【角色設定】的資料請放這裡 -->
+      <tr>
+        <td>主攻</td>
+        <td>金雲</td>
+        <td>聽不見的看護<br>姜紹朋</td>
+        <td>張哲偉</td>
+        <td>高科技機器人<br>恆4</td>
+        <td>毛祈生</td>
+        <td>冷血師傅<br>唐篤知</td>
+      </tr>
+      <tr>
+        <td>主受</td>
+        <td>林宇</td>
+        <td>楊子翔</td>
+        <td>陳峻廷</td>
+        <td>羅布仕</td>
+        <td>張家陞</td>
+        <td>王湛</td>
+      </tr>
+      <tr>
+        <td>與主攻有關</td>
+        <td>李悠</td>
+        <td>宋舒禾</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>鄭吏佑</td>
+        <td>紀輝宇</td>
+      </tr>
+      <tr>
+        <td>與主受有關</td>
+        <td>艾雨帆</td>
+        <td>鄭雨儂</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>孫麥傑</td>
+        <td>Ian</td>
+      </tr>
+      <tr>
+        <td>床戲</td>
+        <td colspan='2'>EP11、EP13</td>
+        <td colspan='2'>EP4、EP10</td>
+        <td colspan='2'>EP12</td>
+      </tr>
+      <tr>
+        <td>副攻</td>
+        <td>林家佑</td>
+        <td>成豐傑</td>
+        <td>羅章恩</td>
+        <td>林賈騫</td>
+        <td>徐瑋澤</td>
+        <td>張以慶</td>
+      </tr>
+      <tr>
+        <td>副受</td>
+        <td>林詠傑</td>
+        <td>王信家</td>
+        <td>洪言翔</td>
+        <td>周禎群</td>
+        <td>朴靖恆</td>
+        <td>涂井和</td>
+      </tr>
+      <tr>
+        <td>與副攻有關</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>與副受有關</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>紀欣伶</td>
+        <td>周宥寧</td>
+      </tr>
+      <tr>
+        <td>床戲</td>
+        <td colspan='2'>EP4假床戲(喝酒吐整身)<br>EP13真床戲</td>
+        <td colspan='2'>X</td>
+        <td colspan='2'>EP7假床戲(喝酒打翻)<br>EP11、EP12真床戲</td>
+      </tr>
+      <tr>
+        <td>關係</td>
+        <td colspan='2'>管家v.s.黑道小弟</td>
+        <td colspan='2'>債權人v.s.債務人(同學)</td>
+        <td colspan='2'>高中同學(婚顧v.s.公司小開)</td>
+      </tr>
+      <tr>
+        <td>陳柏文參與</td>
+        <td colspan='2'>O</td>
+        <td colspan='2'>X</td>
+        <td colspan='2'>O</td>
+      </tr>
+      <tr>
+        <td>身高差</td>
+        <td colspan='2'>O</td>
+        <td colspan='2'>O</td>
+        <td colspan='2'>O</td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <!-- 如果有新的劇，請往下貼 -->  
+  <!-- 這裡是第4張最後面 --> 
+</div>
 
 
 <!-- Slide 5 -->
@@ -1291,14 +1545,21 @@ function switchTab(el) {
 
 /* [04]=== 全域資料與 DataTables 結構設定 === */
 const customSortOrder = { 
-  "高校系列": 1, "全明星運動會": 2, "選秀節目": 3,
+  "高校系列": 1, "全明星運動會": 2, "機智校園生活": 3, "選秀節目": 4,
   "料理高校生": 11, "飛魚高校生": 12, "高校英雄傳": 13,
-  "S1": 21, "S1_1": 22, "S1_2": 23, "S2": 24, "S2_1": 25, "S2_2": 26, "S2_3": 27, "S3": 28, "S4": 29,  
-  "原子少年": 31, "SCOOL": 32,
-  "飛魚隊_蝶式": 42, "飛魚隊_蛙式": 43, "馬林魚隊_自由式": 45, "馬林魚隊_蛙式": 47, "馬林魚隊_仰式": 48,
-  "Blue": 51, "Red": 52, "Yellow": 53,
+  "S1": 21, "S1_1": 22, "S1_2": 23, "S1~S5": 24, "S1~S4": 25,
+  "S2": 26, "S2_1": 27, "S2_2": 28, "S2_3": 29, 
+  "S3": 30, 
+  "S4": 31, 
+  "S5": 32,
+  "原子少年": 41, "SCOOL": 42,
+  "飛魚隊_蝶式": 52, "飛魚隊_蛙式": 53, "馬林魚隊_自由式": 55, "馬林魚隊_蛙式": 57, "馬林魚隊_仰式": 58,
+  
+  "Blue": 71, "Red": 72, "Yellow": 73,
+  
   "HIStory": 101, "結果娛樂": 201, "艾雨帆": 301, "VBL": 401, "其他1": 501, "其他2": 601,
-  "My Hero": 111, "離我遠一點": 112, "圈套": 116, "那一天": 117, "近距離愛上你": 118, "遇見未來的你": 119, "獨佔接班人": 120,
+  
+  "My Hero": 111, "離我遠一點": 112, "越界": 115, "圈套": 116, "那一天": 117, "近距離愛上你": 118, "遇見未來的你": 119, "獨佔接班人": 120,
   "關於未知的我們": 214, "向流星許願的我們": 215,
   "約·定": 311, "看見愛": 314,
   "全面管控": 421, "對立而已": 422, "靈魂約定": 423,
@@ -1337,6 +1598,11 @@ const rawData = [
   { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Red", "Actor": "張家陞", "Date": "2025.02.14", "DemandSubType2": "獨佔接班人", "DemandType": "HIStory", "DemandSubType": "S6", "Role": "王湛" },
   { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Yellow", "Actor": "徐瑋澤", "Date": "2025.02.14", "DemandSubType2": "獨佔接班人", "DemandType": "HIStory", "DemandSubType": "S6", "Role": "張以慶" },
   { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Yellow", "Actor": "各務孝太", "Date": "2026.03.26", "DemandSubType2": "向流星許願的我們", "DemandType": "結果娛樂", "DemandSubType": "", "Role": "濱口蒼海" },
+  { "SupplyType": "機智校園生活", "SupplySubType": "S1~S5", "SupplySubType2": "", "Actor": "鍾岳軒", "Date": "2026.03.26", "DemandSubType2": "向流星許願的我們", "DemandType": "結果娛樂", "DemandSubType": "", "Role": "何向永／鍾小右" },
+  { "SupplyType": "機智校園生活", "SupplySubType": "S1~S4", "SupplySubType2": "", "Actor": "林輝瑝", "Date": "2025.03.28", "DemandSubType2": "對立而已", "DemandType": "VBL", "DemandSubType": "S2_2", "Role": "白舟國" },
+  { "SupplyType": "機智校園生活", "SupplySubType": "S1~S4", "SupplySubType2": "", "Actor": "盧彥澤", "Date": "2018.03.06", "DemandSubType2": "越界", "DemandType": "HIStory", "DemandSubType": "S2_2", "Role": "邱子軒" },
+  { "SupplyType": "機智校園生活", "SupplySubType": "S3", "SupplySubType2": "", "Actor": "吳承洋", "Date": "2019.04.16", "DemandSubType2": "圈套", "DemandType": "HIStory", "DemandSubType": "S3_1", "Role": "唐毅" },
+  { "SupplyType": "機智校園生活", "SupplySubType": "S5", "SupplySubType2": "", "Actor": "王碩瀚", "Date": "2021.05.20", "DemandSubType2": "約·定", "DemandType": "艾雨帆", "DemandSubType": "", "Role": "石磊" },
   { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S1", "Actor": "陳廷軒", "Date": "2019.04.16", "DemandSubType2": "圈套", "DemandType": "HIStory", "DemandSubType": "S3_1", "Role": "趙立安" },
   { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S1", "Actor": "金雲", "Date": "2024.10.23", "DemandSubType2": "看見愛", "DemandType": "艾雨帆", "DemandSubType": "", "Role": "姜紹朋" },
   { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S1", "Actor": "羅奕傑", "Date": "", "DemandSubType2": "星光燦爛的你", "DemandType": "", "DemandSubType": "", "Role": "" },
