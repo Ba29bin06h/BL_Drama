@@ -184,8 +184,6 @@ body.dark .card-link.bold-black { color: white !important; }
 #Role thead tr:nth-child(1) th[rowspan] {border-bottom: 2px solid var(--table-border);}
 #Role thead tr:nth-child(2) th {border-bottom: 3px solid var(--table-border);}
 
-#ARKis th:nth-child(1),#ARKis td:nth-child(1) {width: 20%;}
-#ARKis th:nth-child(n+2),#ARKis td:nth-child(n+2) {width: 26.666%;}
 
 /* ============================================================
    6. 資料篩選器與 DataTables 覆寫設定
@@ -1495,7 +1493,6 @@ table tbody tr:hover td { background-color: rgba(37, 99, 235, 0.08); }
   <thead>
     <tr>
       <th></th>
-	  <th>李定?</th>
       <th>禾雁凱</th>
       <th>鄭彫秦</th>
 	</tr>   
@@ -1504,7 +1501,6 @@ table tbody tr:hover td { background-color: rgba(37, 99, 235, 0.08); }
 	  <!-- 【ARKis】的資料請放這裡 -->
       <tr>
 		<td>趕工中~</td>
-        <td>趕工中~</td>
         <td>趕工中~</td>
         <td>趕工中~</td>
       </tr>
@@ -1902,7 +1898,7 @@ function switchTab(el) {
 
 /* [04]=== 全域資料與 DataTables 結構設定 === */
 const customSortOrder = { 
-  "高校系列": 1, "全明星運動會": 2, "機智校園生活": 3, "選秀節目": 4,
+  "高校系列": 1, "機智校園生活": 2, "全明星運動會": 3,  "選秀節目": 4,
   "料理高校生": 11, "飛魚高校生": 12, "高校英雄傳": 13,
   "S1": 21, "S1_1": 22, "S1_2": 23, "S1~S5": 24, "S1~S4": 25,
   "S2": 26, "S2_1": 27, "S2_2": 28, "S2_3": 29, 
@@ -1946,6 +1942,11 @@ const rawData = [
   { "SupplyType": "高校系列", "SupplySubType": "高校英雄傳", "SupplySubType2": "", "Actor": "徐韜", "Date": "2022.12.28", "DemandSubType2": "遇見未來的你", "DemandType": "HIStory", "DemandSubType": "S5", "Role": "林懷恩" },
   { "SupplyType": "高校系列", "SupplySubType": "高校英雄傳", "SupplySubType2": "", "Actor": "陳立安", "Date": "2021.03.14", "DemandSubType2": "近距離愛上你", "DemandType": "HIStory", "DemandSubType": "S4", "Role": "藤沐仁" },
   { "SupplyType": "高校系列", "SupplySubType": "高校英雄傳", "SupplySubType2": "", "Actor": "張碩航", "Date": "2022.12.28", "DemandSubType2": "遇見未來的你", "DemandType": "HIStory", "DemandSubType": "S5", "Role": "何柏緯/戴哲尼" },
+  { "SupplyType": "機智校園生活", "SupplySubType": "S1~S5", "SupplySubType2": "", "Actor": "鍾岳軒", "Date": "2026.03.26", "DemandSubType2": "向流星許願的我們", "DemandType": "結果娛樂", "DemandSubType": "", "Role": "何向永／鍾小右" },
+  { "SupplyType": "機智校園生活", "SupplySubType": "S1~S4", "SupplySubType2": "", "Actor": "林輝瑝", "Date": "2025.03.28", "DemandSubType2": "對立而已", "DemandType": "VBL", "DemandSubType": "S2_2", "Role": "白舟國" },
+  { "SupplyType": "機智校園生活", "SupplySubType": "S1~S4", "SupplySubType2": "", "Actor": "盧彥澤", "Date": "2018.03.06", "DemandSubType2": "越界", "DemandType": "HIStory", "DemandSubType": "S2_2", "Role": "邱子軒" },
+  { "SupplyType": "機智校園生活", "SupplySubType": "S3", "SupplySubType2": "", "Actor": "吳承洋", "Date": "2019.04.16", "DemandSubType2": "圈套", "DemandType": "HIStory", "DemandSubType": "S3_1", "Role": "唐毅" },
+  { "SupplyType": "機智校園生活", "SupplySubType": "S5", "SupplySubType2": "", "Actor": "王碩瀚", "Date": "2021.05.20", "DemandSubType2": "約·定", "DemandType": "艾雨帆", "DemandSubType": "", "Role": "石磊" },
   { "SupplyType": "全明星運動會", "SupplySubType": "S1", "SupplySubType2": "Blue", "Actor": "邱宇辰", "Date": "2024.02.24", "DemandSubType2": "關於未知的我們", "DemandType": "結果娛樂", "DemandSubType": "", "Role": "魏謙" },
   { "SupplyType": "全明星運動會", "SupplySubType": "S3", "SupplySubType2": "Red", "Actor": "徐謀俊", "Date": "2020.02.14", "DemandSubType2": "2020因為愛你", "DemandType": "其他1", "DemandSubType": "", "Role": "林尋" },
   { "SupplyType": "全明星運動會", "SupplySubType": "S3", "SupplySubType2": "Red", "Actor": "徐謀俊", "Date": "2025.01.15", "DemandSubType2": "印象 青春", "DemandType": "其他1", "DemandSubType": "", "Role": "余行" },
@@ -1958,11 +1959,6 @@ const rawData = [
   { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Red", "Actor": "張家陞", "Date": "2025.02.14", "DemandSubType2": "獨佔接班人", "DemandType": "HIStory", "DemandSubType": "S6", "Role": "王湛" },
   { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Yellow", "Actor": "徐瑋澤", "Date": "2025.02.14", "DemandSubType2": "獨佔接班人", "DemandType": "HIStory", "DemandSubType": "S6", "Role": "張以慶" },
   { "SupplyType": "全明星運動會", "SupplySubType": "S4", "SupplySubType2": "Yellow", "Actor": "各務孝太", "Date": "2026.03.26", "DemandSubType2": "向流星許願的我們", "DemandType": "結果娛樂", "DemandSubType": "", "Role": "濱口蒼海" },
-  { "SupplyType": "機智校園生活", "SupplySubType": "S1~S5", "SupplySubType2": "", "Actor": "鍾岳軒", "Date": "2026.03.26", "DemandSubType2": "向流星許願的我們", "DemandType": "結果娛樂", "DemandSubType": "", "Role": "何向永／鍾小右" },
-  { "SupplyType": "機智校園生活", "SupplySubType": "S1~S4", "SupplySubType2": "", "Actor": "林輝瑝", "Date": "2025.03.28", "DemandSubType2": "對立而已", "DemandType": "VBL", "DemandSubType": "S2_2", "Role": "白舟國" },
-  { "SupplyType": "機智校園生活", "SupplySubType": "S1~S4", "SupplySubType2": "", "Actor": "盧彥澤", "Date": "2018.03.06", "DemandSubType2": "越界", "DemandType": "HIStory", "DemandSubType": "S2_2", "Role": "邱子軒" },
-  { "SupplyType": "機智校園生活", "SupplySubType": "S3", "SupplySubType2": "", "Actor": "吳承洋", "Date": "2019.04.16", "DemandSubType2": "圈套", "DemandType": "HIStory", "DemandSubType": "S3_1", "Role": "唐毅" },
-  { "SupplyType": "機智校園生活", "SupplySubType": "S5", "SupplySubType2": "", "Actor": "王碩瀚", "Date": "2021.05.20", "DemandSubType2": "約·定", "DemandType": "艾雨帆", "DemandSubType": "", "Role": "石磊" },
   { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S1", "Actor": "陳廷軒", "Date": "2019.04.16", "DemandSubType2": "圈套", "DemandType": "HIStory", "DemandSubType": "S3_1", "Role": "趙立安" },
   { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S1", "Actor": "金雲", "Date": "2024.10.23", "DemandSubType2": "看見愛", "DemandType": "艾雨帆", "DemandSubType": "", "Role": "姜紹朋" },
   { "SupplyType": "選秀節目", "SupplySubType": "原子少年", "SupplySubType2": "S1", "Actor": "羅奕傑", "Date": "", "DemandSubType2": "星光燦爛的你", "DemandType": "", "DemandSubType": "", "Role": "" },
