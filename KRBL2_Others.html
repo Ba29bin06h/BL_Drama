@@ -256,9 +256,9 @@ body.dark .dots span.active { background: var(--link-main-dark); }
   border-right: 1px solid var(--table-border);
 }    
    
-.slide-2 th:nth-child(3), .slide-2 td:nth-child(3) { width: 35%; }
-.slide-2 th:nth-child(4), .slide-2 td:nth-child(4),
-.slide-2 th:nth-child(5), .slide-2 td:nth-child(5) {text-align: center;}
+.slide-2 th:nth-child(5), .slide-2 td:nth-child(5) { width: 35%; }
+.slide-2 th:nth-child(3), .slide-2 td:nth-child(3),
+.slide-2 th:nth-child(4), .slide-2 td:nth-child(4) { width: 7.5% ;text-align: center;}
 
 .slide-3 thead th { border: none; border-bottom: 2px solid #000000; }
 body.dark .slide-3 thead th { border-bottom: 2px solid #475569; }
@@ -436,9 +436,9 @@ body.dark .slide-3 thead th { border-bottom: 2px solid #475569; }
         <tr>
           <th>BL上映日期</th>
           <th>BL劇名</th>
-          <th>床戲片段</th>
 		  <th>燈很亮</th>
           <th>偶像團體</th>
+		  <th>床戲片段</th>
         </tr>  
       </thead>
 
@@ -447,100 +447,100 @@ body.dark .slide-3 thead th { border-bottom: 2px solid #475569; }
       <tr>
         <td>2021.02.26</td>
         <td>時光可期</td>
-        <td>EP8_0500</td>
         <td>O</td>
         <td>&nbsp;</td>
+        <td>EP8_0500</td>
       </tr>
       <tr>
         <td>2022.02.03</td>
         <td>想咬一口的嘴唇</td>
+        <td>O</td>
+        <td>O</td>
         <td>EP8_0150、INX_金地雄</td>
-        <td>O</td>
-        <td>O</td>
       </tr>
       <tr>
         <td>2022.11.24</td>
         <td>圍籬外的Happy Ending</td>
-        <td>EP8_0000、DGNA_Karam</td>
         <td>&nbsp;</td>
         <td>O</td>
+        <td>EP8_0000、DGNA_Karam</td>
       </tr>
       <tr>
         <td>2023.03.29</td>
         <td>第八感</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
         <td>EP6_2630</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
       </tr>
       <tr>
         <td>2023.08.11</td>
         <td>現正上課中 II</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
         <td>EP9_2900</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
       </tr>
       <tr>
         <td>2024.07.20</td>
         <td>壞傢伙</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
         <td>=0.5(EP1刪減版)+0.5(EP2開頭)</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
       </tr>
       <tr>
         <td>2024.10.17</td>
         <td>解開跆拳道的詛咒</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
         <td>EP6_1300</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
       </tr>
       <tr>
         <td>2025.04.03</td>
         <td>乙方戀愛指南</td>
-        <td>EP1_0300、EP5_1100</td>
         <td>O</td>
         <td>&nbsp;</td>
+        <td>EP1_0300、EP5_1100</td>
       </tr>
       <tr>
         <td>2025.06.05</td>
         <td>球童戰術</td>
-        <td>EP8_1000</td>
         <td>O</td>
         <td>&nbsp;</td>
+        <td>EP8_1000</td>
       </tr>
       <tr>
         <td>2025.09.06</td>
         <td>鄰家男人</td>
-        <td>EP6_2/2整段都是</td>
         <td>O</td>
         <td>&nbsp;</td>
+        <td>EP6_2/2整段都是</td>
       </tr>
       <tr>
         <td>2025.10.03</td>
         <td>鼻荊傳：妖怪的主人</td>
-        <td>EP7_0000<br>(副CP部分一開頭就發現站錯位置)</td>
         <td>O</td>
         <td>&nbsp;</td>
+        <td>EP7_0000<br>(副CP部分一開頭就發現站錯位置)</td>
       </tr>
       <tr>
         <td>2025.11.28</td>
         <td>雷雲暴雨</td>
+        <td>O</td>
+        <td>O</td>
         <td>EP3_1030、Wanna One_尹智聖</td>
-        <td>O</td>
-        <td>O</td>
       </tr>
       <tr>
         <td>2026.02.04</td>
         <td>漲潮時接吻 II</td>
-        <td>難以言喻…</td>
         <td>O</td>
         <td>&nbsp;</td>
+        <td>難以言喻…</td>
       </tr>
       <tr>
         <td>2026.03.17</td>
         <td>勿忘仇敵</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
         <td>EP2_1330、EP5_0000<br>EP7_2200、EP8_2430</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
       </tr>
 	  <!--貼到這裡 -->
       </tbody>
@@ -1234,8 +1234,8 @@ window.addEventListener("DOMContentLoaded", () => {
       }
       
       if (slide.classList.contains("slide-2")) {
-        const lightCell = row.cells[3]; 
-        const idolCell = row.cells[4];  
+        const lightCell = row.cells[2]; 
+        const idolCell = row.cells[3];  
 
         if (idolCell && idolCell.textContent.trim() === "O") {
           row.classList.add("row-bold");
