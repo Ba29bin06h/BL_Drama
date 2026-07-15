@@ -151,11 +151,132 @@ body.dark .card-link.bold-black { color: white !important; }
 /* ============================================================
    5. 資料表格樣式 (Data Tables)
    ============================================================ */
-.table-wrapper { overflow: auto; margin-top: 20px; max-height: 600px; }
-table { width: 100%; border-collapse: collapse; min-width: 900px; }
-th, td { padding: 8px; border-bottom: 1px solid #000; text-align: left; }
+.studio {
+  margin: 0; 
+  margin-bottom: -1px; 
+  border: 1px solid #d8d8d8;
+  border-radius: 0; 
+  overflow: hidden;
+  background: var(--card);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+  position: relative; 
+  z-index: 1;
+}
 
-thead tr th {
+body.dark .studio {
+  border-color: #4b5563;
+}
+
+.studio-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 14px;
+  min-height: 38px;
+  background: #edf3fb;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.studio-header:hover {
+  background: #dcecff;
+}
+
+body.dark .studio-header {
+  background: #2d3440;
+}
+
+body.dark .studio-header:hover {
+  background: #414b5c;
+}
+
+.studio-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.arrow {
+  width: 18px;
+  text-align: center;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.studio-count {
+  margin-left: 6px;
+  color: #777;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+body.dark .studio-count {
+  color: #cbd5e1;
+}
+
+.studio-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 30px;
+  padding: 0 12px;
+  border: 1px solid var(--main);
+  border-radius: 6px;
+  background: var(--card);
+  color: var(--main);
+  text-decoration: none !important;
+  font-size: 14px;
+  font-weight: normal;
+  transition: 0.2s;
+  flex-shrink: 0;
+}
+
+.studio-link:hover {
+  background: var(--main);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+body.dark .studio-link {
+  border-color: #93c5fd;
+  color: #93c5fd;
+  background: #374151;
+}
+
+body.dark .studio-link:hover {
+  background: #4b6fd8;
+  color: white;
+}
+
+.studio-body {
+  display: none;
+  padding: 12px;
+  background: var(--card);
+}
+
+.studio .table-wrapper {
+  overflow: auto;
+  margin-top: 10px;
+  max-height: 600px;
+}
+
+.studio table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+.studio th, 
+.studio td {
+  padding: 8px;
+  border-bottom: 1px solid #000;
+  text-align: left;
+}
+
+.studio thead tr th {
   background: var(--table-head);
   position: sticky;
   top: 0;
@@ -166,61 +287,66 @@ thead tr th {
   text-align: center;
 }
 
-table th:nth-child(1), table td:nth-child(1) { width: 100px; }
-table th:nth-child(n+2):nth-child(-n+4), 
-table td:nth-child(n+2):nth-child(-n+4) { width: 200px; }
+.studio table th:nth-child(1), 
+.studio table td:nth-child(1) { 
+  width: 100px; 
+}
 
-td.center { text-align: center; }
+.studio table th:nth-child(n+2):nth-child(-n+4), 
+.studio table td:nth-child(n+2):nth-child(-n+4) { 
+  width: 200px; 
+}
 
-table a { color: var(--main); text-decoration: underline; transition: 0.2s; }
-.content table tbody tr:hover td { color: inherit !important; }
+.studio td.center { 
+  text-align: center; 
+}
 
-body.dark table, body.dark th, body.dark td { color: #dfe2f0; border-bottom: 1px solid #3a3f52; }
-body.dark thead tr th { background-color: #2c3340; border-bottom: 2px solid #475569; }
-body.dark table a { color: var(--link-main-dark); }
+.studio table a { 
+  color: var(--main); 
+  text-decoration: underline; 
+  transition: 0.2s; 
+}
+
+.studio tbody tr:hover { 
+  background: rgba(100, 150, 255, 0.08); 
+}
+
+.studio tbody tr:hover td { 
+  color: inherit !important; 
+}
+
+body.dark .studio table,
+body.dark .studio th,
+body.dark .studio td {
+  color: #dfe2f0;
+  border-bottom: 1px solid #3a3f52;
+}
+
+body.dark .studio thead tr th {
+  background-color: #2c3340;
+  border-bottom: 2px solid #475569;
+}
+
+body.dark .studio table a {
+  color: var(--link-main-dark);
+}
+
+@media(max-width: 700px) {
+  .studio-header { 
+    padding: 8px 10px; 
+  }
+  .studio-title { 
+    font-size: 16px; 
+  }
+  .studio-link { 
+    width: 90px; 
+    height: 28px; 
+    font-size: 13px; 
+  }
+}
 
 /* ============================================================
-   6. 輪播組件 (Slider & Pagination)
-   ============================================================ */
-.slider { position: relative; width: 100%; margin-top: 20px; }
-.slider-window { overflow: hidden; }
-.slider-track { display: flex; transition: transform 0.4s ease; }
-.slide { min-width: 100%; text-align: center; }
-
-.nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--card);
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  z-index: 5;
-  transition: 0.25s;
-}
-.prev { left: -50px; }
-.next { right: -50px; }
-.nav:hover { background: var(--main); color: white; border-color: var(--main); }
-
-.dots { text-align: center; margin-top: 15px; }
-.dots span {
-  display: inline-block;
-  width: 10px; height: 10px; margin: 5px;
-  background: #cbd5e1; border-radius: 50%;
-  cursor: pointer; transition: 0.3s;
-}
-.dots span.active { background: var(--main); transform: scale(1.2); }
-
-body.dark .nav { background: #1f2937; border-color: #374151; }
-body.dark .nav:hover { background: #3b82f6; border-color: #3b82f6; }
-body.dark .dots span { background: #475569; }
-body.dark .dots span.active { background: var(--link-main-dark); }
-
-/* ============================================================
-   7. 響應式佈局 (Responsive Design)
+   6. 響應式佈局 (Responsive Design)
    ============================================================ */
 @media(max-width: 1200px) {
   .layout { grid-template-columns: 1fr; }
@@ -268,32 +394,29 @@ body.dark .dots span.active { background: var(--link-main-dark); }
 	<a class="card-link" href="https://www.dcard.tw/f/boyslovedrama/p/257894089/b/2" target="_blank"><span class="num">5_3.</span>聯邦東洋腐之美(寮)</a>
   </aside>
 
-  <!-- 中間內容 ✅（重點） -->
-  <div class="content">
-	<div class="slider">
-	<h1>越南BL劇1_依工作室分類</h1>
-	  <button class="nav prev" onclick="moveSlide(-1)">❮</button>
-		<div class="slider-window">
-        <div class="slider-track" id="track">
-		
-<!-- BL資訊 -->		
-<!-- Slide 1 -->
-<div class="slide">
-  <h2>O2 production</h2>
+<!-- 中間內容 -->
+<div class="content">
+  <h1>越南BL劇1_依工作室分類</h1>
 
-  <div class="table-wrapper">
-    <table>
-      <thead>
-        <tr>
-          <th>BL上映日期</th>
-          <th>中文劇名</th>
-          <th>英文劇名</th>
-          <th>越文劇名</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <!-- O2的資料請放這裡 -->
+  <!-- 1. O2 production -->
+  <div class="studio">
+    <div class="studio-header">
+      <div class="studio-title"><span class="arrow">▶</span> <span class="studio-name">O2 production</span> <span class="studio-count"></span></div>
+      <a class="studio-link link-box" target="_blank" rel="noopener">官方連結 🔗</a>
+    </div>
+    <div class="studio-body">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+			<th>BL上映日期</th>
+			<th>中文劇名</th>
+			<th>英文劇名</th>
+			<th>越文劇名</th>
+			</tr>
+          </thead>
+          <tbody>
+	  <!-- 請往這裡放資料 -->
         <tr>
           <td>20-07-2018</td>
           <td>熱血少年團</td>
@@ -360,28 +483,32 @@ body.dark .dots span.active { background: var(--link-main-dark); }
           <td>Awaiting Dawn</td>
           <td>Chờ Ngày Nắng Lên</td>
         </tr>
-      </tbody>
-    </table>
+		  <!-- 放到這裡 -->
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-</div>
 
-<!-- Slide 2 -->
-<div class="slide">
-  <h2>RL Studio</h2>
-
-  <div class="table-wrapper">
-    <table>
-      <thead>
-        <tr>
-          <th>BL上映日期</th>
-          <th>中文劇名</th>
-          <th>英文劇名</th>
-          <th>越文劇名</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <!-- RL的資料請放這裡 -->
+  <!-- 2. RL Studio -->
+  <div class="studio">
+    <div class="studio-header">
+      <div class="studio-title"><span class="arrow">▶</span> <span class="studio-name">RL Studio</span> <span class="studio-count"></span></div>
+      <a class="studio-link link-box" target="_blank" rel="noopener">官方連結 🔗</a>
+    </div>
+    <div class="studio-body">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+			<th>BL上映日期</th>
+			<th>中文劇名</th>
+			<th>英文劇名</th>
+			<th>越文劇名</th>
+			</tr>
+          </thead>
+          <tbody>
+		  <!-- 請往這裡放資料 -->
         <tr>
           <td>20-05-2021</td>
           <td>傻男有傻愛</td>
@@ -412,28 +539,31 @@ body.dark .dots span.active { background: var(--link-main-dark); }
           <td>Fight for Love</td>
           <td>Vì Yêu Mà Chiến</td>
         </tr>
-      </tbody>
-    </table>
+          <!-- 放到這裡 -->
+		  </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-</div>
 
-<!-- Slide 3 -->
-<div class="slide">
-  <h2>2B Entertainment</h2>
-
-  <div class="table-wrapper">
-    <table>
-      <thead>
-        <tr>
-          <th>BL上映日期</th>
-          <th>中文劇名</th>
-          <th>英文劇名</th>
-          <th>越文劇名</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <!-- 2B的資料請放這裡 -->
+  <!-- 3. 2B Entertainment -->
+  <div class="studio">
+    <div class="studio-header">
+      <div class="studio-title"><span class="arrow">▶</span> <span class="studio-name">2B Entertainment</span> <span class="studio-count"></span></div>
+      <a class="studio-link link-box" target="_blank" rel="noopener">官方連結 🔗</a>
+    </div>
+    <div class="studio-body">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+			<th>BL上映日期</th>
+			<th>中文劇名</th>
+			<th>英文劇名</th>
+			<th>越文劇名</th></tr>
+          </thead>
+          <tbody>
+		  <!-- 請往這裡放資料 -->
         <tr>
           <td>23-12-2020</td>
           <td>做我的陽光寶貝</td>
@@ -458,28 +588,31 @@ body.dark .dots span.active { background: var(--link-main-dark); }
           <td>The Lust</td>
           <td>Khát</td>
         </tr>
-      </tbody>
-    </table>
+          <!-- 放到這裡 -->
+		  </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-</div>
 
-<!-- Slide 4 -->
-<div class="slide">
-  <h2>Qplus TV</h2>
-
-  <div class="table-wrapper">
-    <table>
-      <thead>
-        <tr>
-          <th>BL上映日期</th>
-          <th>中文劇名</th>
-          <th>英文劇名</th>
-          <th>越文劇名</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <!-- Q plus TV的資料請放這裡 -->
+  <!-- 4. Qplus TV -->
+  <div class="studio">
+    <div class="studio-header">
+      <div class="studio-title"><span class="arrow">▶</span> <span class="studio-name">Qplus TV</span> <span class="studio-count"></span></div>
+      <a class="studio-link link-box" target="_blank" rel="noopener">官方連結 🔗</a>
+    </div>
+    <div class="studio-body">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+			<th>BL上映日期</th>
+			<th>中文劇名</th>
+			<th>英文劇名</th>
+			<th>越文劇名</th></tr>
+          </thead>
+          <tbody>
+		  <!-- 請往這裡放資料 -->
       <tr>
         <td>12-11-2024</td>
         <td>依偎著你</td>
@@ -492,28 +625,31 @@ body.dark .dots span.active { background: var(--link-main-dark); }
         <td>My Little Ghost</td>
         <td>Chàng Kẹ</td>
       </tr>
-      </tbody>
-    </table>
+          <!-- 放到這裡 -->
+		  </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-</div>
 
-<!-- Slide 5 -->
-<div class="slide">
-  <h2>CiF TV</h2>
-
-  <div class="table-wrapper">
-    <table>
-      <thead>
-        <tr>
-          <th>BL上映日期</th>
-          <th>中文劇名</th>
-          <th>英文劇名</th>
-          <th>越文劇名</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <!-- CiF TV的資料請放這裡 -->
+  <!-- 5. CiF TV -->
+  <div class="studio">
+    <div class="studio-header">
+      <div class="studio-title"><span class="arrow">▶</span> <span class="studio-name">CiF TV</span> <span class="studio-count"></span></div>
+      <a class="studio-link link-box" target="_blank" rel="noopener">官方連結 🔗</a>
+    </div>
+    <div class="studio-body">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+			<th>BL上映日期</th>
+			<th>中文劇名</th>
+			<th>英文劇名</th>
+			<th>越文劇名</th></tr>
+          </thead>
+          <tbody>
+		  <!-- 請往這裡放資料 -->
       <tr>
         <td>17-11-2017</td>
         <td>亞當的秘密-兄弟</td>
@@ -526,28 +662,31 @@ body.dark .dots span.active { background: var(--link-main-dark); }
         <td>My Lascivious Boss</td>
         <td>Ông Chủ, Đừng Đến Đây</td>
       </tr>
-      </tbody>
-    </table>
+          <!-- 放到這裡 -->
+		  </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-</div>
 
-<!-- Slide 6 -->
-<div class="slide">
-  <h2>ABStudio</h2>
-
-  <div class="table-wrapper">
-    <table>
-      <thead>
-        <tr>
-          <th>BL上映日期</th>
-          <th>中文劇名</th>
-          <th>英文劇名</th>
-          <th>越文劇名</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <!-- AB studio的資料請放這裡 -->
+  <!-- 6. AB Studio -->
+  <div class="studio">
+    <div class="studio-header">
+      <div class="studio-title"><span class="arrow">▶</span> <span class="studio-name">AB Studio</span> <span class="studio-count"></span></div>
+      <a class="studio-link link-box" target="_blank" rel="noopener">官方連結 🔗</a>
+    </div>
+    <div class="studio-body">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+			<th>BL上映日期</th>
+			<th>中文劇名</th>
+			<th>英文劇名</th>
+			<th>越文劇名</th></tr>
+          </thead>
+          <tbody>
+		  <!-- 請往這裡放資料 -->
       <tr>
         <td>12-06-2020</td>
         <td>戀愛舞曲</td>
@@ -560,28 +699,31 @@ body.dark .dots span.active { background: var(--link-main-dark); }
         <td>FOOLs</td>
         <td>Những Kẻ Khờ</td>
       </tr>
-      </tbody>
-    </table>
+          <!-- 放到這裡 -->
+		  </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-</div>	  
-	  	 	  
-<!-- Slide 7 -->
-<div class="slide">
-  <h2>MOI Studio</h2>
 
-  <div class="table-wrapper">
-    <table>
-      <thead>
-        <tr>
-          <th>BL上映日期</th>
-          <th>中文劇名</th>
-          <th>英文劇名</th>
-          <th>越文劇名</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <!-- MOI Studio的資料請放這裡 -->
+  <!-- 7. MOI Studio -->
+  <div class="studio">
+    <div class="studio-header">
+      <div class="studio-title"><span class="arrow">▶</span> <span class="studio-name">MOI Studio</span> <span class="studio-count"></span></div>
+      <a class="studio-link link-box" target="_blank" rel="noopener">官方連結 🔗</a>
+    </div>
+    <div class="studio-body">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+			<th>BL上映日期</th>
+			<th>中文劇名</th>
+			<th>英文劇名</th>
+			<th>越文劇名</th></tr>
+          </thead>
+          <tbody>
+		  <!-- 請往這裡放資料 -->
       <tr>
         <td>27-05-2025</td>
         <td>我親愛的姊夫</td>
@@ -594,20 +736,17 @@ body.dark .dots span.active { background: var(--link-main-dark); }
         <td>Hot Brother Next Door</td>
         <td>Hà Nội, Anh yêu &quot;Anh&quot;</td>
       </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- 如果有新的公司，請往下貼 -->
-	  
-        </div>
+          <!-- 放到這裡 -->
+		  </tbody>
+        </table>
       </div>
-	  <button class="nav next" onclick="moveSlide(1)">❯</button>
-	  <div class="dots" id="dots"></div>
-	</div>
-
+    </div>
   </div>
+
+
+<!-- 新公司請放在這裡 -->
+  
+</div>
 
   <!-- 右側欄 -->
   <aside class="side right">
@@ -624,8 +763,6 @@ body.dark .dots span.active { background: var(--link-main-dark); }
 	<a class="card-link" href="https://www.dcard.tw/f/boyslovedrama/p/257894089" target="_blank"><span class="num">(完) </span>直拍</a>
   </aside>
 
-</div>
-
 <script>
 // [01] UI 模式切換邏輯
 const toggleDark = () => {
@@ -633,84 +770,58 @@ const toggleDark = () => {
   document.getElementById("darkBtn").textContent = isDark ? "☀️ 日間模式" : "🌙 夜間模式";
 };
 
-// [02] 輪播圖初始化與動態內容生成
-let currentIndex = 1;
-let isAnimating = false;
-const track = document.getElementById("track");
+// [02] 工作室列表功能
+document.addEventListener("DOMContentLoaded", () => {
+  const studios = document.querySelectorAll(".studio");
+  let totalDrama = 0;
 
-window.addEventListener("DOMContentLoaded", () => {
-  const slides = document.querySelectorAll("#track .slide");
-  const dotsContainer = document.getElementById("dots");
-
-  // 無縫循環：複製首尾並插入
-  track.append(slides[0].cloneNode(true));
-  track.prepend(slides[slides.length - 1].cloneNode(true));
-
-  // 作品統計超連結對照表
   const urlMap = {
     "O2 production": "https://www.youtube.com/@O2PRODUCTION",
     "RL Studio": "https://www.youtube.com/@RLStudioVN",
     "2B Entertainment": "https://www.youtube.com/@2BEntertainmentOfficial",
     "Qplus TV": "https://www.youtube.com/@QPlusTVOfficial",
     "CiF TV": "https://www.youtube.com/@CiFTV",
-    "ABStudio": "https://www.youtube.com/@ABSTUDIOvn",
+    "AB Studio": "https://www.youtube.com/@ABSTUDIOvn",
     "MOI Studio": "https://www.youtube.com/@Moistudio21"
   };
 
-  // 合併遍歷：同時處理「標題更新」與「導覽點生成」
-  slides.forEach((slide, i) => {
-    const title = slide.querySelector("h2");
-    const rows = slide.querySelectorAll("tbody tr").length;
+  studios.forEach(studio => {
+    const header = studio.querySelector(".studio-header");
+    const body = studio.querySelector(".studio-body");
+    const arrow = studio.querySelector(".arrow");
+    const countBox = studio.querySelector(".studio-count");
 
-    if (title && rows) {
-      const name = title.textContent.replace(/，共\d+部$/, "").trim();
-      title.innerHTML = `<a href="${urlMap[name] || "#"}" target="_blank">${name}</a>，共 ${rows} 部`;
+    const count = studio.querySelectorAll("tbody tr").length;
+    totalDrama += count;
+
+    countBox.textContent = `共 ${count} 部`;
+
+    const studioName = studio.querySelector(".studio-name").textContent.trim();
+
+    const link = studio.querySelector(".studio-link");
+    if (urlMap[studioName]) {
+      link.href = urlMap[studioName];
+    } else {
+      link.style.display = "none";
     }
 
-    const dot = document.createElement("span");
-    dot.onclick = () => {
-      currentIndex = i + 1;
-      track.style.transition = "none";
-      updateUI();
-    };
-    dotsContainer.append(dot);
-  });
-  
-  updateUI();
+    body.style.display = "none";
+
+    link.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+
+    header.addEventListener("click", () => {
+      if (body.style.display === "none") {
+        body.style.display = "block";
+        arrow.textContent = "▼";
+      } else {
+        body.style.display = "none";
+        arrow.textContent = "▶";
+      }
+    });
+  });	
 });
-
-// [03] 輪播動畫與無縫循環控制
-const moveSlide = (dir) => {
-  if (isAnimating) return;
-  isAnimating = true;
-  currentIndex += dir;
-
-  track.style.transition = "transform 0.45s cubic-bezier(0.22,1,0.36,1)";
-  updateUI();
-
-  track.addEventListener("transitionend", function onEnd() {
-    track.removeEventListener("transitionend", onEnd);
-    const len = track.children.length;
-
-    if (currentIndex === len - 1) currentIndex = 1;
-    else if (currentIndex === 0) currentIndex = len - 2;
-
-    track.style.transition = "none";
-    updateUI();
-    isAnimating = false;
-  }, { once: true });
-};
-
-// [04] 介面同步更新工具
-function updateUI() {
-  const dots = document.querySelectorAll(".dots span");
-  track.style.transform = `translateX(-${currentIndex * 100}%)`;
-  
-  if (dots.length) {
-    dots.forEach(d => d.classList.remove("active"));
-    dots[(currentIndex - 1 + dots.length) % dots.length].classList.add("active");
-  }
-}
 </script>
 
 </body>
