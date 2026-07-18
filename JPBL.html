@@ -123,44 +123,24 @@ body.dark .side a:hover { color: #ffffff; }
    4. 內容區塊與表格 (Content & Table)
    ============================================================ */
 .content {
-  background: var(--card);
   padding: 20px 30px;
   border-radius: 16px;
+  background: var(--card);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 10px;
-}
+h1 { text-align: center; margin-bottom: 10px; }
+h2 { margin-top: 30px; }
 
-h2 {
-    margin-top: 30px;
-}
+.table-wrapper { overflow: auto; margin-top: 20px; max-height: 600px; }
+table { width: 100%; border-collapse: collapse; min-width: 900px; }
+th, td { padding: 8px; text-align: left; border-bottom: 1px solid #000; }
 
-.table-wrapper {
-  overflow: auto;
-  margin-top: 20px;
-  max-height: 600px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 900px;
-}
-
-th, td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #000;
-}
-
-thead tr th {
-  background: var(--table-head);
+thead th {
   position: sticky;
   top: 0;
   z-index: 5;
+  background: var(--table-head);
   font-weight: 600;
   font-size: 0.9rem;
   border-bottom: 2px solid #000;
