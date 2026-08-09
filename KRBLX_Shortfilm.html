@@ -382,6 +382,15 @@ body.dark .dots span.active { background: var(--link-main-dark); }
         <td><a href='https://www.youtube.com/watch?v=mKapLPxEeRM' target='_blank'>▶️</a></td>
         <td><ul class='desc-list'><li>資料量有點多，所以放在四腐全書裡面</li><li>Alt哥你不要亂跑</li></ul></td>
       </tr>
+      <tr>
+        <td>2026-07-10</td>
+        <td>Love Hurts</td>
+        <td>첫사랑니</td>
+        <td>8集</td>
+        <td>分鐘</td>
+        <td></td>
+        <td><ul class='desc-list'></ul></td>
+      </tr>
       </tbody>
     </table>
   </div>
@@ -549,6 +558,15 @@ body.dark .dots span.active { background: var(--link-main-dark); }
         <td>The Table</td>
         <td>더 테이블</td>
         <td>4集</td>
+        <td>10分鐘</td>
+        <td><a href='https://www.youtube.com/watch?v=ojaffFU4eZw' target='_blank'>▶️</a></td>
+        <td><ul class='desc-list'><li>도진：しんゆう你個鬼，交往就交往，還在那邊裝</li><li>一旦告白，關係就回不去了，怎麼辦??</li></ul></td>
+      </tr>
+      <tr>
+        <td>2026-08-06</td>
+        <td>Summer Fever</td>
+        <td>썸머 피버</td>
+        <td>4集</td>
         <td>?</td>
         <td>?</td>
         <td><ul class='desc-list'><li>?</li></ul></td>
@@ -672,20 +690,61 @@ window.addEventListener("DOMContentLoaded", () => {
     "TRUE FILM": "https://www.youtube.com/@TRUEFILM-d4x",
   };
 
-  // 合併遍歷：同時處理「標題更新」與「導覽點生成」
+// 合併遍歷：同時處理「標題更新」、「數量統計」、「總時長計算」與「導覽點生成」
   slides.forEach((slide, i) => {
-    // 1. 處理標題超連結與數量統計
+    // 1. 處理標題超連結與數量與時長統計
     const title = slide.querySelector("h2");
-    const rows = slide.querySelectorAll("tbody tr").length;
+    const trs = slide.querySelectorAll("tbody tr"); // 抓取所有資料列
+    const rows = trs.length;
 
     if (title && rows) {
-      const name = title.textContent.replace(/，共\d+部$/, "").trim();
+      // 清理原本標題名稱（避免重複加上後綴）
+      const name = title.textContent.replace(/，共.*$/, "").trim(); 
       const link = urlMap[name];
       
+      // 指定需要顯示「總時長」的頻道清單
+      const targetChannels = ["Lovememory 러브메모리", "QueerDeep 퀴어딥", "TRUE FILM"];
+      
+      let statsText = `，共 ${rows} 部`; // 預設只顯示部數
+
+      // 判斷：只要是清單中的這三個頻道，才執行時間計算與加上小時數
+      if (targetChannels.includes(name)) {
+        let totalMinutes = 0; // 用來累加總分鐘數
+
+        // 遍歷每一行，找出「集數」與「分鐘數」來相乘
+        trs.forEach(tr => {
+          const tds = tr.querySelectorAll("td");
+          let eps = 0;
+          let mins = 0;
+
+          tds.forEach(td => {
+            const text = td.textContent.trim();
+            // 嚴格配對：只抓取剛好是「數字+集」的欄位
+            const epMatch = text.match(/^(\d+)集$/);
+            if (epMatch) eps = parseInt(epMatch[1], 10);
+
+            // 嚴格配對：只抓取剛好是「數字+分鐘」的欄位
+            const minMatch = text.match(/^(\d+)分鐘$/);
+            if (minMatch) mins = parseInt(minMatch[1], 10);
+          });
+
+          // 如果這部劇有集數也有分鐘數，就加總到總分鐘數
+          if (eps > 0 && mins > 0) {
+            totalMinutes += (eps * mins);
+          }
+        });
+
+        // 計算小時，並取到小數點第一位
+        const totalHours = (totalMinutes / 60).toFixed(1);
+        
+        // 覆蓋為包含小時的文字
+        statsText = `，共 ${rows} 部 (約 ${totalHours} 小時)`;
+      }
+
       // 若有對應網址則產出超連結，否則輸出純文字
       title.innerHTML = link 
-        ? `<a href="${link}" target="_blank">${name}</a>，共 ${rows} 部`
-        : `${name}，共 ${rows} 部`;
+        ? `<a href="${link}" target="_blank">${name}</a>${statsText}`
+        : `${name}${statsText}`;
     }
 
     // 2. 生成分頁導覽點並綁定瞬移事件
