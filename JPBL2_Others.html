@@ -256,10 +256,10 @@ body.dark table a { color: var(--link-main-dark); }
 .row-bold { font-weight: bold; }
 .force-right-border {border-right: 1px solid var(--table-border) !important; }
 
-#Red td:nth-child(6),
-#Red th:nth-child(6),
 #Red td:nth-child(7),
-#Red th:nth-child(7){text-align: center;}
+#Red th:nth-child(7),
+#Red td:nth-child(8),
+#Red th:nth-child(8){text-align: center;}
 
 #GNJB td:nth-child(3),
 #GNJB th:nth-child(3),
@@ -1165,7 +1165,7 @@ body.dark table a { color: var(--link-main-dark); }
 
     <!-- 🔘 子分類按鈕 -->
     <select class="tf-select" onchange="switchTab(this)">
-	  <option value="Red">赤嵐</option>
+	  <option value="Red">特攝_赤嵐</option>
 	  <option value="yeodongsaeng">你沒有妹妹</option>
 	  <option value="Unknown">趕工中~</option>
 	  <option value="GNJB">原因在自己</option>
@@ -1179,6 +1179,7 @@ body.dark table a { color: var(--link-main-dark); }
         <col style="width:100px;">
         <col style="width:130px;">
         <col style="width:100px;">
+		<col style="width:100px;">
         <col style="width:130px;">
         <col style="width:100px;">
         <col style="width:100px;">
@@ -1189,6 +1190,7 @@ body.dark table a { color: var(--link-main-dark); }
 		<th>演員</th>
 		<th>超級戰隊名稱</th>
 		<th>超級戰隊<br>角色名稱</th>
+		<th>父親職業</th>
 		<th>BL劇名</th>
 		<th>BL角色名稱</th>
 		<th>BL角色定位</th>
@@ -1201,6 +1203,7 @@ body.dark table a { color: var(--link-main-dark); }
 		<td>中尾暢樹</td>
 		<td>動物戰隊</td>
 		<td>風切大和</td>
+		<td>醫生</td>
 		<td>人氣同人作家貓屋敷想得到認同</td>
 		<td>風間一星</td>
 		<td>攻</td>
@@ -1210,6 +1213,7 @@ body.dark table a { color: var(--link-main-dark); }
 		<td>岐洲匠</td>
 		<td>宇宙戰隊</td>
 		<td>拉奇</td>
+		<td>國王</td>
 		<td>佐原老師與土岐同學</td>
 		<td>佐原一狼</td>
 		<td>攻</td>
@@ -1219,6 +1223,7 @@ body.dark table a { color: var(--link-main-dark); }
 		<td>伊藤あさひ</td>
 		<td>快盜戰隊VS警察戰隊</td>
 		<td>夜野魁利</td>
+		<td>&nbsp;</td>
 		<td>相遇驟雨中</td>
 		<td>半井整</td>
 		<td>女王受</td>
@@ -1228,6 +1233,7 @@ body.dark table a { color: var(--link-main-dark); }
 		<td>小宮璃央</td>
 		<td>魔進戰隊</td>
 		<td>熱田充瑠</td>
+		<td>??</td>
 		<td>永遠的昨日</td>
 		<td>山田浩一</td>
 		<td>攻</td>
@@ -1237,6 +1243,7 @@ body.dark table a { color: var(--link-main-dark); }
 		<td>駒木根葵汰</td>
 		<td>機界戰隊</td>
 		<td>五色田介人</td>
+		<td>科學家</td>
 		<td>25時，赤坂見</td>
 		<td>羽山麻水</td>
 		<td>攻</td>
@@ -1246,6 +1253,7 @@ body.dark table a { color: var(--link-main-dark); }
 		<td>樋口幸平</td>
 		<td>暴太郎戰隊</td>
 		<td>桃井太郎</td>
+		<td>管理者</td>
 		<td>體感預報</td>
 		<td>瀬ヶ崎瑞貴</td>
 		<td>攻</td>
@@ -1255,6 +1263,7 @@ body.dark table a { color: var(--link-main-dark); }
 		<td>酒井大成</td>
 		<td>國王戰隊</td>
 		<td>基拉·哈斯帝</td>
+		<td>國王</td>
 		<td>三矢老師有計劃的餵食</td>
 		<td>石田友也</td>
 		<td>攻</td>
@@ -1264,6 +1273,7 @@ body.dark table a { color: var(--link-main-dark); }
 		<td>井内悠陽</td>
 		<td>爆上戰隊</td>
 		<td>範道大也</td>
+		<td>??</td>
 		<td>對比的我和你</td>
 		<td>青山翔太</td>
 		<td>攻</td>
@@ -1282,6 +1292,7 @@ body.dark table a { color: var(--link-main-dark); }
         <col style="width:100px;">
         <col style="width:130px;">
         <col style="width:100px;">
+		<col style="width:100px;">
         <col style="width:130px;">
         <col style="width:100px;">
         <col style="width:100px;">
@@ -1289,6 +1300,7 @@ body.dark table a { color: var(--link-main-dark); }
       </colgroup>
   <thead>
     <tr>
+		<th>趕工中~</th>
 		<th>趕工中~</th>
 		<th>趕工中~</th>
 		<th>趕工中~</th>
@@ -1305,6 +1317,7 @@ body.dark table a { color: var(--link-main-dark); }
 		<td>趕工中~</td>
 		<td>趕工中~</td>
 		<td>趕工中~</td>
+		<td>趕工中~</td>		
 		<td>趕工中~</td>
 		<td>趕工中~</td>
 		<td>趕工中~</td>
@@ -1734,15 +1747,40 @@ body.dark table a { color: var(--link-main-dark); }
 
     <!-- 🔘 子分類按鈕 -->
     <select class="tf-select" onchange="switchTab(this)">
-      <option value="Ultraman">超人力霸王研究室</option>
+	  <option value="Kamen">特攝_假面AD</option>
+      <option value="Ultraman">特攝_超人薩迦</option>
+	  <option value="Blue">特攝_布魯戰隊</option>
 	  <option value="Idol_and_Paparazzi">偶像與狗仔</option>
       <option value="BL_Role">劇中劇BL劇</option>
 
     </select>
   </div>
 
+  <!-- ===== 假面騎士 ===== -->
+  <div class="tab-content active" id="Kamen">
+    <div class="table-wrapper">
+      <table>	
+  <thead>
+    <tr>
+      <th></th>
+      <th>趕工1</th>
+      <th>趕工1</th>
+	</tr>   
+  </thead>
+      <tbody>
+	  <!-- 【超人力霸王研究室】的資料請放這裡 -->
+      <tr>
+        <td>趕工中~</td>
+        <td>趕工中~</td>
+        <td>趕工中~</td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
   <!-- ===== 超人力霸王研究室 ===== -->
-  <div class="tab-content active" id="Ultraman">
+  <div class="tab-content" id="Ultraman">
     <div class="table-wrapper">
       <table>	
   <thead>
@@ -1750,6 +1788,29 @@ body.dark table a { color: var(--link-main-dark); }
       <th></th>
       <th>歡迎光臨自助洗衣店</th>
       <th>完美求婚</th>
+	</tr>   
+  </thead>
+      <tbody>
+	  <!-- 【超人力霸王研究室】的資料請放這裡 -->
+      <tr>
+        <td>趕工中~</td>
+        <td>趕工中~</td>
+        <td>趕工中~</td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- ===== 超級戰隊 ===== -->
+  <div class="tab-content" id="Blue">
+    <div class="table-wrapper">
+      <table>	
+  <thead>
+    <tr>
+      <th></th>
+      <th>趕工3</th>
+      <th>趕工3</th>
 	</tr>   
   </thead>
       <tbody>
@@ -1790,11 +1851,11 @@ body.dark table a { color: var(--link-main-dark); }
       <tr>
         <td>攻演員</td>
         <td>中尾暢樹→風間一星<br>(動物戰隊紅戰士)</td>
-        <td>山中柔太朗→蕪木元治<br>(M!lk from星塵)</td>
+        <td>山中柔太朗→蕪木元治<br>M!lk from星塵<br>假面騎士Gotchard_客串吸血鬼</td>
       </tr>
       <tr>
         <td>受演員</td>
-        <td>松岡広大→貓屋敷守</td>
+        <td>松岡広大→貓屋敷守<br>(特命戰隊藍戰士_青年時期)</td>
         <td>木村慧人→尾上聡<br>(FANTASTIC from EXILE TRIBE)</td>
       </tr>
       <tr>
@@ -1820,7 +1881,7 @@ body.dark table a { color: var(--link-main-dark); }
 	    <td></td>
         <td colspan='2'></td>
       </tr>
-      <tr>
+     <tr>
         <td>方向</td>
         <td><ul class='desc-list'><li>以偶像的角度，闡述狗仔改邪歸正</li></ul></td>
         <td><ul class='desc-list'><li>以狗仔的角度，闡述偶像不為人知的一面</li></ul></td>
@@ -1911,11 +1972,11 @@ body.dark table a { color: var(--link-main-dark); }
         <td><ul class='desc-list'><li>對粉絲開嘴，後變成同行</li></ul></td>
         <td><ul class='desc-list'><li>躲在牆邊的內心話</li></ul></td>
       </tr>
-      <tr>
-        <td>調查男演員</td>
-        <td style="text-align: center;">O</td>
-        <td style="text-align: center;">O</td>
-      </tr>
+		<tr> 
+		  <td>調查男演員</td> 
+		  <td style="text-align: center;">O</td> 
+		  <td style="text-align: center;">O</td> 
+		</tr>
       <tr>
         <td>戀愛諮詢</td>
         <td><ul class='desc-list'><li>跟女粉絲隔空訴苦</li></ul></td>
