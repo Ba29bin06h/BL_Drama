@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>中國BL劇</title>
+
+<style>
+/* ============================================================
+   1. 全域變數與基礎設定
+   ============================================================ */
+:root {
+  --main: #2563eb;
+  --main-dark: #1e40af;
+  --bg: linear-gradient(to right, #e6f2ff, #e6fce6);
+  --card: #ffffff;
+  --text: #111827;
+  --border: #e5e7eb;
+  --table-head: #f8fafc;
+  --even-year: #f6f0ff;
+  --odd-year: #eef6ff;
+  --link-main-dark: #93c5fd;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Noto Sans TC", "Noto Sans JP", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
+}
+
+body.dark {
+  --bg: linear-gradient(to right, #0f172a, #111827);
+  --card: #1f2937;
+  --text: #e0e7ff;
+  --border: #374151;
+  --table-head: #334155;
+  --odd-year: #1e2c44;
+  --even-year: #2a223b;
+  --link-main-dark: #80b3ff;
+}
+
+/* ============================================================
+   2. 導覽列與按鈕 (Navbar & Buttons)
+   ============================================================ */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px);
+  padding: 10px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar .home-link,
+.navbar .right-buttons a,
+.navbar .right-buttons button {
+  text-decoration: none;
+  border-radius: 8px;
+  border: 1px solid var(--main);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.navbar .home-link,
+.navbar .right-buttons a {
+  color: var(--main) !important;
+  background-color: #ffffff !important;
+  border: 1px solid var(--main) !important;
+  padding: 4px 8px;
+}
+
+.navbar .right-buttons a { padding: 4px 12px; }
+.navbar .right-buttons { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.navbar .right-buttons button { padding: 6px 12px; background: var(--card); color: var(--text); }
+
+.navbar .home-link:hover,
+.navbar .right-buttons a:hover,
+.navbar .right-buttons button:hover {
+  background-color: var(--main-dark) !important;
+  color: white !important;
+  border-color: var(--main-dark) !important;
+}
+
+/* ============================================================
+   3. 主要佈局與側邊欄 (Layout & Sidebars)
+   ============================================================ */
+.layout {
+  max-width: 1050px; 
+  margin: 40px auto;
+  padding: 0 20px;   
+}
+
+.side {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+  color: var(--text);
+}
+
+.side h3 { margin-top: 0; font-size: 16px; text-align: center; }
+.side a { display: block; text-decoration: none; color: var(--main); margin: 8px 0; font-size: 14px; }
+.side a:hover { text-decoration: underline; color: var(--main-dark); }
+
+body.dark .side { color: #cbd5e1; }
+body.dark .side a { color: var(--link-main-dark); }
+body.dark .side a:hover { color: #ffffff; }
+
+/* ============================================================
+   4. 內容區塊與表格 (Content & Table)
+   ============================================================ */
+.content {
+  padding: 20px 30px;
+  border-radius: 16px;
+  background: var(--card);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+h1 { text-align: center; margin-bottom: 10px; }
+h2 { margin-top: 30px; }
+
+.table-wrapper { overflow: auto; margin-top: 20px; max-height: 600px; }
+table { width: 100%; border-collapse: collapse; min-width: 900px; }
+th, td { padding: 8px; text-align: left; border-bottom: 1px solid #000; }
+
+thead th {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--table-head);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-bottom: 2px solid #000;
+  text-align: center;
+}
+
+.even-year { background-color: var(--even-year); }
+.odd-year { background-color: var(--odd-year); }
+
+/* 特定欄位寬度與對齊 */
+th:nth-child(1), td:nth-child(1) { min-width: 90px; width: 90px; }
+th:nth-child(4), td:nth-child(4),
+th:nth-child(5), td:nth-child(5),
+th:nth-child(6), td:nth-child(6) {
+  min-width: 60px;
+  width: 60px;
+  text-align: center;
+}
+
+.card-link { display: block; }
+.card-link .num { display: inline-block; text-align: right; margin-right: 6px; }
+
+/* ============================================================
+   5. 連結組件 (Link Boxes)
+   ============================================================ */
+.link-boxes { display: flex; align-items: center; gap: 6px; }
+
+.link-boxes a {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  padding: 4px 6px;
+  font-size: 0.75rem;
+  border: 1px solid var(--main);
+  border-radius: 4px;
+  text-align: center;
+  white-space: nowrap;
+  transition: 0.2s;
+  color: var(--main);
+  text-decoration: none;
+}
+
+.link-boxes a:hover {
+  color: #fff;
+  background-color: var(--main-dark);
+  border-color: var(--main-dark);
+}
+
+/* ============================================================
+   6. 深色模式細節優化 (Dark Mode Refinement)
+   ============================================================ */
+body.dark table,
+body.dark th,
+body.dark td {
+    color: #dfe2f0;
+    border-bottom: 1px solid #3a3f52;
+}
+
+body.dark thead tr th {
+    background-color: #2c3340;
+    color: #e0e7ff;
+    border-bottom: 2px solid #475569;
+}
+
+body.dark .link-boxes a {
+    color: #80b3ff;
+    border-color: #80b3ff;
+}
+
+body.dark .link-boxes a:hover {
+    background-color: #4b6cb7;
+    color: #fff;
+}
+
+/* ============================================================
+   7. 響應式設計 (Media Queries)
+   ============================================================ */
+@media(max-width: 1200px) {
+  .layout { grid-template-columns: 1fr; }
+  .side { order: 2; }
+  .content { order: 1; }
+  .navbar a:first-child { margin-bottom: 5px; }
+}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <!-- 左側回目錄 -->
+  <a href="https://ba29bin06h.github.io/BL_Drama/Catalog.html" class="home-link">
+    🏠 回目錄 (Back To Catalog)
+  </a>
+
+  <!-- 右側按鈕群 -->
+  <div class="right-buttons">
+    <a href="https://www.dcard.tw/@ba06bin29h" target="_blank">
+      💬 Dcard 個人牆
+    </a>
+    <button id="darkBtn" onclick="toggleDark()">🌙 夜間模式</button>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- 中間內容 -->
+  <div class="content">
+    <h1>中國BL劇</h1>
+
+    <div class="table-wrapper">
+      <table id="blTable">
+        <thead>
+          <tr>
+            <th>上映日期<br>Start Date</th>
+            <th>劇名</th>
+            <th>Drama Title</th>
+            <th>親密戲</th>
+            <th>平均時長<br>Duration</th>
+            <th>集數<br>Episodes</th>
+            <th>連結<br>Links</th>
+          </tr>
+        </thead>
+<tbody>
+<tr>
+  <td>2020-06-25</td>
+  <td>冰糖陷阱</td>
+  <td>Capture Lover</td>
+  <td>1</td>
+  <td>15</td>
+  <td>10</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=TzORQCcZcrI" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://baike.baidu.com/item/%E5%86%B0%E7%B3%96%E9%99%B7%E9%98%B1/23406226" target="_blank" rel="noopener noreferrer">百</a>
+      <a>&nbsp;</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>2022-02-11</td>
+  <td>在你心之所向的地方</td>
+  <td>In Your Heart</td>
+  <td>1</td>
+  <td>20</td>
+  <td>8</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=UqTyzf0f4QE&list=PLTB73Ibi_X3EaKVWXjiKm5eCwzWlpHES2&index=1" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://baike.baidu.com/item/%E5%9C%A8%E4%BD%A0%E5%BF%83%E4%B9%8B%E6%89%80%E5%90%91%E7%9A%84%E5%9C%B0%E6%96%B9/60265036" target="_blank" rel="noopener noreferrer">百</a>
+      <a>&nbsp;</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>2024-10-26</td>
+  <td>路過我年少時光的藍色</td>
+  <td>Blue Canvas of Youthful Days</td>
+  <td>0</td>
+  <td>30</td>
+  <td>12</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=IO8GWL6_HmU" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://baike.baidu.com/item/%E8%B7%AF%E8%BF%87%E6%88%91%E5%B9%B4%E5%B0%91%E6%97%B6%E5%85%89%E7%9A%84%E8%93%9D%E8%89%B2/64762202" target="_blank" rel="noopener noreferrer">百</a>
+      <a>&nbsp;</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>2025-01-11</td>
+  <td>這次換我先回頭</td>
+  <td>I'll Turn Back This Time</td>
+  <td>0</td>
+  <td>45</td>
+  <td>6</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=g24XZ9DRrAU" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://baike.baidu.com/item/%E8%BF%99%E6%AC%A1%E6%8D%A2%E6%88%91%E5%85%88%E5%9B%9E%E5%A4%B4/65404896" target="_blank" rel="noopener noreferrer">百</a>
+      <a>&nbsp;</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>2025-03-03</td>
+  <td>荔枝樹下熱烈島</td>
+  <td>Secrets Happened On The Litchi Island</td>
+  <td>0.5</td>
+  <td>15</td>
+  <td>7</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=a1xPF5mvVhc&list=PL-CWu74qAe0yVW9kUOx_UDuBzYdQl4fZ3&index=1" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a>&nbsp;</a>
+      <a>&nbsp;</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>2025-05-24</td>
+  <td>你是我目光裡的星</td>
+  <td>The Sparkle In Your Eye</td>
+  <td>0</td>
+  <td>25</td>
+  <td>12</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=TBf8GZ6cPcg&list=PLTB73Ibi_X3GNyvCGbi8mAefS-Lhep63A" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://baike.baidu.com/item/%E4%BD%A0%E6%98%AF%E6%88%91%E7%9B%AE%E5%85%89%E9%87%8C%E7%9A%84%E6%98%9F/65715783" target="_blank" rel="noopener noreferrer">百</a>
+      <a>&nbsp;</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>2025-06-19</td>
+  <td>逆愛</td>
+  <td>Revenged Love</td>
+  <td>1</td>
+  <td>40</td>
+  <td>24</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=tlCSMHgOKbE&list=PLiCVOcxScfwh-Gkl0A0SeugdHQUg4QZIu" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://zh.wikipedia.org/wiki/%E9%80%86%E6%84%9B" target="_blank" rel="noopener noreferrer">W</a>
+      <a>&nbsp;</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>2025-07-12</td>
+  <td>垂涎</td>
+  <td>ABO Desire</td>
+  <td>0.5</td>
+  <td>50</td>
+  <td>16</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.linetv.tw/drama/18768/eps/1" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://zh.wikipedia.org/zh-tw/%E5%9E%82%E6%B6%8E" target="_blank" rel="noopener noreferrer">W</a>
+      <a>&nbsp;</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>2025-10-19</td>
+  <td>星軌</td>
+  <td>PlutoCharon</td>
+  <td>1</td>
+  <td>30</td>
+  <td>8</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=WvVsVFGVeOA&list=PLxAWksEAXo1RdJkrZrGmvPazjcifkV7Qx" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a>&nbsp;</a>
+      <a>&nbsp;</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>2025-11-15</td>
+  <td>吾岸</td>
+  <td>To My Shore</td>
+  <td>1</td>
+  <td>45</td>
+  <td>15</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.youtube.com/watch?v=MIJo_qzblLs&list=PLkzvQsQu-ofspj7SNmPelNq66_49fV2DB&index=15" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a>&nbsp;</a>
+      <a>&nbsp;</a>
+    </div>
+  </td>
+</tr>
+  <!-- 後續其他條目以同樣方式加入 -->
+</tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggleDark() {
+  document.body.classList.toggle("dark");
+  
+  const darkBtn = document.getElementById("darkBtn");
+  if(document.body.classList.contains("dark")) {
+    darkBtn.textContent = "☀️ 日間模式"; 
+  } else {
+    darkBtn.textContent = "🌙 夜間模式"; 
+  }
+}
+
+// 偶數/奇數列
+window.addEventListener("DOMContentLoaded", () => {
+  const rows = document.querySelectorAll("#blTable tbody tr");
+  rows.forEach(row => {
+    const year = parseInt(row.cells[0].textContent.split(".")[0]);
+	if (year > 2024) {
+      if (year % 2 === 0) {
+        row.classList.add("even-year");
+      } else {
+        row.classList.add("odd-year");
+      }
+    }
+  });
+});
+</script>
+
+</body>
+</html>
