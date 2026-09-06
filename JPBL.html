@@ -160,6 +160,8 @@ th:nth-child(7), td:nth-child(7) {
   text-align: center;
 }
 
+th:nth-child(8), td:nth-child(8) { min-width: 100px; width: 100px; }
+
 .card-link { display: block; }
 .card-link .num { display: inline-block; text-align: right; margin-right: 6px; }
 
@@ -216,7 +218,75 @@ body.dark .link-boxes a:hover {
 }
 
 /* ============================================================
-   7. 響應式設計 (Media Queries)
+   7. 搜索條件區塊 (Search Filters)
+   ============================================================ */
+.search-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0 4px;
+  padding: 14px 16px;
+  background: var(--table-head);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.search-filters .filter-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
+.search-filters label { font-size: 0.75rem; opacity: 0.8; }
+
+.search-filters input[type="text"],
+.search-filters select {
+  padding: 6px 10px;
+  border: 1px solid var(--main);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--text);
+  font-size: 0.85rem;
+  outline: none;
+  min-width: 160px;
+}
+
+.search-filters input[type="text"]:focus,
+.search-filters select:focus {
+  border-color: var(--main-dark);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.search-filters .filter-reset {
+  align-self: flex-end;
+  padding: 6px 12px;
+  border: 1px solid var(--main);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--main);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.search-filters .filter-reset:hover {
+  background: var(--main-dark);
+  color: #fff;
+  border-color: var(--main-dark);
+}
+
+.search-filters .filter-count {
+  margin-left: auto;
+  font-size: 0.8rem;
+  opacity: 0.75;
+  align-self: flex-end;
+}
+
+/* ============================================================
+   8. 響應式設計 (Media Queries)
    ============================================================ */
 @media(max-width: 1200px) {
   .layout { grid-template-columns: 1fr; }
@@ -267,6 +337,33 @@ body.dark .link-boxes a:hover {
   <!-- 中間內容 -->
   <div class="content">
     <h1>日本BLドラマ</h1>
+
+    <div class="search-filters">
+      <div class="filter-item">
+        <label for="searchTitle">🔍 劇名搜尋/Title search</label>
+        <input type="text" id="searchTitle" placeholder="中/EN/日..." />
+      </div>
+      <div class="filter-item">
+        <label for="filterIntimacy">親密戲/Intimacy</label>
+        <select id="filterIntimacy">
+          <option value="">全部</option>
+          <option value="0">0</option>
+          <option value="0.5">0.5</option>
+          <option value="1">1</option>
+        </select>
+      </div>
+      <div class="filter-item">
+        <label for="filterDuration">總時長/Total duration</label>
+        <select id="filterDuration">
+          <option value="">全部</option>
+          <option value="short">短(&lt; 2hr)</option>
+          <option value="medium">中(2 ~ 4hr)</option>
+          <option value="long">長(&gt; 4hr)</option>
+        </select>
+      </div>
+      <button type="button" class="filter-reset" id="filterResetBtn">↺ 重置條件/Reset filters</button>
+      <span class="filter-count" id="filterCount"></span>
+    </div>
 
     <div class="table-wrapper">
       <table id="blTable">
@@ -1541,7 +1638,7 @@ function toggleDark() {
   }
 }
 
-// 偶數/奇數列
+// 偶數/奇數列 + 搜索篩選功能
 window.addEventListener("DOMContentLoaded", () => {
   const rows = document.querySelectorAll("#blTable tbody tr");
   rows.forEach(row => {
@@ -1552,6 +1649,66 @@ window.addEventListener("DOMContentLoaded", () => {
       row.classList.add("odd-year");
     }
   });
+
+  const searchInput = document.getElementById("searchTitle");
+  const intimacySelect = document.getElementById("filterIntimacy");
+  const durationSelect = document.getElementById("filterDuration");
+  const resetBtn = document.getElementById("filterResetBtn");
+  const countLabel = document.getElementById("filterCount");
+
+  function getDurationCategory(row) {
+    // 欄位：0上映日期 1中文劇名 2英文劇名 3日文劇名 4親密戲 5平均時長 6集數 7連結
+    const avgDuration = parseFloat(row.cells[5].textContent.trim());
+    const episodes = parseFloat(row.cells[6].textContent.trim());
+    if (isNaN(avgDuration) || isNaN(episodes)) return null;
+    const totalMinutes = avgDuration * episodes;
+    if (totalMinutes < 120) return "short";
+    if (totalMinutes <= 240) return "medium";
+    return "long";
+  }
+
+  function applyFilters() {
+    const keyword = searchInput.value.trim().toLowerCase();
+    const intimacyVal = intimacySelect.value;
+    const durationVal = durationSelect.value;
+    let visibleCount = 0;
+
+    rows.forEach(row => {
+      const titleText = (
+        row.cells[1].textContent + " " +
+        row.cells[2].textContent + " " +
+        row.cells[3].textContent
+      ).toLowerCase();
+
+      const matchesTitle = keyword === "" || titleText.includes(keyword);
+
+      const intimacyText = row.cells[4].textContent.trim();
+      const matchesIntimacy = intimacyVal === "" || intimacyText === intimacyVal;
+
+      const durationCategory = getDurationCategory(row);
+      const matchesDuration = durationVal === "" || durationCategory === durationVal;
+
+      const show = matchesTitle && matchesIntimacy && matchesDuration;
+      row.style.display = show ? "" : "none";
+      if (show) visibleCount++;
+    });
+
+    if (countLabel) {
+      countLabel.textContent = `顯示 ${visibleCount} / ${rows.length} 部`;
+    }
+  }
+
+  searchInput.addEventListener("input", applyFilters);
+  intimacySelect.addEventListener("change", applyFilters);
+  durationSelect.addEventListener("change", applyFilters);
+  resetBtn.addEventListener("click", () => {
+    searchInput.value = "";
+    intimacySelect.value = "";
+    durationSelect.value = "";
+    applyFilters();
+  });
+
+  applyFilters();
 });
 </script>
 
