@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>越南BL劇_Dcard提及的演員</title>
+
+<style>
+/* ============================================================
+   1. 主題變數與全域設定 (Variables & Global Reset)
+   ============================================================ */
+:root {
+  --main: #2563eb;
+  --main-dark: #1e40af;
+  --bg: linear-gradient(to right, #e6f2ff, #e6fce6);
+  --card: #ffffff;
+  --text: #111827;
+  --border: #e5e7eb;
+  --table-head: #f8fafc;
+  --link-main-dark: #93c5fd;
+  --green-bg: #d9f7e6;
+  --green-bg-dark: #14532d;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Noto Sans TC", "Noto Sans JP", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
+}
+
+body.dark {
+  --bg: linear-gradient(to right, #0f172a, #111827);
+  --card: #1f2937;
+  --text: #e0e7ff;
+  --border: #374151;
+  --table-head: #334155;
+  --link-main-dark: #80b3ff;
+}
+
+/* ============================================================
+   2. 導覽列與互動元件 (Navbar & Components)
+   ============================================================ */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px);
+  padding: 10px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  row-gap: 8px;
+}
+body.dark .navbar { background: rgba(17, 24, 39, 0.9); }
+
+.navbar .home-link,
+.navbar .static-bar,
+.navbar .right-buttons a,
+.navbar .right-buttons button {
+  text-decoration: none;
+  border-radius: 8px;
+  border: 1px solid var(--main);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.navbar .home-link,
+.navbar .static-bar,
+.navbar .right-buttons a {
+  color: var(--main) !important;
+  background-color: #ffffff !important;
+  border: 1px solid var(--main) !important;
+  padding: 4px 8px;
+}
+body.dark .navbar .home-link,
+body.dark .navbar .static-bar,
+body.dark .navbar .right-buttons a {
+  background-color: var(--card) !important;
+  color: var(--link-main-dark) !important;
+  border-color: var(--link-main-dark) !important;
+}
+
+.navbar .right-buttons a { padding: 4px 12px; }
+.navbar .right-buttons { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.navbar .right-buttons button { padding: 6px 12px; background: var(--card); color: var(--text); }
+
+.navbar .home-link:hover,
+.navbar .right-buttons a:hover,
+.navbar .right-buttons button:hover {
+  background-color: var(--main-dark) !important;
+  color: white !important;
+  border-color: var(--main-dark) !important;
+}
+
+/* 「回到北部演員SNS」橫條：僅供顯示，不可點擊跳轉 */
+.navbar .static-bar {
+  cursor: default;
+  opacity: 0.85;
+}
+.navbar .static-bar:hover {
+  background-color: #ffffff !important;
+  color: var(--main) !important;
+  border-color: var(--main) !important;
+}
+body.dark .navbar .static-bar:hover {
+  background-color: var(--card) !important;
+  color: var(--link-main-dark) !important;
+  border-color: var(--link-main-dark) !important;
+}
+
+/* ============================================================
+   3. 主要佈局 (Layout) — 左右欄不放內容，僅保留頂部導覽列
+   ============================================================ */
+.layout {
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+.content {
+  background: var(--card);
+  padding: 20px 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.content h1, .content h2 {
+  text-align: center;
+  color: var(--text);
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+.content h1 { font-size: 2rem; margin-top: 0; }
+
+.actor-link {
+  font-size: 1.4rem;
+  color: var(--main) !important;
+  text-decoration: none;
+  border-bottom: 2px dashed var(--main);
+  padding-bottom: 2px;
+}
+.actor-link:hover { color: var(--main-dark) !important; border-bottom-style: solid; }
+body.dark .actor-link { color: var(--link-main-dark) !important; border-color: var(--link-main-dark); }
+
+/* ============================================================
+   4. 資料表格樣式 (Data Table)
+   ============================================================ */
+.table-wrapper { overflow: auto; margin-top: 10px; max-height: 640px; }
+.actor-table { width: 100%; border-collapse: collapse; min-width: 900px; table-layout: fixed; }
+.actor-table th, .actor-table td { padding: 8px; border-bottom: 1px solid #000; text-align: left; overflow-wrap: break-word; white-space: normal; }
+.actor-table th:first-child, .actor-table td:first-child { white-space: nowrap; }
+/* 固定主表格欄寬，讓每張slide對應欄位寬度一致 */
+.actor-table col.col-date { width: 10%; }
+.actor-table col.col-zh   { width: 15%; }
+.actor-table col.col-en   { width: 20%; }
+.actor-table col.col-vi   { width: 21%; }
+.actor-table col.col-kiss { width: 8%; }
+.actor-table col.col-ep   { width: 8%; }
+.actor-table col.col-dur  { width: 8%; }
+.actor-table col.col-cast { width: 10%; }
+
+.actor-table thead th {
+  background: var(--table-head);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-bottom: 2px solid #000;
+  text-align: center;
+}
+
+.actor-table td.center { text-align: center; }
+.actor-table tbody tr.drama-row:hover { background: rgba(100, 150, 255, 0.08); }
+
+body.dark .actor-table,
+body.dark .actor-table th,
+body.dark .actor-table td { color: #dfe2f0; border-bottom: 1px solid #3a3f52; }
+body.dark .actor-table thead th { background: #2c3340; border-bottom: 2px solid #475569; }
+
+/* 綠底標記列 */
+.actor-table tr.highlight-row td { background-color: var(--green-bg); }
+body.dark .actor-table tr.highlight-row td { background-color: var(--green-bg-dark); }
+
+/* 演員明細 展開按鈕 */
+.detail-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  white-space: nowrap;
+  padding: 4px 10px;
+  border: 1px solid var(--main);
+  border-radius: 6px;
+  background: var(--card);
+  color: var(--main);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.detail-btn:hover { background: var(--main); color: #fff; }
+body.dark .detail-btn { border-color: var(--link-main-dark); color: var(--link-main-dark); }
+body.dark .detail-btn:hover { background: #4b6fd8; color: #fff; }
+
+/* 演員明細 展開內容 */
+.detail-row td { padding: 0; border-bottom: 1px solid #000; }
+body.dark .detail-row td { border-bottom: 1px solid #3a3f52; }
+.detail-content { padding: 10px 14px; background: var(--table-head); }
+body.dark .detail-content { background: #26303f; }
+
+.cast-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; table-layout: fixed; }
+.cast-table th, .cast-table td { padding: 6px 8px; border: none; border-bottom: 1px solid var(--border); text-align: left; overflow-wrap: break-word; }
+.cast-table th { background: var(--card); font-weight: 600; text-align: center; border-bottom: 2px solid var(--border); }
+body.dark .cast-table th { background: #1f2937; }
+/* 固定欄寬，讓每一齣劇的演員明細表格欄寬一致 */
+.cast-table col.col-vi   { width: 20%; }
+.cast-table col.col-zh   { width: 14%; }
+.cast-table col.col-role { width: 18%; }
+.cast-table col.col-pos  { width: 16%; }
+.cast-table col.col-note { width: 32%; }
+
+.detail-hint { font-size: 0.78rem; opacity: 0.7; margin: 8px 0 0; text-align: center; }
+
+/* ============================================================
+   5. 輪播組件與點 (Slider & Dots)
+   ============================================================ */
+.slider { position: relative; width: 100%; margin-top: 20px; }
+.slider-window { overflow: hidden; }
+.slider-track { display: flex; transition: transform 0.4s ease; }
+.slide { min-width: 100%; }
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 5;
+  transition: 0.25s;
+}
+.prev { left: -50px; }
+.next { right: -50px; }
+.nav:hover { background: var(--main); color: white; border-color: var(--main); }
+
+.dots { text-align: center; margin-top: 15px; }
+.dots span {
+  display: inline-block;
+  width: 10px; height: 10px; margin: 5px;
+  background: #cbd5e1; border-radius: 50%;
+  cursor: pointer; transition: 0.3s;
+}
+.dots span.active { background: var(--main); transform: scale(1.2); }
+
+body.dark .nav { background: #1f2937; border-color: #374151; }
+body.dark .nav:hover { background: #3b82f6; border-color: #3b82f6; }
+body.dark .dots span { background: #475569; }
+body.dark .dots span.active { background: var(--link-main-dark); }
+
+/* ============================================================
+   6. 響應式佈局 (Responsive Design)
+   ============================================================ */
+@media(max-width: 900px) {
+  .layout { margin: 20px auto; padding: 0 10px; }
+  .content { padding: 16px; }
+  .nav { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <!-- 左側回目錄 -->
+  <a href="https://ba29bin06h.github.io/BL_Drama/Catalog.html" class="home-link">
+    🏠 回目錄 (Back To Catalog)
+  </a>
+  <a href="https://ba29bin06h.github.io/BL_Drama/VNBL4_Actors.html" class="home-link">
+    📖 回越南BL4_北部演員
+  </a>
+
+  <!-- 右側按鈕群 -->
+  <div class="right-buttons">
+    <a href="https://www.dcard.tw/@ba06bin29h" target="_blank">
+      💬 Dcard 個人牆
+    </a>
+    <button id="darkBtn" onclick="toggleDark()">🌙 夜間模式</button>
+  </div>
+</header>
+
+<div class="layout">
+<div class="content">
+  <h1>越南BL劇_Dcard提及的演員</h1>
+
+  <div class="slider">
+    <button class="nav prev" onclick="moveSlide(-1)">❮</button>
+    <div class="slider-window">
+      <div class="slider-track" id="track">
+
+<div class="slide" id="table1">
+  <h2><a class="actor-link" href="https://www.dcard.tw/f/boyslovedrama/p/255315146" target="_blank">伯榮</a>，共10部</h2>
+  <div class="table-wrapper">
+    <table class="actor-table">
+      <colgroup>
+        <col class="col-date"><col class="col-zh"><col class="col-en"><col class="col-vi">
+        <col class="col-kiss"><col class="col-ep"><col class="col-dur"><col class="col-cast">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>上映日期</th><th>中文劇名</th><th>英文劇名</th><th>越文劇名</th>
+          <th>親密戲</th><th>集數</th><th>平均時長</th><th>演員明細</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="drama-row">
+          <td>30-12-2020</td><td>國民歐巴</td><td>Nation Brother</td><td>Anh Trai Quốc Dân</td>
+          <td class="center">1</td><td class="center">6</td><td class="center">25</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Nguyễn Bá Vinh</td><td>阮伯榮</td><td>Minh Anh</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Tuấn Việt</td><td>阮俊越</td><td>Duy Tâm</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Vũ Tấn</td><td>雨晉</td><td>Cao Phong</td><td>2A. 副攻</td><td class="note-cell">攻的妹妹的男友</td></tr>
+              <tr><td>Trần Thị Minh Thư</td><td>陳氏明苴</td><td>Gia Lam</td><td>2B. 副受</td><td class="note-cell">攻的妹妹</td></tr>
+              <tr><td>Trần Việt Ly</td><td>陳越璃</td><td>Đại Nhân</td><td>3O. 第三者</td><td class="note-cell">—</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+        <tr class="drama-row highlight-row">
+          <td>05-01-2021</td><td>你是我的男孩</td><td>You Are my Boy</td><td>Em Là Chàng Trai Của Anh</td>
+          <td class="center">0</td><td class="center">6</td><td class="center">25</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Võ Đình Nam</td><td>武廷南</td><td>Nhật Nam</td><td>1A. 主攻</td><td class="note-cell">Uni5成員Cody</td></tr>
+              <tr><td>Đỗ Hoàng Dương</td><td>杜皇洋</td><td>Bạch Dương</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Bá Vinh</td><td>阮伯榮</td><td>Hoàng Minh</td><td>2A. 副攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Ngọc Phước</td><td>玉福</td><td>Tạ Hà</td><td>2B. 副受</td><td class="note-cell">—</td></tr>
+              <tr><td>Vương Mai Linh</td><td>王梅玲</td><td>Mai Linh</td><td>3O. 第三者</td><td class="note-cell">第三者for攻(SGO48成員Linh Mai)</td></tr>
+              <tr><td>Vũ Thịnh</td><td>武盛</td><td>Quốc</td><td>3O. 第三者</td><td class="note-cell">第三者for受</td></tr>
+              <tr><td>Nguyễn Tuấn Việt</td><td>阮俊越</td><td>客串</td><td>5Q. 客串</td><td class="note-cell">—</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+        <tr class="drama-row">
+          <td>23-03-2021</td><td>我心安在</td><td>The Most Peaceful Place Is My Place</td><td>Nơi Bình Yên Nhất Là Về Bên Em</td>
+          <td class="center">1</td><td class="center">6</td><td class="center">30</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Nguyễn Bá Vinh</td><td>阮伯榮</td><td>Phúc</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Duy Harry</td><td>Duy Harry</td><td>Tùng</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Chí Thông</td><td>阮志聰</td><td>Thành</td><td>2A. 副攻</td><td class="note-cell">Sơn的家教</td></tr>
+              <tr><td>Nhật Trường</td><td>日長</td><td>Sơn</td><td>2B. 副受</td><td class="note-cell">攻的表哥</td></tr>
+              <tr><td>Nguyễn Tuấn Việt</td><td>阮俊越</td><td>Vũ，S2房東</td><td>3O. 第三者</td><td class="note-cell">—</td></tr>
+              <tr><td>Trần Vũ Đức Duy</td><td>陳舞德唯</td><td>Duy</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Trang Minh</td><td>莊明</td><td>S1房東</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+        <tr class="drama-row">
+          <td>28-11-2021</td><td>愛上灰姑男</td><td>Mr.Cinderella</td><td>Chàng Lọ Lem</td>
+          <td class="center">1</td><td class="center">8</td><td class="center">35</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Thương Minh Thảo</td><td>張明草</td><td>Khoa</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Bá Vinh</td><td>阮伯榮</td><td>Dũng</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Kan Hy</td><td>Kan Hy</td><td>Gia Huỳnh</td><td>3O. 第三者</td><td class="note-cell">—</td></tr>
+              <tr><td>Trang Minh</td><td>莊明</td><td>Thảo Nguyên</td><td>3O. 第三者</td><td class="note-cell">—</td></tr>
+              <tr><td>Phạm Nguyễn Tương Vi</td><td>范阮湘薇</td><td>Thảo</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Trần Thị Minh Thư</td><td>陳氏明苴</td><td>Hoàng Danh</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Trần Vũ Đức Duy</td><td>陳舞德唯</td><td>Quốc Thịnh</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+        <tr class="drama-row">
+          <td>05-06-2022</td><td>我想見到你</td><td>Want to See You</td><td>Muốn Nhìn Thấy Em</td>
+          <td class="center">1</td><td class="center">14</td><td class="center">20</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Nguyễn Bá Vinh</td><td>阮伯榮</td><td>Ngọc Thạch</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Vương Thiên Hạc</td><td>王天鶴</td><td>Thiên Phúc</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Trang Minh</td><td>莊明</td><td>Mai Linh</td><td>3O. 第三者</td><td class="note-cell">—</td></tr>
+              <tr><td>Phạm Nguyễn Tương Vi</td><td>范阮湘薇</td><td>Thanh Nữ</td><td>3O. 第三者</td><td class="note-cell">萬年配角的老婆</td></tr>
+              <tr><td>Trần Vũ Đức Duy</td><td>陳舞德唯</td><td>Ngọc Duy</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+        <tr class="drama-row">
+          <td>29-10-2022</td><td>愛情帳單</td><td>Love Bill</td><td>Lời Hứa Mùa Hạ</td>
+          <td class="center">1</td><td class="center">10</td><td class="center">40</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Trần Lê Đức</td><td>陳黎德</td><td>Thanh Nghĩa</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Bá Vinh</td><td>阮伯榮</td><td>Minh Thiên</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Trần Vũ Đức Duy</td><td>陳舞德唯</td><td>Ngọc Hung</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Trần Thiên Nga</td><td>陳芊娥</td><td>Thanh Nghĩa媽媽</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+        <tr class="drama-row">
+          <td>06-05-2023</td><td>喵不可言</td><td>ViAn the Series</td><td>ViAn the Series</td>
+          <td class="center">1</td><td class="center">12</td><td class="center">25</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Nguyễn Bá Vinh</td><td>阮伯榮</td><td>Binh Viên</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Mai Vũ Luân</td><td>梅宇倫</td><td>An</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Cao Trang</td><td>高莊</td><td>Thanh</td><td>3O. 第三者</td><td class="note-cell">—</td></tr>
+              <tr><td>Trần Vũ Đức Duy</td><td>陳舞德唯</td><td>Sammie</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+        <tr class="drama-row">
+          <td>23-09-2023</td><td>愛上灰姑男 II</td><td>Mr.Cinderella II</td><td>Chàng Lọ Lem II</td>
+          <td class="center">0</td><td class="center">8</td><td class="center">35</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Thương Minh Thảo</td><td>張明草</td><td>Khoa</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Bá Vinh</td><td>阮伯榮</td><td>Dũng</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Mai Vũ Luân</td><td>梅宇倫</td><td>Thanh</td><td>3O. 第三者</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Đăng Nguyên</td><td>阮登原</td><td>Kang</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Tuấn Việt</td><td>阮俊越</td><td>Tuấn</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+        <tr class="drama-row">
+          <td>23-03-2024</td><td>灑滿星光的季節</td><td>Be Your Star</td><td>Mùa Sao Đầu Tiên</td>
+          <td class="center">1</td><td class="center">20</td><td class="center">40</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Nguyễn Bá Vinh</td><td>阮伯榮</td><td>Phạm Nguyễn Đình Huy</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Hồ Đông Quan</td><td>胡東官</td><td>Hồ Thiên Bảo</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Vũ Tấn</td><td>雨晉</td><td>Hạ Lâm</td><td>2A. 副攻</td><td class="note-cell">天寶第二任男友</td></tr>
+              <tr><td>Duy Harry</td><td>Duy Harry</td><td>Gia Hòa</td><td>2B. 副受</td><td class="note-cell">—</td></tr>
+              <tr><td>Thuý Ang</td><td>翠坱</td><td>Thành Trúc</td><td>3O. 第三者</td><td class="note-cell">庭輝陪聊對象</td></tr>
+              <tr><td>Trần Văn Quang</td><td>陳文光</td><td>Thành Đăng</td><td>3O. 第三者</td><td class="note-cell">天寶第一任男友，成國哥哥</td></tr>
+              <tr><td>Trang Minh</td><td>莊明</td><td>Mỹ Duyên</td><td>4P. 配角</td><td class="note-cell">天寶姐姐</td></tr>
+              <tr><td>Nguyễn Đăng Nguyên</td><td>阮登原</td><td>Thành Quốc</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Phi Điểu</td><td>Phi Điểu</td><td>Lan女士</td><td>4P. 配角</td><td class="note-cell">庭輝外婆</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+        <tr class="drama-row">
+          <td>28-09-2024</td><td>少年法官</td><td>Teenager Judge</td><td>Thẩm Phán Học Đường</td>
+          <td class="center">0</td><td class="center">20</td><td class="center">50</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Nguyễn Võ Minh Hiền</td><td>阮武明軒</td><td>Nguyễn Mình Đạt</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Bá Vinh</td><td>阮伯榮</td><td>Nguyễn Hoàng Bách</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Thanh Trí</td><td>阮青智</td><td>Vũ Chí Trung</td><td>2A. 副攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Duy Harry</td><td>Duy Harry</td><td>Hoàng Thiên Lac</td><td>2B. 副受</td><td class="note-cell">新的物理老師兼班導，後離職</td></tr>
+              <tr><td>Vương Mai Linh</td><td>王梅玲</td><td>Đô Nguyên Thanh Nhàn</td><td>3O. 第三者</td><td class="note-cell">第三者for攻(SGO48成員Linh Mai)</td></tr>
+              <tr><td>Đoàn Thị Lâm Oanh</td><td>段氏林鶯</td><td>Lê My Hoa</td><td>4P. 配角</td><td class="note-cell">罹患膽癌</td></tr>
+              <tr><td>Thuý Ang</td><td>翠坱</td><td>Phạm Mỹ Kim</td><td>4P. 配角</td><td class="note-cell">改邪歸正</td></tr>
+              <tr><td>Hà Văn Quốc Thắng</td><td>河文國勝</td><td>Nguyễn Minh Quyết</td><td>4P. 配角</td><td class="note-cell">警察局長的兒子</td></tr>
+              <tr><td>Mai Vũ Luân</td><td>梅宇倫</td><td>Vương Công Tuấn</td><td>4P. 配角</td><td class="note-cell">殺人犯兒子</td></tr>
+              <tr><td>Trương Cao Khoa</td><td>張高科</td><td>Đỗ Công Danh</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Hồ Quang Thủ</td><td>胡光守</td><td>Lê Kiến Văn</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Võ Hoàng Bách</td><td>武黃柏</td><td>Ngô Quang Hùng</td><td>4P. 配角</td><td class="note-cell">EP5的時候，因為拉K而退學</td></tr>
+              <tr><td>Tuấn Đạt</td><td>俊達</td><td>Quang老師</td><td>4P. 配角</td><td class="note-cell">在tiktok上面的化學老師</td></tr>
+              <tr><td>Trang Minh</td><td>莊明</td><td>Trần Ngọc Diễm Hân</td><td>4P. 配角</td><td class="note-cell">化學老師</td></tr>
+              <tr><td>Chánh Thuận</td><td>正順</td><td>Nguyễn Hoàng Bách爸爸</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Đặng Phương Thảo</td><td>鄧芳草</td><td>Nguyễn Hải Đăng媽媽</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="slide" id="table2">
+  <h2><a class="actor-link" href="https://www.dcard.tw/f/boyslovedrama/p/255785719" target="_blank">BACA cp</a>，共3部</h2>
+  <div class="table-wrapper">
+    <table class="actor-table">
+      <colgroup>
+        <col class="col-date"><col class="col-zh"><col class="col-en"><col class="col-vi">
+        <col class="col-kiss"><col class="col-ep"><col class="col-dur"><col class="col-cast">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>上映日期</th><th>中文劇名</th><th>英文劇名</th><th>越文劇名</th>
+          <th>親密戲</th><th>集數</th><th>平均時長</th><th>演員明細</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="drama-row">
+          <td>20-05-2021</td><td>傻男有傻愛</td><td>Stupid Boys Stupid Love</td><td>Yêu Đi Sợ Gì</td>
+          <td class="center">0</td><td class="center">4</td><td class="center">20</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Hạo Dân</td><td>浩民</td><td>Trọng Nghĩa</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Trương Văn Ngoãn</td><td>張文𠺿</td><td>Nhật Minh</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Kite5s</td><td>Kite5s</td><td>Thiên Thanh</td><td>2A. 副攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Cao Tiên Thanh</td><td>高仙青</td><td>Thiên Tú</td><td>2B. 副受</td><td class="note-cell">—</td></tr>
+              <tr><td>Phạm Thế Bằng</td><td>范世朋</td><td>Quang Châu</td><td>2A. 副攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Trương Oanh Oanh</td><td>張鶯鶯</td><td>Oanh Oanh</td><td>2B. 副受</td><td class="note-cell">—</td></tr>
+              <tr><td>Soo Jin</td><td>Soo Jin</td><td>Kim</td><td>3O. 第三者</td><td class="note-cell">—</td></tr>
+              <tr><td>Thành Vũ</td><td>成武</td><td>Thắng</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Bá Vinh</td><td>阮伯榮</td><td>Phúc</td><td>5Q. 客串</td><td class="note-cell">—</td></tr>
+              <tr><td>Duy Harry</td><td>Duy Harry</td><td>Tùng</td><td>5Q. 客串</td><td class="note-cell">—</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+        <tr class="drama-row">
+          <td>15-01-2022</td><td>假裝相愛</td><td>You Are My Stupid Boy</td><td>Tựa Ánh Dương Ngời</td>
+          <td class="center">0</td><td class="center">3</td><td class="center">15</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Khải Văn</td><td>凱文</td><td>Quốc Trương</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Phạm Thế Bằng</td><td>范世朋</td><td>Đăng Khoa</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Hạo Dân</td><td>浩民</td><td>Trọng Nghĩa</td><td>2A. 副攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Trương Văn Ngoãn</td><td>張文𠺿</td><td>Nhật Minh</td><td>2B. 副受</td><td class="note-cell">—</td></tr>
+              <tr><td>Zybi Thanh Trúc</td><td>Zybi成竹</td><td>Đỗ quyên</td><td>3O. 第三者</td><td class="note-cell">—</td></tr>
+              <tr><td>Trương Oanh Oanh</td><td>張鶯鶯</td><td>Oanh Oanh</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Trần Chi</td><td>陳芝</td><td>Quốc Trương媽媽</td><td>4P. 配角</td><td class="note-cell">Quốc Trương的媽媽</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+        <tr class="drama-row">
+          <td>26-11-2022</td><td>閃閃發光的星星</td><td>The Star Always Follow You</td><td>Lấp Lánh Tựa Ánh Sao Trời</td>
+          <td class="center">0</td><td class="center">10</td><td class="center">20</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Hạo Dân</td><td>浩民</td><td>Thái Sơn</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Trương Văn Ngoãn</td><td>張文𠺿</td><td>Hải Đăng</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Phạm Thế Bằng</td><td>范世朋</td><td>Vĩ</td><td>2A. 副攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Dương Kiến Hào</td><td>楊建豪</td><td>An</td><td>2B. 副受</td><td class="note-cell">—</td></tr>			  
+              <tr><td>Nguyễn Thái Khang</td><td>阮泰康</td><td>Quân</td><td>2A. 副攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Cao Tiên Thanh</td><td>高仙青</td><td>Quỳnh</td><td>2B. 副受</td><td class="note-cell">—</td></tr>
+              <tr><td>Đặng Phương Thảo</td><td>鄧芳草</td><td>Hải Đăng媽媽</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Thanh Hiền</td><td>清賢</td><td>Hải Đăng外婆</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Bảo Bì</td><td>寶璧</td><td>My</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Trần Chí</td><td>陳芝</td><td>Lai女士</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Lê Ngọc Toàn</td><td>黎玉全</td><td>Năm老爺爺</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Hoa Trần</td><td>陳花</td><td>Năm老奶奶</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="slide" id="table3">
+  <h2><a class="actor-link" href="https://www.dcard.tw/f/boyslovedrama/p/256663429" target="_blank">Gia Huy</a>，共3部</h2>
+  <div class="table-wrapper">
+    <table class="actor-table">
+      <colgroup>
+        <col class="col-date"><col class="col-zh"><col class="col-en"><col class="col-vi">
+        <col class="col-kiss"><col class="col-ep"><col class="col-dur"><col class="col-cast">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>上映日期</th><th>中文劇名</th><th>英文劇名</th><th>越文劇名</th>
+          <th>親密戲</th><th>集數</th><th>平均時長</th><th>演員明細</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="drama-row">
+          <td>12-06-2020</td><td>戀愛舞曲</td><td>Stage of Love</td><td>Stage of Love</td>
+          <td class="center">0</td><td class="center">10</td><td class="center">20</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Gia Huy</td><td>家輝</td><td>Nguyên</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Duy Harry</td><td>Duy Harry</td><td>Bảo</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Văn Quốc Lâm</td><td>文國霖</td><td>Hy</td><td>2A. 副攻</td><td class="note-cell">攻的球友</td></tr>
+              <tr><td>Võ Phan Kim Khánh</td><td>武潘金磬</td><td>Khánh</td><td>2B. 副受</td><td class="note-cell">戲劇社社長(SGO48隊長Kaycee)</td></tr>
+              <tr><td>Ngọc Thạch</td><td>玉石</td><td>Huân</td><td>3O. 第三者</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Tuấn Nhã</td><td>阮俊若</td><td>Đức</td><td>3O. 第三者</td><td class="note-cell">兇手(藝名：Isan)</td></tr>
+              <tr><td>Phạm Lâm Ánh Trúc</td><td>范林映竹</td><td>Trúc</td><td>4P. 配角</td><td class="note-cell">戲劇社成員(SGO48成員Trúc Phạm)</td></tr>
+              <tr><td>Trang Phùng</td><td>莊逢</td><td>Vân Anh</td><td>4P. 配角</td><td class="note-cell">迷妹1</td></tr>
+              <tr><td>Hoàng Yến Trần Phan</td><td>陳潘凰燕</td><td>Linh</td><td>4P. 配角</td><td class="note-cell">迷妹2</td></tr>
+              <tr><td>Lê Phạm Thuỷ Tiên</td><td>黎范水仙</td><td>Tiên</td><td>4P. 配角</td><td class="note-cell">迷妹3(SGO48成員Tiên Linh)</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+        <tr class="drama-row highlight-row">
+          <td>23-12-2020</td><td>做我的陽光寶貝</td><td>Follow my Sunshine</td><td>Sau Vạt Nắng</td>
+          <td class="center">0</td><td class="center">5</td><td class="center">20</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Huy Du</td><td>輝游</td><td>Minh Nhàn</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Thái Thanh Nhàn</td><td>蔡成雁</td><td>Thanh Văn</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Đỗ Nhật Hà</td><td>杜日荷</td><td>Khiết An</td><td>3O. 第三者</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Hoàng Duy</td><td>阮皇維</td><td>Trọng Tường</td><td>3O. 第三者</td><td class="note-cell">—</td></tr>
+              <tr><td>Buti Yêu Dấu</td><td>Buti Yêu Dấu</td><td>Bảo Bảo</td><td>4P. 配角</td><td class="note-cell">攻的好朋友</td></tr>
+              <tr><td>Gia Huy</td><td>家輝</td><td>Tuấn Anh</td><td>4P. 配角</td><td class="note-cell">攻的好朋友</td></tr>
+              <tr><td>NUNU O2O</td><td>NUNU O2O</td><td>Tường Vy</td><td>4P. 配角</td><td class="note-cell">女主角好朋友</td></tr>
+              <tr><td>Minh Ngọc</td><td>明玉</td><td>Thanh Thảo</td><td>4P. 配角</td><td class="note-cell">女主角好朋友</td></tr>
+              <tr><td>Đặng Phương Thảo</td><td>鄧芳草</td><td>Thanh Văn媽媽</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+        <tr class="drama-row">
+          <td>17-05-2024</td><td>夏日樹下</td><td>Under the Oak Tree</td><td>Dưới Tán Cây Mùa Hè</td>
+          <td class="center">0</td><td class="center">10</td><td class="center">35</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Trần Vũ Đức Duy</td><td>陳舞德唯</td><td>Hải Đăng</td><td>1A. 主攻</td><td class="note-cell">吉他</td></tr>
+              <tr><td>Gia Huy</td><td>家輝</td><td>Hải Đăng(長大)</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Vương Quốc Huy</td><td>王國輝</td><td>An Khánh</td><td>1B. 主受</td><td class="note-cell">吉他</td></tr>
+              <tr><td>Đoàn Huỳnh Duy Lâm</td><td>團黃維林</td><td>An Khánh(長大)</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Trần Như Thủy</td><td>阮陳如水</td><td>Ngọc Linh</td><td>3O. 第三者</td><td class="note-cell">主唱，35歲因肺癌逝世</td></tr>
+              <tr><td>Huỳnh Điệp Kiếu Ngân</td><td>黃蝶嬌銀</td><td>Ngọc Linh(長大)</td><td>3O. 第三者</td><td class="note-cell">—</td></tr>
+              <tr><td>Simon Phan</td><td>范Simon</td><td>Nguyễn Hữu Minh</td><td>3O. 第三者</td><td class="note-cell">小時候/長大均同一人飾演</td></tr>
+              <tr><td>Phúc Đỗ</td><td>杜福</td><td>Thiên An</td><td>4P. 配角</td><td class="note-cell">木箱鼓，後成為醫生</td></tr>
+              <tr><td>Viết Thành</td><td>曰聖</td><td>Thiên An(長大)</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Thái Thanh Nhàn</td><td>蔡成雁</td><td>Thế Ngọc</td><td>4P. 配角</td><td class="note-cell">高中，攝影師，討厭An Khánh，21歲逝世</td></tr>
+              <tr><td>Phạm Thành An</td><td>潘聖安</td><td>數學老師</td><td>4P. 配角</td><td class="note-cell">高中，曾經喜歡主任</td></tr>
+              <tr><td>Lâm Minh Du</td><td>林明游</td><td>Hải Đăng爸爸+主任</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Tuyềt Nhung</td><td>雪絨</td><td>An Khánh媽媽</td><td>4P. 配角</td><td class="note-cell">高中，一隻眼睛看不到</td></tr>
+              <tr><td>Huỳnh Diên Minh</td><td>黃鉛明</td><td>白無常</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Chí Thông</td><td>阮志聰</td><td>黑無常</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Ngọc Hoa</td><td>玉和</td><td>女鬼魂</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Trịnh Tú Trung</td><td>鄭秀忠</td><td>遊魂</td><td>5Q. 客串</td><td class="note-cell">—</td></tr>
+              <tr><td>Hạo Dân</td><td>浩民</td><td>客串咖啡廳老闆</td><td>5Q. 客串</td><td class="note-cell">—</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="slide" id="table4">
+  <h2><a class="actor-link" href="https://www.dcard.tw/f/boyslovedrama/p/256914289" target="_blank">張明草</a>，共4部</h2>
+  <div class="table-wrapper">
+    <table class="actor-table">
+      <colgroup>
+        <col class="col-date"><col class="col-zh"><col class="col-en"><col class="col-vi">
+        <col class="col-kiss"><col class="col-ep"><col class="col-dur"><col class="col-cast">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>上映日期</th><th>中文劇名</th><th>英文劇名</th><th>越文劇名</th>
+          <th>親密戲</th><th>集數</th><th>平均時長</th><th>演員明細</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="drama-row">
+          <td>09-01-2020</td><td>蘇安記</td><td>The Time Adventure of To An</td><td>Tô An Ký</td>
+          <td class="center">0</td><td class="center">6</td><td class="center">25</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Thương Minh Thảo</td><td>張明草</td><td>Doãn Bang/Henry</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Adam Lâm</td><td>Adam林</td><td>Tô An/Tô An</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Mai Ngô</td><td>梅吳</td><td>Ngọc Nga/Ngọc Nga</td><td>3O. 第三者</td><td class="note-cell">同名同姓，但是前者為郡主，後者為老闆</td></tr>
+              <tr><td>Thuý Duy</td><td>翠維</td><td>Ngọc Chi/</td><td>3O. 第三者</td><td class="note-cell">香橋酒館知名藝伎</td></tr>
+              <tr><td>Hải Triều</td><td>海潮</td><td>/Như</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Pom</td><td>Pom</td><td>Tô Hiến Trung/</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>BB Trần</td><td>BB Trần</td><td>Ngọc Trinh/Bella</td><td>4P. 配角</td><td class="note-cell">香橋酒館老鴇</td></tr>
+              <tr><td>Phát La</td><td>羅發</td><td>蘇家僕人</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Kim Chi</td><td>金芝</td><td>Thu Cúc</td><td>4P. 配角</td><td class="note-cell">郡主的僕人</td></tr>
+              <tr><td>Linh Hồ</td><td>靈湖</td><td>青樓女子1/</td><td>5Q. 客串</td><td class="note-cell">—</td></tr>
+              <tr><td>Linh Dolce</td><td>靈Dolce</td><td>青樓女子2/</td><td>5Q. 客串</td><td class="note-cell">—</td></tr>
+              <tr><td>Kiều Linh</td><td>嬌靈</td><td>/舞者1</td><td>5Q. 客串</td><td class="note-cell">—</td></tr>
+              <tr><td>Ngọc Châu</td><td>玉珠</td><td>/舞者2</td><td>5Q. 客串</td><td class="note-cell">—</td></tr>
+              <tr><td>Tăng Huỳnh Như</td><td>鄧黃如</td><td>/舞者3</td><td>5Q. 客串</td><td class="note-cell">—</td></tr>
+              <tr><td>Trác Thuy Miêu</td><td>卓翠妙</td><td>/贊助商1</td><td>5Q. 客串</td><td class="note-cell">—</td></tr>
+              <tr><td>Đại Nghĩa</td><td>大義</td><td>/贊助商2</td><td>5Q. 客串</td><td class="note-cell">—</td></tr>
+              <tr><td>Dsix</td><td>Dsix</td><td>小混混1/</td><td>5Q. 客串</td><td class="note-cell">—</td></tr>
+              <tr><td>Ginô Tống</td><td>Ginô Tống</td><td>小混混2/</td><td>5Q. 客串</td><td class="note-cell">—</td></tr>
+              <tr><td>Lu Dương</td><td>Lu Dương</td><td>小混混3/</td><td>5Q. 客串</td><td class="note-cell">—</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+        <tr class="drama-row">
+          <td>28-11-2021</td><td>愛上灰姑男</td><td>Mr.Cinderella</td><td>Chàng Lọ Lem</td>
+          <td class="center">1</td><td class="center">8</td><td class="center">35</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Thương Minh Thảo</td><td>張明草</td><td>Khoa</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Bá Vinh</td><td>阮伯榮</td><td>Dũng</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Kan Hy</td><td>Kan Hy</td><td>Gia Huỳnh</td><td>3O. 第三者</td><td class="note-cell">—</td></tr>
+              <tr><td>Trang Minh</td><td>莊明</td><td>Thảo Nguyên</td><td>3O. 第三者</td><td class="note-cell">—</td></tr>
+              <tr><td>Phạm Nguyễn Tương Vi</td><td>范阮湘薇</td><td>Thảo</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Trần Thị Minh Thư</td><td>陳氏明苴</td><td>Hoàng Danh</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Trần Vũ Đức Duy</td><td>陳舞德唯</td><td>Quốc Thịnh</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+        <tr class="drama-row highlight-row">
+          <td>09-06-2023</td><td>墊底天才</td><td>Stupid Genius</td><td>Thiên Tài Hạng Bét</td>
+          <td class="center">0</td><td class="center">6</td><td class="center">20</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Nguyễn Tiến Hải</td><td>阮進海</td><td>Thế Vinh</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Phạm Thế Bằng</td><td>范世朋</td><td>Thủ Khoa</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Quốc Nam</td><td>阮國男</td><td>Huỳnh Kha</td><td>2A. 副攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Thái Khang</td><td>阮泰康</td><td>Gia Hoàng</td><td>2B. 副受</td><td class="note-cell">—</td></tr>
+              <tr><td>Cindy</td><td>Cindy</td><td>Thanh Thảo</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Cao Tiên Thanh</td><td>高仙青</td><td>Bích Phương</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Thương Minh Thảo</td><td>張明草</td><td>Tuấn</td><td>4P. 配角</td><td class="note-cell">老師，Thế Vinh的哥哥</td></tr>
+              <tr><td>Hạo Dân</td><td>浩民</td><td>學校老師</td><td>5Q. 客串</td><td class="note-cell">學校老師</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+        <tr class="drama-row">
+          <td>23-09-2023</td><td>愛上灰姑男 II</td><td>Mr.Cinderella II</td><td>Chàng Lọ Lem II</td>
+          <td class="center">0</td><td class="center">8</td><td class="center">35</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Thương Minh Thảo</td><td>張明草</td><td>Khoa</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Bá Vinh</td><td>阮伯榮</td><td>Dũng</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Mai Vũ Luân</td><td>梅宇倫</td><td>Thanh</td><td>3O. 第三者</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Đăng Nguyên</td><td>阮登原</td><td>Kang</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Tuấn Việt</td><td>阮俊越</td><td>Tuấn</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="slide" id="table5">
+  <h2><a class="actor-link" href="https://www.dcard.tw/f/boyslovedrama/p/257583880" target="_blank">Nam Mario</a>，共2部</h2>
+  <div class="table-wrapper">
+    <table class="actor-table">
+      <colgroup>
+        <col class="col-date"><col class="col-zh"><col class="col-en"><col class="col-vi">
+        <col class="col-kiss"><col class="col-ep"><col class="col-dur"><col class="col-cast">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>上映日期</th><th>中文劇名</th><th>英文劇名</th><th>越文劇名</th>
+          <th>親密戲</th><th>集數</th><th>平均時長</th><th>演員明細</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="drama-row">
+          <td>17-11-2017</td><td>亞當的秘密-兄弟</td><td>My Brother</td><td>Bí Mật Của Adam 2</td>
+          <td class="center">1</td><td class="center">14</td><td class="center">15</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Nguyễn Hoàng Anh</td><td>阮黃英</td><td>Phong</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Nam Mario</td><td>Nam Mario</td><td>Vũ</td><td>1B. 主受</td><td class="note-cell">—</td></tr>
+              <tr><td>Ngọc Hiền Trần</td><td>陳玉賢</td><td>Vân</td><td>3O. 第三者</td><td class="note-cell">Phong的未婚妻</td></tr>
+              <tr><td>Vũ Phương</td><td>武方</td><td>Thiên </td><td>3O. 第三者</td><td class="note-cell">Vũ的好朋友，把Mật Mật認成Vũ</td></tr>
+              <tr><td>Nguyễn Khanh</td><td>阮慶</td><td>Phong爸爸</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Nguyễn Ngọc Dung</td><td>阮玉蓉</td><td>Vũ媽媽</td><td>4P. 配角</td><td class="note-cell">—</td></tr>
+              <tr><td>Phạm Văn Thọ</td><td>范文壽</td><td>Tùng Sơn/Mật Mật</td><td>4P. 配角</td><td class="note-cell">弟弟為Phong旗下員工，彼此為雙胞胎兄弟，後哥哥辭世</td></tr>
+              <tr><td>Huy Hùng</td><td>輝雄</td><td>Lâm Đỗ</td><td>4P. 配角</td><td class="note-cell">為Phong旗下員工，喜歡Vân</td></tr>
+              <tr><td>Nam Tràn Bá</td><td>南陳伯</td><td>Trần Bảo Nam</td><td>5Q. 客串</td><td class="note-cell">—</td></tr>
+              <tr><td>Thụy Vân</td><td>翠雲</td><td>Vân</td><td>5Q. 客串</td><td class="note-cell">—</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+        <tr class="drama-row">
+          <td>02-05-2021</td><td>老闆別過來</td><td>My Lascivious Boss</td><td>Ông Chủ, Đừng Đến Đây</td>
+          <td class="center">1</td><td class="center">10</td><td class="center">15</td>
+          <td class="center"><button class="detail-btn" onclick="toggleDetail(this)"><span class="arrow">▶</span> 演員明細</button></td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="8"><div class="detail-content">
+          <table class="cast-table">
+            <colgroup>
+              <col class="col-vi"><col class="col-zh"><col class="col-role"><col class="col-pos"><col class="col-note">
+            </colgroup>
+            <thead><tr><th>演員(越)</th><th>演員(中)</th><th>飾演角色</th><th>定位(攻/受)</th><th>備註</th></tr></thead>
+            <tbody>
+              <tr><td>Thiên Lâm</td><td>天林</td><td>Thiên Long</td><td>1A. 主攻</td><td class="note-cell">—</td></tr>
+              <tr><td>Nam Mario</td><td>Nam Mario</td><td>Minh Hoàng(Minh Hằng)</td><td>1B. 主受</td><td class="note-cell">本名(偽娘)</td></tr>
+              <tr><td>Vũ Nam Linh</td><td>宇南靈</td><td>Quang Lâm</td><td>2A. 副攻</td><td class="note-cell">Minh Hoàng室友兼同事</td></tr>
+              <tr><td>Huỳnh Cát Minh</td><td>黃吉明</td><td>Quốc Bảo</td><td>2B. 副受</td><td class="note-cell">Minh Hoàng室友兼同事</td></tr>
+              <tr><td>Phan Tranh Phụng</td><td>潘清鳳</td><td>Trúc Anh</td><td>3O. 第三者</td><td class="note-cell">攻一夜情對象</td></tr>
+              <tr><td>Duy Khánh</td><td>維慶</td><td>Duy Khánh</td><td>3O. 第三者</td><td class="note-cell">受的前男友</td></tr>
+              <tr><td>Lê Tuấn Thành</td><td>黎俊清</td><td>Thiên Khôi</td><td>4P. 配角</td><td class="note-cell">攻的弟弟</td></tr>
+              <tr><td>Nguyễn Thúy Vân</td><td>阮翠雲</td><td>Mỹ Hạnh</td><td>4P. 配角</td><td class="note-cell">攻的弟媳，攻以前的女友</td></tr>
+              <tr><td>Lê Tuấn Anh</td><td>黎俊英</td><td>Gia Vỹ(Vyvy)</td><td>4P. 配角</td><td class="note-cell">跟Minh Hoàng玩偽娘，與Duy Khánh滾過床單</td></tr>
+            </tbody>
+          </table>
+        </div></td></tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+      </div>
+    </div>
+    <button class="nav next" onclick="moveSlide(1)">❯</button>
+    <div class="dots" id="dots"></div>
+  </div>
+</div>
+</div>
+
+<script>
+// [01] 畫面深淺模式切換
+const toggleDark = () => {
+  const isDark = document.body.classList.toggle("dark");
+  document.getElementById("darkBtn").textContent = isDark ? "☀️ 日間模式" : "🌙 夜間模式";
+};
+
+// [02] 演員明細 展開/收合
+function toggleDetail(btn) {
+  const row = btn.closest("tr");
+  const detailRow = row.nextElementSibling;
+  const arrow = btn.querySelector(".arrow");
+  if (!detailRow) return;
+  if (detailRow.style.display === "none") {
+    detailRow.style.display = "table-row";
+    arrow.textContent = "▼";
+  } else {
+    detailRow.style.display = "none";
+    arrow.textContent = "▶";
+  }
+}
+
+// [03] 切換 slide 前，先收合所有已展開的演員明細
+function collapseAllDetails() {
+  track.querySelectorAll(".detail-row").forEach(row => { row.style.display = "none"; });
+  track.querySelectorAll(".detail-btn .arrow").forEach(arrow => { arrow.textContent = "▶"; });
+}
+
+// [04] 輪播圖初始化(複製首尾slide、產生導覽點)
+let currentIndex = 1;
+let isAnimating = false;
+const track = document.getElementById("track");
+
+window.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll("#track .slide");
+  const realCount = slides.length;
+  const dotsContainer = document.getElementById("dots");
+
+  const firstClone = slides[0].cloneNode(true);
+  const lastClone = slides[realCount - 1].cloneNode(true);
+  firstClone.removeAttribute("id");
+  lastClone.removeAttribute("id");
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, slides[0]);
+
+  slides.forEach((slide, i) => {
+    const dot = document.createElement("span");
+    dot.onclick = () => {
+      collapseAllDetails();
+      currentIndex = i + 1;
+      track.style.transition = "none";
+      updateUI();
+    };
+    dotsContainer.appendChild(dot);
+  });
+
+  // 若網址帶有 #table1~#table5，直接開啟到對應的演員slide
+  const hashMatch = window.location.hash.match(/^#table([1-5])$/);
+  if (hashMatch) {
+    currentIndex = parseInt(hashMatch[1], 10);
+    track.style.transition = "none";
+  }
+
+  updateUI();
+});
+
+// [05] 輪播動畫控制與首尾無縫循環校正
+const moveSlide = (direction) => {
+  if (isAnimating) return;
+  isAnimating = true;
+
+  collapseAllDetails();
+
+  currentIndex += direction;
+  track.style.transition = "transform 0.45s cubic-bezier(0.22,1,0.36,1)";
+  updateUI();
+
+  track.addEventListener("transitionend", function onEnd() {
+    track.removeEventListener("transitionend", onEnd);
+    const totalSlides = track.children.length;
+
+    if (currentIndex === totalSlides - 1) currentIndex = 1;
+    else if (currentIndex === 0) currentIndex = totalSlides - 2;
+
+    track.style.transition = "none";
+    updateUI();
+    isAnimating = false;
+  });
+};
+
+// [06] 同步輪播位置與導覽點的active狀態，並讓網址hash跟著切換
+function updateUI() {
+  const dots = document.querySelectorAll(".dots span");
+  track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+  if (dots.length) {
+    dots.forEach(dot => dot.classList.remove("active"));
+    const realIndex = (currentIndex - 1 + dots.length) % dots.length;
+    dots[realIndex].classList.add("active");
+    history.replaceState(null, "", "#table" + (realIndex + 1));
+  }
+}
+</script>
+
+</body>
+</html>
