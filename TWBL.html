@@ -119,6 +119,12 @@ body.dark .side { color: #cbd5e1; }
 body.dark .side a { color: var(--link-main-dark); }
 body.dark .side a:hover { color: #ffffff; }
 
+.side-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 /* ============================================================
    4. 內容區塊與表格 (Content & Table)
    ============================================================ */
@@ -164,6 +170,31 @@ th:nth-child(7), td:nth-child(7) { min-width: 100px; width: 100px; }
 
 .card-link { display: block; }
 .card-link .num { display: inline-block; text-align: right; margin-right: 6px; }
+
+/* 四腐全書HTML 專用：項目符號清單 */
+.card-link.dot-list {
+  position: relative;
+  padding-left: 20px;
+}
+.card-link.dot-list::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--main);
+}
+
+/* 不可選取標記（例如：本頁對應的分類/語言） */
+.card-link.bold-black {
+  font-family: '黑體', 'Microsoft JhengHei', 'SimHei', sans-serif;
+  font-weight: 700;
+  background: none !important;
+  text-decoration: none !important;
+  cursor: default;
+  color: black !important;
+}
+.card-link.bold-black::before { color: black !important; }
+body.dark .card-link.bold-black { color: white !important; }
+body.dark .card-link.bold-black::before { color: white !important; }
 
 /* ============================================================
    5. 連結組件 (Link Boxes)
@@ -317,20 +348,35 @@ body.dark .link-boxes a:hover {
 <div class="layout">
 
   <!-- 左側欄 -->
-  <aside class="side left">
-    <h3>📂巴比恩整理區</h3>
-    <hr />
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/TWBL1_Company.html"><span class="num">1.</span>依工作室分類</a>
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/TWBL2_Others.html"><span class="num">2.</span>其他分類</a>
-	<a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/International.html"><span class="num">3.</span>跨國整理</a>
-	<hr class="divider"> 
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/TWBL4_Actors.html"><span class="num">4.</span>依演員分類</a>
-    <a class="card-link" href="https://www.dcard.tw/f/tvepisode/p/259107016" target="_blank"><span class="num">5.</span>依男團分類</a>
-	<hr class="divider"> 
-	<br>
-	<br>
-	<br>
-  </aside>
+  <div class="side-container">
+    <!-- 框框一：原本的分類選單 -->
+    <aside class="side left">
+      <h3>📂巴比恩整理區</h3>
+      <hr />
+      <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/TWBL1_Company.html"><span class="num">1.</span>依工作室分類</a>
+      <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/TWBL2_Others.html"><span class="num">2.</span>其他分類</a>
+	  <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/International.html"><span class="num">3.</span>跨國整理</a>
+	  <hr class="divider"> 
+      <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/TWBL4_Actors.html"><span class="num">4.</span>依演員分類</a>
+      <a class="card-link" href="https://www.dcard.tw/f/tvepisode/p/259107016" target="_blank"><span class="num">5.</span>依男團分類</a>
+	  <hr class="divider"> 
+	  <br>
+	  <br>
+	  <br>
+    </aside>
+
+    <!-- 框框二：四腐全書HTML -->
+    <aside class="side">
+      <h3 style="text-align:center;">📂 四腐全書HTML</h3>
+      <hr />
+      <div style="font-size: 14px; line-height: 1.6;">
+        <a class="card-link dot-list" href="https://ba29bin06h.github.io/BL_Drama/JPBL.html">🇯🇵 日本BL總表</a>
+        <a class="card-link dot-list bold-black">🇹🇼 台灣BL總表</a>
+        <a class="card-link dot-list" href="https://ba29bin06h.github.io/BL_Drama/VNBL.html">🇻🇳 越南BL總表</a>
+        <a class="card-link dot-list" href="https://ba29bin06h.github.io/BL_Drama/KRBL.html">🇰🇷 韓國BL總表</a>
+      </div>
+    </aside>
+  </div>
 
   <!-- 中間內容 -->
   <div class="content">
@@ -984,6 +1030,23 @@ body.dark .link-boxes a:hover {
       <a href="https://www.instagram.com/smileaftertears_official/" target="_blank" rel="noopener noreferrer">📷</a>
       <a>&nbsp;</a>
       <a href="https://www.youtube.com/watch?v=O0RZBYuV6EA" target="_blank" rel="noopener noreferrer">🎵</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>2026.08.14</td>
+  <td>整個世界，只有你連上了我</td>
+  <td>Connecting to You</td>
+  <td>0</td>
+  <td>25</td>
+  <td>13</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.iq.com/album/%E6%95%B4%E5%80%8B%E4%B8%96%E7%95%8C-%E5%8F%AA%E6%9C%89%E4%BD%A0%E9%80%A3%E4%B8%8A%E4%BA%86%E6%88%91-2026-2fbr7b78pud?lang=zh_tw" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.instagram.com/connecting_to_you_2026/" target="_blank" rel="noopener noreferrer">📷</a>
+      <a>&nbsp;</a>
+      <a href="https://www.youtube.com/watch?v=wNVKrtuXOLU" target="_blank" rel="noopener noreferrer">🎵</a>
     </div>
   </td>
 </tr>

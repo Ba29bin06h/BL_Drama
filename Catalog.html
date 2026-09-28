@@ -295,7 +295,8 @@ hr.divider { border: none; border-top: 1px solid var(--border); margin: 12px 0; 
         <hr class="divider">
         <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/TWBL4_Actors.html" data-i18n-zh="演員" data-i18n-en="Actors">演員</a>
         <a class="card-link" href="https://www.dcard.tw/f/tvepisode/p/259107016" target="_blank" data-i18n-zh="台灣男團" data-i18n-en="Boy Groups">台灣男團</a>
-        <hr class="divider">				
+        <hr class="divider">
+        <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/CNBL.html" data-lang-only="en" style="display:none;">China BL</a>
       </div>
 
       <!-- 越南 -->
@@ -430,6 +431,11 @@ function applyLanguage() {
     el.textContent = t(el.getAttribute("data-i18n-zh"), el.getAttribute("data-i18n-en"));
   });
 
+  // 語言限定元素：只在指定語言下顯示（例如台灣卡片內的 Chinese BL，僅英文版出現）
+  document.querySelectorAll("[data-lang-only]").forEach(el => {
+    el.style.display = (el.getAttribute("data-lang-only") === currentLang) ? "" : "none";
+  });
+
   document.getElementById("langBtn").textContent = t("🌐 EN", "🌐 中文");
   updateDarkBtnText();
   renderTable(); // 重新渲染表格內動態產生的文字(年份/總計/小計等)
@@ -455,7 +461,7 @@ const data = {
     2023:[14,4,4,17],
     2024:[13,6,4,10],
     2025:[14,5,6,22],
-    2026:[8,2,0,15]
+    2026:[10,3,0,16]
   },
   episodes:{
     2017:[0,20,23,0],
@@ -467,7 +473,7 @@ const data = {
     2023:[111,47,31,141],
     2024:[121,72,70,74],
     2025:[120,55,49,175],
-    2026:[83,24,0,113]
+    2026:[102,37,0,123]
   },
   duration:{
     2017:[0,6,6,0],
@@ -479,11 +485,11 @@ const data = {
     2023:[46,19,14,57],
     2024:[52,39,43,27],
     2025:[49,25,22,62],
-    2026:[33,13,0,35]
+    2026:[41,19,0,39]
   }
 };
 
-const intimacyData = [47.10, 58.11, 54.29, 23.16];
+const intimacyData = [47.18, 56.58, 54.29, 23.96];
 
 // 年份區間設定：戲劇數／集數／時長 都以此 3 個區間呈現
 const periods = [

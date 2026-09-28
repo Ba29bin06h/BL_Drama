@@ -119,6 +119,12 @@ body.dark .side { color: #cbd5e1; }
 body.dark .side a { color: var(--link-main-dark); }
 body.dark .side a:hover { color: #ffffff; }
 
+.side-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 /* ============================================================
    4. 內容區塊與表格 (Content & Table)
    ============================================================ */
@@ -164,6 +170,31 @@ th:nth-child(8), td:nth-child(8) { min-width: 100px; width: 100px; }
 
 .card-link { display: block; }
 .card-link .num { display: inline-block; text-align: right; margin-right: 6px; }
+
+/* 四腐全書HTML 專用：項目符號清單 */
+.card-link.dot-list {
+  position: relative;
+  padding-left: 20px;
+}
+.card-link.dot-list::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--main);
+}
+
+/* 不可選取標記（例如：本頁對應的分類/語言） */
+.card-link.bold-black {
+  font-family: '黑體', 'Microsoft JhengHei', 'SimHei', sans-serif;
+  font-weight: 700;
+  background: none !important;
+  text-decoration: none !important;
+  cursor: default;
+  color: black !important;
+}
+.card-link.bold-black::before { color: black !important; }
+body.dark .card-link.bold-black { color: white !important; }
+body.dark .card-link.bold-black::before { color: white !important; }
 
 /* ============================================================
    5. 連結組件 (Link Boxes)
@@ -319,20 +350,35 @@ body.dark .link-boxes a:hover {
 <div class="layout">
 
   <!-- 左側欄 -->
-  <aside class="side left">
-    <h3>📂巴比恩整理區</h3>
-    <hr />
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBL1_Company.html"><span class="num">1.</span>依工作室分類</a>
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBL2_Others.html"><span class="num">2.</span>其他分類</a>
-	<a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/International.html"><span class="num">3.</span>跨國整理</a>
-	<hr class="divider"> 
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBL4_Actors.html"><span class="num">4.</span>依演員分類</a>
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBL5_Group.html"><span class="num">5.</span>依男團分類</a>
-	<hr class="divider"> 
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBL6_CityboyLog.html"><span class="num">6_1.</span>CityBoy_Log</a>
-    <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBLX_Shortfilm.html"><span class="num">6_2.</span>韓腐小短片</a>	
-	<br>
-  </aside>
+  <div class="side-container">
+    <!-- 框框一：原本的分類選單 -->
+    <aside class="side left">
+      <h3>📂巴比恩整理區</h3>
+      <hr />
+      <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBL1_Company.html"><span class="num">1.</span>依工作室分類</a>
+      <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBL2_Others.html"><span class="num">2.</span>其他分類</a>
+	  <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/International.html"><span class="num">3.</span>跨國整理</a>
+	  <hr class="divider"> 
+      <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBL4_Actors.html"><span class="num">4.</span>依演員分類</a>
+      <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBL5_Group.html"><span class="num">5.</span>依男團分類</a>
+	  <hr class="divider"> 
+      <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBL6_CityboyLog.html"><span class="num">6_1.</span>CityBoy_Log</a>
+      <a class="card-link" href="https://ba29bin06h.github.io/BL_Drama/KRBLX_Shortfilm.html"><span class="num">6_2.</span>韓腐小短片</a>	
+	  <br>
+    </aside>
+
+    <!-- 框框二：四腐全書HTML -->
+    <aside class="side">
+      <h3 style="text-align:center;">📂 四腐全書HTML</h3>
+      <hr />
+      <div style="font-size: 14px; line-height: 1.6;">
+        <a class="card-link dot-list" href="https://ba29bin06h.github.io/BL_Drama/JPBL.html">🇯🇵 日本BL總表</a>
+        <a class="card-link dot-list" href="https://ba29bin06h.github.io/BL_Drama/TWBL.html">🇹🇼 台灣BL總表</a>
+        <a class="card-link dot-list" href="https://ba29bin06h.github.io/BL_Drama/VNBL.html">🇻🇳 越南BL總表</a>
+        <a class="card-link dot-list bold-black">🇰🇷 韓國BL總表</a>
+      </div>
+    </aside>
+  </div>
 
   <!-- 中間內容 -->
   <div class="content">
@@ -2086,6 +2132,24 @@ body.dark .link-boxes a:hover {
       <a href="https://www.instagram.com/playmeluvme/" target="_blank" rel="noopener noreferrer">📷</a>
       <a>&nbsp;</a>
       <a href="https://www.youtube.com/watch?v=0r77IQ0HZs8" target="_blank" rel="noopener noreferrer">🎵</a>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>2026.08.28</td>
+  <td>夏季</td>
+  <td>Summertime</td>
+  <td>하절기</td>
+  <td>1</td>
+  <td>25</td>
+  <td>10</td>
+  <td>
+    <div class="link-boxes">
+      <a href="https://www.iq.com/album/%E5%A4%8F%E5%AD%A3-2026-1a4u52y8gtd?lang=zh_tw" target="_blank" rel="noopener noreferrer">▶️</a>
+      <a href="https://www.instagram.com/studiooak_official" target="_blank" rel="noopener noreferrer">📷</a>
+      <a href="https://namu.wiki/w/%ED%95%98%EC%A0%88%EA%B8%B0" target="_blank" rel="noopener noreferrer">나</a>
+      <a>&nbsp;</a>
     </div>
   </td>
 </tr>
