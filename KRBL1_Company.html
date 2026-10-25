@@ -204,8 +204,8 @@ body.dark .studio-link:hover { background: #4b6fd8; color: #fff; }
 
 .studio-body { display: none; padding: 12px; background: var(--card); }
 .studio .table-wrapper { overflow: auto; margin-top: 10px; max-height: 600px; }
-.studio table { width: 100%; border-collapse: collapse; min-width: 900px; }
-.studio th, .studio td { padding: 8px; border-bottom: 1px solid #000; text-align: left; }
+.studio table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.studio th, .studio td { padding: 8px; border-bottom: 1px solid #000; text-align: left; word-wrap: break-word; overflow-wrap: break-word; }
 
 .studio thead th {
   background: var(--table-head);
@@ -218,9 +218,14 @@ body.dark .studio-link:hover { background: #4b6fd8; color: #fff; }
   text-align: center;
 }
 
-.studio th:first-child, .studio td:first-child { width: 100px; }
-.studio th:nth-child(n+2):nth-child(-n+4), 
-.studio td:nth-child(n+2):nth-child(-n+4) { width: 200px; }
+.studio th:first-child, .studio td:first-child { width: 11%; }
+.studio th:nth-child(2), .studio td:nth-child(2),
+.studio th:nth-child(3), .studio td:nth-child(3) { width: 20%; }
+.studio th:nth-child(4), .studio td:nth-child(4) { width: 17%; }
+.studio th:nth-child(5), .studio td:nth-child(5),
+.studio th:nth-child(6), .studio td:nth-child(6) { width: 9%; text-align: center; }
+.studio th:nth-child(7), .studio td:nth-child(7) { width: 8%; text-align: center; }
+.studio th:nth-child(8), .studio td:nth-child(8) { width: 13%; }
 
 .studio td.center { text-align: center; }
 .studio table a { color: var(--main); text-decoration: underline; transition: 0.2s; }
@@ -311,6 +316,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>韓文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -320,36 +328,54 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>在你視線停留的地方</td>
         <td>Where Your Eyes Linger</td>
         <td>너의 시선이 머무는 곳에</td>
+        <td>0</td>
+        <td>10</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2020.09.18</td>
         <td>匆匆心動</td>
         <td>Mr.Heart</td>
         <td>미스터 하트</td>
+        <td>0.5</td>
+        <td>10</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2021.02.26</td>
         <td>時光可期</td>
         <td>You Make Me Dance</td>
         <td>유 메이크 미 댄스</td>
+        <td>1</td>
+        <td>15</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2022.02.24</td>
         <td>冬日後的櫻花</td>
         <td>Cherry Blossoms after Winter</td>
         <td>겨울 지나 벚꽃</td>
+        <td>0.5</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2023.07.20</td>
         <td>戀愛準備中</td>
         <td>Jun &amp; Jun</td>
         <td>준과 준</td>
+        <td>0</td>
+        <td>30</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2025.04.03</td>
         <td>乙方戀愛指南</td>
         <td>Business as Usual</td>
         <td>을의 연애</td>
+        <td>1</td>
+        <td>25</td>
+        <td>7</td>
       </tr>
 		  <!-- 放到這裡 -->
           </tbody>
@@ -373,6 +399,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>韓文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -382,72 +411,108 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>Wish You：你在我心中的旋律</td>
         <td>Wish You</td>
         <td>위시유：나의 마음속 너의 멜로디</td>
+        <td>0</td>
+        <td>10</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2021.04.15</td>
         <td>柳書生的婚禮</td>
         <td>Nobleman Ryu's Wedding</td>
         <td>류선비의 혼례식</td>
+        <td>0</td>
+        <td>10</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2021.09.24</td>
         <td>佛羅里達飯店</td>
         <td>The Tasty Florida</td>
         <td>플로리다 반점</td>
+        <td>0</td>
+        <td>10</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2021.12.23</td>
         <td>染色 </td>
         <td>Tinted with You</td>
         <td>물들여</td>
+        <td>0</td>
+        <td>10</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2022.02.03</td>
         <td>想咬一口的嘴唇</td>
         <td>Kissable Lips</td>
         <td>깨물고 싶은</td>
+        <td>1</td>
+        <td>10</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2022.09.15</td>
         <td>再一次來找我</td>
         <td>Once Again</td>
         <td>다시 나를 찾아와</td>
+        <td>0</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2022.10.13</td>
         <td>豐德別墅304號隱情</td>
         <td>Roommates of Poongduck 304</td>
         <td>풍덕빌라 304호의 사정</td>
+        <td>0</td>
+        <td>30</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2022.11.24</td>
         <td>圍籬外的Happy Ending</td>
         <td>Happy Ending Romance</td>
         <td>펜스 밖은 해피엔딩</td>
+        <td>1</td>
+        <td>30</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2023.08.24</td>
         <td>偏偏是你</td>
         <td>WHY R U</td>
         <td>와이알유</td>
+        <td>0</td>
+        <td>30</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2025.04.16</td>
         <td>有點不對勁</td>
         <td>Something's Not Right</td>
         <td>무언가 잘못되었다</td>
+        <td>0</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2026.03.05</td>
         <td>總會再次相遇</td>
         <td>Always Meet Again</td>
         <td>언제나 다시 만나</td>
+        <td>0</td>
+        <td>30</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>未知</td>
         <td>未知</td>
         <td>未知</td>
         <td>부당한 일을 당했나요?</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -471,6 +536,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>韓文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -480,42 +548,63 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>遇見你之後</td>
         <td>Color Rush</td>
         <td>컬러 러쉬</td>
+        <td>0</td>
+        <td>15</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2021.12.28</td>
         <td>鏡頭之外</td>
         <td>Behind Cut</td>
         <td>비하인드 컷</td>
+        <td>0</td>
+        <td>15</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2022.01.21</td>
         <td>遇見你之後 II</td>
         <td>Color Rush II</td>
         <td>컬러 러쉬 II</td>
+        <td>0</td>
+        <td>15</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2022.02.22</td>
         <td>五號男子宿舍</td>
         <td>Oh! Boarding House</td>
         <td>하숙집 오!번지</td>
+        <td>0</td>
+        <td>15</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2022.04.26</td>
         <td>喜歡我的海</td>
         <td>Ocean Likes Me</td>
         <td>오션라이크미</td>
+        <td>0</td>
+        <td>15</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2022.12.01</td>
         <td>哦！我的助手大人</td>
         <td>Oh My Assistant</td>
         <td>오 나의 어시님</td>
+        <td>0</td>
+        <td>15</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2023.10.25</td>
         <td>偶像升級計劃</td>
         <td>Bump up Business</td>
         <td>범프 업 비즈니스</td>
+        <td>0</td>
+        <td>15</td>
+        <td>8</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -539,6 +628,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>韓文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -548,18 +640,27 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>美味羅曼史</td>
         <td>My Sweet Dear</td>
         <td>마이 스윗 디어</td>
+        <td>0</td>
+        <td>15</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2023.03.09</td>
         <td>我們的模擬戀愛</td>
         <td>Our Dating Simulation</td>
         <td>우리 연애 시뮬레이션</td>
+        <td>0</td>
+        <td>15</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2023.05.04</td>
         <td>愛情實習中</td>
         <td>Love Mate</td>
         <td>러브메이트</td>
+        <td>0</td>
+        <td>20</td>
+        <td>8</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -583,6 +684,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>韓文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -592,24 +696,45 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>巧克力奶昔</td>
         <td>Choco Milkshake</td>
         <td>초코밀크쉐이크</td>
+        <td>0</td>
+        <td>15</td>
+        <td>11</td>
       </tr>
       <tr>
         <td>2024.05.16</td>
         <td>花開校園</td>
         <td>Blossom Campus</td>
         <td>블러썸 캠퍼스</td>
+        <td>0</td>
+        <td>25</td>
+        <td>6</td>
       </tr>
       <tr>
         <td>2025.05.09</td>
         <td>甜心服務</td>
         <td>Sweetheart Service</td>
         <td>스윗하트서비스</td>
+        <td>0</td>
+        <td>20</td>
+        <td>12</td>
       </tr>
       <tr>
         <td>2026.05.21</td>
         <td>住進你的心</td>
         <td>Check in to You</td>
         <td>너에게 체크인</td>
+        <td>0</td>
+        <td>10</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>2026.10.08</td>
+        <td>糾纏的領帶</td>
+        <td>Twisted Tie</td>
+        <td>비틀린 넥타이</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -629,18 +754,21 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <table>
           <thead>
 		  <tr>
-            <th style="width: 100px;">BL上映日期</th>
-            <th style="width: 200px;">中文劇名</th>
-            <th style="width: 200px;">英文劇名</th>
-            <th style="width: 200px;">韓文劇名</th>
-            <th style="width: 220px;">說明</th>
+            <th>BL上映日期</th>
+            <th>中文劇名</th>
+            <th>英文劇名</th>
+            <th>韓文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
+            <th>說明</th>
           </tr>
           </thead>
           <tbody>
 		  <!-- 請往這裡放資料 -->
-            <tr><td>2023.03.14</td><td>愛箭穿心</td><td>A Shoulder to Cry on</td><td>소년을 위로해줘</td><td>-</td></tr>
-            <tr><td>2024.03.27</td><td>像爵士樂一樣</td><td>Jazz for Two</td><td>재즈처럼</td><td>EP1宰漢、藝燦客串</td></tr>
-            <tr><td>2025.08.28</td><td>我的偶像倒追我</td><td>My Bias Is Showing</td><td>최애가 나타났다</td><td>EP5翰謙、真權客串</td></tr>
+            <tr><td>2023.03.14</td><td>愛箭穿心</td><td>A Shoulder to Cry on</td><td>소년을 위로해줘</td><td>0</td><td>30</td><td>7</td><td>-</td></tr>
+            <tr><td>2024.03.27</td><td>像爵士樂一樣</td><td>Jazz for Two</td><td>재즈처럼</td><td>0</td><td>35</td><td>8</td><td>EP1宰漢、<br>藝燦客串</td></tr>
+            <tr><td>2025.08.28</td><td>我的偶像倒追我</td><td>My Bias Is Showing</td><td>최애가 나타났다</td><td>0</td><td>25</td><td>10</td><td>EP5翰謙、<br>真權客串</td></tr>
           <!-- 放到這裡 -->
 		  </tbody>
         </table>
@@ -663,6 +791,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>韓文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -672,12 +803,18 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>灰色氣流</td>
         <td>Gray Shelter</td>
         <td>회색기류</td>
+        <td>0</td>
+        <td>20</td>
+        <td>5</td>
       </tr>
       <tr>
         <td>2026.09.30</td>
-        <td>未知</td>
+        <td>少年，注意</td>
         <td>Boy, with caution</td>
         <td>소년, 주의</td>
+        <td>0</td>
+        <td>30</td>
+        <td>8</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -703,6 +840,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>韓文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -712,60 +852,90 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>我心裡的那傢伙</td>
         <td>Blue Boys</td>
         <td>내 안의 그놈</td>
+        <td>0</td>
+        <td>10</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2024.07.20</td>
         <td>壞傢伙</td>
         <td>Bad Guy</td>
         <td>나쁜남자</td>
+        <td>1</td>
+        <td>10</td>
+        <td>4</td>
       </tr>
       <tr>
         <td>2024.08.17</td>
         <td>首爾藍調</td>
         <td>Seoul Blues</td>
         <td>서울 블루스</td>
+        <td>0</td>
+        <td>10</td>
+        <td>12</td>
       </tr>
       <tr>
         <td>2025.01.30</td>
         <td>格紋襯衫</td>
         <td>Checkered Shirt</td>
         <td>체크 남방을 입은 사내</td>
+        <td>0</td>
+        <td>10</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2025.12.08</td>
         <td>格紋襯衫 II</td>
         <td>Checkered Shirt II</td>
         <td>체크 남방을 입은 사내 II</td>
+        <td>0</td>
+        <td>10</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2025.04.30</td>
         <td>不公平的戀愛</td>
         <td>Never Fair</td>
         <td>불공정 연애</td>
+        <td>0</td>
+        <td>10</td>
+        <td>4</td>
       </tr>
       <tr>
         <td>2025.06.15</td>
         <td>打錯的電話</td>
         <td>Wrong Number</td>
         <td>잘못 울린 전화</td>
+        <td>0</td>
+        <td>10</td>
+        <td>4</td>
       </tr>
       <tr>
         <td>2025.10.23</td>
         <td>請說是</td>
         <td>Please, Yes</td>
         <td>좋다고말해</td>
+        <td>0</td>
+        <td>10</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2026.02.22</td>
         <td>取消關注</td>
         <td>Unfollow</td>
         <td>언팔로우</td>
+        <td>0</td>
+        <td>10</td>
+        <td>3</td>
       </tr>
       <tr>
         <td>2026.05.31</td>
         <td>後門</td>
         <td>Backdoor</td>
         <td>백도어</td>
+        <td>0</td>
+        <td>10</td>
+        <td>4</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -789,6 +959,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>韓文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -798,18 +971,27 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>我的大壩業務</td>
         <td>My Damn Business</td>
         <td>마이 댐 비즈니스</td>
+        <td>0</td>
+        <td>10</td>
+        <td>7</td>
       </tr>
       <tr>
         <td>2025.08.09</td>
         <td>無名季節</td>
         <td>The Nameless Season</td>
         <td>이름 모를 계절</td>
+        <td>0</td>
+        <td>10</td>
+        <td>6</td>
       </tr>
       <tr>
         <td>2026.01.17</td>
         <td>戀愛協議</td>
         <td>Love In Protocol</td>
         <td>러브 인 프로토콜</td>
+        <td>0</td>
+        <td>10</td>
+        <td>4</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -833,6 +1015,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>韓文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -842,48 +1027,72 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>我心臟的染色劑</td>
         <td>Heart Stain</td>
         <td>하트 스테인</td>
+        <td>0</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2025.06.05</td>
         <td>球童戰術</td>
         <td>Ball Boy Tactics</td>
         <td>볼보이 택틱스</td>
+        <td>1</td>
+        <td>30</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2025.11.28</td>
         <td>雷雲暴雨</td>
         <td>Thunder Cloud Rain Storm</td>
         <td>천둥구름 비바람</td>
+        <td>1</td>
+        <td>30</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2026.06.25</td>
         <td>檢察官的提案</td>
         <td>The Prosecutor's Proposal</td>
         <td>검사실의 제안</td>
+        <td>1</td>
+        <td>25</td>
+        <td>10</td>
       </tr>
       <tr>
         <td>2026.08.28</td>
         <td>夏季</td>
         <td>Summertime</td>
         <td>하절기</td>
+        <td>1</td>
+        <td>25</td>
+        <td>10</td>
       </tr>
       <tr>
-        <td>未知</td>
-        <td>未知</td>
-        <td>未知</td>
+        <td>2026.10.23</td>
+        <td>方糖之聲</td>
+        <td>The Sound of Sugar Cubes</td>
         <td>각설탕 소리</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
       <tr>
         <td>未知</td>
         <td>未知</td>
         <td>未知</td>
         <td>동절기</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
       <tr>
         <td>未知</td>
         <td>未知</td>
         <td>未知</td>
         <td>박한후의 매니저</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -907,6 +1116,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>韓文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -916,30 +1128,36 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>鄰家男人</td>
         <td>The Guy Next Door</td>
         <td>옆방남자</td>
+        <td>1</td>
+        <td>10</td>
+        <td>6</td>
       </tr>
       <tr>
         <td>2025.11.15</td>
         <td>漲潮時接吻</td>
         <td>Tide of Love</td>
         <td>타이드오브러브</td>
+        <td>0.5</td>
+        <td>10</td>
+        <td>10</td>
       </tr>
       <tr>
         <td>2026.02.04</td>
         <td>漲潮時接吻 II</td>
         <td>Tide of Love II</td>
         <td>타이드오브러브 II</td>
+        <td>1</td>
+        <td>30</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2026.07.08</td>
         <td>罪與愛</td>
         <td>Sin and Love</td>
         <td>죄와 사랑</td>
-      </tr>
-      <tr>
-        <td>2026.10.01</td>
-        <td>未知</td>
-        <td>RULE101</td>
-        <td>룰101</td>
+        <td>1</td>
+        <td>25</td>
+        <td>10</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -963,6 +1181,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>韓文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -972,12 +1193,18 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>粉絲服務</td>
         <td>Fan Service</td>
         <td>팬서비스</td>
+        <td>0</td>
+        <td>10</td>
+        <td>6</td>
       </tr>
       <tr>
         <td>2026.06.12</td>
         <td>死神遇到愛</td>
         <td>Fix the Error!</td>
         <td>오류를 고쳐줘!</td>
+        <td>1</td>
+        <td>10</td>
+        <td>6</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -986,43 +1213,7 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
     </div>
   </div>
 
-  <!-- 13. Blue by Blue -->
-  <div class="studio">
-    <div class="studio-header">
-      <div class="studio-title"><span class="arrow">▶</span> <span class="studio-name">Blue by Blue</span> <span class="studio-count"></span></div>
-      <a class="studio-link link-box" target="_blank" rel="noopener">官方連結 🔗</a>
-    </div>
-    <div class="studio-body">
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-			<th>BL上映日期</th>
-			<th>中文劇名</th>
-			<th>英文劇名</th>
-			<th>韓文劇名</th>
-			</tr>
-          </thead>
-          <tbody>
-		  <!-- 請往這裡放資料 -->
-      <tr>
-        <td>2026.06.05</td>
-        <td>我們生活在謊言之中</td>
-        <td>The Lie We Lived In</td>
-        <td>거짓말이 사는 집</td>
-      </tr>
-      <tr>
-        <td>2026.09.15</td>
-        <td>從犯規開始吧？</td>
-        <td>Love Penalty</td>
-        <td>반칙부터 시작할까요</td>
-      </tr>
-          <!-- 放到這裡 -->
-		  </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+
 <!-- 新公司請放在這裡↓ -->
 
 
@@ -1043,6 +1234,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>韓文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -1052,24 +1246,36 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>非意圖的戀愛談</td>
         <td>Unintentional Love Story</td>
         <td>비의도적 연애담</td>
+        <td>0</td>
+        <td>35</td>
+        <td>10</td>
       </tr>
       <tr>
         <td>2023-03-29</td>
         <td>第八感</td>
         <td>The Eighth Sense</td>
         <td>여덟 번째 감각</td>
+        <td>1</td>
+        <td>35</td>
+        <td>10</td>
       </tr>
       <tr>
         <td>2025-03-28</td>
         <td>2班李喜舒</td>
         <td>Heesu In Class 2</td>
         <td>2반 이희수</td>
+        <td>0</td>
+        <td>45</td>
+        <td>10</td>
       </tr>
       <tr>
         <td>2026-06-05</td>
         <td>我們生活在謊言之中</td>
         <td>The Lie We Lived In</td>
         <td>거짓말이 사는 집</td>
+        <td>1</td>
+        <td>20</td>
+        <td>8</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>

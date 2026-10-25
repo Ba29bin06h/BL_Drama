@@ -204,8 +204,8 @@ body.dark .studio-link:hover { background: #4b6fd8; color: #fff; }
 
 .studio-body { display: none; padding: 12px; background: var(--card); }
 .studio .table-wrapper { overflow: auto; margin-top: 10px; max-height: 600px; }
-.studio table { width: 100%; border-collapse: collapse; min-width: 900px; }
-.studio th, .studio td { padding: 8px; border-bottom: 1px solid #000; text-align: left; }
+.studio table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.studio th, .studio td { padding: 8px; border-bottom: 1px solid #000; text-align: left; word-wrap: break-word; overflow-wrap: break-word; }
 
 .studio thead th {
   background: var(--table-head);
@@ -218,9 +218,13 @@ body.dark .studio-link:hover { background: #4b6fd8; color: #fff; }
   text-align: center;
 }
 
-.studio th:first-child, .studio td:first-child { width: 100px; }
-.studio th:nth-child(n+2):nth-child(-n+4), 
-.studio td:nth-child(n+2):nth-child(-n+4) { width: 200px; }
+.studio th:first-child, .studio td:first-child { width: 11%; }
+.studio th:nth-child(2), .studio td:nth-child(2),
+.studio th:nth-child(3), .studio td:nth-child(3) { width: 20%; }
+.studio th:nth-child(4), .studio td:nth-child(4) { width: 17%; }
+.studio th:nth-child(5), .studio td:nth-child(5),
+.studio th:nth-child(6), .studio td:nth-child(6) { width: 9%; text-align: center; }
+.studio th:nth-child(7), .studio td:nth-child(7) { width: 8%; text-align: center; }
 
 .studio td.center { text-align: center; }
 .studio table a { color: var(--main); text-decoration: underline; transition: 0.2s; }
@@ -311,6 +315,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>日文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -320,42 +327,63 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>大叔的愛</td>
         <td>Ossan's Love</td>
         <td>おっさんずラブ</td>
+        <td>0</td>
+        <td>40</td>
+        <td>7</td>
       </tr>
       <tr>
         <td>2019.11.02</td>
         <td>大叔的愛－in the sky</td>
         <td>Ossan's Love－in the Sky</td>
         <td>おっさんずラブ－in the sky</td>
+        <td>0</td>
+        <td>40</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2024.01.05</td>
         <td>大叔的愛－Returns</td>
         <td>Ossan's Love－Returns</td>
         <td>おっさんずラブ－リターンズ</td>
+        <td>0</td>
+        <td>50</td>
+        <td>9</td>
       </tr>
       <tr>
         <td>2021.10.09</td>
         <td>被擦掉的初戀</td>
         <td>My Love Mix-Up!</td>
         <td>消えた初恋</td>
+        <td>0</td>
+        <td>25</td>
+        <td>10</td>
       </tr>
       <tr>
         <td>2023.12.24</td>
         <td>我成為BL劇的主角了</td>
         <td>I Became the Main Role of A BL Drama</td>
         <td>BLドラマの主演になりました</td>
+        <td>0.5</td>
+        <td>50</td>
+        <td>3</td>
       </tr>
       <tr>
         <td>2025.06.13</td>
         <td>我成為BL劇的主角了 II</td>
         <td>I Became the Main Role of A BL Drama II</td>
         <td>BLドラマの主演になりました II</td>
+        <td>1</td>
+        <td>20</td>
+        <td>6</td>
       </tr>
       <tr>
         <td>2026.07.11</td>
         <td>夏日心動風暴</td>
         <td>Your Summer, My Storm</td>
         <td>夏色の雲が恋と嵐をまきおこす</td>
+        <td>0</td>
+        <td>25</td>
+        <td>10</td>
       </tr>
 		  <!-- 放到這裡 -->
           </tbody>
@@ -379,6 +407,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>日文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -388,54 +419,81 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>情色小說家</td>
         <td>The Novelist Pornographer</td>
         <td>ポルノグラファー</td>
+        <td>1</td>
+        <td>25</td>
+        <td>6</td>
       </tr>
       <tr>
         <td>2019.07.24</td>
         <td>情色小說家〜靛藍色的心情〜</td>
         <td>Mood Indigo</td>
         <td>ポルノグラファー〜インディゴの気分〜</td>
+        <td>1</td>
+        <td>25</td>
+        <td>6</td>
       </tr>
       <tr>
         <td>2021.07.16</td>
         <td>GIVEN 被贈與的未來</td>
         <td>Given</td>
         <td>ギヴン</td>
+        <td>0</td>
+        <td>25</td>
+        <td>6</td>
       </tr>
       <tr>
         <td>2022.06.13</td>
         <td>經典杯子蛋糕</td>
         <td>Old Fashion Cupcake</td>
         <td>オールドファッションカップケーキ</td>
+        <td>0</td>
+        <td>25</td>
+        <td>5</td>
       </tr>
       <tr>
         <td>2024.02.02</td>
         <td>完美求婚</td>
         <td>Perfect Propose</td>
         <td>パーフェクトプロポーズ</td>
+        <td>0.5</td>
+        <td>25</td>
+        <td>6</td>
       </tr>
       <tr>
         <td>2025.06.20</td>
         <td>失焦的深度</td>
         <td>Depth Of Field</td>
         <td>被写界深度</td>
+        <td>0.5</td>
+        <td>25</td>
+        <td>6</td>
       </tr>
       <tr>
         <td>2025.09.26</td>
         <td>殺死你的旅程</td>
         <td>The Journey To Killing You</td>
         <td>あなたを殺す旅</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
       <tr>
-        <td>未知</td>
+        <td>2026.10.08</td>
         <td>殺死你的旅程 II</td>
         <td>The Journey To Killing You II</td>
         <td>あなたを殺す旅 II</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
       <tr>
         <td>2026.03.13</td>
         <td>對比的我和你</td>
         <td>Contrast</td>
         <td>コントラスト</td>
+        <td>0</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -459,6 +517,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>日文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -468,66 +529,99 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>昨日的美食</td>
         <td>What Did You Eat Yesterday?</td>
         <td>きのう何食べた？</td>
+        <td>0</td>
+        <td>30</td>
+        <td>12</td>
       </tr>
       <tr>
         <td>2023.10.07</td>
         <td>昨日的美食 II</td>
         <td>What Did You Eat Yesterday? II</td>
         <td>きのう何食べた？II </td>
+        <td>0</td>
+        <td>30</td>
+        <td>12</td>
       </tr>
       <tr>
         <td>2020.10.09</td>
         <td>如果30歲還是處男，似乎就能成為魔法師</td>
         <td>Cherry Magic! Thirty Years of Virginity Can Make You a Wizard?!</td>
         <td>30歳まで童貞だと魔法使いになれるらしい</td>
+        <td>0</td>
+        <td>25</td>
+        <td>14</td>
       </tr>
       <tr>
         <td>2022.06.29</td>
         <td>歡迎光臨自助洗衣店</td>
         <td>Minato's Laundromat</td>
         <td>みなと商事コインランドリー</td>
+        <td>0</td>
+        <td>25</td>
+        <td>12</td>
       </tr>
       <tr>
         <td>2023.07.05</td>
         <td>歡迎光臨自助洗衣店 II</td>
         <td>Minato's Laundromat II</td>
         <td>みなと商事コインランドリー II</td>
+        <td>0.5</td>
+        <td>25</td>
+        <td>12</td>
       </tr>
       <tr>
         <td>2024.04.19</td>
         <td>25時，赤坂見</td>
         <td>At 25:00, In Akasaka</td>
         <td>25時、赤坂で</td>
+        <td>1</td>
+        <td>25</td>
+        <td>10</td>
       </tr>
       <tr>
         <td>2025.10.02</td>
         <td>25時，赤坂見 II</td>
         <td>At 25:00, In Akasaka II</td>
         <td>25時、赤坂で II</td>
+        <td>1</td>
+        <td>25</td>
+        <td>11</td>
       </tr>
       <tr>
         <td>2024.06.26</td>
         <td>聽見向陽之聲</td>
         <td>I Hear the Sunspot</td>
         <td>ひだまりが聴こえる</td>
+        <td>0</td>
+        <td>25</td>
+        <td>12</td>
       </tr>
       <tr>
         <td>2025.07.03</td>
         <td>雨過天晴的我們</td>
         <td>Stay By My Side After the Rain</td>
         <td>雨上がりの僕らについて</td>
+        <td>1</td>
+        <td>25</td>
+        <td>12</td>
       </tr>
       <tr>
         <td>2025.07.05</td>
         <td>40歲以前想達成的10件事</td>
         <td>10 Things I Want To Do Before I Turn 40</td>
         <td>40までにしたい10のこと</td>
+        <td>0</td>
+        <td>25</td>
+        <td>12</td>
       </tr>
       <tr>
         <td>2026.06.24</td>
         <td>你在夏日之中</td>
         <td>My Summer Of You</td>
         <td>君は夏のなか</td>
+        <td>0</td>
+        <td>25</td>
+        <td>12</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -551,6 +645,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>日文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -560,54 +657,81 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>絕對會變成BL的世界VS絕不想變成BL的男人</td>
         <td>A Man Who Defies the World of BL</td>
         <td>絶対BLになる世界vs絶対BLになりたくない男</td>
+        <td>0</td>
+        <td>25</td>
+        <td>4</td>
       </tr>
       <tr>
         <td>2022.03.20</td>
         <td>絕對會變成BL的世界VS絕不想變成BL的男人 II</td>
         <td>A Man Who Defies the World of BL II</td>
         <td>絶対BLになる世界vs絶対BLになりたくない男 II</td>
+        <td>0</td>
+        <td>25</td>
+        <td>3</td>
       </tr>
       <tr>
         <td>2025.09.29</td>
         <td>絕對會變成BL的世界VS絕不想變成BL的男人 III</td>
         <td>A Man Who Defies the World of BL III</td>
         <td>絶対BLになる世界vs絶対BLになりたくない男 III</td>
+        <td>0</td>
+        <td>25</td>
+        <td>6</td>
       </tr>
       <tr>
         <td>2025.11.10</td>
         <td>絕對會變成BL的世界VS絕不想變成BL的男人 IV</td>
         <td>A Man Who Defies the World of BL IV</td>
         <td>絶対BLになる世界vs絶対BLになりたくない男 IV</td>
+        <td>0</td>
+        <td>25</td>
+        <td>6</td>
       </tr>
       <tr>
         <td>2023.01.30</td>
         <td>我們的微小終末</td>
         <td>The End of the World with You</td>
         <td>僕らのミクロな終末</td>
+        <td>1</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2024.08.03</td>
         <td>甜蜜餵食生活</td>
         <td>Sugar Dog Life</td>
         <td>シュガードッグライフ</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
       <tr>
         <td>2025.10.18</td>
         <td>我在學校旅行中被分到了一個糟糕的小組</td>
         <td>School Trip: Joined A Group I'm Not Close To</td>
         <td>修学旅行で仲良くないグループに入りました</td>
+        <td>0</td>
+        <td>25</td>
+        <td>11</td>
       </tr>
       <tr>
-        <td>未知</td>
+        <td>2026.10.18</td>
         <td>我在學校旅行中被分到了一個糟糕的小組 II</td>
         <td>School Trip: Joined A Group I'm Not Close To II</td>
         <td>修学旅行で仲良くないグループに入りました II</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
       <tr>
         <td>2026.07.27</td>
         <td>親吻要在搜查後</td>
         <td>Duty First, Kiss Later</td>
         <td>キスは捜査のあとで</td>
+        <td>0</td>
+        <td>25</td>
+        <td>10</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -631,6 +755,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>日文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -640,120 +767,180 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>美麗的他</td>
         <td>My Beautiful Man</td>
         <td>美しい彼</td>
+        <td>1</td>
+        <td>25</td>
+        <td>6</td>
       </tr>
       <tr>
         <td>2023.02.08</td>
         <td>美麗的他 II</td>
         <td>My Beautiful Man II</td>
         <td>美しい彼 II</td>
+        <td>0.5</td>
+        <td>25</td>
+        <td>4</td>
       </tr>
       <tr>
         <td>2022.04.22</td>
         <td>只能親吻不幸同學了！ </td>
         <td>Mr. Unlucky Has No Choice But to Kiss!</td>
         <td>不幸くんはキスするしかない！</td>
+        <td>0</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2022.06.17</td>
         <td>前輩，這不叫戀愛！</td>
         <td>Senpai, This Can't Be Love!</td>
         <td>先輩、断じて恋では！</td>
+        <td>0</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2022.08.19</td>
         <td>高良君和天城君</td>
         <td>Takara-kun &amp; Amagi-kun</td>
         <td>高良くんと天城くん</td>
+        <td>0.5</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2022.10.21</td>
         <td>永遠的昨日</td>
         <td>Eternal Yesterday</td>
         <td>永遠の昨日</td>
+        <td>1</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2022.12.16</td>
         <td>糖果色的戀愛反論</td>
         <td>Candy Color Paradox</td>
         <td>飴色パラドックス</td>
+        <td>1</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2023.02.17</td>
         <td>愛在記憶凍結時</td>
         <td>Jack O' Frost</td>
         <td>ジャックフロスト</td>
+        <td>1</td>
+        <td>25</td>
+        <td>6</td>
       </tr>
       <tr>
         <td>2023.06.16</td>
         <td>4月的東京</td>
         <td>Tokyo in April Is</td>
         <td>4月の東京は</td>
+        <td>1</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2023.08.11</td>
         <td>體感預報</td>
         <td>My Personal Weatherman</td>
         <td>体感予報</td>
+        <td>1</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2023.10.06</td>
         <td>如果是你，或許可以相戀</td>
         <td>If It's with You</td>
         <td>君となら恋をしてみても</td>
+        <td>0</td>
+        <td>25</td>
+        <td>5</td>
       </tr>
       <tr>
         <td>2023.10.20</td>
         <td>單人房的天使</td>
         <td>One Room Angel</td>
         <td>ワンルームエンジェル</td>
+        <td>0</td>
+        <td>25</td>
+        <td>6</td>
       </tr>
       <tr>
         <td>2023.12.01</td>
         <td>佐原老師與土岐同學</td>
         <td>Mr Sahara &amp; Toki-Kun</td>
         <td>佐原先生と土岐くん</td>
+        <td>0</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2024.03.06</td>
         <td>第二次戀愛才完美</td>
         <td>Love is Better the Second Time Around</td>
         <td>恋をするなら二度目が上等</td>
+        <td>1</td>
+        <td>25</td>
+        <td>6</td>
       </tr>
       <tr>
         <td>2026.09.02</td>
         <td>第二次戀愛才完美 II</td>
         <td>Love is Better the Second Time Around II</td>
         <td>恋をするなら二度目が上等 II</td>
+        <td>1</td>
+        <td>25</td>
+        <td>7</td>
       </tr>
       <tr>
         <td>2024.07.26</td>
         <td>三矢老師有計劃的餵食</td>
         <td>Mr. Mitsuya's Planned Feeding</td>
         <td>三ツ矢先生の計画的な餌付け</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
       <tr>
         <td>2025.01.10</td>
         <td>相遇驟雨中</td>
         <td>When It Rains，It Pours</td>
         <td>ふったらどしゃぶり</td>
+        <td>1</td>
+        <td>25</td>
+        <td>7</td>
       </tr>
       <tr>
         <td>未知</td>
         <td>相遇驟雨中 II</td>
         <td>When It Rains，It Pours II</td>
         <td>ふったらどしゃぶり II</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
       <tr>
         <td>2025.11.20</td>
         <td>if的世界開始戀愛</td>
         <td>Love Begins in World of If</td>
         <td>ifの世界で恋がはじまる</td>
+        <td>1</td>
+        <td>25</td>
+        <td>6</td>
       </tr>
       <tr>
         <td>2026.08.14</td>
         <td>等一下啦、春虎同學</td>
         <td>Hold on, Harutora-kun</td>
         <td>ちょっと待とうよ、春虎くん</td>
+        <td>1</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -777,6 +964,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>日文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -786,12 +976,18 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>喜歡喜愛汪汪</td>
         <td>Suki Suki Wan Wan!</td>
         <td>すきすきワンワン</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
       <tr>
         <td>2025.10.29</td>
         <td>療傷遊戲</td>
         <td>Therapy Game</td>
         <td>セラピーゲーム</td>
+        <td>1</td>
+        <td>25</td>
+        <td>9</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -815,6 +1011,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>日文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -824,12 +1023,18 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>無法傳達給你</td>
         <td>I Cannot Reach You</td>
         <td>君には屆かない</td>
+        <td>0</td>
+        <td>20</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2024.09.10</td>
         <td>毒戀～毒過了頭就會變成戀愛</td>
         <td>Love Is Like a Poison</td>
         <td>毒戀～毒もすぎれば戀となる～</td>
+        <td>0.5</td>
+        <td>20</td>
+        <td>12</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -853,6 +1058,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>日文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -862,30 +1070,45 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>我很喜歡你，那你呢</td>
         <td>Although I Love You, And You?</td>
         <td>好きやねんけどどうやろか</td>
+        <td>1</td>
+        <td>25</td>
+        <td>10</td>
       </tr>
       <tr>
         <td>2024.11.05</td>
         <td>未成年</td>
         <td>Our Youth</td>
         <td>未成年～未熟な俺たちは不器用に進行中～</td>
+        <td>1</td>
+        <td>25</td>
+        <td>11</td>
       </tr>
       <tr>
         <td>2026.01.13</td>
         <td>在對死黨的同居要求說「好」之前</td>
         <td>Countdown To Yes</td>
         <td>親友の「同棲して」に「うん」て言うまで</td>
+        <td>0</td>
+        <td>25</td>
+        <td>11</td>
       </tr>
       <tr>
         <td>2026.04.07</td>
         <td>霧藍色的雨後晴天</td>
         <td>Life In Smokey Blue</td>
         <td>スモークブルーの雨のち晴れ</td>
+        <td>1</td>
+        <td>25</td>
+        <td>10</td>
       </tr>
       <tr>
         <td>2026.08.11</td>
         <td>陽光人氣團中的芹澤，在我面前卻有點不對勁</td>
         <td>Popular Serizawa Acts Weird Around Me</td>
         <td>陽キャ集団にいる芹沢は、俺の前だと様子がおかしい</td>
+        <td>0</td>
+        <td>25</td>
+        <td>11</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -909,6 +1132,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>日文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -918,36 +1144,54 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>有他在的生活</td>
         <td>Living with Him</td>
         <td>彼のいる生活</td>
+        <td>0</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2024.08.05</td>
         <td>美妝搭檔情人</td>
         <td>Cosmetic Playlover</td>
         <td>コスメティック・プレイラバー</td>
+        <td>1</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2026.01.16</td>
         <td>美妝搭檔情人 II</td>
         <td>Cosmetic Playlover II</td>
         <td>コスメティック・プレイラバー II</td>
+        <td>0</td>
+        <td>25</td>
+        <td>10</td>
       </tr>
       <tr>
         <td>2024.09.03</td>
         <td>美好結局</td>
         <td>Happy of the End</td>
         <td>ハッピー・オブ・ジ・エンド</td>
+        <td>1</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>2025.10.10</td>
         <td>龐克三角</td>
         <td>PUNKS△TRIANGLE</td>
         <td>パンクストライアングル</td>
+        <td>0</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
       <tr>
-        <td>未知</td>
-        <td>未知</td>
-        <td>未知</td>
+        <td>2026.10.20</td>
+        <td>由你主動吻我吧</td>
+        <td>You Should Be The One To Come Kiss Me</td>
         <td>お前のほうからキスしてくれよ</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -971,6 +1215,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>日文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -980,36 +1227,54 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>戀愛的正確標記法</td>
         <td>The Proper Way To Write Love</td>
         <td>恋愛ルビの正しいふりかた</td>
+        <td>1</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>未知</td>
         <td>戀愛的正確標記法 II</td>
         <td>The Proper Way To Write Love II</td>
         <td>恋愛ルビの正しいふりかた II</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
       <tr>
         <td>2026.04.06</td>
         <td>格外性感的深見</td>
         <td>Unexpectedly Naughty Fukami</td>
         <td>やたらやらしい深見くん</td>
+        <td>1</td>
+        <td>15</td>
+        <td>10</td>
       </tr>
       <tr>
         <td>2026.07.03</td>
         <td>僕人王子</td>
         <td>The Servant Prince</td>
         <td>しもべの王子様</td>
+        <td>1</td>
+        <td>25</td>
+        <td>9</td>
       </tr>
       <tr>
         <td>2026.07.07</td>
         <td>不喜歡色色的我嗎？</td>
         <td>Are the Sexy Buttocks Not Good?</td>
         <td>えっちなお尻じゃダメですか？</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
       <tr>
         <td>2026.08.02</td>
         <td>Your sky 那片晴空之下</td>
         <td>Your Sky Hare nochi Koi</td>
         <td>Your Sky ハレのち恋</td>
+        <td>1</td>
+        <td>25</td>
+        <td>9</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -1017,9 +1282,8 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
       </div>
     </div>
   </div>
-  
-  
-  <!-- 11. BS富士 -->
+
+ <!-- 11. BS富士 -->
   <div class="studio">
     <div class="studio-header">
       <div class="studio-title"><span class="arrow">▶</span> <span class="studio-name">BS富士</span> <span class="studio-count"></span></div>
@@ -1034,6 +1298,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>日文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -1043,12 +1310,18 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>換座位後，坐在我後面的男生好像喜歡我</td>
         <td>After Moving Seats, The Boy Behind Me Has A Crush On Me</td>
         <td>席替えしたら、どうやら後ろの男が俺のこと好きらしい</td>
+        <td>0</td>
+        <td>25</td>
+        <td>8</td>
       </tr>
       <tr>
         <td>未知</td>
         <td>未知</td>
         <td>未知</td>
         <td>営業ですから</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -1056,6 +1329,8 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
       </div>
     </div>
   </div>
+
+<!-- 新公司請放在這裡↓ -->
 
 <!-- 新公司請放在這裡↓ -->
 
@@ -1077,6 +1352,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>日文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
@@ -1086,37 +1364,63 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>三矢老師有計劃的餵食</td>
         <td>Mr. Mitsuya's Planned Feeding</td>
         <td>三ツ矢先生の計画的な餌付け</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
       <tr>
         <td>2024-08-03</td>
         <td>甜蜜餵食生活</td>
         <td>Sugar Dog Life</td>
         <td>シュガードッグライフ</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
       <tr>
         <td>2025-09-21</td>
         <td>託生君_影集系列</td>
         <td>Takumi-Kun</td>
         <td>タクミくんシリーズ</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
       <tr>
         <td>2025-09-26</td>
         <td>殺死你的旅程</td>
         <td>The Journey To Killing You</td>
         <td>あなたを殺す旅</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>2026-10-08</td>
+        <td>殺死你的旅程 II</td>
+        <td>The Journey To Killing You II</td>
+        <td>あなたを殺す旅 II</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
       <tr>
         <td>2026-07-02</td>
         <td>普通的戀愛</td>
         <td>Ordinary Love</td>
         <td>普通の恋愛</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
       <tr>
         <td>2026-07-07</td>
         <td>不喜歡色色的我嗎？</td>
         <td>Are the Sexy Buttocks Not Good?</td>
         <td>えっちなお尻じゃダメですか？</td>
-      </tr>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
           <!-- 放到這裡 -->
 		  </tbody>
         </table>

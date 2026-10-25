@@ -204,8 +204,8 @@ body.dark .studio-link:hover { background: #4b6fd8; color: #fff; }
 
 .studio-body { display: none; padding: 12px; background: var(--card); }
 .studio .table-wrapper { overflow: auto; margin-top: 10px; max-height: 600px; }
-.studio table { width: 100%; border-collapse: collapse; min-width: 900px; }
-.studio th, .studio td { padding: 8px; border-bottom: 1px solid #000; text-align: left; }
+.studio table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.studio th, .studio td { padding: 8px; border-bottom: 1px solid #000; text-align: left; word-wrap: break-word; overflow-wrap: break-word; }
 
 .studio thead th {
   background: var(--table-head);
@@ -218,9 +218,13 @@ body.dark .studio-link:hover { background: #4b6fd8; color: #fff; }
   text-align: center;
 }
 
-.studio th:first-child, .studio td:first-child { width: 100px; }
-.studio th:nth-child(n+2):nth-child(-n+4), 
-.studio td:nth-child(n+2):nth-child(-n+4) { width: 200px; }
+.studio th:first-child, .studio td:first-child { width: 11%; }
+.studio th:nth-child(2), .studio td:nth-child(2),
+.studio th:nth-child(3), .studio td:nth-child(3) { width: 20%; }
+.studio th:nth-child(4), .studio td:nth-child(4) { width: 17%; }
+.studio th:nth-child(5), .studio td:nth-child(5),
+.studio th:nth-child(6), .studio td:nth-child(6) { width: 9%; text-align: center; }
+.studio th:nth-child(7), .studio td:nth-child(7) { width: 8%; text-align: center; }
 
 .studio td.center { text-align: center; }
 .studio table a { color: var(--main); text-decoration: underline; transition: 0.2s; }
@@ -311,76 +315,112 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>越文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
 	  <!-- 請往這裡放資料 -->
-        <tr>
-          <td>20-07-2018</td>
-          <td>熱血少年團</td>
-          <td>Active Boys</td>
-          <td>Những Chàng Trai Năng Động</td>
-        </tr>
-        <tr>
-          <td>30-12-2020</td>
-          <td>國民歐巴</td>
-          <td>Nation Brother</td>
-          <td>Anh Trai Quốc Dân</td>
-        </tr>
-        <tr>
-          <td>23-03-2021</td>
-          <td>我心安在</td>
-          <td>The Most Peaceful Place Is My Place</td>
-          <td>Nơi Bình Yên Nhất Là Về Bên Em</td>
-        </tr>
-        <tr>
-          <td>28-11-2021</td>
-          <td>愛上灰姑男</td>
-          <td>Mr.Cinderella</td>
-          <td>Chàng Lọ Lem</td>
-        </tr>
-        <tr>
-          <td>05-06-2022</td>
-          <td>我想見到你</td>
-          <td>Want to See You</td>
-          <td>Muốn Nhìn Thấy Em</td>
-        </tr>
-        <tr>
-          <td>29-10-2022</td>
-          <td>愛情帳單</td>
-          <td>Love Bill</td>
-          <td>Lời Hứa Mùa Hạ</td>
-        </tr>
-        <tr>
-          <td>06-05-2023</td>
-          <td>喵不可言</td>
-          <td>ViAn the Series</td>
-          <td>ViAn the Series</td>
-        </tr>
-        <tr>
-          <td>23-09-2023</td>
-          <td>愛上灰姑男 II</td>
-          <td>Mr.Cinderella II</td>
-          <td>Chàng Lọ Lem II</td>
-        </tr>
-        <tr>
-          <td>23-03-2024</td>
-          <td>灑滿星光的季節</td>
-          <td>Be Your Star</td>
-          <td>Mùa Sao Đầu Tiên</td>
-        </tr>
-        <tr>
-          <td>28-09-2024</td>
-          <td>少年法官</td>
-          <td>Teenager Judge</td>
-          <td>Thẩm Phán Học Đường</td>
-        </tr>
-        <tr>
-          <td>06-09-2025</td>
-          <td>等待陽光升起</td>
-          <td>Awaiting Dawn</td>
-          <td>Chờ Ngày Nắng Lên</td>
-        </tr>
+      <tr>
+        <td>20-07-2018</td>
+        <td>熱血少年團</td>
+        <td>Active Boys</td>
+        <td>Những Chàng Trai Năng Động</td>
+        <td>0</td>
+        <td>15</td>
+        <td>12</td>
+      </tr>
+      <tr>
+        <td>30-12-2020</td>
+        <td>國民歐巴</td>
+        <td>Nation Brother</td>
+        <td>Anh Trai Quốc Dân</td>
+        <td>1</td>
+        <td>25</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>23-03-2021</td>
+        <td>我心安在</td>
+        <td>The Most Peaceful Place Is My Place</td>
+        <td>Nơi Bình Yên Nhất Là Về Bên Em</td>
+        <td>1</td>
+        <td>30</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>28-11-2021</td>
+        <td>愛上灰姑男</td>
+        <td>Mr.Cinderella</td>
+        <td>Chàng Lọ Lem </td>
+        <td>1</td>
+        <td>35</td>
+        <td>8</td>
+      </tr>
+      <tr>
+        <td>05-06-2022</td>
+        <td>我想見到你</td>
+        <td>Want to See You</td>
+        <td>Muốn Nhìn Thấy Em</td>
+        <td>1</td>
+        <td>20</td>
+        <td>14</td>
+      </tr>
+      <tr>
+        <td>29-10-2022</td>
+        <td>愛情帳單</td>
+        <td>Love Bill</td>
+        <td>Lời Hứa Mùa Hạ </td>
+        <td>1</td>
+        <td>40</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>06-05-2023</td>
+        <td>喵不可言</td>
+        <td>ViAn the Series</td>
+        <td>ViAn the Series</td>
+        <td>1</td>
+        <td>25</td>
+        <td>12</td>
+      </tr>
+      <tr>
+        <td>23-09-2023</td>
+        <td>愛上灰姑男 II</td>
+        <td>Mr.Cinderella II</td>
+        <td>Chàng Lọ Lem II</td>
+        <td>0</td>
+        <td>35</td>
+        <td>8</td>
+      </tr>
+      <tr>
+        <td>23-03-2024</td>
+        <td>灑滿星光的季節</td>
+        <td>Be Your Star</td>
+        <td>Mùa Sao Đầu Tiên</td>
+        <td>1</td>
+        <td>40</td>
+        <td>20</td>
+      </tr>
+      <tr>
+        <td>28-09-2024</td>
+        <td>少年法官</td>
+        <td>Teenager Judge</td>
+        <td>Thẩm Phán Học Đường</td>
+        <td>0</td>
+        <td>50</td>
+        <td>20</td>
+      </tr>
+      <tr>
+        <td>06-09-2025</td>
+        <td>等待陽光升起</td>
+        <td>Awaiting Dawn</td>
+        <td>Chờ Ngày Nắng Lên</td>
+        <td>1</td>
+        <td>40</td>
+        <td>14</td>
+      </tr>
 		  <!-- 放到這裡 -->
           </tbody>
         </table>
@@ -403,40 +443,58 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>中文劇名</th>
 			<th>英文劇名</th>
 			<th>越文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th>
 			</tr>
           </thead>
           <tbody>
 		  <!-- 請往這裡放資料 -->
-        <tr>
-          <td>20-05-2021</td>
-          <td>傻男有傻愛</td>
-          <td>Stupid Boys Stupid Love</td>
-          <td>Yêu Đi Sợ Gì</td>
-        </tr>
-        <tr>
-          <td>15-01-2022</td>
-          <td>假裝相愛</td>
-          <td>You Are My Stupid Boy</td>
-          <td>Tựa Ánh Dương Ngời</td>
-        </tr>
-        <tr>
-          <td>26-11-2022</td>
-          <td>閃閃發光的星星</td>
-          <td>The Star Always Follow You</td>
-          <td>Lấp Lánh Tựa Ánh Sao Trời</td>
-        </tr>
-        <tr>
-          <td>09-06-2023</td>
-          <td>墊底天才</td>
-          <td>Stupid Genius</td>
-          <td>Thiên Tài Hạng Bét</td>
-        </tr>
-        <tr>
-          <td>07-02-2025</td>
-          <td>為愛而戰</td>
-          <td>Fight for Love</td>
-          <td>Vì Yêu Mà Chiến</td>
-        </tr>
+      <tr>
+        <td>20-05-2021</td>
+        <td>傻男有傻愛</td>
+        <td>Stupid Boys Stupid Love</td>
+        <td>Yêu Đi Sợ Gì</td>
+        <td>0</td>
+        <td>20</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>15-01-2022</td>
+        <td>假裝相愛</td>
+        <td>You Are My Stupid Boy</td>
+        <td>Tựa Ánh Dương Ngời</td>
+        <td>0</td>
+        <td>15</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>26-11-2022</td>
+        <td>閃閃發光的星星</td>
+        <td>The Star Always Follow You</td>
+        <td>Lấp Lánh Tựa Ánh Sao Trời</td>
+        <td>0</td>
+        <td>20</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>09-06-2023</td>
+        <td>墊底天才</td>
+        <td>Stupid Genius</td>
+        <td>Thiên Tài Hạng Bét</td>
+        <td>0</td>
+        <td>20</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>07-02-2025</td>
+        <td>為愛而戰</td>
+        <td>Fight for Love</td>
+        <td>Vì Yêu Mà Chiến</td>
+        <td>0.5</td>
+        <td>25</td>
+        <td>7</td>
+      </tr>
           <!-- 放到這裡 -->
 		  </tbody>
         </table>
@@ -458,34 +516,49 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>BL上映日期</th>
 			<th>中文劇名</th>
 			<th>英文劇名</th>
-			<th>越文劇名</th></tr>
+			<th>越文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th></tr>
           </thead>
           <tbody>
 		  <!-- 請往這裡放資料 -->
-        <tr>
-          <td>23-12-2020</td>
-          <td>做我的陽光寶貝</td>
-          <td>Follow my Sunshine</td>
-          <td>Sau Vạt Nắng</td>
-        </tr>
-        <tr>
-          <td>22-04-2022</td>
-          <td>風平浪靜</td>
-          <td>The Promise</td>
-          <td>Biển Lặng</td>
-        </tr>
-        <tr>
-          <td>17-05-2024</td>
-          <td>夏日樹下</td>
-          <td>Under the Oak Tree</td>
-          <td>Dưới Tán Cây Mùa Hè</td>
-        </tr>
-        <tr>
-          <td>09-01-2025</td>
-          <td>渴望</td>
-          <td>The Lust</td>
-          <td>Khát</td>
-        </tr>
+      <tr>
+        <td>23-12-2020</td>
+        <td>做我的陽光寶貝</td>
+        <td>Follow my Sunshine</td>
+        <td>Sau Vạt Nắng </td>
+        <td>0</td>
+        <td>20</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td>22-04-2022</td>
+        <td>風平浪靜</td>
+        <td>The Promise</td>
+        <td>Biển Lặng</td>
+        <td>0.5</td>
+        <td>25</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>17-05-2024</td>
+        <td>夏日樹下</td>
+        <td>Under the Oak Tree</td>
+        <td>Dưới Tán Cây Mùa Hè</td>
+        <td>0</td>
+        <td>35</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>09-01-2025</td>
+        <td>渴望</td>
+        <td>The Lust</td>
+        <td>Khát</td>
+        <td>1</td>
+        <td>15</td>
+        <td>3</td>
+      </tr>
           <!-- 放到這裡 -->
 		  </tbody>
         </table>
@@ -507,7 +580,10 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>BL上映日期</th>
 			<th>中文劇名</th>
 			<th>英文劇名</th>
-			<th>越文劇名</th></tr>
+			<th>越文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th></tr>
           </thead>
           <tbody>
 		  <!-- 請往這裡放資料 -->
@@ -516,12 +592,18 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>依偎著你</td>
         <td>Stand by Me</td>
         <td>Đảo Nhỏ Nuôi Mèo</td>
+        <td>0</td>
+        <td>25</td>
+        <td>20</td>
       </tr>
       <tr>
         <td>03-10-2025</td>
         <td>我的小鬼男友</td>
         <td>My Little Ghost</td>
         <td>Chàng Kẹ</td>
+        <td>0.5</td>
+        <td>30</td>
+        <td>10</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -544,7 +626,10 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>BL上映日期</th>
 			<th>中文劇名</th>
 			<th>英文劇名</th>
-			<th>越文劇名</th></tr>
+			<th>越文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th></tr>
           </thead>
           <tbody>
 		  <!-- 請往這裡放資料 -->
@@ -553,12 +638,18 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>亞當的秘密-兄弟</td>
         <td>My Brother</td>
         <td>Bí Mật Của Adam 2</td>
+        <td>1</td>
+        <td>15</td>
+        <td>14</td>
       </tr>
       <tr>
         <td>02-05-2021</td>
         <td>老闆別過來</td>
         <td>My Lascivious Boss</td>
         <td>Ông Chủ, Đừng Đến Đây</td>
+        <td>1</td>
+        <td>15</td>
+        <td>10</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -581,7 +672,10 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>BL上映日期</th>
 			<th>中文劇名</th>
 			<th>英文劇名</th>
-			<th>越文劇名</th></tr>
+			<th>越文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th></tr>
           </thead>
           <tbody>
 		  <!-- 請往這裡放資料 -->
@@ -590,12 +684,18 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>戀愛舞曲</td>
         <td>Stage of Love</td>
         <td>Stage of Love</td>
+        <td>0</td>
+        <td>20</td>
+        <td>10</td>
       </tr>
       <tr>
         <td>16-01-2021</td>
         <td>傻瓜-我和我們</td>
         <td>FOOLs</td>
         <td>Những Kẻ Khờ</td>
+        <td>0</td>
+        <td>20</td>
+        <td>4</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -618,7 +718,10 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 			<th>BL上映日期</th>
 			<th>中文劇名</th>
 			<th>英文劇名</th>
-			<th>越文劇名</th></tr>
+			<th>越文劇名</th>
+			<th>親密戲</th>
+			<th>平均時長</th>
+			<th>集數</th></tr>
           </thead>
           <tbody>
 		  <!-- 請往這裡放資料 -->
@@ -627,12 +730,18 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <td>我親愛的姊夫</td>
         <td>My Sweet Brother in Law</td>
         <td>Vụng Trộm Với Anh Rể</td>
+        <td>1</td>
+        <td>10</td>
+        <td>5</td>
       </tr>
       <tr>
         <td>16-09-2025</td>
         <td>河內我愛你</td>
         <td>Hot Brother Next Door</td>
         <td>Hà Nội, Anh yêu &quot;Anh&quot;</td>
+        <td>1</td>
+        <td>10</td>
+        <td>10</td>
       </tr>
           <!-- 放到這裡 -->
 		  </tbody>

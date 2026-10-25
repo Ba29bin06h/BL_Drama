@@ -238,10 +238,9 @@ body.dark .dots span.active { background: var(--link-main-dark); }
 .tf-select { position: absolute; right: 0; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); }
 .tab-content { display: none; }
 .tab-content.active { display: block; }
-.row-bold { font-weight: bold; }
 
 /* 透過 CSS 變數直接控制深淺色，刪除冗贅的 body.dark 宣告 */
-.row-green, .row-green td, .slide-3 .cell-green { background-color: var(--row-green); }
+.row-green, .row-green td, .slide-2 .cell-green { background-color: var(--row-green); }
 
 /* ============================================================
    8. 獨立簡報區塊樣式 (特殊表格覆寫)
@@ -256,26 +255,20 @@ body.dark .dots span.active { background: var(--link-main-dark); }
   border-right: 1px solid var(--table-border);
 }    
    
-.slide-2 th:nth-child(3), 
-.slide-2 td:nth-child(3),
-.slide-2 td:nth-child(4) { width: 7.5%; text-align: center; }
-.slide-2 td:nth-child(5) { width: 30%; text-align: left; }
-.slide-2 th:nth-child(4) {text-align: center;}
+.slide-2 thead th { border: none; border-bottom: 2px solid #000000; }
+body.dark .slide-2 thead th { border-bottom: 2px solid #475569; }
 
-.slide-3 thead th { border: none; border-bottom: 2px solid #000000; }
-body.dark .slide-3 thead th { border-bottom: 2px solid #475569; }
+.slide-2 td:first-child { border-right: none !important; }
+.slide-2 td:nth-child(4) { border-left: 1px solid var(--table-border); }
+.slide-2 td.role-dash { border-right: 1px dashed var(--table-border); }
 
-.slide-3 td:first-child { border-right: none !important; }
-.slide-3 td:nth-child(4) { border-left: 1px solid var(--table-border); }
-.slide-3 td.role-dash { border-right: 1px dashed var(--table-border); }
-
-.slide-3 td:nth-child(2),
-.slide-3 td.actor-cell,
-.slide-3 td.role-end {
+.slide-2 td:nth-child(2),
+.slide-2 td.actor-cell,
+.slide-2 td.role-end {
   border-right: 1px solid var(--table-border) !important;
 }
 
-.slide-3 td:last-child {
+.slide-2 td:last-child {
   border-left: 1px solid var(--table-border);
   border-right: none !important;
 }
@@ -443,168 +436,6 @@ body.dark .slide-3 thead th { border-bottom: 2px solid #475569; }
 		
 <!-- Slide 2 -->
 <div class="slide slide-2">
-  <h2>有床戲的BL劇</h2>
-  <div class="table-wrapper">
-    <table>	
-      <thead>
-        <tr>
-          <th>BL上映日期</th>
-          <th>BL劇名</th>
-		  <th>燈很亮</th>
-          <th colspan='2'>偶像團體</th>
-        </tr>  
-      </thead>
-
-      <tbody>
-	  <!-- 【有床戲的BL劇】的資料請放這裡 -->
-      <tr>
-        <td>2021.02.26</td>
-        <td>時光可期</td>
-        <td>O</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>2022.02.03</td>
-        <td>想咬一口的嘴唇</td>
-        <td>O</td>
-        <td>O</td>
-        <td>INX_金地雄</td>
-      </tr>
-      <tr>
-        <td>2022.11.24</td>
-        <td>圍籬外的Happy Ending</td>
-        <td>&nbsp;</td>
-        <td>O</td>
-        <td>DGNA_Karam</td>
-      </tr>
-      <tr>
-        <td>2023.03.29</td>
-        <td>第八感</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>2023.08.11</td>
-        <td>現正上課中 II</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>2024.07.20</td>
-        <td>壞傢伙</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>2024.10.17</td>
-        <td>解開跆拳道的詛咒</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>2025.04.03</td>
-        <td>乙方戀愛指南</td>
-        <td>O</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>2025.06.05</td>
-        <td>球童戰術</td>
-        <td>O</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>2025.09.06</td>
-        <td>鄰家男人</td>
-        <td>O</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>2025.10.03</td>
-        <td>鼻荊傳：妖怪的主人</td>
-        <td>O</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>2025.11.28</td>
-        <td>雷雲暴雨</td>
-        <td>O</td>
-        <td>O</td>
-        <td>Wanna One_尹智聖</td>
-      </tr>
-      <tr>
-        <td>2026.02.04</td>
-        <td>漲潮時接吻 II</td>
-        <td>O</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>2026.03.17</td>
-        <td>勿忘仇敵</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>2026.05.28</td>
-        <td>現正上課中 III</td>
-        <td>O</td>
-        <td>O</td>
-        <td>Waker_새별<br>GHOST9_李優珍</td>
-      </tr>
-      <tr>
-        <td>2026.06.05</td>
-        <td>我們生活在謊言之中</td>
-        <td>O</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>2026.06.12</td>
-        <td>死神遇到愛</td>
-        <td>O</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>2026.06.25</td>
-        <td>檢察官的提案</td>
-        <td>O</td>
-        <td>O</td>
-        <td>BLANK2Y_朴時宇</td>
-      </tr>
-      <tr>
-        <td>2026.07.08</td>
-        <td>罪與愛</td>
-        <td>O</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>2026.08.28</td>
-        <td>夏季</td>
-        <td>O</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-	  <!--貼到這裡 -->
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- Slide 3 -->
-<div class="slide slide-3">
   <h2>3攻1受BL劇</h2>
 
   <div class="table-wrapper">
@@ -980,6 +811,11 @@ body.dark .slide-3 thead th { border-bottom: 2px solid #475569; }
         <td>現正上課中 III</td>
         <td>&nbsp;</td>
       </tr>
+      <tr>
+        <td>2026.10.23</td>
+        <td>方糖之聲</td>
+        <td>&nbsp;</td>
+      </tr>
       </tbody>
     </table>
     </div>
@@ -1147,12 +983,12 @@ body.dark .slide-3 thead th { border-bottom: 2px solid #475569; }
       <tr>
         <td>2025.06.05</td>
         <td>球童戰術</td>
-        <td>籃球+體操選手</td>
+        <td>籃球+體操</td>
       </tr>
       <tr>
         <td>2025.11.06</td>
         <td>桃花盛開</td>
-        <td>柔術(じゅうじゅつ)國手</td>
+        <td>柔術</td>
       </tr>
       </tbody>
     </table>
@@ -1297,22 +1133,6 @@ window.addEventListener("DOMContentLoaded", () => {
       if (firstCell && /^\d{4}[./-]\d{2}[./-]\d{2}/.test(firstCell.textContent.trim())) {
         dramaCount++;
       }
-      
-      if (slide.classList.contains("slide-2")) {
-        const lightCell = row.cells[2]; 
-        const idolCell = row.cells[3];  
-
-        if (idolCell && idolCell.textContent.trim() === "O") {
-          row.classList.add("row-bold");
-        }
-        if (lightCell && lightCell.textContent.trim() === "O") {
-          row.classList.add("row-green");
-        }
-      } else {
-        const text = row.textContent;
-        if (text.includes("偶像團體")) row.classList.add("row-bold");
-        if (text.includes("燈很亮")) row.classList.add("row-green");
-      }
     });
 
     if (slide.classList.contains("slide-1")) {
@@ -1337,7 +1157,7 @@ window.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    if (slide.matches(".slide-1, .slide-2")) {
+    if (slide.matches(".slide-1")) {
       const h2 = slide.querySelector("h2");
       if (h2) {
         h2.textContent = h2.textContent.includes("共")
@@ -1348,7 +1168,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  console.log(`Slide 1~2 計算完成：共 ${totalBLDramas} 部`);
+  console.log(`Slide 1 計算完成：共 ${totalBLDramas} 部`);
 
   const track = document.getElementById("track");
   const slides = document.querySelectorAll("#track .slide");

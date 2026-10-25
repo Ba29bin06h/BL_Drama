@@ -204,8 +204,8 @@ body.dark .studio-link:hover { background: #4b6fd8; color: #fff; }
 
 .studio-body { display: none; padding: 12px; background: var(--card); }
 .studio .table-wrapper { overflow: auto; margin-top: 10px; max-height: 600px; }
-.studio table { width: 100%; border-collapse: collapse; min-width: 900px; }
-.studio th, .studio td { padding: 8px; border-bottom: 1px solid #000; text-align: left; }
+.studio table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.studio th, .studio td { padding: 8px; border-bottom: 1px solid #000; text-align: left; word-wrap: break-word; overflow-wrap: break-word; }
 
 .studio thead th {
   background: var(--table-head);
@@ -218,9 +218,15 @@ body.dark .studio-link:hover { background: #4b6fd8; color: #fff; }
   text-align: center;
 }
 
-.studio th:first-child, .studio td:first-child { width: 100px; }
-.studio th:nth-child(n+2):nth-child(-n+4), 
-.studio td:nth-child(n+2):nth-child(-n+4) { width: 200px; }
+/* 欄寬皆以「從最後一欄往回數」設定，這樣不管該列是否有「季度」欄(rowspan)，
+   日期/中文劇名/英文劇名/親密戲/平均時長/集數 這6欄的寬度都能對齊 */
+.studio th.col-season, .studio td.col-season { width: 7%; text-align: center; }
+.studio th:nth-last-child(6), .studio td:nth-last-child(6) { width: 13%; }
+.studio th:nth-last-child(5), .studio td:nth-last-child(5) { width: 25%; }
+.studio th:nth-last-child(4), .studio td:nth-last-child(4) { width: 25%; }
+.studio th:nth-last-child(3), .studio td:nth-last-child(3) { width: 10%; text-align: center; }
+.studio th:nth-last-child(2), .studio td:nth-last-child(2) { width: 10%; text-align: center; }
+.studio th:nth-last-child(1), .studio td:nth-last-child(1) { width: 10%; text-align: center; }
 
 .studio td.center { text-align: center; }
 .studio table a { color: var(--main); text-decoration: underline; transition: 0.2s; }
@@ -307,75 +313,112 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <table>
           <thead>
         <tr>
-		  <th>季度</th>
+		  <th class="col-season">季度</th>
           <th>BL上映日期</th>
           <th>中文劇名</th>
           <th>英文劇名</th>
+		  <th>親密戲</th>
+		  <th>平均時長</th>
+		  <th>集數</th>
         </tr>
           </thead>
           <tbody>
 	  <!-- 請往這裡放資料 -->
-		<td rowspan='3' style='text-align:center;vertical-align:middle;border-right:1px solid black;'>S1</td>
-		<td>2017.02.14</td>
-		<td>My Hero</td>
-		<td>My Hero</td>
-		</tr>
-		<tr>
-		<td>2017.02.21</td>
-		<td>離我遠一點</td>
-		<td>Stay Away from Me</td>
-		</tr>
-		<tr>
-		<td>2017.02.28</td>
-		<td>著魔</td>
-		<td>Obsessed</td>
-		</tr>
-		<tr>
-		<td rowspan='2' style='text-align:center;vertical-align:middle;border-right:1px solid black;'>S2</td>
-		<td>2018.01.30</td>
-		<td>是非</td>
-		<td>Right or Wrong</td>
-		</tr>
-		<tr>
-		<td>2018.03.06</td>
-		<td>越界</td>
-		<td>Crossing the Line</td>
-		</tr>
-		<tr>
-		<td rowspan='2' style='text-align:center;vertical-align:middle;border-right:1px solid black;'>S3</td>
-		<td>2019.04.16</td>
-		<td>圈套</td>
-		<td>Trapped</td>
-		</tr>
-		<tr>
-		<td>2019.10.16</td>
-		<td>那一天</td>
-		<td>Make our Days Count</td>
-		</tr>
-		<tr>
-		<td style='text-align:center;vertical-align:middle;border-right:1px solid black;'>S4</td>
-		<td>2021.03.14</td>
-		<td>近距離愛上你</td>
-		<td>Close to You</td>
-		</tr>
-		<tr>
-		<td style='text-align:center;vertical-align:middle;border-right:1px solid black;'>S5</td>
-		<td>2022.12.28</td>
-		<td>遇見未來的你</td>
-		<td>Love in the Future</td>
-		</tr>
-		<tr>
-		<td style='text-align:center;vertical-align:middle;border-right:1px solid black;'>S6</td>
-		<td>2025.02.14</td>
-		<td>獨佔接班人</td>
-		<td>Exclusive Love</td>
-		</tr>
-		<tr>
-		<td style='text-align:center;vertical-align:middle;border-right:1px solid black;'>S7</td>
-		<td>2027.02.14??</td>
-		<td>這個殺手非常冷</td>
-		<td>??</td>
-		</tr>
+<tr>
+<td rowspan='3' style='text-align:center;vertical-align:middle;border-right:1px solid black;'>S1</td>
+<td>2017.02.14</td>
+<td>My Hero</td>
+<td>My Hero</td>
+<td>0</td>
+<td>20</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2017.02.21</td>
+<td>離我遠一點</td>
+<td>Stay Away from Me</td>
+<td>0.5</td>
+<td>20</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2017.02.28</td>
+<td>著魔</td>
+<td>Obsessed</td>
+<td>1</td>
+<td>20</td>
+<td>4</td>
+</tr>
+<tr>
+<td rowspan='2' style='text-align:center;vertical-align:middle;border-right:1px solid black;'>S2</td>
+<td>2018.01.30</td>
+<td>是非</td>
+<td>Right or Wrong</td>
+<td>1</td>
+<td>25</td>
+<td>8</td>
+</tr>
+<tr>
+<td>2018.03.06</td>
+<td>越界</td>
+<td>Crossing the Line</td>
+<td>0</td>
+<td>25</td>
+<td>8</td>
+</tr>
+<tr>
+<td rowspan='2' style='text-align:center;vertical-align:middle;border-right:1px solid black;'>S3</td>
+<td>2019.04.16</td>
+<td>圈套</td>
+<td>Trapped</td>
+<td>1</td>
+<td>25</td>
+<td>20</td>
+</tr>
+<tr>
+<td>2019.10.16</td>
+<td>那一天</td>
+<td>Make our Days Count</td>
+<td>1</td>
+<td>25</td>
+<td>20</td>
+</tr>
+<tr>
+<td style='text-align:center;vertical-align:middle;border-right:1px solid black;'>S4</td>
+<td>2021.03.14</td>
+<td>近距離愛上你</td>
+<td>Close to You</td>
+<td>1</td>
+<td>25</td>
+<td>20</td>
+</tr>
+<tr>
+<td style='text-align:center;vertical-align:middle;border-right:1px solid black;'>S5</td>
+<td>2022.12.28</td>
+<td>遇見未來的你</td>
+<td>Love in the Future</td>
+<td>1</td>
+<td>25</td>
+<td>20</td>
+</tr>
+<tr>
+<td style='text-align:center;vertical-align:middle;border-right:1px solid black;'>S6</td>
+<td>2025.02.14</td>
+<td>獨佔接班人</td>
+<td>Exclusive Love</td>
+<td>1</td>
+<td>30</td>
+<td>12</td>
+</tr>
+<tr>
+<td style='text-align:center;vertical-align:middle;border-right:1px solid black;'>S7</td>
+<td>2027.02.14</td>
+<td>這個殺手非常冷</td>
+<td>??</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
 		  <!-- 放到這裡 -->
           </tbody>
         </table>
@@ -397,6 +440,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
           <th>BL上映日期</th>
           <th>中文劇名</th>
           <th>英文劇名</th>
+		  <th>親密戲</th>
+		  <th>平均時長</th>
+		  <th>集數</th>
         </tr>
           </thead>
           <tbody>
@@ -405,26 +451,41 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 <td>2021.01.08</td>
 <td>永遠的第一名</td>
 <td>We Best Love I</td>
+<td>0</td>
+<td>30</td>
+<td>6</td>
 </tr>
 <tr>
 <td>2021.03.05</td>
 <td>第二名的逆襲</td>
 <td>We Best Love II</td>
+<td>0</td>
+<td>35</td>
+<td>6</td>
 </tr>
 <tr>
 <td>2022.10.14</td>
 <td>我的牙想你</td>
 <td>My Tooth your Love</td>
+<td>0</td>
+<td>35</td>
+<td>12</td>
 </tr>
 <tr>
 <td>2024.02.24</td>
 <td>關於未知的我們</td>
 <td>Unknown</td>
+<td>1</td>
+<td>30</td>
+<td>12</td>
 </tr>
 <tr>
 <td>2026.03.26</td>
 <td>向流星許願的我們</td>
 <td>Wishing Upon the Shooting Stars</td>
+<td>1</td>
+<td>35</td>
+<td>12</td>
 </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -447,6 +508,9 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
           <th>BL上映日期</th>
           <th>中文劇名</th>
           <th>英文劇名</th>
+		  <th>親密戲</th>
+		  <th>平均時長</th>
+		  <th>集數</th>
         </tr>
           </thead>
           <tbody>
@@ -455,21 +519,33 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 <td>2021.05.20</td>
 <td>約·定</td>
 <td>Be Loved in House</td>
+<td>1</td>
+<td>25</td>
+<td>13</td>
 </tr>
 <tr>
 <td>2022.04.15</td>
 <td>正負之間</td>
 <td>Plus &amp; Minus</td>
+<td>1</td>
+<td>30</td>
+<td>13</td>
 </tr>
 <tr>
 <td>2023.08.22</td>
 <td>奇蹟 Kiseki</td>
 <td>Dear to Me</td>
+<td>1</td>
+<td>25</td>
+<td>14</td>
 </tr>
 <tr>
 <td>2024.10.23</td>
 <td>看見愛</td>
 <td>See Your Love</td>
+<td>1</td>
+<td>25</td>
+<td>13</td>
 </tr>
           <!-- 放到這裡 -->
 		  </tbody>
@@ -489,10 +565,13 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
         <table>
           <thead>
         <tr>
-		  <th>季度</th>
+		  <th class="col-season">季度</th>
           <th>BL上映日期</th>
           <th>中文劇名</th>
           <th>英文劇名</th>
+		  <th>親密戲</th>
+		  <th>平均時長</th>
+		  <th>集數</th>
         </tr>
           </thead>
           <tbody>
@@ -502,37 +581,58 @@ body.dark .studio.pink-theme .studio-header {background: #2a223b; }
 <td>2023.07.07</td>
 <td>免疫屏蔽</td>
 <td>Stay by my Side</td>
+<td>0.5</td>
+<td>25</td>
+<td>11</td>
 </tr>
 <tr>
 <td>2023.09.15</td>
 <td>絕對佔領</td>
 <td>You Are Mine</td>
+<td>0.5</td>
+<td>25</td>
+<td>11</td>
 </tr>
 <tr>
 <td>2023.11.24</td>
 <td>保留席位</td>
 <td>VIP Only</td>
+<td>0.5</td>
+<td>25</td>
+<td>11</td>
 </tr>
 <tr>
 <td>2024.02.02</td>
 <td>恆久定律</td>
 <td>Anti Reset</td>
+<td>0.5</td>
+<td>25</td>
+<td>11</td>
 </tr>
 <tr>
 <td rowspan='3' style='text-align:center;vertical-align:middle;border-right:1px solid black;'>S2</td>
 <td>2024.12.20</td>
 <td>全面管控</td>
 <td>Eternal Butler</td>
+<td>1</td>
+<td>25</td>
+<td>12</td>
 </tr>
 <tr>
 <td>2025.03.28</td>
 <td>對立而已</td>
 <td>Fight for You</td>
+<td>1</td>
+<td>25</td>
+<td>12</td>
 </tr>
 <tr>
 <td>2025.06.27</td>
 <td>靈魂約定</td>
 <td>The Promise of the Soul</td>
+<td>1</td>
+<td>25</td>
+<td>12</td>
 </tr>
           <!-- 放到這裡 -->
 		  </tbody>
